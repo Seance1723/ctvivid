@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+@font-face {
+    font-family: 'Brown Sugar';
+    src: url('./BrownSugar/BrownSugar.eot');
+    src: url('./BrownSugar/BrownSugar.eot?#iefix') format('embedded-opentype'),
+        url('./BrownSugar/BrownSugar.woff2') format('woff2'),
+        url('./BrownSugar/BrownSugar.woff') format('woff'),
+        url('./BrownSugar/BrownSugar.ttf') format('truetype'),
+        url('./BrownSugar/BrownSugar.svg#BrownSugar') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}

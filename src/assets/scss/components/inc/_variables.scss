@@ -1,0 +1,165 @@
+/*
+*
+* Contains all map & variables for the scss
+*
+*
+*/
+
+@import "./mixins";
+
+$default-font-family: "Montserrat", sans-serif;
+
+// Variables
+$baseFontSize: 16px; // default base font size
+$minViewportSize: 360; // minimum viewport size
+$maxViewportSize: 2560; // maximum viewport size
+
+// Flexible Colors Palette
+$colors: (
+  // Primary Colors
+  primary: #010101,
+
+  // Secondary Colors
+  secondary: #6c757d,
+  secondary-light: #E8E8E8,
+
+  // Success Colors
+  success: #28a745,
+  success-light: #E8F5E9,
+  success-dark: #1E7E34,
+  success-hover: #218838,
+
+  // Danger Colors
+  danger: #EA5455,
+  danger-light: #FDECEC,
+  danger-dark: #b61616,
+  danger-hover: #C82333,
+
+  // Warning Colors
+  warning: #ffc107,
+  warning-light: #FFF3CD,
+  warning-dark: #FFAB00,
+  warning-hover: #E0A800,
+
+  // Info Colors
+  info: #17a2b8,
+  info-light: #D1ECF1,
+  info-dark: #117A8B,
+  info-hover: #138496,
+
+  // Light Colors
+  light: #fffdfc,
+  light-mid: #F1F3F5,
+  light-dark: #E9ECEF,
+
+  // Dark Colors
+  dark: #050100,
+  dark-mid: #232323,
+  dark-light: #282828,
+  dark-hover: #343A40,
+  navbg: #121212,
+
+  // Neutral/Gray Colors
+  gray-100: #F8F9FA,
+  gray-200: #E9ECEF,
+  gray-300: #DEE2E6,
+  gray-400: #CED4DA,
+  gray-500: #ADB5BD,
+  gray-600: #6C757D,
+  gray-700: #495057,
+  gray-800: #343A40,
+  gray-900: #212529,
+
+  // Text Colors
+  text-primary: #050100,
+  text-secondary: #6C757D,
+  text-light: #676A79,
+  text-label: #5A6A85,
+  text-gray: #747474,
+  text-cta: #888888,
+  text-placeholder: #818EA1,
+  text-tab: #818EA1,
+
+  // Background Colors
+  background-light: #F8F9FA,
+  background-cta-light: #181818,
+  background-gray: #F5F5F5,
+  background-light-gray: #e5e5e5,
+  background-dark: #343A40,
+  background-accent: #FEF0EC,
+  background-cards-light: #EBF1F6,
+
+  // Borders and Shadows
+  border: #DFE5EF,
+  border-dark: #7C8FAC,
+  border-gray: #D4D4D4,
+  card-border: #EBF1F6,
+  shadow: #A8AAAE,
+
+  // Utility Colors
+  white: #ffffff,
+  black: #000000,
+  transparent: transparent,
+  overlay: rgba(0, 0, 0, 0.5)
+);
+
+
+//@include define-colors($colors);
+
+//Header font size
+$header-font-sizes: (
+  h1: 38px,
+  h2: 32px,
+  h3: 26px,
+  h4: 22px,
+  h5: 18px,
+  h6: 15px
+);
+
+$font-sizes: (
+  10: 10px,
+  12: 12px,
+  14: 14px,
+  16: 16px,
+  18: 18px,
+  20: 20px,
+  22: 22px,
+  24: 24px
+);
+
+
+// Padding directions mapped to their CSS properties.
+// For composite directions (px, py) a list of properties is provided.
+$pad-directions: (
+  pt: padding-top,
+  pb: padding-bottom,
+  pl: padding-left,
+  pr: padding-right,
+  px: (padding-left, padding-right),
+  py: (padding-top, padding-bottom)
+);
+
+// Device breakpoints.
+$devices: (xs, sm, md, lg, xl, xxl);
+
+// Allowed padding sizes in pixels.
+$pad-sizes: (12, 16, 18, 22, 24, 26, 30, 40, 60, 80, 100);
+
+// Breakpoints for media queries.
+// xs is the base (0) so it won’t be wrapped in a media query.
+$breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+);
+
+
+@include root-vars;
+
+
+// Generate all the padding classes.
+@include generate-pad-classes();
+

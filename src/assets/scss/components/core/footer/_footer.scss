@@ -1,0 +1,59 @@
+.site-footer {
+    background-color: #fff;
+    color: #333;
+    font-size: 14px;
+  
+    .footer-brand {
+      .logo {
+        font-family: "Brown Sugar";
+        font-size: 22px;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+      }
+      .copyright {
+        color: #888;
+        font-size: 13px;
+      }
+    }
+  
+    .footer-links {
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+  
+        li {
+          margin-bottom: 0.5rem;
+          cursor: pointer;
+  
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  
+    .footer-social {
+      p {
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+      }
+  
+      .social-icon {
+        background-color: #e4f0f2;
+        padding: 8px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: 0.2s ease;
+  
+        &:hover {
+          background-color: #cce4e8;
+        }
+  
+        svg {
+          color: #3b3b3b;
+        }
+      }
+    }
+  }
+  

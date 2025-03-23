@@ -4,6 +4,16 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+//Brand Font
+import './assets/fonts/fonts.css';
+
+//Bootstrap
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+//Core CSS
+import './assets/css/vividara.css';
+
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

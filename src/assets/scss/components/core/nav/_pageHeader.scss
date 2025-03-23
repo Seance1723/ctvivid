@@ -1,0 +1,38 @@
+body{
+    header{
+        position: fixed;
+        width: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 999;
+        nav{
+            &.navbar{
+                padding: 18px 0;
+                #pageNav{
+                    a{
+                        font-size: 16px;
+                        line-height: 24px;
+                        color: var(--white-color);
+                        text-decoration: none;
+                        font-weight: 500;
+                        &:hover{
+                            text-decoration: none;
+                        }
+                    }
+                }
+                #branding{
+                    h3{
+                        font-family: 'Brown Sugar';
+                        font-size: 36px;
+                        line-height: 54px;
+                        color: var(--white-color);
+                    }
+                }
+                #navAction{
+                    color: var(--white-color);
+                }
+            }
+        }
+    }
+}

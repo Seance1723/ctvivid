@@ -1,0 +1,39 @@
+.cta {
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 22px;
+    letter-spacing: 0.43px;
+    border-radius: 6px;
+    padding: 12px 34px;
+    transition: all 0.3s ease-in-out;
+  
+    &.cta-primary {
+      border: 2px solid var(--primary-color);
+      background: var(--primary-color);
+      color: #fff;
+      transition: all 0.3s ease-in-out;
+  
+      &:hover {
+        border-radius: 0;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+      }
+  
+      &-outline {
+        background: transparent;
+        color: var(--primary-color);
+        border: 2px solid var(--primary-color);
+        transition: all 0.3s ease-in-out;
+  
+        &:hover {
+          border-radius: 0;
+          border-color: var(--secondary-color);
+          background: var(--secondary-color);
+          color: #fff;
+          transform: translateY(-2px);
+          box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+        }
+      }
+    }
+}
+  
