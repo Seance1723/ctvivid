@@ -24,7 +24,6 @@ function App() {
         <Route path="/women" element={<Women />} />
         <Route path="/sale" element={<Sale />} />
       </Routes>
-      <Footer />
     </Router>
   );
 }

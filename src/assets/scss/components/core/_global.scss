@@ -1,8 +1,52 @@
 html,
 body{
+    height: 100%;
     padding: 0;
     margin: 0;
-    overflow-y: visible;
+    overflow-y: scroll;           /* allow vertical scroll */
+    scrollbar-width: none;        /* Firefox */
+    -ms-overflow-style: none;     /* IE 10+ */
     overflow-x: hidden;
     font-family: "Montserrat", sans-serif !important;
+    .section {
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+    }
 }
+
+::-webkit-scrollbar {
+    width: 0;
+    height: 0;                    /* Safari and Chrome */
+}
+  
+.onepage-container {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden; /* hide overflow inside container */
+    .inner {
+        width: 100%;
+        height: 100%;
+        .onepage-section {
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+    }
+}
+  
+
+// .designers-wrapper {
+//     display: flex;
+//     width: 400vw; // 4 sections
+//     height: 100vh;
+//     overflow: hidden;
+  
+//     .designer-section {
+//       width: 100vw;
+//       height: 100vh;
+//       flex-shrink: 0;
+//       overflow: hidden;
+//     }
+// }
+  

@@ -2492,11 +2492,40 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 html,
 body {
+  height: 100%;
   padding: 0;
   margin: 0;
-  overflow-y: visible;
+  overflow-y: scroll; /* allow vertical scroll */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
   overflow-x: hidden;
   font-family: "Montserrat", sans-serif !important;
+}
+html .section,
+body .section {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0; /* Safari and Chrome */
+}
+
+.onepage-container {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden; /* hide overflow inside container */
+}
+.onepage-container .inner {
+  width: 100%;
+  height: 100%;
+}
+.onepage-container .inner .onepage-section {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .cta {
@@ -2532,6 +2561,56 @@ body {
   color: #fff;
   transform: translateY(-2px);
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+}
+.cta-addToCart {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+  text-decoration: none;
+  padding: 12px 22px;
+  background: none;
+  border: 1px solid var(--white-color);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: background 0.3s ease;
+}
+.cta-addToCart::before {
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  width: 26px;
+  height: 26px;
+  margin-right: 0.5em;
+  background: url("/public/products/icons/minus.svg") no-repeat center/contain;
+  transition: background-image 0.3s ease, transform 0.3s ease;
+}
+.cta-addToCart:hover::before {
+  transform: translateX(2px);
+  background-image: url("/public/products/icons/arrow-narrow-right.svg");
+}
+.cta-outlineDefault {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+  text-decoration: none;
+  padding: 12px 22px;
+  background: none;
+  border: 1px solid var(--white-color);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: background 0.3s ease;
+}
+.cta.right_bottom {
+  position: absolute;
+  bottom: 64px;
+  right: 170px;
+  z-index: 10;
 }
 
 select.form-select {
@@ -2618,21 +2697,10 @@ body header nav.navbar #navAction {
   color: #3b3b3b;
 }
 
-#productHeroSec {
-  width: 100%;
-  height: 100vh;
-  max-height: 100vh;
-}
-#productHeroSec .swiper .swiper-wrapper .swiper-slide img {
-  width: 100%;
-  height: 100%;
-}
-
 .product-hero-section {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  background: #000;
 }
 .product-hero-section .hero-swiper {
   width: 100%;
@@ -2641,43 +2709,35 @@ body header nav.navbar #navAction {
 .product-hero-section .hero-swiper .swiper-wrapper {
   align-items: center;
 }
-.product-hero-section .hero-swiper .swiper-slide {
-  height: 100vh;
-  transition: width 0.4s ease;
-  overflow: hidden;
-  cursor: pointer;
-}
-.product-hero-section .hero-swiper .swiper-slide .slide-inner {
+.product-hero-section .hero-swiper .hero-slide {
+  /* Forcing each slide to be exactly one-third of the viewport */
+  width: 33.3333333333vw !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
-  height: 100%;
-  width: 100%;
 }
-.product-hero-section .hero-swiper .swiper-slide .hero-image {
+.product-hero-section .hero-swiper .hero-slide img {
   width: 100%;
-  height: 100%;
+  height: auto;
   -o-object-fit: cover;
      object-fit: cover;
-  transition: transform 0.3s ease;
 }
-.product-hero-section .hero-swiper .swiper-slide.expanded .hero-image {
-  transform: scale(1.05);
-}
-.product-hero-section .hero-swiper .swiper-slide .add-to-cart-btn {
+.product-hero-section .add-to-cart-btn {
   position: absolute;
   bottom: 30px;
   left: 50%;
   transform: translateX(-50%);
-  background: white;
+  background: #fff;
   padding: 12px 24px;
   border: none;
   font-weight: bold;
   border-radius: 8px;
-  opacity: 0.9;
   cursor: pointer;
   transition: 0.3s ease;
 }
-.product-hero-section .hero-swiper .swiper-slide .add-to-cart-btn:hover {
-  opacity: 1;
+.product-hero-section .add-to-cart-btn:hover {
+  opacity: 0.9;
 }
 
 .product-video-section {
