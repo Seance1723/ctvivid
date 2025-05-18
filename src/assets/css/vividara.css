@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*
 Theme Name: Hephaestus
 Theme URI: https://codetrait.com
@@ -2651,6 +2652,18 @@ body header nav.navbar #branding h3 {
 body header nav.navbar #navAction {
   color: var(--white-color);
 }
+body header.nav-dark .navbar #pageNav a {
+  color: var(--dark-color);
+}
+body header.nav-dark .navbar #branding h3 {
+  color: var(--dark-color);
+}
+body header.nav-dark .navbar #navAction {
+  color: var(--dark-color);
+}
+body header.nav-dark .navbar #navAction svg {
+  stroke: var(--dark-color);
+}
 
 .site-footer {
   background-color: #fff;
@@ -2817,4 +2830,226 @@ body header nav.navbar #navAction {
 }
 #productDetails .product-intro-sec .input-qty {
   max-width: 120px;
+}
+
+.homepage-container {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.homepage-container::-webkit-scrollbar {
+  display: none;
+}
+.homepage-container .homepage-section {
+  position: relative;
+  scroll-snap-align: start;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  /* initial “off” state */
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.homepage-container .homepage-section.active {
+  opacity: 1;
+  transform: scale(1);
+}
+.homepage-container .homepage-section .section-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  padding: 0 1rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.homepage-container .hero-section video.hero-video {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  filter: grayscale(100%);
+}
+.homepage-container .intro-section .section-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+.homepage-container .intro-section .section-content h1 span {
+  color: #888;
+}
+.homepage-container .intro-section .section-content .intro-content {
+  width: 100%;
+}
+.homepage-container .intro-section .section-content .intro-content .features-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border-left: 2px solid #ddd;
+  text-align: left;
+  padding-left: 24px;
+  list-style-type: none;
+  margin: 0;
+}
+.homepage-container .intro-section .section-content .intro-content .features-list li {
+  margin: 0;
+  position: relative;
+}
+.homepage-container .intro-section .section-content .intro-content .features-list li strong {
+  display: block;
+  margin: 0;
+}
+.homepage-container .intro-section .section-content .intro-content .features-list li p {
+  margin: 0;
+  color: #000;
+}
+.homepage-container .intro-section .section-content .intro-content .features-list li:hover {
+  cursor: pointer;
+}
+.homepage-container .intro-section .section-content .intro-content .features-list li.active::before {
+  content: "";
+  position: absolute;
+  left: -26px;
+  top: 0;
+  height: 100%;
+  width: 2px;
+  background-color: #5A5A5A;
+}
+.homepage-container .intro-section .section-content .intro-content .intro-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+.homepage-container .intro-section .section-content .intro-content .intro-right .intro-box {
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 220px;
+  border-radius: 12px;
+}
+.homepage-container .intro-section .section-content .intro-content .intro-right .intro-text {
+  display: flex;
+  gap: 24px;
+  text-align: left;
+}
+.homepage-container .intro-section .section-content .intro-content .intro-right .intro-text h3 {
+  margin: 0 0 0.5rem;
+}
+.homepage-container .intro-section .section-content .intro-content .intro-right .intro-text p {
+  margin: 0;
+  color: #555;
+}
+.homepage-container .trends-section .section-content h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+.homepage-container .trends-section .section-content .trends-slider {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+.homepage-container .trends-section .section-content .trends-slider .trend-item {
+  flex: 0 0 150px;
+  height: 200px;
+  background: #ccc;
+  border-radius: 4px;
+}
+.homepage-container .details-section {
+  background-color: #E5E5E5;
+}
+.homepage-container .details-section .section-content h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+.homepage-container .details-section .section-content h2 span {
+  color: #888;
+}
+.homepage-container .details-section .section-content .details-content {
+  width: 100%;
+}
+.homepage-container .details-section .section-content .details-content > h3 {
+  text-align: left;
+}
+.homepage-container .details-section .section-content .details-content .details-box {
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 12px;
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
+}
+.homepage-container .details-section .section-content .details-content .details-text {
+  flex: 1;
+  text-align: left;
+}
+.homepage-container .details-section .section-content .details-content .details-text h3 {
+  text-align: left;
+  margin: 0 0 0.5rem;
+}
+.homepage-container .details-section .section-content .details-content .details-text p {
+  margin: 0;
+  color: #555;
+}
+.homepage-container .cta-section video.cta-bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  filter: grayscale(100%);
+  z-index: 0;
+}
+.homepage-container .cta-section .section-content {
+  z-index: 1;
+}
+.homepage-container .cta-section .section-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+.homepage-container .cta-section .section-content p {
+  margin-bottom: 1.5rem;
+  color: #fff;
+}
+.homepage-container .cta-section .section-content .cta-button {
+  padding: 0.75rem 1.5rem;
+  border: 2px solid #fff;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+}
+.homepage-container .cta-section .footer {
+  position: absolute;
+  bottom: 1rem;
+  width: 100%;
+  color: rgba(255, 255, 255, 0.8);
+  z-index: 1;
+}
+.homepage-container .cta-section .footer .footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0 2rem;
+}
+.homepage-container .cta-section .footer .footer-top a {
+  color: inherit;
+  text-decoration: none;
+  margin-right: 1rem;
+}
+.homepage-container .cta-section .footer .footer-bottom {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 0.875rem;
 }/*# sourceMappingURL=vividara.css.map */

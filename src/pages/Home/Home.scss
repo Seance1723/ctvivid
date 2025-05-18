@@ -1,0 +1,27 @@
+.trends-swiper {
+  width: 100%;
+
+  .swiper-slide {
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .trend-item-img {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      object-fit: cover;
+      display: block;
+
+      /* start in grayscale */
+      filter: grayscale(100%);
+      transition: filter 0.3s ease-in-out;
+    }
+
+    /* on hover, show full-color */
+    &:hover .trend-item-img {
+      filter: grayscale(0%);
+    }
+  }
+}
