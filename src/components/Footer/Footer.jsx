@@ -1,4 +1,7 @@
+// src/components/Footer/Footer.jsx
+
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import {
   IconBrandFacebook,
   IconBrandTwitter,
@@ -6,9 +9,21 @@ import {
   IconBrandYoutube,
 } from '@tabler/icons-react';
 
-const Footer = () => {
+const Footer = ({ className = '' }) => {
+  const { pathname } = useLocation();
+  // add 'home-footer' only on the homepage
+  const isHome = pathname === '/';
+  const footerClasses = [
+    'site-footer',
+    'py-5',
+    className,
+    isHome ? 'home-footer' : ''
+  ]
+    .filter(Boolean)
+    .join(' ');
+
   return (
-    <footer className="site-footer py-5">
+    <footer className={footerClasses}>
       <div className="container d-flex flex-column flex-md-row justify-content-between align-items-start gap-4">
         {/* Logo + copyright */}
         <div className="footer-brand">

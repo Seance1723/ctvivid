@@ -15,6 +15,7 @@ gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 export default function Designers() {
   const containerRef = useRef(null);
+  const innerRef     = useRef(null);
   const heroRef      = useRef(null);
   const videoRef     = useRef(null);
   const infoRef      = useRef(null);
@@ -22,34 +23,32 @@ export default function Designers() {
 
   // Pin & scrub through all sections
   useEffect(() => {
-    const sections = gsap.utils.toArray('.onepage-section');
-    const total    = sections.length;
-
-    gsap.to('.inner', {
-      yPercent: -100 * (total - 1),
-      ease:     'none',
-      scrollTrigger: {
-        trigger:       containerRef.current,
-        start:         'top top',
-        end:           `+=${window.innerHeight * (total - 1)}`,
-        scrub:         1,
-        pin:           true,
-        snap:          1 / (total - 1),
-        anticipatePin: 1,
-      },
-    });
-
-    return () => ScrollTrigger.getAll().forEach(t => t.kill());
-  }, []);
-
-  // All your section refs in order
-  const sections = [heroRef, videoRef, infoRef, detailsRef];
+      const sections = gsap.utils.toArray('.onepage-section');
+      const total    = sections.length;
+  
+      gsap.to(innerRef.current, {
+        yPercent: -100 * (total - 1),
+        ease:     'none',
+        scrollTrigger: {
+          scroller:      containerRef.current,        // <— use the pinned container
+          trigger:       innerRef.current,            // <— scrub its movement
+          start:         'top top',
+          end:           () => `+=${window.innerHeight * (total - 1)}`,
+          scrub:         1,
+          pin:           true,
+          //snap:          1 / (total - 1),
+          anticipatePin: 1,
+        },
+      });
+  
+      return () => ScrollTrigger.getAll().forEach(t => t.kill());
+    }, []);
 
   // Scroll to section number `idx`
-  const scrollToSection = (targetRef) => {
-    const idx = sections.findIndex(r => r === targetRef);
+  const scrollToSection = ref => {
+    const idx = [heroRef, videoRef, infoRef, detailsRef].findIndex(r => r === ref);
     if (idx >= 0) {
-      gsap.to(window, {
+      gsap.to(containerRef.current, {       // <— scroll the container
         duration: 1,
         ease:     'power2.out',
         scrollTo: { y: window.innerHeight * idx, autoKill: false }
@@ -59,27 +58,20 @@ export default function Designers() {
 
   return (
     <div className="onepage-container" ref={containerRef}>
-      <div className="inner">
-        <section ref={heroRef}  className="onepage-section">
-          <ProductHeroSection
-            onAddToCartClick={() => scrollToSection(videoRef)}
-          />
-        </section>
-
-        <section ref={videoRef} className="onepage-section">
-          <ProductVideo
-            onAddToCartClick={() => scrollToSection(infoRef)}
-          />
-        </section>
-
-        <section ref={infoRef}  className="onepage-section">
-          <ProductInfo />
-        </section>
-
-        <section ref={detailsRef} className="onepage-section">
-          <ProductDetails />
-        </section>
-      </div>
-    </div>
+          <div className="inner" ref={innerRef}>
+            <section ref={heroRef}  className="onepage-section">
+              <ProductHeroSection onAddToCartClick={() => scrollToSection(videoRef)} />
+            </section>
+            <section ref={videoRef} className="onepage-section">
+              <ProductVideo onAddToCartClick={() => scrollToSection(infoRef)} />
+            </section>
+            <section ref={infoRef}  className="onepage-section">
+              <ProductInfo />
+            </section>
+            <section ref={detailsRef} className="onepage-section">
+              <ProductDetails />
+            </section>
+          </div>
+        </div>
   );
 }

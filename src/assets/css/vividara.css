@@ -2670,6 +2670,13 @@ body header.nav-dark .navbar #navAction svg {
   color: #333;
   font-size: 14px;
 }
+.site-footer.home-footer {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  background: no-repeat;
+  color: var(--white-color);
+}
 .site-footer .footer-brand .logo {
   font-family: "Brown Sugar";
   font-size: 22px;

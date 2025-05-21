@@ -2,8 +2,6 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import './ProductInfo.scss';
 
 const highlightsData = [
@@ -16,12 +14,11 @@ const highlightsData = [
         xPercent: 48,
         yPercent: 64,
         title: 'Silhouette',
-        description:
-          'A figure-flattering silhouette that accentuates curves and elongates the frame, evoking a sense of mystery and allure.',
+        description: 'A figure-flattering silhouette that accentuates curves and elongates the frame, evoking a sense of mystery and allure.',
         thumbnail: '',
         contentSide: 'right',
-      },
-    ],
+      }
+    ]
   },
   {
     id: 'panel2',
@@ -31,9 +28,9 @@ const highlightsData = [
         id: 'p2d1',
         xPercent: 50,
         yPercent: 50,
-        thumbnail: '/products/highlight/vakra_02_01.jpg',
-      },
-    ],
+        thumbnail: '/products/highlight/vakra_02_01.jpg'
+      }
+    ]
   },
   {
     id: 'panel3',
@@ -56,104 +53,78 @@ const highlightsData = [
         description: 'Handcrafted floral patterns.',
         thumbnail: '/products/designers/vakra/vakra_03_02.png',
         contentSide: 'left',
-      },
-    ],
-  },
+      }
+    ]
+  }
 ];
 
+// Flatten panels → slides (one per dot)
 const slides = highlightsData.flatMap(panel =>
-  panel.dots.map(dot => ({ ...dot, imageSrc: panel.imageSrc }))
+  panel.dots.map(dot => ({
+    ...dot,
+    imageSrc: panel.imageSrc
+  }))
 );
 
 export default function ProductInfo() {
   const [index, setIndex] = useState(0);
-  const containerRef      = useRef(null);
-  const contentRefs       = useRef([]);
-  const prevIndex         = useRef(0);
-  const isScrolling       = useRef(false);
+  const isAnimating     = useRef(false);
+  const contentRefs     = useRef([]);
+  const prevIndex       = useRef(0);
 
-  // helper to scroll‐to‐next/prev section
-  const scrollToSection = (secEl) => {
-    if (!secEl) return;
-    const mainST = ScrollTrigger.getById('main');
-    mainST?.disable();
-    isScrolling.current = true;
-    gsap.to(window, {
-      duration: 1,
-      ease: 'power2.out',
-      scrollTo: { y: secEl, autoKill: false },
-      onComplete: () => {
-        mainST?.enable();
-        isScrolling.current = false;
-      }
-    });
-  };
-
-  // wheel handling INSIDE this section ONLY
+  // handle wheel → change index
   useEffect(() => {
-    const sec = containerRef.current;
-    if (!sec) return;
-
     const onWheel = (e) => {
-      e.preventDefault();
-      e.stopImmediatePropagation();
-
-      if (isScrolling.current) return;
+      if (isAnimating.current) return;
       const delta = e.deltaY;
-      const parentSection = sec.closest('.onepage-section');
-
-      if (delta > 0) {
-        // scroll ↓
-        if (index < slides.length - 1) {
-          isScrolling.current = true;
-          setIndex(i => i + 1);
-        } else {
-          // last panel → next page section
-          scrollToSection(parentSection?.nextElementSibling);
-        }
-      } else if (delta < 0) {
-        // scroll ↑
-        if (index > 0) {
-          isScrolling.current = true;
-          setIndex(i => i - 1);
-        } else {
-          // first panel → prev page section
-          scrollToSection(parentSection?.previousElementSibling);
-        }
+      if (delta > 0 && index < slides.length - 1) {
+        e.preventDefault();
+        isAnimating.current = true;
+        setIndex(i => i + 1);
+      } else if (delta < 0 && index > 0) {
+        e.preventDefault();
+        isAnimating.current = true;
+        setIndex(i => i - 1);
       }
     };
-
-    sec.addEventListener('wheel', onWheel, { passive: false });
-    return () => sec.removeEventListener('wheel', onWheel);
+    window.addEventListener('wheel', onWheel, { passive: false });
+    return () => window.removeEventListener('wheel', onWheel);
   }, [index]);
 
-  // animate pop‐in/out of each highlight content
+  // animate content on slide change
   useEffect(() => {
-    const incoming = contentRefs.current[index];
-    const outgoing = contentRefs.current[prevIndex.current];
+    const incoming  = contentRefs.current[index];
+    const outgoing  = contentRefs.current[prevIndex.current];
+    const direction = index > prevIndex.current ? 1 : -1;
 
+    // zoom out outgoing
     if (outgoing) {
-      gsap.to(outgoing, { scale: 0, opacity: 0, duration: 0.5, ease: 'power2.in' });
+      gsap.to(outgoing, {
+        scale: 0,
+        opacity: 0,
+        duration: 0.5,
+        ease: 'power2.in'
+      });
     }
+
+    // zoom in incoming
     if (incoming) {
-      gsap.fromTo(
-        incoming,
+      gsap.fromTo(incoming,
         { scale: 0, opacity: 0 },
         { scale: 1, opacity: 1, duration: 0.5, ease: 'power2.out' }
       );
     }
+
     prevIndex.current = index;
   }, [index]);
 
-  // once our slide‐transition (translateY) ends, re‐unlock scroll
+  // reset animating flag after slide transition
   const onTransitionEnd = () => {
-    const mainST = ScrollTrigger.getById('main');
-    mainST?.enable();
-    isScrolling.current = false;
+    isAnimating.current = false;
   };
 
   return (
-    <div className="product-info-slider" ref={containerRef}>
+    <div className="product-info-slider">
       <div
         className="slides"
         style={{ transform: `translateY(-${index * 100}vh)` }}
@@ -178,14 +149,14 @@ export default function ProductInfo() {
               {hasContent && (
                 <div
                   className={`highlight-content ${contentSide}`}
-                  ref={el => contentRefs.current[i] = el}
                   style={{
                     left: contentSide === 'left' ? '5%' : '60%',
                     top: `${yPercent}%`
                   }}
+                  ref={el => contentRefs.current[i] = el}
                 >
-                  {thumbnail && <img src={thumbnail} alt="" />}
-                  {title && <h4>{title}</h4>}
+                  {thumbnail   && <img src={thumbnail} alt="" />}
+                  {title       && <h4>{title}</h4>}
                   {description && <p>{description}</p>}
                 </div>
               )}
