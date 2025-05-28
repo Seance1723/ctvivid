@@ -1,6 +1,9 @@
 // src/components/Templates/ProductInfo/ProductInfo.jsx
 
 import React, { useState, useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import './ProductInfo.scss';
 
 const highlightsData = [
@@ -12,16 +15,13 @@ const highlightsData = [
         id: 'p1d1',
         xPercent: 48,
         yPercent: 64,
-        lineLength: 120,
         title: 'Silhouette',
         description:
           'A figure-flattering silhouette that accentuates curves and elongates the frame, evoking a sense of mystery and allure.',
         thumbnail: '',
         contentSide: 'right',
-        contentXPercent: 70,
-        contentYPercent: 60
-      }
-    ]
+      },
+    ],
   },
   {
     id: 'panel2',
@@ -31,13 +31,9 @@ const highlightsData = [
         id: 'p2d1',
         xPercent: 50,
         yPercent: 50,
-        lineLength: 100,
         thumbnail: '/products/highlight/vakra_02_01.jpg',
-        contentSide: 'right',
-        contentXPercent: 60,
-        contentYPercent: 45
-      }
-    ]
+      },
+    ],
   },
   {
     id: 'panel3',
@@ -47,85 +43,113 @@ const highlightsData = [
         id: 'p3d1',
         xPercent: 30,
         yPercent: 60,
-        lineLength: 140,
         title: 'Premium Fabric',
         description: 'Silky soft, breathable fabric.',
         thumbnail: '/products/designers/vakra/vakra_03_01.png',
         contentSide: 'right',
-        contentXPercent: 65,
-        contentYPercent: 55
       },
       {
         id: 'p3d2',
         xPercent: 70,
         yPercent: 40,
-        lineLength: 120,
         title: 'Artisan Embroidery',
         description: 'Handcrafted floral patterns.',
         thumbnail: '/products/designers/vakra/vakra_03_02.png',
         contentSide: 'left',
-        contentXPercent: 20,
-        contentYPercent: 35
-      }
-    ]
-  }
+      },
+    ],
+  },
 ];
 
-// flatten to a single array of “slides”
 const slides = highlightsData.flatMap(panel =>
   panel.dots.map(dot => ({ ...dot, imageSrc: panel.imageSrc }))
 );
 
-export default function ProductInfo({
-  onFirstPanelUp,
-  onLastPanelDown
-}) {
+export default function ProductInfo() {
   const [index, setIndex] = useState(0);
   const containerRef      = useRef(null);
+  const contentRefs       = useRef([]);
   const prevIndex         = useRef(0);
-  const isAnimating       = useRef(false);
+  const isScrolling       = useRef(false);
 
-  // wheel handler: scroll through slides or bubble out
+  // helper to scroll‐to‐next/prev section
+  const scrollToSection = (secEl) => {
+    if (!secEl) return;
+    const mainST = ScrollTrigger.getById('main');
+    mainST?.disable();
+    isScrolling.current = true;
+    gsap.to(window, {
+      duration: 1,
+      ease: 'power2.out',
+      scrollTo: { y: secEl, autoKill: false },
+      onComplete: () => {
+        mainST?.enable();
+        isScrolling.current = false;
+      }
+    });
+  };
+
+  // wheel handling INSIDE this section ONLY
   useEffect(() => {
-    const el = containerRef.current;
-    if (!el) return;
+    const sec = containerRef.current;
+    if (!sec) return;
 
-    const handler = e => {
+    const onWheel = (e) => {
       e.preventDefault();
-      if (isAnimating.current) return;
-      const d = e.deltaY;
-      if (d > 0) {
+      e.stopImmediatePropagation();
+
+      if (isScrolling.current) return;
+      const delta = e.deltaY;
+      const parentSection = sec.closest('.onepage-section');
+
+      if (delta > 0) {
+        // scroll ↓
         if (index < slides.length - 1) {
-          isAnimating.current = true;
+          isScrolling.current = true;
           setIndex(i => i + 1);
         } else {
-          onLastPanelDown?.();
+          // last panel → next page section
+          scrollToSection(parentSection?.nextElementSibling);
         }
-      } else {
+      } else if (delta < 0) {
+        // scroll ↑
         if (index > 0) {
-          isAnimating.current = true;
+          isScrolling.current = true;
           setIndex(i => i - 1);
         } else {
-          onFirstPanelUp?.();
+          // first panel → prev page section
+          scrollToSection(parentSection?.previousElementSibling);
         }
       }
     };
 
-    el.addEventListener('wheel', handler, { passive: false });
-    return () => el.removeEventListener('wheel', handler);
-  }, [index, onFirstPanelUp, onLastPanelDown]);
+    sec.addEventListener('wheel', onWheel, { passive: false });
+    return () => sec.removeEventListener('wheel', onWheel);
+  }, [index]);
 
-  // add/remove “active” class on the current slide
+  // animate pop‐in/out of each highlight content
   useEffect(() => {
-    const slidesEls = containerRef.current.querySelectorAll('.slide');
-    slidesEls[prevIndex.current]?.classList.remove('active');
-    slidesEls[index]?.classList.add('active');
+    const incoming = contentRefs.current[index];
+    const outgoing = contentRefs.current[prevIndex.current];
+
+    if (outgoing) {
+      gsap.to(outgoing, { scale: 0, opacity: 0, duration: 0.5, ease: 'power2.in' });
+    }
+    if (incoming) {
+      gsap.fromTo(
+        incoming,
+        { scale: 0, opacity: 0 },
+        { scale: 1, opacity: 1, duration: 0.5, ease: 'power2.out' }
+      );
+    }
     prevIndex.current = index;
   }, [index]);
 
-  // re-enable wheel after the CSS transition
+  // once our slide‐transition (translateY) ends, re‐unlock scroll
   const onTransitionEnd = () => {
-    isAnimating.current = false;
+    const mainST = ScrollTrigger.getById('main');
+    mainST?.enable();
+    isScrolling.current = false;
   };
 
   return (
@@ -135,56 +159,33 @@ export default function ProductInfo({
         style={{ transform: `translateY(-${index * 100}vh)` }}
         onTransitionEnd={onTransitionEnd}
       >
-        {slides.map((s, i) => {
+        {slides.map((slide, i) => {
           const {
             imageSrc, xPercent, yPercent,
-            lineLength,
-            contentXPercent, contentYPercent, contentSide,
-            title, description, thumbnail
-          } = s;
-
+            title, description, thumbnail, contentSide
+          } = slide;
           const hasContent = title || description || thumbnail;
-          const isFirst    = i === 0;
-          const isLast     = i === slides.length - 1;
 
           return (
-            <div
-              key={`${s.id}-${i}`}
-              className={
-                `slide` +
-                (isFirst ? ' first-panel' : '') +
-                (isLast  ? ' last-panel'  : '')
-              }
-            >
+            <div className="slide" key={i}>
               <img src={imageSrc} className="bg-image" alt="" />
 
               <div
                 className="dot"
-                style={{
-                  left: `${xPercent}%`,
-                  top:  `${yPercent}%`
-                }}
-              />
-
-              <div
-                className="line"
-                style={{
-                  left:   `${xPercent}%`,
-                  top:    `${yPercent}%`,
-                  height: hasContent ? `${lineLength}px` : '0'
-                }}
+                style={{ left: `${xPercent}%`, top: `${yPercent}%` }}
               />
 
               {hasContent && (
                 <div
                   className={`highlight-content ${contentSide}`}
+                  ref={el => contentRefs.current[i] = el}
                   style={{
-                    left: `${contentXPercent}%`,
-                    top:  `${contentYPercent}%`
+                    left: contentSide === 'left' ? '5%' : '60%',
+                    top: `${yPercent}%`
                   }}
                 >
-                  {thumbnail   && <img src={thumbnail} alt="" />}
-                  {title       && <h4>{title}</h4>}
+                  {thumbnail && <img src={thumbnail} alt="" />}
+                  {title && <h4>{title}</h4>}
                   {description && <p>{description}</p>}
                 </div>
               )}

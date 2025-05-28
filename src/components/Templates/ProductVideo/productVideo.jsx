@@ -3,82 +3,51 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 
-gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+gsap.registerPlugin(ScrollTrigger);
 
-export default function ProductVideo({ onAddToCartClick }) {
-  const videoRef    = useRef(null);
-  const sectionRef  = useRef(null);
-  const isScrolling = useRef(false);
+export default function ProductVideo({ onAddToCartClick, onScrollUp }) {
+  const videoRef   = useRef(null);
+  const sectionRef = useRef(null);
 
-  // our helper: disable the main scrub while animating, then re-enable
-  const scrollToSection = (secEl) => {
-    if (!secEl) return;
-    const mainST = ScrollTrigger.getById('main');
-    mainST && mainST.disable();
-
-    isScrolling.current = true;
-    gsap.to(window, {
-      duration: 1,
-      ease: 'power2.out',
-      scrollTo: { y: secEl, autoKill: false },
-      onComplete: () => {
-        mainST && mainST.enable();
-        isScrolling.current = false;
-      }
-    });
-  };
-
-  // wheel only handled here: up = to prev section; down is swallowed
+  // wheel handler: up → call onScrollUp, swallow down
   useEffect(() => {
     const node = sectionRef.current;
     if (!node) return;
 
-    const onWheel = (e) => {
-      if (isScrolling.current) {
-        e.preventDefault();
-        return;
-      }
-      const parent = node.closest('.onepage-section');
+    const onWheel = e => {
       if (e.deltaY < 0) {
-        // scroll up → prev
         e.preventDefault();
-        const prev = parent?.previousElementSibling;
-        if (prev) scrollToSection(prev);
+        onScrollUp?.();
       } else {
-        // swallow any downward wheel
         e.preventDefault();
       }
     };
 
     node.addEventListener('wheel', onWheel, { passive: false });
     return () => node.removeEventListener('wheel', onWheel);
-  }, []);
+  }, [onScrollUp]);
 
-  // play/pause video as before
+  // video play/pause via ScrollTrigger
   useEffect(() => {
     if (!videoRef.current) return;
     videoRef.current.loop = true;
 
     const trig = ScrollTrigger.create({
-      trigger:     sectionRef.current,
-      start:       'top center',
-      end:         'bottom center',
-      onEnter:     () => videoRef.current.play().catch(() => {}),
-      onEnterBack: () => videoRef.current.play().catch(() => {}),
-      onLeave:     () => videoRef.current.pause(),
-      onLeaveBack: () => videoRef.current.pause(),
+      trigger:      sectionRef.current,
+      start:        'top center',
+      end:          'bottom center',
+      onEnter:      () => videoRef.current.play().catch(() => {}),
+      onEnterBack:  () => videoRef.current.play().catch(() => {}),
+      onLeave:      () => videoRef.current.pause(),
+      onLeaveBack:  () => videoRef.current.pause(),
     });
     return () => trig.kill();
   }, []);
 
-  // Add to Cart now jumps to next section (and still calls parent)
+  // clicking CTA only ever goes forward via the parent callback
   const handleClick = () => {
-    const parent = sectionRef.current.closest('.onepage-section');
-    const next   = parent?.nextElementSibling;
-    scrollToSection(next);
-    onAddToCartClick && onAddToCartClick();
+    onAddToCartClick?.();
   };
 
   return (
