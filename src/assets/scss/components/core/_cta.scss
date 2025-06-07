@@ -60,12 +60,56 @@
       background: url('/public/products/icons/minus.svg') no-repeat center/contain;
       transition: background-image 0.3s ease, transform 0.3s ease;
     }
+    &.dark{
+      color: var(--dark-color);
+      border: 1px solid var(--dark-color);
+      background: url('/public/products/icons/minus-dark.svg') no-repeat center/contain;
+      &:hover{
+        &::before{
+          background-image: url('/public/products/icons/arrow-narrow-right_dark.svg');
+        }
+      }
+    }
     &:hover {
       //background: darken(#007bff, 10%);
   
       &::before {
         transform: translateX(2px);
         background-image: url('/public/products/icons/arrow-narrow-right.svg');
+      }
+    }
+  }
+
+  &-withArrowDark, &-exploreMore{
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--dark-color);
+    border: 1px solid var(--dark-color);
+    padding: 12px 22px;
+    background: none;
+    border-radius: 4px;
+    overflow: hidden;
+    transition: background 0.3s ease;
+    &::before {
+      content: "";
+      display: inline-block;
+      vertical-align: middle;
+      width: 26px;
+      height: 26px;
+      margin-right: 0.5em;
+      background: url('/public/products/icons/minus-dark.svg') no-repeat center/contain;
+      transition: background-image 0.3s ease, transform 0.3s ease;
+    }
+    &:hover {
+      //background: darken(#007bff, 10%);
+  
+      &::before {
+        transform: translateX(2px);
+        background-image: url('/public/products/icons/arrow-narrow-right_dark.svg');
       }
     }
   }
@@ -91,6 +135,13 @@
     bottom: 64px;
     right: 170px;
     z-index: 10;
+  }
+
+  &.left_bottom {
+    position: absolute;
+    z-index: 10;
+    left: 170px;
+    bottom: 64px;
   }
 }
   

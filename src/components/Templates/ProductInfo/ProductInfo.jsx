@@ -12,14 +12,18 @@ const highlightsData = [
         id: 'p1d1',
         xPercent: 48,
         yPercent: 64,
-        lineLength: 120,
+        lineXPercent: 48,
+        lineYPercent: 64,
+        lineLength: 410,
+        lineDirection: 'right',
         title: 'Silhouette',
         description:
           'A figure-flattering silhouette that accentuates curves and elongates the frame, evoking a sense of mystery and allure.',
         thumbnail: '',
         contentSide: 'right',
-        contentXPercent: 70,
-        contentYPercent: 60
+        contentWidth: 210,
+        contentXPercent: 66,
+        contentYPercent: 58
       }
     ]
   },
@@ -29,13 +33,36 @@ const highlightsData = [
     dots: [
       {
         id: 'p2d1',
-        xPercent: 50,
-        yPercent: 50,
-        lineLength: 100,
-        thumbnail: '/products/highlight/vakra_02_01.jpg',
-        contentSide: 'right',
-        contentXPercent: 60,
-        contentYPercent: 45
+        xPercent: 52,
+        yPercent: 48,
+        lineXPercent: 52,
+        lineYPercent: 48,
+        lineLength: 300,
+        lineDirection: 'right',
+        title: '',
+        description: '',
+        thumbnail: '/products/designers/vakra/vakra_02_01.png',
+        contentSide: 'left',
+        contentWidth: 160,
+        contentXPercent: 70,
+        contentYPercent: 35
+      },
+      {
+        id: 'p2d2',
+        xPercent: 45,
+        yPercent: 54,
+        lineXPercent: 20.5,
+        lineYPercent: 54,
+        lineLength: 370,
+        lineDirection: 'left',
+        title: 'Bell Sleeves',
+        description:
+          'Exaggerated bell sleeves add a touch of drama and movement, capturing the eye with every gesture.',
+        thumbnail: '',
+        contentSide: 'left',
+        contentWidth: 280,
+        contentXPercent: 20,
+        contentYPercent: 48
       }
     ]
   },
@@ -45,45 +72,93 @@ const highlightsData = [
     dots: [
       {
         id: 'p3d1',
-        xPercent: 30,
-        yPercent: 60,
-        lineLength: 140,
-        title: 'Premium Fabric',
-        description: 'Silky soft, breathable fabric.',
+        xPercent: 50,
+        yPercent: 28,
+        lineXPercent: 25,
+        lineYPercent: 28,
+        lineLength: 380,
+        lineDirection: 'left',
+        title: '',
+        description: '',
         thumbnail: '/products/designers/vakra/vakra_03_01.png',
         contentSide: 'right',
-        contentXPercent: 65,
-        contentYPercent: 55
+        contentWidth: 160,
+        contentXPercent: 16,
+        contentYPercent: 22
       },
       {
         id: 'p3d2',
-        xPercent: 70,
-        yPercent: 40,
-        lineLength: 120,
-        title: 'Artisan Embroidery',
-        description: 'Handcrafted floral patterns.',
+        xPercent: 55,
+        yPercent: 26,
+        lineXPercent: 55,
+        lineYPercent: 26,
+        lineLength: 472,
+        lineDirection: 'right',
+        title: 'Skull Lace Neckline',
+        description:
+          'A unique and striking detail, the skull lace adorns the neckline, resembling the traditional Indian skull necklace, adding an edge of danger.',
+        thumbnail: '',
+        contentSide: 'left',
+        contentWidth: 300,
+        contentXPercent: 70,
+        contentYPercent: 20
+      }
+    ]
+  },
+  {
+    id: 'panel4',
+    imageSrc: '/products/designers/vakra/vakra_03.png',
+    dots: [
+      {
+        id: 'p4d1',
+        xPercent: 54,
+        yPercent: 60,
+        lineXPercent: 54,
+        lineYPercent: 60,
+        lineLength: 290,
+        lineDirection: 'right',
+        title: '',
+        description: '',
         thumbnail: '/products/designers/vakra/vakra_03_02.png',
         contentSide: 'left',
-        contentXPercent: 20,
-        contentYPercent: 35
+        contentWidth: 210,
+        contentXPercent: 72,
+        contentYPercent: 42
+      },
+      {
+        id: 'p4d2',
+        xPercent: 46,
+        yPercent: 64,
+        lineXPercent: 15.5,
+        lineYPercent: 64,
+        lineLength: 460,
+        lineDirection: 'left',
+        title: 'Skull Lace Neckline',
+        description:
+          'A unique and striking detail, the skull lace adorns the neckline, resembling the traditional Indian skull necklace, adding an edge of danger.',
+        thumbnail: '',
+        contentSide: 'right',
+        contentWidth: 350,
+        contentXPercent: 15,
+        contentYPercent: 58
       }
     ]
   }
 ];
-
-// flatten to a single array of “slides”
-const slides = highlightsData.flatMap(panel =>
-  panel.dots.map(dot => ({ ...dot, imageSrc: panel.imageSrc }))
-);
 
 export default function ProductInfo({
   onFirstPanelUp,
   onLastPanelDown
 }) {
   const [index, setIndex] = useState(0);
-  const containerRef      = useRef(null);
-  const prevIndex         = useRef(0);
-  const isAnimating       = useRef(false);
+  const containerRef = useRef(null);
+  const prevIndex = useRef(0);
+  const isAnimating = useRef(false);
+
+  // Called when CTA is clicked
+  const handleClick = () => {
+    onLastPanelDown?.();
+  };
 
   // wheel handler: scroll through slides or bubble out
   useEffect(() => {
@@ -95,7 +170,7 @@ export default function ProductInfo({
       if (isAnimating.current) return;
       const d = e.deltaY;
       if (d > 0) {
-        if (index < slides.length - 1) {
+        if (index < highlightsData.length - 1) {
           isAnimating.current = true;
           setIndex(i => i + 1);
         } else {
@@ -115,7 +190,7 @@ export default function ProductInfo({
     return () => el.removeEventListener('wheel', handler);
   }, [index, onFirstPanelUp, onLastPanelDown]);
 
-  // add/remove “active” class on the current slide
+  // add/remove “active” class on the current panel
   useEffect(() => {
     const slidesEls = containerRef.current.querySelectorAll('.slide');
     slidesEls[prevIndex.current]?.classList.remove('active');
@@ -135,63 +210,143 @@ export default function ProductInfo({
         style={{ transform: `translateY(-${index * 100}vh)` }}
         onTransitionEnd={onTransitionEnd}
       >
-        {slides.map((s, i) => {
-          const {
-            imageSrc, xPercent, yPercent,
-            lineLength,
-            contentXPercent, contentYPercent, contentSide,
-            title, description, thumbnail
-          } = s;
-
-          const hasContent = title || description || thumbnail;
-          const isFirst    = i === 0;
-          const isLast     = i === slides.length - 1;
+        {highlightsData.map((panel, i) => {
+          const isFirst = i === 0;
+          const isLast = i === highlightsData.length - 1;
 
           return (
             <div
-              key={`${s.id}-${i}`}
-              className={
-                `slide` +
-                (isFirst ? ' first-panel' : '') +
-                (isLast  ? ' last-panel'  : '')
-              }
+              key={panel.id}
+              className={`slide${isFirst ? ' first-panel' : ''}${isLast ? ' last-panel' : ''}`}
             >
-              <img src={imageSrc} className="bg-image" alt="" />
+              {/* Background image */}
+              <img src={panel.imageSrc} className="bg-image" alt="" />
 
-              <div
-                className="dot"
-                style={{
-                  left: `${xPercent}%`,
-                  top:  `${yPercent}%`
-                }}
-              />
+              {/* Render each dot (and its line + content) */}
+              {panel.dots.map(dot => {
+                const {
+                  id,
+                  xPercent,
+                  yPercent,
+                  lineXPercent = xPercent,
+                  lineYPercent = yPercent,
+                  lineLength,
+                  lineDirection,
+                  title,
+                  description,
+                  thumbnail,
+                  contentSide,
+                  contentWidth,
+                  contentXPercent,
+                  contentYPercent
+                } = dot;
 
-              <div
-                className="line"
-                style={{
-                  left:   `${xPercent}%`,
-                  top:    `${yPercent}%`,
-                  height: hasContent ? `${lineLength}px` : '0'
-                }}
-              />
+                const hasContent = Boolean(title || description || thumbnail);
 
-              {hasContent && (
-                <div
-                  className={`highlight-content ${contentSide}`}
-                  style={{
-                    left: `${contentXPercent}%`,
-                    top:  `${contentYPercent}%`
-                  }}
-                >
-                  {thumbnail   && <img src={thumbnail} alt="" />}
-                  {title       && <h4>{title}</h4>}
-                  {description && <p>{description}</p>}
-                </div>
-              )}
+                // If line grows to the left, show content first, then line, then dot
+                if (lineDirection === 'left') {
+                  return (
+                    <React.Fragment key={id}>
+                      {hasContent && (
+                        <div
+                          className={`highlight-content ${contentSide}`}
+                          style={{
+                            width: `${contentWidth}px`,
+                            left: `${contentXPercent}%`,
+                            top: `${contentYPercent}%`
+                          }}
+                        >
+                          {thumbnail && <img src={thumbnail} alt="" />}
+                          {title && <h4>{title}</h4>}
+                          {description && <p>{description}</p>}
+                        </div>
+                      )}
+
+                      {/* Left‐growing line: right edge anchored at lineX%/lineY% */}
+                      <div
+                        className="line left"
+                        style={{
+                          left: `${lineXPercent}%`,
+                          top: `${lineYPercent}%`,
+                          '--line-length': hasContent ? `${lineLength}px` : '0'
+                        }}
+                      />
+
+                      {/* Dot at the center */}
+                      <div
+                        className="dot"
+                        style={{
+                          left: `${xPercent}%`,
+                          top: `${yPercent}%`
+                        }}
+                      />
+                    </React.Fragment>
+                  );
+                }
+
+                // Otherwise (lineDirection === 'right'), show dot, then line, then content
+                return (
+                  <React.Fragment key={id}>
+                    {/* Dot at the center */}
+                    <div
+                      className="dot"
+                      style={{
+                        left: `${xPercent}%`,
+                        top: `${yPercent}%`
+                      }}
+                    />
+
+                    {/* Right‐growing line: left edge anchored at lineX%/lineY% */}
+                    <div
+                      className="line right"
+                      style={{
+                        left: `${lineXPercent}%`,
+                        top: `${lineYPercent}%`,
+                        '--line-length': hasContent ? `${lineLength}px` : '0'
+                      }}
+                    />
+
+                    {hasContent && (
+                      <div
+                        className={`highlight-content ${contentSide}`}
+                        style={{
+                          width: `${contentWidth}px`,
+                          left: `${contentXPercent}%`,
+                          top: `${contentYPercent}%`
+                        }}
+                      >
+                        {thumbnail && <img src={thumbnail} alt="" />}
+                        {title && <h4>{title}</h4>}
+                        {description && <p>{description}</p>}
+                      </div>
+                    )}
+                  </React.Fragment>
+                );
+              })}
             </div>
           );
         })}
       </div>
+
+      {/* "Add to Cart" always visible */}
+      <button
+        type="button"
+        className="cta cta-withArrowDark right_bottom"
+        onClick={handleClick}
+      >
+        Add to Cart
+      </button>
+
+      {/* "Explore More" only on last panel */}
+      {index === highlightsData.length - 1 && (
+        <button
+          type="button"
+          className="cta cta-exploreMore left_bottom"
+          onClick={handleClick}
+        >
+          Explore More
+        </button>
+      )}
     </div>
   );
 }

@@ -1,11 +1,68 @@
 body{
-    header{
+    // header{
+    //     position: fixed;
+    //     width: 100%;
+    //     top: 0;
+    //     left: 0;
+    //     right: 0;
+    //     z-index: 999;
+    //     nav{
+    //         &.navbar{
+    //             padding: 18px 0;
+    //             #pageNav{
+    //                 a{
+    //                     font-size: 16px;
+    //                     line-height: 24px;
+    //                     color: var(--white-color);
+    //                     text-decoration: none;
+    //                     font-weight: 500;
+    //                     &:hover{
+    //                         text-decoration: none;
+    //                     }
+    //                 }
+    //             }
+    //             #branding{
+    //                 h3{
+    //                     font-family: 'Brown Sugar';
+    //                     font-size: 36px;
+    //                     line-height: 54px;
+    //                     color: var(--white-color);
+    //                 }
+    //             }
+    //             #navAction{
+    //                 color: var(--white-color);
+    //             }
+    //         }
+    //     }
+    //     &.nav-dark{
+    //         .navbar{
+    //             #pageNav{
+    //                 a{
+    //                     color: var(--dark-color);
+    //                 }
+    //             }
+    //             #branding{
+    //                 h3{
+    //                     color: var(--dark-color);
+    //                 }
+    //             }
+    //             #navAction{
+    //                 color: var(--dark-color);
+    //                 svg{
+    //                     stroke: var(--dark-color);
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
+    header {
         position: fixed;
-        width: 100%;
-        top: 0;
-        left: 0;
+        top: 0; 
+        left: 0; 
         right: 0;
-        z-index: 999;
+        z-index: 1000;
+        transition: color .3s;
+        background: transparent;
         nav{
             &.navbar{
                 padding: 18px 0;
@@ -13,7 +70,6 @@ body{
                     a{
                         font-size: 16px;
                         line-height: 24px;
-                        color: var(--white-color);
                         text-decoration: none;
                         font-weight: 500;
                         &:hover{
@@ -26,33 +82,69 @@ body{
                         font-family: 'Brown Sugar';
                         font-size: 36px;
                         line-height: 54px;
-                        color: var(--white-color);
                     }
                 }
                 #navAction{
-                    color: var(--white-color);
+                    //color: var(--white-color);
                 }
             }
         }
-        &.nav-dark{
-            .navbar{
-                #pageNav{
-                    a{
-                        color: var(--dark-color);
+        &.logo-only-dark,
+        &.logo-only-light {
+            nav{
+                display: flex;
+                justify-content: center;
+                .nav-inner{
+                    justify-content: center;
+                    #pageNav, #navAction {
+                        display: none !important;
                     }
                 }
-                #branding{
-                    h3{
+            } 
+        }
+        &.logo-only-dark,
+        &.full-dark {
+            nav{
+                &.navbar{
+                    #pageNav, #branding, #navAction{
                         color: var(--dark-color);
-                    }
-                }
-                #navAction{
-                    color: var(--dark-color);
-                    svg{
-                        stroke: var(--dark-color);
+                        a{
+                            color: inherit;
+                        }
                     }
                 }
             }
+        }
+        &.logo-only-light,
+        &.full-light {
+            nav{
+                &.navbar{
+                    #pageNav, #branding, #navAction{
+                        color: var(--white-color);
+                        a{
+                            color: inherit;
+                        }
+                    }
+                }
+            }
+        }
+        /* Hide nav links in logo-only modes */
+        &.logo-only-dark .navbar,
+        &.logo-only-light .navbar {
+            .navbar-nav { display: none !important; }
+        }
+        /* Branding link */
+        #branding .branding-link {
+            text-decoration: none;
+            h3 {
+            color: inherit;
+            cursor: pointer;
+            }
+        }
+
+        /* Always hide nav-links on small screens */
+        @media (max-width: 767.98px) {
+            .navbar-nav { display: none !important; }
         }
     }
 }

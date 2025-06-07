@@ -176,6 +176,7 @@
   .slide {
     flex: 0 0 50%;
     box-sizing: border-box;
+    overflow: hidden;
 
     img {
       width: 100%;
@@ -184,4 +185,43 @@
       transform-origin: center center;
     }
   }
+}
+
+.mouse {
+  position: absolute;
+  left: 50%;
+  bottom: 2%;
+	width: 40px;
+	height: 70px;
+	border: 2px solid var(--white-color);
+	border-radius: 60px;
+  cursor: pointer;
+	&::before {
+		content: '';
+		width: 12px;
+		height: 12px;
+		position: absolute;
+		top: 10px;
+		left: 50%;
+		transform: translateX(-50%);
+		background-color: var(--white-color);
+		border-radius: 50%;
+		opacity: 1;
+		animation: wheel 2s infinite;
+		-webkit-animation: wheel 2s infinite;
+	}
+}
+
+@keyframes wheel {
+	to {
+		opacity: 0;
+		top: 60px;
+	}
+}
+
+@-webkit-keyframes wheel {
+	to {
+		opacity: 0;
+		top: 60px;
+	}
 }

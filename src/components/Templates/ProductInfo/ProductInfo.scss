@@ -8,7 +8,7 @@
 
   .slides {
     width: 100%;
-    height: 100%;
+    height: auto;               /* Stack all panels vertically */
     transition: transform 0.8s ease;
   }
 
@@ -42,47 +42,203 @@
       transform: translate(-50%, -50%) scale(1);
       opacity: 1;
       z-index: 3;
-      box-shadow: 0 0 4px rgba(0,0,0,0.5);
+      box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
     }
 
-    /* ---- animated line ---- */
+    /* ---- horizontal line (animated via scaleX) ---- */
     .line {
       position: absolute;
-      width: 2px;
+      height: 2px;
       background: #dc3545;
       opacity: 0;
-      height: 0;
-      transition:
-        height 0.6s ease-out,
-        opacity 0.3s ease-in 0.1s;
+      width: var(--line-length);       /* Full length (in px) is stored in CSS var */
+      transform: scaleX(0);            /* Collapsed initially */
       z-index: 2;
-    }
-    &.active .line {
-      opacity: 1;
-      transform: rotate(90deg);
+      transition:
+        transform 2s ease-out,
+        opacity   0.5s ease-in 0.1s;
+      transform-origin: left center;   /* Default: grow left→right */
     }
 
-    /* ---- content ---- */
+    &.active .line {
+      opacity: 1;
+      transform: scaleX(1);            /* Expand to full width */
+    }
+
+    /* When lineDirection = "left", override origin so that scaleX(1) grows right→left */
+    .line.left {
+      transform-origin: right center;
+    }
+
+    /* (Optional) if you still want a ".line.right" class, you can explicitly set origin too: */
+    .line.right {
+      transform-origin: left center;
+    }
+
+    /* ---- content box (animated from left or right) ---- */
     .highlight-content {
       position: absolute;
-      width: 200px;
       padding: 0.5rem;
       background: none;
       color: var(--primary-color);
       opacity: 0;
-      transform: translateX(50px);
+      transform: translateX(50px); /* Default: slide in from the right */
       transition:
         transform 0.4s ease-out 0.6s,
-        opacity 0.4s ease-out 0.6s;
+        opacity   0.4s ease-out 0.6s;
       z-index: 4;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
 
-      &.right { transform-origin: left center; }
-      &.left  { transform-origin: right center; }
+      /* If contentSide="right", keep transform: translateX(50px) */
+      &.right {
+        transform: translateX(50px);
+      }
+      /* If contentSide="left", start offscreen to the left */
+      &.left {
+        transform: translateX(-50px);
+      }
 
-      img { width: 100%; margin-bottom: 0.5rem; }
-      h4  { margin: 0 0 0.25rem; }
-      p   { margin: 0; font-size: 0.875rem; }
+      img {
+        width: 100%;
+        margin-bottom: 0.5rem;
+      }
+      h4 {
+        margin: 0 0 0.25rem;
+      }
+      p {
+        margin: 0;
+        font-size: 0.875rem;
+      }
+    }/* src/components/Templates/ProductInfo/ProductInfo.scss */
+
+.product-info-slider {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+
+  .slides {
+    width: 100%;
+    height: auto;          /* stack all panels vertically */
+    transition: transform 0.8s ease;
+  }
+
+  .slide {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .bg-image {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
     }
+
+    /* ---- always‐visible dot ---- */
+    .dot {
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      background: #ffffff;
+      border: 3px solid #dc3545;
+      border-radius: 50%;
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+      z-index: 3;
+      box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+    }
+
+    /* ---- horizontal line (animated via scaleX) ---- */
+    .line {
+      position: absolute;
+      height: 2px;
+      background: #dc3545;
+      opacity: 0;
+      width: var(--line-length);      /* full length in px */
+      z-index: 2;
+      transition:
+        transform 2s ease-out,
+        opacity   0.5s ease-in 0.1s;
+    }
+
+    /* When this panel becomes “active,” un-collapse the line */
+    &.active .line {
+      opacity: 1;
+    }
+
+    /* ---- right‐growing line (left edge = dot center) ---- */
+    .line.right {
+      transform-origin: left center;
+      transform: scaleX(0);           /* collapsed to 0 width */
+    }
+    &.active .line.right {
+      transform: scaleX(1);           /* expand left→right */
+    }
+
+    /* ---- left-growing line (right edge = dot center) ---- */
+    .line.left {
+      transform-origin: right center;
+      transform: translateX(-100%)    /* shift left by 100% of its own width */
+                 scaleX(0);           /* collapsed */
+    }
+    &.active .line.left {
+      transform: translateX(-100%)    /* keep right edge at dot center */
+                 scaleX(1);           /* expand right→left */
+    }
+
+    /* ---- content box (animated from left or right) ---- */
+    .highlight-content {
+      position: absolute;
+      padding: 0.5rem;
+      background: none;
+      color: var(--primary-color);
+      opacity: 0;
+      transform: translateX(50px);    /* default slide in from right */
+      transition:
+        transform 0.4s ease-out 0.6s,
+        opacity   0.4s ease-out 0.6s;
+      z-index: 4;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+
+      &.right {
+        transform: translateX(50px);  /* start offscreen right */
+      }
+      &.left {
+        transform: translateX(-50px); /* start offscreen left */
+      }
+
+      img {
+        width: 100%;
+        margin-bottom: 0.5rem;
+      }
+      h4 {
+        margin: 0 0 0.25rem;
+      }
+      p {
+        margin: 0;
+        font-size: 0.875rem;
+      }
+    }
+    &.active .highlight-content {
+      opacity: 1;
+      transform: translateX(0);       /* slide into view */
+    }
+  }
+}
+
+
     &.active .highlight-content {
       opacity: 1;
       transform: translateX(0);

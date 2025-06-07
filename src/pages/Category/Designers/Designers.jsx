@@ -22,7 +22,7 @@ export default function Designers() {
   const detailsRef   = useRef(null);
 
   useEffect(() => {
-    // 1) Pin & scrub through all sections
+    // 1) Pin & scrub through all sections exactly as before
     const sections = gsap.utils.toArray('.onepage-section');
     const total    = sections.length;
 
@@ -41,35 +41,16 @@ export default function Designers() {
       },
     });
 
-    // 2) IntersectionObserver to swap header classes
-    const header   = document.querySelector('header');
-    const observer = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
-          if (entry.intersectionRatio >= 0.5) {
-            // read the desired nav style from data-nav-style
-            const style = entry.target.getAttribute('data-nav-style');
-            header.classList.remove('nav-dark', 'nav-light');
-            if (style === 'nav-dark' || style === 'nav-light') {
-              header.classList.add(style);
-            }
-          }
-        });
-      },
-      {
-        root:      containerRef.current,
-        threshold: 0.5
-      }
-    );
-    sections.forEach(sec => observer.observe(sec));
+    // 2) No more IntersectionObserver for header classes—PageHeader handles it
+    //    (We simply leave data-nav-style on each section and let PageHeader read it.)
 
     return () => {
       ScrollTrigger.getAll().forEach(t => t.kill());
-      observer.disconnect();
+      // no observer to disconnect
     };
   }, []);
 
-  // 3) Helper to jump to a given ref‐section
+  // 3) Helper to jump to a given ref‐section stays the same
   const scrollToSection = ref => {
     const idx = [heroRef, videoRef, infoRef, detailsRef].findIndex(r => r === ref);
     if (idx >= 0) {
@@ -84,32 +65,59 @@ export default function Designers() {
   return (
     <div className="onepage-container" ref={containerRef}>
       <div className="inner" ref={innerRef}>
-        <section ref={heroRef} className="onepage-section" data-nav-style="nav-light">
+
+        {/* ───────── Hero (full-light header) ───────── */}
+        <section
+          ref={heroRef}
+          className="onepage-section"
+          data-nav-style="full-light"
+        >
           <ProductHeroSection
             onAddToCartClick={() => scrollToSection(videoRef)}
           />
         </section>
 
-        <section ref={videoRef} className="onepage-section" data-nav-style="nav-light">
+        {/* ───────── Video (full-light header) ───────── */}
+        <section
+          ref={videoRef}
+          className="onepage-section"
+          data-nav-style="full-light"
+        >
           <ProductVideo
-            onAddToCartClick={()    => scrollToSection(infoRef)}
-            onScrollUp={()          => scrollToSection(heroRef)}
+            // click → go to Details
+            onAddToCartClick={() => scrollToSection(detailsRef)}
+            // scroll up → go back to Hero
+            onScrollUp={()       => scrollToSection(heroRef)}
+            // scroll down → go to Info
+            onScrollDown={()     => scrollToSection(infoRef)}
           />
         </section>
 
-        <section ref={infoRef} className="onepage-section" data-nav-style="nav-dark">
+        {/* ───────── Info (full-dark header) ───────── */}
+        <section
+          ref={infoRef}
+          className="onepage-section"
+          data-nav-style="full-dark"
+        >
           <ProductInfo
-            onFirstPanelUp={()   => scrollToSection(videoRef)}
+            onFirstPanelUp={()    => scrollToSection(videoRef)}
             onLastPanelDown={() => scrollToSection(detailsRef)}
           />
         </section>
 
-        <section ref={detailsRef} className="onepage-section d-flex align-items-center justify-content-center" data-nav-style="nav-dark">
+        {/* ───────── Details (full-dark header) ───────── */}
+        <section
+          id="productDetails"
+          ref={detailsRef}
+          className="onepage-section d-flex align-items-center justify-content-center position-relative"
+          data-nav-style="full-dark"
+        >
           <ProductDetails
             ref={detailsRef}
             onScrollUp={() => scrollToSection(infoRef)}
           />
         </section>
+
       </div>
     </div>
   );

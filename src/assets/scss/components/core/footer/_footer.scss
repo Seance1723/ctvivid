@@ -31,7 +31,13 @@
         li {
           margin-bottom: 0.5rem;
           cursor: pointer;
-  
+          a{
+            text-decoration: none;
+            color: inherit;
+            &:hover{
+              text-decoration: underline;
+            }
+          }
           &:hover {
             text-decoration: underline;
           }
@@ -63,3 +69,10 @@
     }
   }
   
+.floating-footer{
+  position: absolute;
+  width: 100%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}

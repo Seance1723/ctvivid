@@ -6,7 +6,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function ProductVideo({ onAddToCartClick, onScrollUp }) {
+export default function ProductVideo({ onAddToCartClick, onScrollUp, onScrollDown }) {
   const videoRef   = useRef(null);
   const sectionRef = useRef(null);
 
@@ -16,11 +16,15 @@ export default function ProductVideo({ onAddToCartClick, onScrollUp }) {
     if (!node) return;
 
     const onWheel = e => {
+      e.preventDefault();
       if (e.deltaY < 0) {
-        e.preventDefault();
+        // scroll up → go back to the Hero section
         onScrollUp?.();
       } else {
-        e.preventDefault();
+        //e.preventDefault();
+        // scroll down → go to the Details section
+        //onAddToCartClick?.();
+        onScrollDown?.();
       }
     };
 
@@ -58,6 +62,8 @@ export default function ProductVideo({ onAddToCartClick, onScrollUp }) {
         className="video-player"
         muted
         playsInline
+        webkit-playsinline
+        autoPlay
         preload="auto"
         loop
       />

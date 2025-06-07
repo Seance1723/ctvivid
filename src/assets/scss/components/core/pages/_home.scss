@@ -1,3 +1,9 @@
+/* src/pages/Home/Home.scss */
+
+/* ----------------------------------------
+   Existing full-page / section-snap styles
+   (apply on desktop by default; overridden on mobile below)
+   ---------------------------------------- */
 .homepage-container {
   height: 100vh;
   overflow-y: scroll;
@@ -46,6 +52,40 @@
       height: 100%;
       object-fit: cover;
       filter: grayscale(100%);
+    }
+  }
+
+  .newproduct-section{
+    .product-left, .product-right {
+      background-position: top left;
+      background-repeat: no-repeat;
+      background-size: cover;
+      width: 100%;
+      position: relative;
+      .action-area{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        position: absolute;
+        left: 15%;
+        bottom: 60px;
+        text-transform: uppercase;
+        .product-name{
+          padding: 8px 32px;
+          background: var(--secondary-light-color);
+          border-radius: 6px;
+          margin: 0;
+        }
+        a{
+          color: var(--secondary-light-color);
+          font-size: 22px;
+          &.link-disabled {
+            pointer-events: none;
+            opacity: 0.8;
+            cursor: default;
+          }
+        }
+      }
     }
   }
 
@@ -144,7 +184,7 @@
       }
       .details-content {
         width: 100%;
-        & > h3{
+        & > h3 {
           text-align: left;
         }
         .details-box {
@@ -176,8 +216,42 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: top center;
       filter: grayscale(100%);
       z-index: 0;
+    }
+    .footer-content {
+      background: rgba(255, 255, 255, 0.4);
+      color: var(--dark-color);
+      padding: 30px 40px;
+      border-radius: 12px;
+      h2, p{
+        color: var(--dark-color) !important;
+      }
+      p{
+        font-size: 24px;
+        line-height: 36px;
+        font-weight: 500;
+      }
+      .newsletter-form{
+        position: relative;
+        input{
+          height: 58px;
+          border-radius: 8px;
+          border: 1px solid var(--dark-color);
+          background: transparent;
+        }
+        button{
+          &[type="submit"] {
+            position: absolute;
+            top: 6px;
+            right: 6px;
+            height: 46px;
+            border-radius: 8px;
+            cursor: pointer;
+          }
+        }
+      }
     }
     .section-content {
       z-index: 1;
@@ -209,6 +283,91 @@
         text-align: center;
         margin-top: 1rem;
         font-size: 0.875rem;
+      }
+    }
+  }
+}
+
+/* ----------------------------------------
+   Mobile override: disable full-page behavior
+   ---------------------------------------- */
+@media (max-width: 767.98px) {
+  body{
+    .sec-title{
+      font-size: 52px;
+      line-height: 80px;
+      margin-bottom: 20px !important;
+    }
+    .sec-content{
+      font-size: 16px;
+      line-height: 24px;
+    }
+  }
+  
+  header{
+    nav{
+      .nav-inner{
+        justify-content: center;
+      }
+    }
+  }
+
+  .homepage-container {
+    height: auto !important;
+    overflow-y: auto !important;
+    scroll-snap-type: none !important;
+    .homepage-section{
+      //height: auto !important;
+      overflow: visible !important;
+      scroll-snap-align: none !important;
+      &.h-100, .h-100{
+        // height: auto !important;
+        // min-height: 100vh !important;
+      }
+      &.hero-section{
+        .hero-button{
+          text-align: left !important;
+          a{
+            padding: 0;
+          }
+        }
+      }
+      #newProductCarousel{
+        .carousel-inner{
+          .carousel-item{
+            .product-left{
+              background-position: top right !important;
+            }
+            .product-right{
+              background-position: top left !important;
+            }
+          }
+        }
+        .carousel-indicators{
+          [data-bs-target]{
+            background-color: var(--dark-color);
+          }
+        }
+      }
+      &.aboutus-section{
+        height: 180vh !important;
+        .section-content {
+          position: relative;
+          left: 0;
+          top: 0;
+          right: 0;
+          transform: none;
+        }
+      }
+      &.cta-section{
+        height: 130vh !important;
+        .section-content{
+          position: relative;
+          left: 0;
+          top: 110px;
+          right: 0;
+          transform: none;
+        }
       }
     }
   }

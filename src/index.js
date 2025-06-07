@@ -14,6 +14,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './assets/css/vividara.css';
 
 
+// Bootstrap JS (include Popper via the bundle)
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

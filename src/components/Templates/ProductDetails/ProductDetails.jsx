@@ -6,6 +6,8 @@ import {
   IconStarHalfFilled
 } from '@tabler/icons-react';
 
+import Footer from '../../Footer/Footer';
+
 const ProductDetails = React.forwardRef(({ onScrollUp }, ref) => {
   // catch wheel-up and call back to parent
   useEffect(() => {
@@ -123,7 +125,10 @@ const ProductDetails = React.forwardRef(({ onScrollUp }, ref) => {
           </div>
         </div>
       </div>
+      {/* Footer always visible at the bottom */}
+      <Footer className="floating-footer pt-3 pb-2" />
     </section>
+    
   );
 });
 

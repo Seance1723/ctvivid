@@ -1,8 +1,11 @@
+// src/App.jsx 
+
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import PageHeader from './components/PageHeader/PageHeader';
-import Footer from './components/Footer/Footer';
+import NavLayout from './components/Layout/NavLayout/NavLayout';
+
+// Pages
 import Home from './pages/Home/Home';
 import Product from './pages/Product/Product';
 
@@ -15,14 +18,16 @@ import Sale from './pages/Category/Sale/Sale';
 function App() {
   return (
     <Router>
-      <PageHeader />
+      {/* wrap all routes in NavLayout (renders PageHeader + dynamic header behavior) */}
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/products" element={<Product />} />
-        <Route path="/designers" element={<Designers />} />
-        <Route path="/men" element={<Men />} />
-        <Route path="/women" element={<Women />} />
-        <Route path="/sale" element={<Sale />} />
+        <Route element={<NavLayout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/products" element={<Product />} />
+          <Route path="/designers" element={<Designers />} />
+          <Route path="/men" element={<Men />} />
+          <Route path="/women" element={<Women />} />
+          <Route path="/sale" element={<Sale />} />
+        </Route>
       </Routes>
     </Router>
   );

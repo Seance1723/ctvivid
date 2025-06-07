@@ -1,6 +1,7 @@
 // src/pages/Home/Home.jsx
 
 import React, { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Footer from '../../components/Footer/Footer';
 import './Home.scss';
 
@@ -89,164 +90,213 @@ const Home = () => {
   return (
     <div className="homepage-container" ref={containerRef}>
       {/* Hero Section */}
-      <section
-        className="homepage-section hero-section active"
-        data-nav-style="nav-light"
-      >
+      <section className="homepage-section hero-section active" data-nav-style="logo-only-light" >
         <video
           className="hero-video"
           src="/pages/Home/home-hero-sec.mp4"
+          poster="/pages/Home/home-hero-sec-poster.jpg"
+          preload="auto"
           muted
           loop
           autoPlay
           playsInline
+          webkit-playsinline
         />
-        <div className="section-content">{/* … */}</div>
+        <div className="section-content container" style={{ top: '80%' }}>
+          <div className="row d-flex justify-content-between align-items-center">
+            <div className="col-md-7 hero-text text-start">
+              <h2 className='text-white'>The Light, The Abyss.</h2>
+              <p className='text-white'>Presenting Vakra's Poochandi, Asuri: An exploration of the allure of the unknown.</p>
+            </div>
+            <div className="col-md-5 hero-button text-end">
+              <Link
+                to="/designers#productInfo"
+                className="cta cta-text text-white p-0"
+              >Shop Now</Link>
+            </div>
+          </div>
+        </div>
+
       </section>
 
-      {/* Intro */}
-      <section className="homepage-section intro-section" data-nav-style="nav-dark">
+      {/* New products */}
+      <section
+        className="homepage-section newproduct-section"
+        data-nav-style="logo-only-dark"
+      >
+        {/* ──────────────── MOBILE CAROUSEL ──────────────── */}
+        <div
+          id="newProductCarousel"
+          className="carousel slide d-block d-md-none h-100"
+          data-bs-interval="false"
+        >
+          {/* Indicators */}
+          <div className="carousel-indicators">
+            <button
+              type="button"
+              data-bs-target="#newProductCarousel"
+              data-bs-slide-to="0"
+              className="active"
+              aria-current="true"
+              aria-label="Slide 1"
+            ></button>
+            <button
+              type="button"
+              data-bs-target="#newProductCarousel"
+              data-bs-slide-to="1"
+              aria-label="Slide 2"
+            ></button>
+          </div>
+
+          {/* Inner slides */}
+          <div className="carousel-inner h-100">
+            {/* Slide 1 */}
+            <div className="carousel-item active h-100">
+              <div
+                className="product-left w-100 h-100"
+                style={{
+                  backgroundImage: "url('/pages/Home/home-product-left.png')",
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                  minHeight: '200px'
+                }}
+              >
+                <div className="action-area">
+                  <h4 className="product-name">Asuri</h4>
+                  <Link to="/designers" className="cta cta-text p-0">Shop Now</Link>
+                </div>
+              </div>
+            </div>
+
+            {/* Slide 2 */}
+            <div className="carousel-item h-100">
+              <div
+                className="product-right w-100 h-100"
+                style={{
+                  backgroundImage: "url('/pages/Home/home-product-right.png')",
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                  minHeight: '200px'
+                }}
+              >
+                <div className="action-area">
+                  <h4 className="product-name">MAKDI RANI</h4>
+                  <a
+                    href="#"
+                    className="link-disabled"
+                    aria-disabled="true"
+                    tabIndex={-1}
+                  >
+                    COMING SOON
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Controls */}
+          {/* <button
+            className="carousel-control-prev"
+            type="button"
+            data-bs-target="#newProductCarousel"
+            data-bs-slide="prev"
+          >
+            <span
+              className="carousel-control-prev-icon"
+              aria-hidden="true"
+            ></span>
+            <span className="visually-hidden">Previous</span>
+          </button>
+          <button
+            className="carousel-control-next"
+            type="button"
+            data-bs-target="#newProductCarousel"
+            data-bs-slide="next"
+          >
+            <span
+              className="carousel-control-next-icon"
+              aria-hidden="true"
+            ></span>
+            <span className="visually-hidden">Next</span>
+          </button> */}
+        </div>
+
+        {/* ──────────────── DESKTOP LAYOUT ──────────────── */}
+        <div className="container-fluid w-100 h-100 d-none d-md-block">
+          <div className='row h-100'>
+            <div className='col-12 col-md-6 p-0 h-100'>
+              <div className='product-left w-100 h-100' style={{ backgroundImage: "url('/pages/Home/home-product-left.png')" }}>
+                <div className='action-area'>
+                  <h4 className='product-name'>Asuri</h4>
+                  <Link to="/designers" className="cta cta-text p-0">Shop Now</Link>
+                </div>
+              </div>
+            </div>
+            <div className='col-12 col-md-6 h-100 p-0'>
+              <div className='product-right w-100 h-100' style={{ backgroundImage: "url('/pages/Home/home-product-right.png')" }}>
+                <div className='action-area'>
+                  <h4 className='product-name'>MAKDI RANI</h4>
+                  <a href='#' className='link-disabled' aria-disabled="true" tabindex="-1">COMING SOON</a>
+                </div>
+              </div>    
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* About Us Section*/}
+      <section className="homepage-section aboutus-section" data-nav-style="logo-only-dark">
         <div className="section-content container pt-5">
           <div className='row'>
-            <div className='col-12'>
-              <h1>
-                Where <span>individuality</span><br />
-                meets fashion-forward designs.
-              </h1>
-            </div>
-          </div>
-          <div className="intro-content row">
-            <ul className="features-list col-12 col-md-4">
-              {features.map((f, idx) => (
-                <li
-                  key={f.title}
-                  className={idx === activeIndex ? 'active' : ''}
-                  onClick={() => setActiveIndex(idx)}
-                >
-                  <strong>{f.title}</strong>
-                  <p>{f.description}</p>
-                </li>
-              ))}
-            </ul>
-            <div className="intro-right col-12 col-md-8">
-              <div
-                className="intro-box"
-                style={{ backgroundImage: `url(${features[activeIndex].introImage})`, }}
-              />
-              <div className="intro-text">
-                <h3>{features[activeIndex].heading}</h3>
-                <p>{features[activeIndex].text}</p>
+            <div className='col-12 col-md-8'>
+              <div className='about-left'>
+                <h2 className='sec-title mb-4'>About us</h2>
+                <p className='sec-content mb-3'>Hey! We are <strong>VIVIDARA.</strong></p>
+                <p className='sec-content mb-3'>We're <strong>curators of the wearable stories.</strong> Each piece in our care comes with its own biography, the hands that shaped it, the ideas that formed it, the life it's meant to live (NOT IN YOUR SHELF).</p>
+                <p className='sec-content mb-3'>Here, we - <strong>the creators, the wearers, the admirers</strong> - are all part of the dialogue.</p>
+                <p className='sec-content mb-3'>We're <strong>building a living archive</strong> where every visitor becomes a contributor to the conversation cause we love to talk.</p>
+                <p className='sec-content mb-3'>Join us in this careful, joyful work of sartorial interpretation. Bring your perspective to our ever-evolving collection. For those who see their wardrobe as a curated collection (and their closet as a gallery).</p>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Trends Slider with real images */}
-      <section
-        className="homepage-section trends-section"
-        data-nav-style="nav-dark"
-      >
-        <div className="section-content p-0">
-          <div className='container'>
-            <div className='row'>
-              <div className='col-12'>
-                <h2 className='text-start'>Shop the Latest Trends</h2>
-              </div>
-            </div>
-          </div>
-          <div className='container-fluid p-0'>
-            <div className='row'>
-              <div className='col-12'>
-                <Swiper
-                  modules={[Mousewheel, Autoplay]}
-                  loop
-                  mousewheel={{ forceToAxis: true }}
-                  autoplay={{ delay: 2500, disableOnInteraction: false }}
-                  slidesPerGroup={1}
-                  spaceBetween={0}
-                  breakpoints={{
-                    0:    { slidesPerView: 1 },
-                    600:  { slidesPerView: 4 },
-                    1000: { slidesPerView: 6 },
-                  }}
-                  className="trends-swiper"
-                >
-                  {trendImages.map((src, idx) => (
-                    <SwiperSlide key={idx}>
-                      <img
-                        src={src}
-                        alt={`Trend ${idx + 1}`}
-                        className="trend-item-img"
-                      />
-                    </SwiperSlide>
-                  ))}
-                </Swiper>
-              </div>
-            </div>
-          </div>
-          <div className='container'>
-            <div className='row'>
-              <div className='col-12 text-end'>
-                <h4 className='mt-3'>Bold & Beautiful: Make a Statement</h4>
-                <p>Dare to stand out with bold, eye-catching designs that elevate your wardrobe.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Details */}
-      <section
-        className="homepage-section details-section"
-        data-nav-style="nav-dark"
-      >
-        <div className="container section-content">
-          <div className='row'>
-            <div className='col-12'>
-              <h2>
-                Where <span>individuality</span><br />
-                meets fashion-forward designs.
-              </h2>
-            </div>
-          </div>
-          <div className='row details-content'>
-            <div className='col-12 col-md-6'>
-              
-              <div className="details-box" style={{ backgroundImage: "url('/pages/Home/home-detail-sec.jpg')" }}></div>
-            </div>
-            <div className='col-12 col-md-6'>
-              <div className="details-text">
-                <h3 className='text-start mb-3'>Exclusive Designs: Curated by fashion experts.</h3>
-                <p>
-                  Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-                </p>
-              </div>
+            <div className='col-12 col-md-4'>
+              <div className='about-right'>
+                <img src="/pages/Home/home-about-sec.png" alt="About Us" className='img-fluid' />
+              </div>    
             </div>
           </div>
         </div>
       </section>
 
       {/* CTA & Footer */}
-      <section
-        className="homepage-section cta-section"
-        data-nav-style="nav-light"
-      >
+      <section className="homepage-section cta-section" data-nav-style="full-light" >
         <video
           className="cta-bg-video"
           src="/pages/Home/home-footer-sec.mp4"
+          poster="/pages/Home/home-footer-sec-poster.png"
+          preload="auto"
           muted
           loop
           autoPlay
           playsInline
+          webkit-playsinline
         />
         <div className="container section-content">
-          <h2>Stay in the Loop!</h2>
-          <p>
-            Sign up for exclusive offers, the latest trends, and
-            behind-the-scenes content from Vividara.
-          </p>
-          <button className="cta-button">Sign up</button>
+          <div className='footer-content'>
+            <h2>We're all ears!</h2>
+            <p>
+              Interested in partnering or connecting as a <br />
+              customer? Drop us your mail ID.
+            </p>
+            <form className='newsletter-form'>
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="form-control"
+                required
+              />
+              <button type="submit" className="cta cta-primary">Continue</button>
+            </form>
+          </div>
         </div>
         <Footer />
       </section>

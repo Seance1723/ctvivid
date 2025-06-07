@@ -13,6 +13,18 @@ body{
         height: 100vh;
         overflow: hidden;
     }
+
+    .sec-title{
+        font-weight: 700;
+        font-size: 56px;
+        line-height: 84px;
+        text-transform: uppercase;
+    }
+    .sec-content{
+        text-align: left;
+        font-size: 20px;
+        line-height: 30px;
+    }
 }
 
 ::-webkit-scrollbar {
