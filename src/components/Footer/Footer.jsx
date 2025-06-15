@@ -1,7 +1,8 @@
 // src/components/Footer/Footer.jsx
 
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+
 import {
   IconBrandFacebook,
   IconBrandTwitter,
@@ -13,6 +14,33 @@ const Footer = ({ className = '' }) => {
   const { pathname } = useLocation();
   // add 'home-footer' only on the homepage
   const isHome = pathname === '/';
+  //   const navigate = useNavigate();
+
+  // const handleAboutClick = (e) => {
+  //   e.preventDefault();
+  //   if (pathname !== '/') {
+  //     navigate('/', { state: { scrollTo: 'about-us' } });
+  //   } else {
+  //     const el = document.getElementById('about-us');
+  //     if (el) {
+  //       el.scrollIntoView({ behavior: 'smooth' });
+  //     }
+  //   }
+  // };
+
+  const navigate = useNavigate();
+
+const handleAboutClick = (e) => {
+  e.preventDefault();
+  navigate('/', { state: { scrollTo: 'about-us' } });
+};
+
+const handleCollaborateClick = (e) => {
+  e.preventDefault();
+  navigate('/', { state: { scrollTo: 'collaborate' } });
+};
+
+
   const footerClasses = [
     'site-footer',
     'py-5',
@@ -32,7 +60,8 @@ const Footer = ({ className = '' }) => {
         </div>
 
         {/* Navigation Links */}
-        <div className="footer-links d-flex gap-5 flex-wrap">
+         {/* commenting for now  */}
+        {/* <div className="footer-links d-flex gap-5 flex-wrap">
           <ul>
             <li>About Us</li>
             <li><Link to="/designers">Designers</Link></li>
@@ -45,11 +74,28 @@ const Footer = ({ className = '' }) => {
             <li>Collaborate with Us</li>
             <li>Returns</li>
           </ul>
+            <ul className='d-none d-md-block'>
+            <li>Collaborate with Us</li>
+           </ul>
           <ul className='d-none d-md-block'>
             <li>Privacy Policy</li>
             <li>Terms of Service</li>
             <li>FAQs</li>
             <li>Sitemap</li>
+          </ul>
+        </div> */}
+
+        {/* Having only About us and Collaborate with us in the footer */}
+           <div className="footer-links d-flex gap-5 flex-wrap">
+          <ul>
+            <li>
+                {/* <Link to="/#about-us" >About Us</Link> */}
+                 <a href="/#about-us" onClick={handleAboutClick}>About Us</a>
+            </li>
+            <li>
+                    <a href="/#collaborate" onClick={handleCollaborateClick}>Collaborate with Us</a>
+
+            </li>
           </ul>
         </div>
 

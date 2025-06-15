@@ -3285,4 +3285,8 @@ body header #branding .branding-link h3 {
     right: 0;
     transform: none;
   }
+.center-navbar{
+  display: flex;
+  justify-content: center;
+}
 }/*# sourceMappingURL=vividara.css.map */
