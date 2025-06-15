@@ -2556,11 +2556,13 @@ body .sec-content {
   background: var(--primary-color);
   color: #fff;
   transition: all 0.3s ease-in-out;
+   background-color: #4D4D4D !important;
 }
 .cta.cta-primary:hover {
-  border-radius: 0;
+  border-radius: 6px;
   transform: translateY(-2px);
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+   background-color: #4D4D4D !important;
 }
 .cta.cta-primary-outline {
   background: transparent;
@@ -2569,8 +2571,9 @@ body .sec-content {
   transition: all 0.3s ease-in-out;
 }
 .cta.cta-primary-outline:hover {
-  border-radius: 0;
+  border-radius: 6px;
   border-color: var(--secondary-color);
+   background-color: #4D4D4D !important;
   background: var(--secondary-color);
   color: #fff;
   transform: translateY(-2px);
@@ -2613,6 +2616,10 @@ body .sec-content {
   transform: translateX(2px);
   background-image: url("/public/products/icons/arrow-narrow-right.svg");
 }
+/* .cta.right_bottom:hover {
+  background-color: #4D4D4D !important;
+
+} */
 .cta-withArrowDark, .cta-exploreMore {
   cursor: pointer;
   display: inline-block;
@@ -3289,4 +3296,7 @@ body header #branding .branding-link h3 {
   display: flex;
   justify-content: center;
 }
+
+
+
 }/*# sourceMappingURL=vividara.css.map */

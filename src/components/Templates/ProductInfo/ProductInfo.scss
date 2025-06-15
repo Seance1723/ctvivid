@@ -34,10 +34,10 @@
     /* ---- always‐visible dot ---- */
     .dot {
       position: absolute;
-      width: 18px;
-      height: 18px;
+      width: 8px;
+      height: 8px;
       background: #ffffff;
-      border: 3px solid #dc3545;
+      border: 3px solid #717171;
       border-radius: 50%;
       transform: translate(-50%, -50%) scale(1);
       opacity: 1;
@@ -48,8 +48,8 @@
     /* ---- horizontal line (animated via scaleX) ---- */
     .line {
       position: absolute;
-      height: 2px;
-      background: #dc3545;
+      height: 1px;
+      background: #717171;
       opacity: 0;
       width: var(--line-length);       /* Full length (in px) is stored in CSS var */
       transform: scaleX(0);            /* Collapsed initially */
@@ -147,10 +147,10 @@
     /* ---- always‐visible dot ---- */
     .dot {
       position: absolute;
-      width: 18px;
-      height: 18px;
+      width: 8px;
+      height: 8px;
       background: #ffffff;
-      border: 3px solid #dc3545;
+      border: 3px solid #717171;
       border-radius: 50%;
       transform: translate(-50%, -50%) scale(1);
       opacity: 1;
@@ -161,8 +161,8 @@
     /* ---- horizontal line (animated via scaleX) ---- */
     .line {
       position: absolute;
-      height: 2px;
-      background: #dc3545;
+      height: 1px;
+      background: #717171;
       opacity: 0;
       width: var(--line-length);      /* full length in px */
       z-index: 2;
