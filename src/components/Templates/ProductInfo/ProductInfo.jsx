@@ -147,19 +147,37 @@ const highlightsData = [
 ];
 
 export default function ProductInfo({
+  
   onFirstPanelUp,
   onLastPanelDown
 }) {
+    const [isModalOpen, setModalOpen] = useState(false);
   const [index, setIndex] = useState(0);
   const containerRef = useRef(null);
   const prevIndex = useRef(0);
   const isAnimating = useRef(false);
-
-  // Called when CTA is clicked
-  const handleClick = () => {
+    const handleClick = () => {
     onLastPanelDown?.();
   };
 
+
+  // Called when CTA is clicked
+
+  const handleExplore = () => {
+    setModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setModalOpen(false);
+  };
+   useEffect(() => {
+      if (isModalOpen) {
+        document.body.classList.add('modal-open');
+      } else {
+        document.body.classList.remove('modal-open');
+      }
+      return () => document.body.classList.remove('modal-open');
+    }, [isModalOpen]);
   // wheel handler: scroll through slides or bubble out
   useEffect(() => {
     const el = containerRef.current;
@@ -189,6 +207,9 @@ export default function ProductInfo({
     el.addEventListener('wheel', handler, { passive: false });
     return () => el.removeEventListener('wheel', handler);
   }, [index, onFirstPanelUp, onLastPanelDown]);
+
+
+  
 
   // add/remove “active” class on the current panel
   useEffect(() => {
@@ -342,11 +363,55 @@ export default function ProductInfo({
         <button
           type="button"
           className="cta cta-exploreMore left_bottom"
-          onClick={handleClick}
+          onClick={handleExplore}
         >
           Explore More
         </button>
       )}
+
+         {isModalOpen && (
+        <>
+          <div id="asuriModal" className="modal fade show" style={{ display: 'block',position:'absolute' }} tabIndex="-1" role="dialog" aria-hidden="true">
+            <div className="modal-dialog" role="document">
+              <div className="modal-content">
+                <button type="button" className="close" onClick={handleCloseModal}>
+                  <span>&times;</span>
+                </button>
+                <div className="modal-body">
+                  <h5>Title: Asuri (Demoness)</h5>
+                  <h5>Creator: Vakra</h5>
+                  <h5>Year: 2024</h5>
+                  <p className="mt-3">Poochandi—a nameless dread spun to terrorize wayward children. The story warps with every tongue that tells it, its true form lost to generations of terrified whispers.</p>
+                  <p>This is Vakra’s Poochandi. This is Asuri.</p>
+                  <p>No longer just a mother’s cautionary tale, she stands before you now—confronting fear and desire. You do not merely fear her. You crave the danger she exudes with every step.</p>
+                  <p>Delicate lace coils around her neck, studded with skulls—small, precise, like carnage worn as an afterthought. Crystals glint like fresh blood frozen mid-fall, suspended in the quiet aftermath of the kill. The air around her hangs heavy, thick with something slow and deliberate: the calm of a storm that has passed, its violence folded into something almost like grace.</p>
+                  <p>Beyond the obvious, a chilling playfulness lingers—an apathetic intensity that dares you to look too long, too deep. If straying from the path is what delivers you to her, then so be it. She is a carnivorous bloom, offering exquisite beauty alongside the certainty of destruction.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="modal-backdrop fade show"></div>
+        </>
+      )}
+
+      {/* {isModalOpen && (
+  <div style={{
+    position: 'absolute',
+    top: '20%',
+    left: '20%',
+    width: '60%',
+    backgroundColor: 'white',
+    padding: '2rem',
+    zIndex: 9999,
+    border: '2px solid black'
+  }}>
+    <button onClick={handleCloseModal}>Close</button>
+    <p>This is the modal content</p>
+  </div>
+)} */}
+
     </div>
+    
   );
 }
+     
