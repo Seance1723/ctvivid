@@ -1,5 +1,5 @@
 // src/components/Templates/ProductDetails/ProductDetails.jsx
-import React, { useEffect } from 'react';
+import React, { useEffect,useState } from 'react';
 import {
   IconStarFilled,
   IconStar,
@@ -9,6 +9,8 @@ import {
 import Footer from '../../Footer/Footer';
 
 const ProductDetails = React.forwardRef(({ onScrollUp }, ref) => {
+    const [activeImage, setActiveImage] = useState('/products/designers/productDetails/thumbActive.jpg');
+
   // catch wheel-up and call back to parent
   useEffect(() => {
     const node = ref.current;
@@ -41,30 +43,41 @@ const ProductDetails = React.forwardRef(({ onScrollUp }, ref) => {
               <img
                 src="/products/designers/productDetails/productThumb_01.png"
                 alt="thumb1"
+                onClick={() => setActiveImage('/products/designers/productDetails/productThumb_01.png')} className="thumbnail-clickable"
               />
               <img
                 src="/products/designers/productDetails/productThumb_02.png"
                 alt="thumb2"
+                onClick={() => setActiveImage('/products/designers/productDetails/productThumb_02.png')} className="thumbnail-clickable"
               />
               <img
                 src="/products/designers/productDetails/productThumb_03.png"
                 alt="thumb3"
+                onClick={() => setActiveImage('/products/designers/productDetails/productThumb_03.png')} className="thumbnail-clickable"
               />
               <img
                 src="/products/designers/productDetails/productThumb_04.png"
                 alt="thumb4"
+                onClick={() => setActiveImage('/products/designers/productDetails/productThumb_04.png')} className="thumbnail-clickable"
               />
               <img
                 src="/products/designers/productDetails/productThumb_05.png"
                 alt="thumb5"
+                 onClick={() => setActiveImage('/products/designers/productDetails/productThumb_05.png')} className="thumbnail-clickable"
               />
             </div>
             <div className="main-image flex-grow-1">
-              <img
+              {/* <img
                 src="/products/designers/productDetails/thumbActive.jpg"
                 alt="main"
                 className="img-fluid"
+              /> */}
+              <img
+                src={activeImage}
+                alt="main"
+                className="img-fluid"
               />
+
             </div>
           </div>
 

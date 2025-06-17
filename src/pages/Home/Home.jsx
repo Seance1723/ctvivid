@@ -2,6 +2,8 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+
 import Footer from '../../components/Footer/Footer';
 import './Home.scss';
 
@@ -13,6 +15,19 @@ import { Mousewheel, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 
 const Home = () => {
+    const location = useLocation();
+
+  useEffect(() => {
+    if (location.state?.scrollTo) {
+      const el = document.getElementById(location.state.scrollTo);
+      if (el) {
+        setTimeout(() => {
+          el.scrollIntoView({ behavior: 'smooth' });
+        }, 100); // small delay to ensure DOM is ready
+      }
+    }
+  }, [location]);
+
   
   const containerRef = useRef(null);
 
@@ -245,7 +260,7 @@ const Home = () => {
       </section>
 
       {/* About Us Section*/}
-      <section className="homepage-section aboutus-section" data-nav-style="logo-only-dark">
+      <section  id="about-us" className="homepage-section aboutus-section" data-nav-style="logo-only-dark">
         <div className="section-content container pt-5">
           <div className='row'>
             <div className='col-12 col-md-8'>
@@ -268,7 +283,7 @@ const Home = () => {
       </section>
 
       {/* CTA & Footer */}
-      <section className="homepage-section cta-section" data-nav-style="full-light" >
+      <section  id="collaborate" className="homepage-section cta-section" data-nav-style="full-light" >
         <video
           className="cta-bg-video"
           src="/pages/Home/home-footer-sec.mp4"

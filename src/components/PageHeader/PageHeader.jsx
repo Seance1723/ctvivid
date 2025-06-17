@@ -49,15 +49,15 @@ export default function PageHeader() {
   return (
     <header className={navClasses.join(' ')}>
       <nav className="navbar">
-        <div className="container nav-inner">
+        <div className="container nav-inner " style={{ justifyContent: 'center' }}>
 
           {/* Left nav */}
-          <div id="pageNav" className="d-none d-md-flex gap-4">
+          {/* <div id="pageNav" className="d-none d-md-flex gap-4" >
             <NavLink to="/women"     className={({isActive})=> isActive ? 'active' : ''}>Women</NavLink>
             <NavLink to="/men"       className={({isActive})=> isActive ? 'active' : ''}>Men</NavLink>
             <NavLink to="/designers" className={({isActive})=> isActive ? 'active' : ''}>Designer</NavLink>
             <NavLink to="/sale"      className={({isActive})=> isActive ? 'active' : ''}>Sale</NavLink>
-          </div>
+          </div> */}
 
           {/* Center text-logo */}
           <div id="branding">
@@ -67,7 +67,7 @@ export default function PageHeader() {
           </div>
 
           {/* Right icons */}
-          <HeaderIcons />
+          {/* <HeaderIcons /> */}
 
         </div>
       </nav>

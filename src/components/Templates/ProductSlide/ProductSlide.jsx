@@ -232,7 +232,7 @@ export default function Designer() {
             Explore More
           </button>
         </div>
-        <button type="button" className="cta cta-outlineDefault right_bottom" onClick={handleExplore}>
+        <button type="button" className="cta cta-outlineDefault right_bottom" onClick={handleExplore} style={{display:'none'}}>
           Product details
         </button>
         <div className="slide-track" ref={trackRef}>
