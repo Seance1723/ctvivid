@@ -149,13 +149,14 @@ const highlightsData = [
 export default function ProductInfo({
   
   onFirstPanelUp,
-  onLastPanelDown
+  onLastPanelDown,
+  scrolling
 }) {
     const [isModalOpen, setModalOpen] = useState(false);
   const [index, setIndex] = useState(0);
   const containerRef = useRef(null);
   const prevIndex = useRef(0);
-  const isAnimating = useRef(false);
+  const isAnimating = useRef(true);
     const handleClick = () => {
     onLastPanelDown?.();
   };
@@ -178,35 +179,63 @@ export default function ProductInfo({
       }
       return () => document.body.classList.remove('modal-open');
     }, [isModalOpen]);
+    useEffect(() =>{
+      isAnimating.current = true;
+      setTimeout(() => {
+        if(isAnimating.current == true)
+          isAnimating.current = false
+      }, 1500);
+    },[scrolling])
   // wheel handler: scroll through slides or bubble out
   useEffect(() => {
+    console.log("triggered",index,onFirstPanelUp.onLastPanelDown)
     const el = containerRef.current;
     if (!el) return;
 
+    let aborted = false;
+    let lastScrollTime = 0
+
     const handler = e => {
-      e.preventDefault();
+      if (aborted) return;
+      e.preventDefault()
+
+
+      const now = Date.now();
+
+      if (now - lastScrollTime < 1000)return;
       if (isAnimating.current) return;
-      const d = e.deltaY;
-      if (d > 0) {
-        if (index < highlightsData.length - 1) {
-          isAnimating.current = true;
-          setIndex(i => i + 1);
-        } else {
-          onLastPanelDown?.();
-        }
-      } else {
-        if (index > 0) {
-          isAnimating.current = true;
-          setIndex(i => i - 1);
-        } else {
-          onFirstPanelUp?.();
-        }
+      const d = e.deltaY
+      console.log("here",d);
+      lastScrollTime = now;
+      isAnimating.current = true;
+      if(d>0){
+        setIndex((i) => {
+          if(i < highlightsData.length - 1){
+            return i+1;
+          }else {
+            onLastPanelDown?.();
+            return i;
+          }
+        });
+
+      }else {
+        setIndex((i) => {
+          if (i > 0){
+            return i -1 ;
+          }else{
+            onFirstPanelUp?.();
+            return i;
+          }
+        });
       }
     };
 
     el.addEventListener('wheel', handler, { passive: false });
-    return () => el.removeEventListener('wheel', handler);
-  }, [index, onFirstPanelUp, onLastPanelDown]);
+    return () => {
+      aborted = true;
+      el.removeEventListener("wheel",handler);
+    }
+  }, []);
 
 
   

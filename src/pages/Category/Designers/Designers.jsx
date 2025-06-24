@@ -1,5 +1,5 @@
 // src/pages/Category/Designers/Designers.jsx
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
@@ -20,7 +20,7 @@ export default function Designers() {
   const videoRef     = useRef(null);
   const infoRef      = useRef(null);
   const detailsRef   = useRef(null);
-
+  const [scrolling,setScrolling] = useState(0)
   useEffect(() => {
     // 1) Pin & scrub through all sections exactly as before
     const sections = gsap.utils.toArray('.onepage-section');
@@ -52,6 +52,7 @@ export default function Designers() {
 
   // 3) Helper to jump to a given ref‐section stays the same
   const scrollToSection = ref => {
+    setScrolling(pre=>pre+1)
     const idx = [heroRef, videoRef, infoRef, detailsRef].findIndex(r => r === ref);
     if (idx >= 0) {
       gsap.to(containerRef.current, {
@@ -102,6 +103,8 @@ export default function Designers() {
           <ProductInfo
             onFirstPanelUp={()    => scrollToSection(videoRef)}
             onLastPanelDown={() => scrollToSection(detailsRef)}
+            currentRef = {containerRef.current}
+            scrolling={scrolling}
           />
         </section>
 
