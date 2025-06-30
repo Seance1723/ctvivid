@@ -2635,7 +2635,7 @@ body .sec-content {
   overflow: hidden;
   transition: background 0.3s ease;
 }
-.cta-withArrowDark::before, .cta-exploreMore::before {
+/* .cta-withArrowDark::before, .cta-exploreMore::before {
   content: "";
   display: inline-block;
   vertical-align: middle;
@@ -2644,11 +2644,27 @@ body .sec-content {
   margin-right: 0.5em;
   background: url("/public/products/icons/minus-dark.svg") no-repeat center/contain;
   transition: background-image 0.3s ease, transform 0.3s ease;
+} */
+.cta-withArrowDark::before, .cta-exploreMore::before {
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  width: 28px;
+  height: 28px;
+  margin-right: 0.5em;
+  background-color: var(--dark-color); /* This sets the icon color */
+  mask: url("/public/products/icons/minus-dark.svg") no-repeat center;
+  mask-size: contain;
+  transition: mask 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
 }
+
 .cta-withArrowDark:hover::before, .cta-exploreMore:hover::before {
   transform: translateX(2px);
-  background-image: url("/public/products/icons/arrow-narrow-right_dark.svg");
+  mask: url("/public/products/icons/arrow-narrow-right_dark.svg") no-repeat center;
+  mask-size: contain;
+  background-color: var(--dark-color); /* Optional override if needed */
 }
+
 .cta-outlineDefault {
   cursor: pointer;
   display: inline-block;
@@ -3189,6 +3205,18 @@ body header #branding .branding-link h3 {
   border-radius: 8px;
   cursor: pointer;
 }
+/* Mobile View (max-width: 767px) */
+@media (max-width: 767px) {
+  .homepage-container .cta-section .footer-content .newsletter-form button[type="submit"] {
+    display: flex;   
+    position:static;         
+    height:46px;
+    border-radius: 8px; 
+    cursor: pointer;
+    margin-top: 5px;
+    font-size: 1rem;
+  }
+}
 .homepage-container .cta-section .section-content {
   z-index: 1;
 }
@@ -3273,7 +3301,7 @@ body header #branding .branding-link h3 {
     background-color: var(--dark-color);
   }
   .homepage-container .homepage-section.aboutus-section {
-    height: 180vh !important;
+    height: 160vh !important;
   }
   .homepage-container .homepage-section.aboutus-section .section-content {
     position: relative;

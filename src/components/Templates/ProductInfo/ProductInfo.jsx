@@ -29,7 +29,7 @@ const highlightsData = [
   },
   {
     id: 'panel2',
-    imageSrc: '/products/designers/vakra/vakra_02.png',
+    imageSrc: '/products/designers/vakra/image2.jpg',
     dots: [
       {
         id: 'p2d1',
