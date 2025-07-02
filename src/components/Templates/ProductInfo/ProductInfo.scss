@@ -245,3 +245,42 @@
     }
   }
 }
+
+
+
+@media (max-width: 768px) {
+.product-info-slider .slide .bg-image{
+  height:80% !important;
+
+    left: 45%;
+}
+
+.product-info-slider .slide .line {
+  display:none !important;
+}
+.product-info-slider .slide .dot{
+  display:none !important;
+}
+.product-info-slider .slide .highlight-content img {
+  width:110px !important;
+}
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -3328,3 +3328,10 @@ body header #branding .branding-link h3 {
 
 
 }/*# sourceMappingURL=vividara.css.map */
+
+
+@media (max-width: 768px) {
+  .cta-withArrowDark, .cta-exploreMore {
+    display:none !important;
+  }
+}

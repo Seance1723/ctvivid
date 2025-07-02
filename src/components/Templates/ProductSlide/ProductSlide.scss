@@ -225,3 +225,16 @@
 		top: 60px;
 	}
 }
+
+
+
+@media (max-width: 768px) {
+ .product-slide .slide img {
+    height: 100vh !important;
+  }
+
+
+  .product-slide .tagline-container{
+    top:10% !important;
+  }
+}

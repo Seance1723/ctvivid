@@ -2,6 +2,8 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import './ProductInfo.scss';
+const isMobile = window.innerWidth <= 768;
+
 
 const highlightsData = [
   {
@@ -152,6 +154,18 @@ export default function ProductInfo({
   onLastPanelDown,
   scrolling
 }) {
+
+
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
     const [isModalOpen, setModalOpen] = useState(false);
   const [index, setIndex] = useState(0);
   const containerRef = useRef(null);
@@ -297,7 +311,7 @@ export default function ProductInfo({
                 if (lineDirection === 'left') {
                   return (
                     <React.Fragment key={id}>
-                      {hasContent && (
+                      {/* {hasContent && (
                         <div
                           className={`highlight-content ${contentSide}`}
                           style={{
@@ -310,7 +324,73 @@ export default function ProductInfo({
                           {title && <h4>{title}</h4>}
                           {description && <p>{description}</p>}
                         </div>
-                      )}
+                      )} */}
+                      {/* {hasContent && (
+  <>
+    {isMobile && thumbnail && (
+      <img src={thumbnail} alt="" style={{
+      width: isMobile ? '131px' : '',
+      top:isMobile?'43%':"",
+      left: isMobile ? '63%' : '',
+       position:isMobile ? 'absolute':'',
+    }} className="mobile-thumbnail" />
+    )}
+
+    <div
+      className={`highlight-content ${contentSide}`}
+      style={{
+        width: `${contentWidth}px`,
+        left: `${contentXPercent}%`,
+         top: isMobile ? '80%' : `${contentYPercent}%`,
+      }}
+    >
+     
+      {!isMobile && thumbnail && <img src={thumbnail} alt=""  />}
+      {title && <h4>{title}</h4>}
+      {description && <p>{description}</p>}
+    </div>
+  </>
+)} */}
+{hasContent && (
+  <>
+    {/* --- Mobile: Separate Image Block --- */}
+    {isMobile && thumbnail && (
+      <div style={{ position: 'relative', width: '100%' }}>
+        <img
+          src={thumbnail}
+          alt=""
+          className="mobile-thumbnail"
+          style={{
+            width: '131px',
+            
+            top: '43%',
+            left: '63%',
+            zIndex: 99,
+          }}
+        />
+      </div>
+    )}
+
+    {/* --- Common Text Content Block --- */}
+    <div 
+      className={`highlight-content ${contentSide}`}
+      style={{
+        width:  `${contentWidth}px`,
+        left: `${contentXPercent}%`,
+        top: isMobile ? '80%' : `${contentYPercent}%`,
+        position: 'absolute',
+        zIndex: 99,
+      }}
+    >
+      {/* Desktop: Render image inline with text */}
+      {!isMobile && thumbnail && <img src={thumbnail} alt="" />}
+      {title && <h4>{title}</h4>}
+      {description && <p>{description}</p>}
+    </div>
+  </>
+)}
+
+
 
                       {/* Left‐growing line: right edge anchored at lineX%/lineY% */}
                       <div
@@ -362,7 +442,7 @@ export default function ProductInfo({
                         style={{
                           width: `${contentWidth}px`,
                           left: `${contentXPercent}%`,
-                          top: `${contentYPercent}%`
+                           top: `${contentYPercent}%`,
                         }}
                       >
                         {thumbnail && <img src={thumbnail} alt="" />}
