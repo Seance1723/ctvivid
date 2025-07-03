@@ -5,7 +5,8 @@ import './ProductInfo.scss';
 const isMobile = window.innerWidth <= 768;
 
 
-const highlightsData = [
+// const highlightsData = [
+const highlightsDataDesktop = [
   {
     id: 'panel1',
     imageSrc: '/products/designers/vakra/vakra_01.png',
@@ -147,6 +148,148 @@ const highlightsData = [
     ]
   }
 ];
+const highlightsDataMobile = [
+  {
+    id: 'panel1',
+    imageSrc: '/products/designers/vakra/vakra_01.png',
+    dots: [
+      {
+        id: 'p1d1',
+        xPercent: 48,
+        yPercent: 64,
+        lineXPercent: 48,
+        lineYPercent: 64,
+        lineLength: 410,
+        lineDirection: 'left',
+        title: 'Silhouette',
+        description:
+          'A figure-flattering silhouette that accentuates curves and elongates the frame, evoking a sense of mystery and allure.',
+        thumbnail: '',
+        contentSide: 'right',
+        contentWidth: 350,
+        contentXPercent: 15,
+        contentYPercent: 58
+      }
+    ]
+  },
+  {
+    id: 'panel2',
+    imageSrc: '/products/designers/vakra/image2.jpg',
+    dots: [
+      {
+        id: 'p2d1',
+        xPercent: 52,
+        yPercent: 48,
+        lineXPercent: 52,
+        lineYPercent: 48,
+        lineLength: 300,
+        lineDirection: 'right',
+        title: '',
+        description: '',
+        thumbnail: '/products/designers/vakra/vakra_02_01.png',
+        contentSide: 'left',
+        contentWidth: 160,
+        contentXPercent: 70,
+        contentYPercent: 35
+      },
+      {
+        id: 'p2d2',
+        xPercent: 45,
+        yPercent: 54,
+        lineXPercent: 20.5,
+        lineYPercent: 54,
+        lineLength: 370,
+        lineDirection: 'left',
+        title: 'Bell Sleeves',
+        description:
+          'Exaggerated bell sleeves add a touch of drama and movement, capturing the eye with every gesture.',
+        thumbnail: '',
+        contentSide: 'left',
+        contentWidth: 280,
+        contentXPercent: 20,
+        contentYPercent: 48
+      }
+    ]
+  },
+  {
+    id: 'panel3',
+    imageSrc: '/products/designers/vakra/vakra_03.png',
+    dots: [
+      {
+        id: 'p3d1',
+        xPercent: 50,
+        yPercent: 28,
+        lineXPercent: 25,
+        lineYPercent: 28,
+        lineLength: 380,
+        lineDirection: 'right',
+        title: '',
+        description: '',
+        thumbnail: '/products/designers/vakra/vakra_03_01.png',
+        contentSide: 'left',
+        contentWidth: 160,
+        contentXPercent: 70,
+        contentYPercent: 35
+      },
+      {
+        id: 'p3d2',
+        xPercent: 55,
+        yPercent: 26,
+        lineXPercent: 55,
+        lineYPercent: 26,
+        lineLength: 472,
+        lineDirection: 'left',
+        title: 'Skull Lace Neckline',
+        description:
+          'A unique and striking detail, the skull lace adorns the neckline, resembling the traditional Indian skull necklace, adding an edge of danger.',
+        thumbnail: '',
+        contentSide: 'left',
+        contentWidth: 280,
+        contentXPercent: 20,
+        contentYPercent: 48
+      }
+    ]
+  },
+  {
+    id: 'panel4',
+    imageSrc: '/products/designers/vakra/vakra_03.png',
+    dots: [
+      {
+        id: 'p4d1',
+        xPercent: 54,
+        yPercent: 60,
+        lineXPercent: 54,
+        lineYPercent: 60,
+        lineLength: 290,
+        lineDirection: 'right',
+        title: '',
+        description: '',
+        thumbnail: '/products/designers/vakra/vakra_03_02.png',
+        contentSide: 'left',
+        contentWidth: 210,
+        contentXPercent: 72,
+        contentYPercent: 42
+      },
+      {
+        id: 'p4d2',
+        xPercent: 46,
+        yPercent: 64,
+        lineXPercent: 15.5,
+        lineYPercent: 64,
+        lineLength: 460,
+        lineDirection: 'left',
+        title: 'Skull Lace Neckline',
+        description:
+          'A unique and striking detail, the skull lace adorns the neckline, resembling the traditional Indian skull necklace, adding an edge of danger.',
+        thumbnail: '',
+        contentSide: 'right',
+        contentWidth: 350,
+        contentXPercent: 15,
+        contentYPercent: 58
+      }
+    ]
+  }
+];
 
 export default function ProductInfo({
   
@@ -166,6 +309,8 @@ export default function ProductInfo({
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+   const highlightsData = isMobile ? highlightsDataMobile : highlightsDataDesktop;
     const [isModalOpen, setModalOpen] = useState(false);
   const [index, setIndex] = useState(0);
   const containerRef = useRef(null);
