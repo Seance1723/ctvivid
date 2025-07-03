@@ -529,7 +529,7 @@ export default function ProductInfo({
     >
       {/* Desktop: Render image inline with text */}
       {!isMobile && thumbnail && <img src={thumbnail} alt="" />}
-      {title && <h4>{title}</h4>}
+      {title && <h4 style={isMobile ? { textAlign: 'center' } : {}}>{title}</h4>}
       {description && <p>{description}</p>}
     </div>
   </>
@@ -591,7 +591,7 @@ export default function ProductInfo({
                         }}
                       >
                         {thumbnail && <img src={thumbnail} alt="" />}
-                        {title && <h4>{title}</h4>}
+                        {title && <h4 style={isMobile ? { textAlign: 'center' } : {}}>{title}</h4>}
                         {description && <p>{description}</p>}
                       </div>
                     )}
