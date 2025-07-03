@@ -106,7 +106,7 @@ const Home = () => {
     <div className="homepage-container" ref={containerRef}>
       {/* Hero Section */}
       <section className="homepage-section hero-section active" data-nav-style="logo-only-light" >
-        <video
+        {/* <video
           className="hero-video"
           src="/pages/Home/home-hero-sec.mp4"
           poster="/pages/Home/home-hero-sec-poster.jpg"
@@ -116,7 +116,13 @@ const Home = () => {
           autoPlay
           playsInline
           webkit-playsinline
-        />
+        /> */}
+
+        <video className="hero-video" autoPlay muted loop playsInline>
+         <source src="/pages/Home/home-hero-sec.mp4" media="(min-width: 768px)" />
+         <source src="/pages/Home/home-mobileview.mp4"  media="(max-width: 767px)" />
+        </video>
+
         <div className="section-content container" style={{ top: '80%' }}>
           <div className="row d-flex justify-content-between align-items-center">
             <div className="col-md-7 hero-text text-start">
@@ -284,7 +290,7 @@ const Home = () => {
 
       {/* CTA & Footer */}
       <section  id="collaborate" className="homepage-section cta-section" data-nav-style="full-light" >
-        <video
+        {/* <video
           className="cta-bg-video"
           src="/pages/Home/home-footer-sec.mp4"
           poster="/pages/Home/home-footer-sec-poster.png"
@@ -294,7 +300,12 @@ const Home = () => {
           autoPlay
           playsInline
           webkit-playsinline
-        />
+        /> */}
+        <video className="cta-bg-video" autoPlay muted loop playsInline>
+          <source src="/pages/Home/home-footer-sec.mp4" media="(min-width: 768px)" />
+          <source src="footer-mobileview.mp4" media="(max-width: 767px)" />
+        </video>
+
         <div className="container section-content">
           <div className='footer-content'>
             <h2>We're all ears!</h2>

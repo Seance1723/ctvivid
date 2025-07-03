@@ -43,27 +43,27 @@ const ProductDetails = React.forwardRef(({ onScrollUp }, ref) => {
               <img
                 src="/products/designers/productDetails/productThumb_01.png"
                 alt="thumb1"
-                onClick={() => setActiveImage('/products/designers/productDetails/productThumb_01.png')} className="thumbnail-clickable"
+                onClick={() => setActiveImage('/products/designers/productDetails/thumbnail1.png')} className="thumbnail-clickable"
               />
               <img
                 src="/products/designers/productDetails/productThumb_02.png"
                 alt="thumb2"
-                onClick={() => setActiveImage('/products/designers/productDetails/productThumb_02.png')} className="thumbnail-clickable"
+                onClick={() => setActiveImage('/products/designers/productDetails/thumbnail2.png')} className="thumbnail-clickable"
               />
               <img
                 src="/products/designers/productDetails/productThumb_03.png"
                 alt="thumb3"
-                onClick={() => setActiveImage('/products/designers/productDetails/productThumb_03.png')} className="thumbnail-clickable"
+                onClick={() => setActiveImage('/products/designers/productDetails/thumbnail3.png')} className="thumbnail-clickable"
               />
               <img
                 src="/products/designers/productDetails/productThumb_04.png"
                 alt="thumb4"
-                onClick={() => setActiveImage('/products/designers/productDetails/productThumb_04.png')} className="thumbnail-clickable"
+                onClick={() => setActiveImage('/products/designers/productDetails/thumbnail4.png')} className="thumbnail-clickable"
               />
               <img
                 src="/products/designers/productDetails/productThumb_05.png"
                 alt="thumb5"
-                 onClick={() => setActiveImage('/products/designers/productDetails/productThumb_05.png')} className="thumbnail-clickable"
+                 onClick={() => setActiveImage('/products/designers/productDetails/thumbnail5.png')} className="thumbnail-clickable"
               />
             </div>
             <div className="main-image flex-grow-1">

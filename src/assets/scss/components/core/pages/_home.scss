@@ -88,6 +88,29 @@
       }
     }
   }
+  .newsletter-form{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: stretch;
+
+  }
+  .newsletter-form .from-control {
+    flex: 1 1 250px;
+    padding: 12px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  .newsletter-form .cta{
+    flex: 0 0 auto;
+    padding: 12px 24px;
+    font-size: 1rem;
+    white-space: nowrap;
+    box-sizing: border-box;
+    border-radius: 4px;
+  }
 
   .intro-section {
     .section-content {

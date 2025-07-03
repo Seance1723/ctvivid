@@ -2,8 +2,11 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import './ProductInfo.scss';
+const isMobile = window.innerWidth <= 768;
 
-const highlightsData = [
+
+// const highlightsData = [
+const highlightsDataDesktop = [
   {
     id: 'panel1',
     imageSrc: '/products/designers/vakra/vakra_01.png',
@@ -29,7 +32,7 @@ const highlightsData = [
   },
   {
     id: 'panel2',
-    imageSrc: '/products/designers/vakra/vakra_02.png',
+    imageSrc: '/products/designers/vakra/image2.jpg',
     dots: [
       {
         id: 'p2d1',
@@ -145,17 +148,174 @@ const highlightsData = [
     ]
   }
 ];
+const highlightsDataMobile = [
+  {
+    id: 'panel1',
+    imageSrc: '/products/designers/vakra/vakra_01.png',
+    dots: [
+      {
+        id: 'p1d1',
+        xPercent: 48,
+        yPercent: 64,
+        lineXPercent: 48,
+        lineYPercent: 64,
+        lineLength: 410,
+        lineDirection: 'left',
+        title: 'Silhouette',
+        description:
+          'A figure-flattering silhouette that accentuates curves and elongates the frame, evoking a sense of mystery and allure.',
+        thumbnail: '',
+        contentSide: 'right',
+        contentWidth: 350,
+        contentXPercent: 15,
+        contentYPercent: 58
+      }
+    ]
+  },
+  {
+    id: 'panel2',
+    imageSrc: '/products/designers/vakra/image2.jpg',
+    dots: [
+      {
+        id: 'p2d1',
+        xPercent: 52,
+        yPercent: 48,
+        lineXPercent: 52,
+        lineYPercent: 48,
+        lineLength: 300,
+        lineDirection: 'right',
+        title: '',
+        description: '',
+        thumbnail: '/products/designers/vakra/vakra_02_01.png',
+        contentSide: 'left',
+        contentWidth: 160,
+        contentXPercent: 70,
+        contentYPercent: 35
+      },
+      {
+        id: 'p2d2',
+        xPercent: 45,
+        yPercent: 54,
+        lineXPercent: 20.5,
+        lineYPercent: 54,
+        lineLength: 370,
+        lineDirection: 'left',
+        title: 'Bell Sleeves',
+        description:
+          'Exaggerated bell sleeves add a touch of drama and movement, capturing the eye with every gesture.',
+        thumbnail: '',
+        contentSide: 'left',
+        contentWidth: 280,
+        contentXPercent: 20,
+        contentYPercent: 48
+      }
+    ]
+  },
+  {
+    id: 'panel3',
+    imageSrc: '/products/designers/vakra/vakra_03.png',
+    dots: [
+      {
+        id: 'p3d1',
+        xPercent: 50,
+        yPercent: 28,
+        lineXPercent: 25,
+        lineYPercent: 28,
+        lineLength: 380,
+        lineDirection: 'right',
+        title: '',
+        description: '',
+        thumbnail: '/products/designers/vakra/vakra_03_01.png',
+        contentSide: 'left',
+        contentWidth: 160,
+        contentXPercent: 70,
+        contentYPercent: 35
+      },
+      {
+        id: 'p3d2',
+        xPercent: 55,
+        yPercent: 26,
+        lineXPercent: 55,
+        lineYPercent: 26,
+        lineLength: 472,
+        lineDirection: 'left',
+        title: 'Skull Lace Neckline',
+        description:
+          'A unique and striking detail, the skull lace adorns the neckline, resembling the traditional Indian skull necklace, adding an edge of danger.',
+        thumbnail: '',
+        contentSide: 'left',
+        contentWidth: 280,
+        contentXPercent: 20,
+        contentYPercent: 48
+      }
+    ]
+  },
+  {
+    id: 'panel4',
+    imageSrc: '/products/designers/vakra/vakra_03.png',
+    dots: [
+      {
+        id: 'p4d1',
+        xPercent: 54,
+        yPercent: 60,
+        lineXPercent: 54,
+        lineYPercent: 60,
+        lineLength: 290,
+        lineDirection: 'right',
+        title: '',
+        description: '',
+        thumbnail: '/products/designers/vakra/vakra_03_02.png',
+        contentSide: 'left',
+        contentWidth: 210,
+        contentXPercent: 72,
+        contentYPercent: 42
+      },
+      {
+        id: 'p4d2',
+        xPercent: 46,
+        yPercent: 64,
+        lineXPercent: 15.5,
+        lineYPercent: 64,
+        lineLength: 460,
+        lineDirection: 'left',
+        title: 'Skull Lace Neckline',
+        description:
+          'A unique and striking detail, the skull lace adorns the neckline, resembling the traditional Indian skull necklace, adding an edge of danger.',
+        thumbnail: '',
+        contentSide: 'right',
+        contentWidth: 350,
+        contentXPercent: 15,
+        contentYPercent: 58
+      }
+    ]
+  }
+];
 
 export default function ProductInfo({
   
   onFirstPanelUp,
-  onLastPanelDown
+  onLastPanelDown,
+  scrolling
 }) {
+
+
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+   const highlightsData = isMobile ? highlightsDataMobile : highlightsDataDesktop;
     const [isModalOpen, setModalOpen] = useState(false);
   const [index, setIndex] = useState(0);
   const containerRef = useRef(null);
   const prevIndex = useRef(0);
-  const isAnimating = useRef(false);
+  const isAnimating = useRef(true);
     const handleClick = () => {
     onLastPanelDown?.();
   };
@@ -178,35 +338,63 @@ export default function ProductInfo({
       }
       return () => document.body.classList.remove('modal-open');
     }, [isModalOpen]);
+    useEffect(() =>{
+      isAnimating.current = true;
+      setTimeout(() => {
+        if(isAnimating.current == true)
+          isAnimating.current = false
+      }, 1500);
+    },[scrolling])
   // wheel handler: scroll through slides or bubble out
   useEffect(() => {
+    console.log("triggered",index,onFirstPanelUp.onLastPanelDown)
     const el = containerRef.current;
     if (!el) return;
 
+    let aborted = false;
+    let lastScrollTime = 0
+
     const handler = e => {
-      e.preventDefault();
+      if (aborted) return;
+      e.preventDefault()
+
+
+      const now = Date.now();
+
+      if (now - lastScrollTime < 1000)return;
       if (isAnimating.current) return;
-      const d = e.deltaY;
-      if (d > 0) {
-        if (index < highlightsData.length - 1) {
-          isAnimating.current = true;
-          setIndex(i => i + 1);
-        } else {
-          onLastPanelDown?.();
-        }
-      } else {
-        if (index > 0) {
-          isAnimating.current = true;
-          setIndex(i => i - 1);
-        } else {
-          onFirstPanelUp?.();
-        }
+      const d = e.deltaY
+      console.log("here",d);
+      lastScrollTime = now;
+      isAnimating.current = true;
+      if(d>0){
+        setIndex((i) => {
+          if(i < highlightsData.length - 1){
+            return i+1;
+          }else {
+            onLastPanelDown?.();
+            return i;
+          }
+        });
+
+      }else {
+        setIndex((i) => {
+          if (i > 0){
+            return i -1 ;
+          }else{
+            onFirstPanelUp?.();
+            return i;
+          }
+        });
       }
     };
 
     el.addEventListener('wheel', handler, { passive: false });
-    return () => el.removeEventListener('wheel', handler);
-  }, [index, onFirstPanelUp, onLastPanelDown]);
+    return () => {
+      aborted = true;
+      el.removeEventListener("wheel",handler);
+    }
+  }, []);
 
 
   
@@ -268,7 +456,7 @@ export default function ProductInfo({
                 if (lineDirection === 'left') {
                   return (
                     <React.Fragment key={id}>
-                      {hasContent && (
+                      {/* {hasContent && (
                         <div
                           className={`highlight-content ${contentSide}`}
                           style={{
@@ -281,7 +469,73 @@ export default function ProductInfo({
                           {title && <h4>{title}</h4>}
                           {description && <p>{description}</p>}
                         </div>
-                      )}
+                      )} */}
+                      {/* {hasContent && (
+  <>
+    {isMobile && thumbnail && (
+      <img src={thumbnail} alt="" style={{
+      width: isMobile ? '131px' : '',
+      top:isMobile?'43%':"",
+      left: isMobile ? '63%' : '',
+       position:isMobile ? 'absolute':'',
+    }} className="mobile-thumbnail" />
+    )}
+
+    <div
+      className={`highlight-content ${contentSide}`}
+      style={{
+        width: `${contentWidth}px`,
+        left: `${contentXPercent}%`,
+         top: isMobile ? '80%' : `${contentYPercent}%`,
+      }}
+    >
+     
+      {!isMobile && thumbnail && <img src={thumbnail} alt=""  />}
+      {title && <h4>{title}</h4>}
+      {description && <p>{description}</p>}
+    </div>
+  </>
+)} */}
+{hasContent && (
+  <>
+    {/* --- Mobile: Separate Image Block --- */}
+    {isMobile && thumbnail && (
+      <div style={{ position: 'relative', width: '100%' }}>
+        <img
+          src={thumbnail}
+          alt=""
+          className="mobile-thumbnail"
+          style={{
+            width: '131px',
+            
+            top: '43%',
+            left: '63%',
+            zIndex: 99,
+          }}
+        />
+      </div>
+    )}
+
+    {/* --- Common Text Content Block --- */}
+    <div 
+      className={`highlight-content ${contentSide}`}
+      style={{
+        width:  `${contentWidth}px`,
+        left: `${contentXPercent}%`,
+        top: isMobile ? '80%' : `${contentYPercent}%`,
+        position: 'absolute',
+        zIndex: 99,
+      }}
+    >
+      {/* Desktop: Render image inline with text */}
+      {!isMobile && thumbnail && <img src={thumbnail} alt="" />}
+      {title && <h4 style={isMobile ? { textAlign: 'center' } : {}}>{title}</h4>}
+      {description && <p>{description}</p>}
+    </div>
+  </>
+)}
+
+
 
                       {/* Left‐growing line: right edge anchored at lineX%/lineY% */}
                       <div
@@ -333,11 +587,11 @@ export default function ProductInfo({
                         style={{
                           width: `${contentWidth}px`,
                           left: `${contentXPercent}%`,
-                          top: `${contentYPercent}%`
+                           top: `${contentYPercent}%`,
                         }}
                       >
                         {thumbnail && <img src={thumbnail} alt="" />}
-                        {title && <h4>{title}</h4>}
+                        {title && <h4 style={isMobile ? { textAlign: 'center' } : {}}>{title}</h4>}
                         {description && <p>{description}</p>}
                       </div>
                     )}
