@@ -38,7 +38,7 @@ const ProductDetails = React.forwardRef(({ onScrollUp }, ref) => {
         <div className="row align-items-top">
           {/* LEFT COL */}
           <div className="product-images col-md-7 d-flex gap-3">
-            <div className="thumbs d-flex flex-column gap-2">
+            <div className="thumbs d-none d-md-flex flex-column gap-2">
               {/* Thumbnails */}
               <img
                 src="/products/designers/productDetails/productThumb_01.png"
@@ -90,8 +90,13 @@ const ProductDetails = React.forwardRef(({ onScrollUp }, ref) => {
                 <li>Asuri</li>
               </ul>
             </p>
-            <h2 className="productName">ASURI – The Fierce Elegance</h2>
-            <p className="text-muted productIntro">
+            <h2 className="productName d-none d-md-block">
+  ASURI – The Fierce Elegance
+</h2>
+            <h2 className="productName d-block d-md-none" style={{ textTransform: 'capitalize' }}>
+  ASURI
+</h2>
+            <p className="text-muted productIntro d-none d-md-block">
               Unveil your inner goddess with ASURI, a designer statement piece
               that merges contemporary grace with traditional craftsmanship.
               Tailored from a luxurious silk-blend fabric, ASURI flows

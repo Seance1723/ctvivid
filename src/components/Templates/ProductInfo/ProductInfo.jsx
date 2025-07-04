@@ -346,55 +346,148 @@ export default function ProductInfo({
       }, 1500);
     },[scrolling])
   // wheel handler: scroll through slides or bubble out
+  // useEffect(() => {
+  //   console.log("triggered",index,onFirstPanelUp.onLastPanelDown)
+  //   const el = containerRef.current;
+  //   if (!el) return;
+
+  //   let aborted = false;
+  //   let lastScrollTime = 0
+
+  //   const handler = e => {
+  //     if (aborted) return;
+  //     e.preventDefault()
+
+
+  //     const now = Date.now();
+
+  //     if (now - lastScrollTime < 1000)return;
+  //     if (isAnimating.current) return;
+  //     const d = e.deltaY
+  //     console.log("here",d);
+  //     lastScrollTime = now;
+  //     isAnimating.current = true;
+  //     if(d>0){
+  //       setIndex((i) => {
+  //         if(i < highlightsData.length - 1){
+  //           return i+1;
+  //         }else {
+  //           onLastPanelDown?.();
+  //           return i;
+  //         }
+  //       });
+
+  //     }else {
+  //       setIndex((i) => {
+  //         if (i > 0){
+  //           return i -1 ;
+  //         }else{
+  //           onFirstPanelUp?.();
+  //           return i;
+  //         }
+  //       });
+  //     }
+  //   };
+
+  //   el.addEventListener('wheel', handler, { passive: false });
+  //   return () => {
+  //     aborted = true;
+  //     el.removeEventListener("wheel",handler);
+  //   }
+  // }, []);
+
   useEffect(() => {
-    console.log("triggered",index,onFirstPanelUp.onLastPanelDown)
-    const el = containerRef.current;
-    if (!el) return;
+  const el = containerRef.current;
+  if (!el) return;
 
-    let aborted = false;
-    let lastScrollTime = 0
+  let aborted = false;
+  let lastScrollTime = 0;
+  let lastTouchTime = 0;
+  const touchStartY = { current: 0 };
 
-    const handler = e => {
-      if (aborted) return;
-      e.preventDefault()
+  const handler = (e) => {
+    if (aborted) return;
+    e.preventDefault();
 
+    const now = Date.now();
+    if (now - lastScrollTime < 1000) return;
+    if (isAnimating.current) return;
 
-      const now = Date.now();
+    const d = e.deltaY;
+    lastScrollTime = now;
+    isAnimating.current = true;
 
-      if (now - lastScrollTime < 1000)return;
-      if (isAnimating.current) return;
-      const d = e.deltaY
-      console.log("here",d);
-      lastScrollTime = now;
-      isAnimating.current = true;
-      if(d>0){
-        setIndex((i) => {
-          if(i < highlightsData.length - 1){
-            return i+1;
-          }else {
-            onLastPanelDown?.();
-            return i;
-          }
-        });
-
-      }else {
-        setIndex((i) => {
-          if (i > 0){
-            return i -1 ;
-          }else{
-            onFirstPanelUp?.();
-            return i;
-          }
-        });
-      }
-    };
-
-    el.addEventListener('wheel', handler, { passive: false });
-    return () => {
-      aborted = true;
-      el.removeEventListener("wheel",handler);
+    if (d > 0) {
+      setIndex((i) => {
+        if (i < highlightsData.length - 1) {
+          return i + 1;
+        } else {
+          onLastPanelDown?.();
+          return i;
+        }
+      });
+    } else {
+      setIndex((i) => {
+        if (i > 0) {
+          return i - 1;
+        } else {
+          onFirstPanelUp?.();
+          return i;
+        }
+      });
     }
-  }, []);
+  };
+
+  // 👉 Mobile: touch support
+  const handleTouchStart = (e) => {
+    touchStartY.current = e.touches[0].clientY;
+  };
+
+  const handleTouchMove = (e) => {
+    const now = Date.now();
+    if (now - lastTouchTime < 1000) return;
+    if (isAnimating.current) return;
+
+    const touchEndY = e.touches[0].clientY;
+    const deltaY = touchStartY.current - touchEndY;
+    if (Math.abs(deltaY) < 30) return;
+
+    isAnimating.current = true;
+    lastTouchTime = now;
+
+    if (deltaY > 0) {
+      setIndex((i) => {
+        if (i < highlightsData.length - 1) {
+          return i + 1;
+        } else {
+          onLastPanelDown?.();
+          return i;
+        }
+      });
+    } else {
+      setIndex((i) => {
+        if (i > 0) {
+          return i - 1;
+        } else {
+          onFirstPanelUp?.();
+          return i;
+        }
+      });
+    }
+  };
+
+  el.addEventListener('wheel', handler, { passive: false });
+  el.addEventListener('touchstart', handleTouchStart, { passive: true });
+  el.addEventListener('touchmove', handleTouchMove, { passive: true });
+
+  return () => {
+    aborted = true;
+    el.removeEventListener("wheel", handler);
+    el.removeEventListener("touchstart", handleTouchStart);
+    el.removeEventListener("touchmove", handleTouchMove);
+  };
+}, []);
+
 
 
   

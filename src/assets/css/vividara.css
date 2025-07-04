@@ -3334,4 +3334,11 @@ body header #branding .branding-link h3 {
   .cta-withArrowDark, .cta-exploreMore {
     display:none !important;
   }
+  .floating-footer{
+    position: relative !important;
+  }
+  select.form-select{
+     padding-top: 5px !important;
+     padding-bottom: 5px !important;
+  }
 }
