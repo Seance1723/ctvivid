@@ -43,22 +43,22 @@ const ProductDetails = React.forwardRef(({ onScrollUp }, ref) => {
               <img
                 src="/products/designers/productDetails/productThumb_01.png"
                 alt="thumb1"
-                onClick={() => setActiveImage('/products/designers/productDetails/thumbnail1.png')} className="thumbnail-clickable"
+                onClick={() => setActiveImage('/products/designers/productDetails/thumbail_image_1_new.JPG')} className="thumbnail-clickable"
               />
               <img
                 src="/products/designers/productDetails/productThumb_02.png"
                 alt="thumb2"
-                onClick={() => setActiveImage('/products/designers/productDetails/thumbnail2.png')} className="thumbnail-clickable"
+                onClick={() => setActiveImage('/products/designers/productDetails/thumbnail_image_2_new.JPG')} className="thumbnail-clickable"
               />
               <img
                 src="/products/designers/productDetails/productThumb_03.png"
                 alt="thumb3"
-                onClick={() => setActiveImage('/products/designers/productDetails/thumbnail3.png')} className="thumbnail-clickable"
+                onClick={() => setActiveImage('/products/designers/productDetails/thumbnail_image_3_new.JPG')} className="thumbnail-clickable"
               />
               <img
                 src="/products/designers/productDetails/productThumb_04.png"
                 alt="thumb4"
-                onClick={() => setActiveImage('/products/designers/productDetails/thumbnail4.png')} className="thumbnail-clickable"
+                onClick={() => setActiveImage('/products/designers/productDetails/thumbnail_image_4_new.JPG')} className="thumbnail-clickable"
               />
               <img
                 src="/products/designers/productDetails/productThumb_05.png"
