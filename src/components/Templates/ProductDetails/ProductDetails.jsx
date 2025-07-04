@@ -152,7 +152,7 @@ const handleTouchEnd = (endX) => {
               </p>
 
               {/* Mobile Breadcrumb (inline) */}
-              <p className="breadcrumb d-block d-md-none">
+              <p className="breadcrumb d-block d-md-none"  style={{ marginBottom: '2px' }}>
                 Designer &gt;&gt; Vakra &gt;&gt; <span style={{ fontWeight: 500 }}>Asuri</span> 
               </p>
 
@@ -161,11 +161,11 @@ const handleTouchEnd = (endX) => {
             </h2>
            <h2
             className="productName d-block d-md-none"
-            style={{ fontWeight: 500 }}
+            style={{ fontWeight: 500,marginBottom: '0px'}}
           >
             Asuri
           </h2>
-          <p className="d-block d-md-none text-muted" style={{ fontSize: '14px', marginTop: '0.25rem' }}>
+          <p className="d-block d-md-none text-muted" style={{ fontSize: '14px',marginBottom: '4px' }}>
   Lorem Ipsum dolor et sum
 </p>
 

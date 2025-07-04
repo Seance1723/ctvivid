@@ -3336,6 +3336,13 @@ body header #branding .branding-link h3 {
   }
   .floating-footer{
     position: relative !important;
+    background-color: #4D4D4D;
+    margin-top: 35px;
+    color: white;
+
+  }
+  #productDetails .product-intro-sec {
+    padding-left: 16px !important;
   }
   select.form-select{
      padding-top: 10px !important;
