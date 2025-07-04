@@ -3341,4 +3341,7 @@ body header #branding .branding-link h3 {
      padding-top: 5px !important;
      padding-bottom: 5px !important;
   }
+    .homepage-container .homepage-section.aboutus-section {
+    height: 126vh !important;
+  }
 }
