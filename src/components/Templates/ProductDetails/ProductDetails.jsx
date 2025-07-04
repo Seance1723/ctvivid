@@ -16,7 +16,7 @@ const ProductDetails = React.forwardRef(({ onScrollUp }, ref) => {
   '/products/designers/productDetails/thumbnail_image_2_new.JPG',
   '/products/designers/productDetails/thumbnail_image_3_new.JPG',
   '/products/designers/productDetails/thumbail_image_1_new.JPG',
-  '/products/designers/productDetails/thumbnail_image_2_new.JPG'
+  '/products/designers/productDetails/thumbnail_image_5_new.jpg'
 ];
 
 const [mobileImageIndex, setMobileImageIndex] = useState(0);
@@ -89,7 +89,7 @@ const handleTouchEnd = (endX) => {
               <img
                 src="/products/designers/productDetails/productThumb_05.png"
                 alt="thumb5"
-                 onClick={() => setActiveImage('/products/designers/productDetails/thumbnail5.png')} className="thumbnail-clickable"
+                 onClick={() => setActiveImage('/products/designers/productDetails/thumbnail_image_5_new.jpg')} className="thumbnail-clickable"
               />
             </div>
             <div className="main-image flex-grow-1">
