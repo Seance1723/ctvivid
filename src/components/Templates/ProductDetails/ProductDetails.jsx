@@ -135,19 +135,40 @@ const handleTouchEnd = (endX) => {
 
           {/* RIGHT COL */}
           <div className="product-intro-sec col-md-5">
-            <p className="breadcrumb">
+            {/* <p className="breadcrumb">
               <ul>
                 <li>Designer</li>
                 <li>Vakra</li>
                 <li>Asuri</li>
               </ul>
-            </p>
+            </p> */}
+            {/* Desktop Breadcrumb */}
+              <p className="breadcrumb d-none d-md-block">
+                <ul>
+                  <li>Designer</li>
+                  <li>Vakra</li>
+                  <li>Asuri</li>
+                </ul>
+              </p>
+
+              {/* Mobile Breadcrumb (inline) */}
+              <p className="breadcrumb d-block d-md-none">
+                Designer &gt;&gt; Vakra &gt;&gt; <span style={{ fontWeight: 500 }}>Asuri</span> 
+              </p>
+
             <h2 className="productName d-none d-md-block">
-  ASURI – The Fierce Elegance
-</h2>
-            <h2 className="productName d-block d-md-none" style={{ textTransform: 'capitalize' }}>
-  ASURI
-</h2>
+              ASURI – The Fierce Elegance
+            </h2>
+           <h2
+            className="productName d-block d-md-none"
+            style={{ fontWeight: 500 }}
+          >
+            Asuri
+          </h2>
+          <p className="d-block d-md-none text-muted" style={{ fontSize: '14px', marginTop: '0.25rem' }}>
+  Lorem Ipsum dolor et sum
+</p>
+
             <p className="text-muted productIntro d-none d-md-block">
               Unveil your inner goddess with ASURI, a designer statement piece
               that merges contemporary grace with traditional craftsmanship.
@@ -162,9 +183,21 @@ const handleTouchEnd = (endX) => {
               <IconStarFilled />
               <IconStarFilled />
               <IconStar />
-            </div>
 
-            <h6 className="mt-4">Size &amp; Fit</h6>
+                   {/* Show only on mobile */}
+            <span className="d-block d-md-none ms-2" style={{ fontSize: '14px' }}>
+              Review
+            </span>
+            </div>
+       
+
+            {/* <h6 className="mt-4">Size &amp; Fit</h6> */}
+            {/* Desktop view */}
+              <h6 className="mt-4 d-none d-md-block">Size &amp; Fit</h6>
+
+              {/* Mobile view */}
+              <h6 className="mt-4 d-block d-md-none">Size &amp; Fit Guide</h6>
+
 
             <div className="d-flex gap-3 align-items-center mt-2">
               <select
