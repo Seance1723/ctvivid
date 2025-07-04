@@ -177,18 +177,22 @@ const handleTouchEnd = (endX) => {
               that whisper bold sophistication.
             </p>
 
-            <div className="rating d-flex align-items-center gap-1">
+            {/* <div className="rating d-flex align-items-center gap-1">
               <IconStarFilled />
               <IconStarFilled />
               <IconStarFilled />
               <IconStarFilled />
               <IconStar />
+            </div> */}
+     <div className="rating d-flex align-items-center gap-1 d-none d-md-flex">
+  <IconStarFilled />
+  <IconStarFilled />
+  <IconStarFilled />
+  <IconStarFilled />
+  <IconStar />
+</div>
 
-                   {/* Show only on mobile */}
-            <span className="d-block d-md-none ms-2" style={{ fontSize: '14px' }}>
-              Review
-            </span>
-            </div>
+
        
 
             {/* <h6 className="mt-4">Size &amp; Fit</h6> */}

@@ -3337,7 +3337,7 @@ body header #branding .branding-link h3 {
   .floating-footer{
     position: relative !important;
     background-color: #4D4D4D;
-    margin-top: 35px;
+    margin-top: 6px;
     color: white;
 
   }
@@ -3352,7 +3352,7 @@ body header #branding .branding-link h3 {
     height: 126vh !important;
   }
   .mobile-slider {
-    padding:0px !important;
+   padding: 100px 0px 0px 0px !important;
     
     .mobile-image-wrapper {
       overflow: hidden;
