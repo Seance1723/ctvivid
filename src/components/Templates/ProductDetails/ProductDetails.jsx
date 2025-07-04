@@ -9,7 +9,33 @@ import {
 import Footer from '../../Footer/Footer';
 
 const ProductDetails = React.forwardRef(({ onScrollUp }, ref) => {
+
     const [activeImage, setActiveImage] = useState('/products/designers/productDetails/thumbActive.jpg');
+    const mobileImages = [
+  '/products/designers/productDetails/thumbail_image_1_new.JPG',
+  '/products/designers/productDetails/thumbnail_image_2_new.JPG',
+  '/products/designers/productDetails/thumbnail_image_3_new.JPG',
+  '/products/designers/productDetails/thumbail_image_1_new.JPG',
+  '/products/designers/productDetails/thumbnail_image_2_new.JPG'
+];
+
+const [mobileImageIndex, setMobileImageIndex] = useState(0);
+const [touchStartX, setTouchStartX] = useState(null);
+
+const handleTouchEnd = (endX) => {
+  if (touchStartX === null) return;
+  const deltaX = touchStartX - endX;
+  const threshold = 30;
+
+  if (deltaX > threshold && mobileImageIndex < mobileImages.length - 1) {
+    setMobileImageIndex(mobileImageIndex + 1); // swipe left
+  } else if (deltaX < -threshold && mobileImageIndex > 0) {
+    setMobileImageIndex(mobileImageIndex - 1); // swipe right
+  }
+
+  setTouchStartX(null); // reset
+};
+
 
   // catch wheel-up and call back to parent
   useEffect(() => {
@@ -37,7 +63,7 @@ const ProductDetails = React.forwardRef(({ onScrollUp }, ref) => {
       <div className="container">
         <div className="row align-items-top">
           {/* LEFT COL */}
-          <div className="product-images col-md-7 d-flex gap-3">
+          <div className="product-images col-md-7 d-none d-md-flex gap-3">
             <div className="thumbs d-none d-md-flex flex-column gap-2">
               {/* Thumbnails */}
               <img
@@ -80,6 +106,32 @@ const ProductDetails = React.forwardRef(({ onScrollUp }, ref) => {
 
             </div>
           </div>
+          {/* Mobile Image Slider */}
+<div className="d-block d-md-none mobile-slider">
+  <div
+    className="mobile-image-wrapper"
+    onTouchStart={(e) => setTouchStartX(e.touches[0].clientX)}
+    onTouchEnd={(e) => handleTouchEnd(e.changedTouches[0].clientX)}
+  >
+    <img
+      src={mobileImages[mobileImageIndex]}
+      alt={`slide-${mobileImageIndex}`}
+      className="img-fluid"
+    />
+  </div>
+
+  {/* Dots */}
+  <div className="dots text-center mt-2">
+    {mobileImages.map((_, index) => (
+      <span
+        key={index}
+        className={`dot ${index === mobileImageIndex ? 'active' : ''}`}
+        onClick={() => setMobileImageIndex(index)}
+      ></span>
+    ))}
+  </div>
+</div>
+
 
           {/* RIGHT COL */}
           <div className="product-intro-sec col-md-5">
