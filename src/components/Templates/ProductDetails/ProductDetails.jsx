@@ -9,7 +9,33 @@ import {
 import Footer from '../../Footer/Footer';
 
 const ProductDetails = React.forwardRef(({ onScrollUp }, ref) => {
+
     const [activeImage, setActiveImage] = useState('/products/designers/productDetails/thumbActive.jpg');
+    const mobileImages = [
+  '/products/designers/productDetails/thumbail_image_1_new.JPG',
+  '/products/designers/productDetails/thumbnail_image_2_new.JPG',
+  '/products/designers/productDetails/thumbnail_image_3_new.JPG',
+  '/products/designers/productDetails/thumbail_image_1_new.JPG',
+  '/products/designers/productDetails/thumbnail_image_5_new.jpg'
+];
+
+const [mobileImageIndex, setMobileImageIndex] = useState(0);
+const [touchStartX, setTouchStartX] = useState(null);
+
+const handleTouchEnd = (endX) => {
+  if (touchStartX === null) return;
+  const deltaX = touchStartX - endX;
+  const threshold = 30;
+
+  if (deltaX > threshold && mobileImageIndex < mobileImages.length - 1) {
+    setMobileImageIndex(mobileImageIndex + 1); // swipe left
+  } else if (deltaX < -threshold && mobileImageIndex > 0) {
+    setMobileImageIndex(mobileImageIndex - 1); // swipe right
+  }
+
+  setTouchStartX(null); // reset
+};
+
 
   // catch wheel-up and call back to parent
   useEffect(() => {
@@ -37,33 +63,33 @@ const ProductDetails = React.forwardRef(({ onScrollUp }, ref) => {
       <div className="container">
         <div className="row align-items-top">
           {/* LEFT COL */}
-          <div className="product-images col-md-7 d-flex gap-3">
-            <div className="thumbs d-flex flex-column gap-2">
+          <div className="product-images col-md-7 d-none d-md-flex gap-3">
+            <div className="thumbs d-none d-md-flex flex-column gap-2">
               {/* Thumbnails */}
               <img
                 src="/products/designers/productDetails/productThumb_01.png"
                 alt="thumb1"
-                onClick={() => setActiveImage('/products/designers/productDetails/thumbnail1.png')} className="thumbnail-clickable"
+                onClick={() => setActiveImage('/products/designers/productDetails/thumbail_image_1_new.JPG')} className="thumbnail-clickable"
               />
               <img
                 src="/products/designers/productDetails/productThumb_02.png"
                 alt="thumb2"
-                onClick={() => setActiveImage('/products/designers/productDetails/thumbnail2.png')} className="thumbnail-clickable"
+                onClick={() => setActiveImage('/products/designers/productDetails/thumbnail_image_2_new.JPG')} className="thumbnail-clickable"
               />
               <img
                 src="/products/designers/productDetails/productThumb_03.png"
                 alt="thumb3"
-                onClick={() => setActiveImage('/products/designers/productDetails/thumbnail3.png')} className="thumbnail-clickable"
+                onClick={() => setActiveImage('/products/designers/productDetails/thumbnail_image_3_new.JPG')} className="thumbnail-clickable"
               />
               <img
                 src="/products/designers/productDetails/productThumb_04.png"
                 alt="thumb4"
-                onClick={() => setActiveImage('/products/designers/productDetails/thumbnail4.png')} className="thumbnail-clickable"
+                onClick={() => setActiveImage('/products/designers/productDetails/thumbnail_image_4_new.JPG')} className="thumbnail-clickable"
               />
               <img
                 src="/products/designers/productDetails/productThumb_05.png"
                 alt="thumb5"
-                 onClick={() => setActiveImage('/products/designers/productDetails/thumbnail5.png')} className="thumbnail-clickable"
+                 onClick={() => setActiveImage('/products/designers/productDetails/thumbnail_image_5_new.jpg')} className="thumbnail-clickable"
               />
             </div>
             <div className="main-image flex-grow-1">
@@ -80,18 +106,70 @@ const ProductDetails = React.forwardRef(({ onScrollUp }, ref) => {
 
             </div>
           </div>
+          {/* Mobile Image Slider */}
+<div className="d-block d-md-none mobile-slider">
+  <div
+    className="mobile-image-wrapper"
+    onTouchStart={(e) => setTouchStartX(e.touches[0].clientX)}
+    onTouchEnd={(e) => handleTouchEnd(e.changedTouches[0].clientX)}
+  >
+    <img
+      src={mobileImages[mobileImageIndex]}
+      alt={`slide-${mobileImageIndex}`}
+      className="img-fluid"
+    />
+  </div>
+
+  {/* Dots */}
+  <div className="dots text-center mt-2">
+    {mobileImages.map((_, index) => (
+      <span
+        key={index}
+        className={`dot ${index === mobileImageIndex ? 'active' : ''}`}
+        onClick={() => setMobileImageIndex(index)}
+      ></span>
+    ))}
+  </div>
+</div>
+
 
           {/* RIGHT COL */}
           <div className="product-intro-sec col-md-5">
-            <p className="breadcrumb">
+            {/* <p className="breadcrumb">
               <ul>
                 <li>Designer</li>
                 <li>Vakra</li>
                 <li>Asuri</li>
               </ul>
-            </p>
-            <h2 className="productName">ASURI – The Fierce Elegance</h2>
-            <p className="text-muted productIntro">
+            </p> */}
+            {/* Desktop Breadcrumb */}
+              <p className="breadcrumb d-none d-md-block">
+                <ul>
+                  <li>Designer</li>
+                  <li>Vakra</li>
+                  <li>Asuri</li>
+                </ul>
+              </p>
+
+              {/* Mobile Breadcrumb (inline) */}
+              <p className="breadcrumb d-block d-md-none"  style={{ marginBottom: '2px' }}>
+                Designer &gt;&gt; Vakra &gt;&gt; <span style={{ fontWeight: 500 }}>Asuri</span> 
+              </p>
+
+            <h2 className="productName d-none d-md-block">
+              ASURI – The Fierce Elegance
+            </h2>
+           <h2
+            className="productName d-block d-md-none"
+            style={{ fontWeight: 500,marginBottom: '0px'}}
+          >
+            Asuri
+          </h2>
+          <p className="d-block d-md-none text-muted" style={{ fontSize: '14px',marginBottom: '4px' }}>
+  Lorem Ipsum dolor et sum
+</p>
+
+            <p className="text-muted productIntro d-none d-md-block">
               Unveil your inner goddess with ASURI, a designer statement piece
               that merges contemporary grace with traditional craftsmanship.
               Tailored from a luxurious silk-blend fabric, ASURI flows
@@ -99,15 +177,31 @@ const ProductDetails = React.forwardRef(({ onScrollUp }, ref) => {
               that whisper bold sophistication.
             </p>
 
-            <div className="rating d-flex align-items-center gap-1">
+            {/* <div className="rating d-flex align-items-center gap-1">
               <IconStarFilled />
               <IconStarFilled />
               <IconStarFilled />
               <IconStarFilled />
               <IconStar />
-            </div>
+            </div> */}
+     <div className="rating d-flex align-items-center gap-1 d-none d-md-flex">
+  <IconStarFilled />
+  <IconStarFilled />
+  <IconStarFilled />
+  <IconStarFilled />
+  <IconStar />
+</div>
 
-            <h6 className="mt-4">Size &amp; Fit</h6>
+
+       
+
+            {/* <h6 className="mt-4">Size &amp; Fit</h6> */}
+            {/* Desktop view */}
+              <h6 className="mt-4 d-none d-md-block">Size &amp; Fit</h6>
+
+              {/* Mobile view */}
+              <h6 className="mt-4 d-block d-md-none">Size &amp; Fit Guide</h6>
+
 
             <div className="d-flex gap-3 align-items-center mt-2">
               <select

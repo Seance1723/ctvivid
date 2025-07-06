@@ -52,7 +52,7 @@ const handleCollaborateClick = (e) => {
 
   return (
     <footer className={footerClasses}>
-      <div className="container d-flex flex-column flex-md-row justify-content-between align-items-start gap-4">
+      <div className="container d-flex flex-column flex-md-row justify-content-between align-items-start gap-0 gap-md-4">
         {/* Logo + copyright */}
         <div className="footer-brand">
           <h4 className="logo">VIVIDARA</h4>

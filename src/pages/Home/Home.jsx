@@ -303,9 +303,8 @@ const Home = () => {
         /> */}
         <video className="cta-bg-video" autoPlay muted loop playsInline>
           <source src="/pages/Home/home-footer-sec.mp4" media="(min-width: 768px)" />
-          <source src="footer-mobileview.mp4" media="(max-width: 767px)" />
+          <source src="/pages/Home/footer-mobileview.mp4" media="(max-width: 767px)" />
         </video>
-
         <div className="container section-content">
           <div className='footer-content'>
             <h2>We're all ears!</h2>

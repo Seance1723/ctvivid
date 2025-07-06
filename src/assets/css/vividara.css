@@ -3334,4 +3334,45 @@ body header #branding .branding-link h3 {
   .cta-withArrowDark, .cta-exploreMore {
     display:none !important;
   }
+  .floating-footer{
+    position: relative !important;
+    background-color: #4D4D4D;
+    margin-top: 6px;
+    color: white;
+
+  }
+  #productDetails .product-intro-sec {
+    padding-left: 16px !important;
+  }
+  select.form-select{
+     padding-top: 10px !important;
+     padding-bottom: 10px !important;
+  }
+    .homepage-container .homepage-section.aboutus-section {
+    height: 126vh !important;
+  }
+  .mobile-slider {
+   padding: 100px 0px 0px 0px !important;
+    
+    .mobile-image-wrapper {
+      overflow: hidden;
+      width: 100%;
+    }
+
+    .dots {
+      .dot {
+        display: inline-block;
+        height: 10px;
+        width: 10px;
+        border-radius: 50%;
+        margin: 0 5px;
+        background-color: #ccc;
+      }
+
+      .dot.active {
+        background-color: red;
+      }
+    }
+}
+
 }
