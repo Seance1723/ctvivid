@@ -1,7 +1,9 @@
 // src/App.jsx 
 
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+// Use HashRouter to ensure routing works on static hosts without server-side
+// route handling (avoids 404s when the page reloads)
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 
 import NavLayout from './components/Layout/NavLayout/NavLayout';
 
