@@ -1,5 +1,3 @@
-// src/components/Templates/ProductVideo/ProductVideo.jsx
-
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -7,49 +5,83 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 export default function ProductVideo({ onAddToCartClick, onScrollUp, onScrollDown }) {
-  const videoRef   = useRef(null);
+  const videoRef = useRef(null);
   const sectionRef = useRef(null);
+  const touchStartY = useRef(0);
 
-  // wheel handler: up → call onScrollUp, swallow down
+  // 1️⃣ Set --vh and trigger layout update
+  useEffect(() => {
+    const setVh = () => {
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+    };
+    setVh();
+
+    // Trigger ScrollTrigger refresh after layout update
+    setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 100);
+
+    window.addEventListener('resize', () => {
+      setVh();
+      ScrollTrigger.refresh();
+    });
+
+    return () => {
+      window.removeEventListener('resize', setVh);
+    };
+  }, []);
+
+  // 2️⃣ Scroll up/down via wheel and touch
   useEffect(() => {
     const node = sectionRef.current;
     if (!node) return;
 
-    const onWheel = e => {
+    const onWheel = (e) => {
       e.preventDefault();
-      if (e.deltaY < 0) {
-        // scroll up → go back to the Hero section
-        onScrollUp?.();
-      } else {
-        //e.preventDefault();
-        // scroll down → go to the Details section
-        //onAddToCartClick?.();
-        onScrollDown?.();
-      }
+      e.deltaY < 0 ? onScrollUp?.() : onScrollDown?.();
+    };
+
+    const onTouchStart = (e) => {
+      touchStartY.current = e.touches[0].clientY;
+    };
+
+    const onTouchMove = (e) => {
+      const deltaY = touchStartY.current - e.touches[0].clientY;
+      if (Math.abs(deltaY) < 30) return;
+      deltaY > 0 ? onScrollDown?.() : onScrollUp?.();
     };
 
     node.addEventListener('wheel', onWheel, { passive: false });
-    return () => node.removeEventListener('wheel', onWheel);
-  }, [onScrollUp]);
+    node.addEventListener('touchstart', onTouchStart, { passive: true });
+    node.addEventListener('touchmove', onTouchMove, { passive: true });
 
-  // video play/pause via ScrollTrigger
+    return () => {
+      node.removeEventListener('wheel', onWheel);
+      node.removeEventListener('touchstart', onTouchStart);
+      node.removeEventListener('touchmove', onTouchMove);
+    };
+  }, [onScrollUp, onScrollDown]);
+
+  // 3️⃣ ScrollTrigger playback logic
   useEffect(() => {
     if (!videoRef.current) return;
+
     videoRef.current.loop = true;
 
     const trig = ScrollTrigger.create({
-      trigger:      sectionRef.current,
-      start:        'top center',
-      end:          'bottom center',
-      onEnter:      () => videoRef.current.play().catch(() => {}),
-      onEnterBack:  () => videoRef.current.play().catch(() => {}),
-      onLeave:      () => videoRef.current.pause(),
-      onLeaveBack:  () => videoRef.current.pause(),
+      trigger: sectionRef.current,
+      start: 'top center',
+      end: 'bottom center',
+      onEnter: () => videoRef.current.play().catch(() => {}),
+      onEnterBack: () => videoRef.current.play().catch(() => {}),
+      onLeave: () => videoRef.current.pause(),
+      onLeaveBack: () => videoRef.current.pause(),
     });
+
     return () => trig.kill();
   }, []);
 
-  // clicking CTA only ever goes forward via the parent callback
   const handleClick = () => {
     onAddToCartClick?.();
   };
@@ -62,7 +94,6 @@ export default function ProductVideo({ onAddToCartClick, onScrollUp, onScrollDow
         className="video-player"
         muted
         playsInline
-        webkit-playsinline
         autoPlay
         preload="auto"
         loop

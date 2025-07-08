@@ -338,13 +338,21 @@ export default function ProductInfo({
       }
       return () => document.body.classList.remove('modal-open');
     }, [isModalOpen]);
-    useEffect(() =>{
-      isAnimating.current = true;
-      setTimeout(() => {
-        if(isAnimating.current == true)
-          isAnimating.current = false
-      }, 1500);
-    },[scrolling])
+    useEffect(() => {
+  // Lock scroll immediately when index changes
+  isAnimating.current = true;
+
+  // Safety timeout fallback: unlock after 1.2s
+  const timeout = setTimeout(() => {
+    if (isAnimating.current) {
+      isAnimating.current = false;
+      console.log('Fallback timeout released animation lock');
+    }
+  }, 1200); // adjust this to match your CSS transition time
+
+  return () => clearTimeout(timeout);
+}, [index]);
+
   // wheel handler: scroll through slides or bubble out
   // useEffect(() => {
   //   console.log("triggered",index,onFirstPanelUp.onLastPanelDown)
@@ -418,24 +426,27 @@ export default function ProductInfo({
     isAnimating.current = true;
 
     if (d > 0) {
-      setIndex((i) => {
-        if (i < highlightsData.length - 1) {
-          return i + 1;
-        } else {
-          onLastPanelDown?.();
-          return i;
-        }
-      });
+  setIndex((i) => {
+    if (i < highlightsData.length - 1) {
+      return i + 1;
     } else {
-      setIndex((i) => {
-        if (i > 0) {
-          return i - 1;
-        } else {
-          onFirstPanelUp?.();
-          return i;
-        }
-      });
+      onLastPanelDown?.();
+      isAnimating.current = false; // ✅ unlock
+      return i;
     }
+  });
+} else {
+  setIndex((i) => {
+    if (i > 0) {
+      return i - 1;
+    } else {
+      onFirstPanelUp?.();
+      isAnimating.current = false; // ✅ unlock
+      return i;
+    }
+  });
+}
+
   };
 
   // 👉 Mobile: touch support
@@ -456,24 +467,27 @@ export default function ProductInfo({
     lastTouchTime = now;
 
     if (deltaY > 0) {
-      setIndex((i) => {
-        if (i < highlightsData.length - 1) {
-          return i + 1;
-        } else {
-          onLastPanelDown?.();
-          return i;
-        }
-      });
+  setIndex((i) => {
+    if (i < highlightsData.length - 1) {
+      return i + 1;
     } else {
-      setIndex((i) => {
-        if (i > 0) {
-          return i - 1;
-        } else {
-          onFirstPanelUp?.();
-          return i;
-        }
-      });
+      onLastPanelDown?.();
+      isAnimating.current = false; // ✅ unlock
+      return i;
     }
+  });
+} else {
+  setIndex((i) => {
+    if (i > 0) {
+      return i - 1;
+    } else {
+      onFirstPanelUp?.();
+      isAnimating.current = false; // ✅ unlock
+      return i;
+    }
+  });
+}
+
   };
 
   el.addEventListener('wheel', handler, { passive: false });
@@ -502,8 +516,10 @@ export default function ProductInfo({
 
   // re-enable wheel after the CSS transition
   const onTransitionEnd = () => {
-    isAnimating.current = false;
-  };
+  if (!isAnimating.current) return;
+  isAnimating.current = false;
+};
+
 
   return (
     <div className="product-info-slider" ref={containerRef}>

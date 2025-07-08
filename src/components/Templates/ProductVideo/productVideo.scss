@@ -1,0 +1,46 @@
+:root {
+  --vh: 1vh;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+.product-video-section {
+  height: calc(var(--vh, 1vh) * 100); // Respect mobile height
+  width: 100vw;
+  position: relative;
+  overflow: hidden;
+
+  video.video-player {
+    width: 100vw;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+
+  .cta-addToCart {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    z-index: 10;
+  }
+}
+
+// Mobile Fix
+@media (max-width: 768px) {
+  .product-video-section {
+    height: calc(var(--vh, 1vh) * 100); // ensure it's not auto height
+    width: 100vw;
+  }
+}
