@@ -3334,6 +3334,11 @@ body header #branding .branding-link h3 {
   .cta-withArrowDark, .cta-exploreMore {
     display:none !important;
   }
+  .homepage-container .cta-section .footer-content p {
+  font-size: 22px;
+  line-height: 36px;
+  font-weight: 500;
+}
   .site-footer .footer-brand .logo {
   font-family: "Brown Sugar";
   font-size: 18px;
@@ -3361,7 +3366,7 @@ body header #branding .branding-link h3 {
      padding-bottom: 10px !important;
   }
     .homepage-container .homepage-section.aboutus-section {
-    height: 126vh !important;
+    height: 155vh !important;
   }
   .mobile-slider {
    padding: 100px 0px 0px 0px !important;

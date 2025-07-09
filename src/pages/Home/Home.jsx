@@ -184,7 +184,7 @@ const Home = () => {
               >
                 <div className="action-area">
                   <h4 className="product-name">Asuri</h4>
-                  <Link to="/designers" className="cta cta-text p-0">Shop Now</Link>
+                  <Link to="/designers" className="cta cta-text p-0" style={{ top: '135%' ,width:'40vw'}}>Shop Now</Link>
                 </div>
               </div>
             </div>
@@ -249,7 +249,7 @@ const Home = () => {
               <div className='product-left w-100 h-100' style={{ backgroundImage: "url('/pages/Home/home-product-left.png')" }}>
                 <div className='action-area'>
                   <h4 className='product-name'>Asuri</h4>
-                  <Link to="/designers" className="cta cta-text p-0">Shop Now</Link>
+                  <Link to="/designers" className="cta cta-text p-0" style={{ top: '135%' }}>Shop Now</Link>
                 </div>
               </div>
             </div>
@@ -319,7 +319,8 @@ const Home = () => {
                 className="form-control"
                 required
               />
-              <button type="submit" className="cta cta-primary">Continue</button>
+              <button type="submit" className="cta cta-primary" style={{ width: '100%' }}
+>Continue</button>
             </form>
           </div>
         </div>
