@@ -160,12 +160,12 @@ const ProductDetails = React.forwardRef(({ onScrollUp }, ref) => {
         @media (min-width: 415px) and (max-width: 767px) {
           .mobile-hero-section {
             height: 45vh !important;
-            max-height: 400px !important;
+            // max-height: 400px !important;
           }
           
-          .mobile-content {
-            padding: 20px 24px 20px !important;
-          }
+          // .mobile-content {
+          //   padding: 20px 24px 20px !important;
+          // }
         }
 
         /* Landscape orientation */
@@ -214,7 +214,7 @@ const ProductDetails = React.forwardRef(({ onScrollUp }, ref) => {
 
           .mobile-product-view {
             width: 100vw;
-            min-height: 100vh;
+            min-height: 50vh;
             background: white;
             position: relative;
             overflow-x: hidden;
@@ -251,6 +251,7 @@ const ProductDetails = React.forwardRef(({ onScrollUp }, ref) => {
             object-fit: cover;
             object-position: center;
             display: block;
+                    margin-top: 0px;
           }
 
           /* Brand Overlay - REMOVED */
@@ -291,11 +292,11 @@ const ProductDetails = React.forwardRef(({ onScrollUp }, ref) => {
             background: white;
             position: relative;
             flex: 1;
-            padding-bottom: 20px;
+            // padding-bottom: 20px;
           }
 
           .mobile-content {
-            padding: 16px 20px 16px;
+            padding: 16px 20px 7px;
             max-width: 100%;
           }
 
@@ -303,7 +304,7 @@ const ProductDetails = React.forwardRef(({ onScrollUp }, ref) => {
           .mobile-breadcrumb {
             font-size: 14px;
             color: #999;
-            margin: 0 0 16px 0;
+            margin: 0 0 0 0;
             font-weight: 400;
             line-height: 1.4;
           }
@@ -315,10 +316,10 @@ const ProductDetails = React.forwardRef(({ onScrollUp }, ref) => {
 
           /* Mobile Product Title - exact match */
           .mobile-product-title {
-            font-size: 24px;
+            font-size: 20px;
             font-weight: 500;
             color: #333;
-            margin: 0 0 4px 0;
+            margin: 0 0 0 0;
             line-height: 1.2;
           }
 
@@ -326,7 +327,7 @@ const ProductDetails = React.forwardRef(({ onScrollUp }, ref) => {
           .mobile-product-subtitle {
             font-size: 14px;
             color: #999;
-            margin: 0 0 20px 0;
+            margin: 0 0 0 0;
             line-height: 1.4;
           }
 
@@ -360,19 +361,19 @@ const ProductDetails = React.forwardRef(({ onScrollUp }, ref) => {
             font-size: 16px;
             font-weight: 500;
             color: #333;
-            margin-bottom: 12px;
+            margin-bottom: 4px;
           }
 
           /* Mobile Dropdowns - compact spacing */
           .mobile-dropdowns {
             display: flex;
             gap: 12px;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
           }
 
           .mobile-select {
             flex: 1;
-            padding: 16px 16px;
+            padding: 10px 10px;
             border: 1px solid #ddd;
             border-radius: 12px;
             font-size: 15px;
@@ -385,7 +386,7 @@ const ProductDetails = React.forwardRef(({ onScrollUp }, ref) => {
             background-repeat: no-repeat;
             background-size: 16px;
             padding-right: 48px;
-            min-height: 52px;
+            // min-height: 52px;
           }
 
           .mobile-select:focus {
@@ -403,7 +404,7 @@ const ProductDetails = React.forwardRef(({ onScrollUp }, ref) => {
 
           .mobile-btn {
             flex: 1;
-            padding: 14px 20px;
+            padding: 10px 10px;
             border-radius: 12px;
             font-size: 16px;
             font-weight: 500;
@@ -437,6 +438,20 @@ const ProductDetails = React.forwardRef(({ onScrollUp }, ref) => {
             color: white;
             transform: translateY(-1px);
           }
+            @media (max-width: 767px) {
+  .floating-footer {
+    position: absolute;
+    bottom: 0;
+    z-index: 1000;
+    border-top: 1px solid #ccc;
+    margin-top:0px;
+  }
+
+  // .mobile-content-section {
+  //   padding-bottom: 70px; /* adjust for footer height */
+  // }
+}
+
 
           /* Mobile Footer Section - REMOVED */
         }
@@ -538,10 +553,17 @@ const ProductDetails = React.forwardRef(({ onScrollUp }, ref) => {
                 </select>
               </div>
 
-              <div className="mt-4 d-flex gap-3">
+              {/* <div className="mt-4 d-flex gap-3" >
                 <button className="cta cta-primary">Buy Now</button>
                 <button className="cta cta-primary-outline">Add to Cart</button>
+              </div> */}
+              <div className="mt-4 d-flex gap-3 flex-wrap">
+                <button className="cta cta-primary">Buy Now</button>
+                <button className="cta cta-primary-outline" style={{ marginLeft: '14%' }}>Add to Cart</button>
               </div>
+
+
+
             </div>
           </div>
         </div>
@@ -579,16 +601,22 @@ const ProductDetails = React.forwardRef(({ onScrollUp }, ref) => {
           <div className="mobile-content-section" id="mobile-content">
             <div className="mobile-content">
               {/* Mobile Breadcrumb */}
-              <p className="mobile-breadcrumb">
+              {/* <p className="mobile-breadcrumb">
                 Designer &gt;&gt; Vakra &gt;&gt; <span className="breadcrumb-highlight">Asuri</span>
-              </p>
+              </p> */}
 
               {/* Mobile Product Info */}
-              <h1 className="mobile-product-title">Asuri</h1>
-              <p className="mobile-product-subtitle">Lorem Ipsum dolor et sum</p>
+              
+              {/* <h1 className="mobile-product-title">Asuri</h1>
+              <p className="mobile-product-subtitle">Lorem Ipsum dolor et sum</p> */}
+              <div className="d-flex d-sm-block align-items-center gap-2">
+  <h1 className="mobile-product-title mb-0">Asuri</h1>
+  <p className="mobile-product-subtitle mb-0">Lorem Ipsum dolor et sum</p>
+</div>
+
 
               {/* Mobile Rating */}
-              <div className="mobile-rating">
+              {/* <div className="mobile-rating">
                 <div className="mobile-stars">
                   <IconStarFilled />
                   <IconStarFilled />
@@ -597,7 +625,18 @@ const ProductDetails = React.forwardRef(({ onScrollUp }, ref) => {
                   <IconStarFilled />
                 </div>
                 <span className="mobile-rating-text">** Review</span>
+              </div> */}
+              <div className="mobile-rating d-none d-md-flex">
+              <div className="mobile-stars">
+                <IconStarFilled />
+                <IconStarFilled />
+                <IconStarFilled />
+                <IconStarFilled />
+                <IconStarFilled />
               </div>
+              <span className="mobile-rating-text">** Review</span>
+            </div>
+
 
               {/* Mobile Size & Fit */}
               <h3 className="mobile-size-title">Size & Fit Guide</h3>
@@ -627,7 +666,7 @@ const ProductDetails = React.forwardRef(({ onScrollUp }, ref) => {
         </div>
 
         {/* Desktop Footer - REMOVED VIVIDARA */}
-        {/* <Footer className="floating-footer pt-3 pb-2 d-none d-md-block" /> */}
+        <Footer className="floating-footer pt-3 pb-2" />
       </section>
     </>
   );

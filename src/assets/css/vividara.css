@@ -3334,6 +3334,18 @@ body header #branding .branding-link h3 {
   .cta-withArrowDark, .cta-exploreMore {
     display:none !important;
   }
+  .site-footer .footer-brand .logo {
+  font-family: "Brown Sugar";
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom:2px;
+  padding-left: 5px;
+}
+.site-footer .footer-links ul li {
+  margin-bottom: 2px;
+  cursor: pointer;
+}
+  
   .floating-footer{
     position: relative !important;
     background-color: #4D4D4D;

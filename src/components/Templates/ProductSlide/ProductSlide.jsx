@@ -6,22 +6,46 @@ import { Draggable } from 'gsap/Draggable';
 
 gsap.registerPlugin(Draggable);
 
+// const productHeroImages = [
+//   '/products/designers/Designer_01.png',
+//   '/products/designers/Designer_02.png',
+//   '/products/designers/Designer_03.png',
+//   '/products/designers/Designer_04.png',
+//   '/products/designers/Designer_05.png',
+//   '/products/designers/Designer_06.png',
+// ];
+
+// const taglines = [
+//   "The touch reveals the void, the nothingness.",
+//   "Even as the searing heat radiates, the finger inches closer.",
+//   "Phantom flames lick the burning flesh, a pretty lesson etched in pain.",
+//   "A primal urge stirs within—to touch, to capture.",
+//   "What draws one to touch a burning flame?",
+//   "Dancing scarlet embers draw attention.",
+// ];
+
 const productHeroImages = [
+
+    '/products/designers/Designer_05.png',
+    '/products/designers/Designer_06.png',
+    '/products/designers/Designer_04.png',
+    '/products/designers/Designer_02.png',
   '/products/designers/Designer_01.png',
-  '/products/designers/Designer_02.png',
   '/products/designers/Designer_03.png',
-  '/products/designers/Designer_04.png',
-  '/products/designers/Designer_05.png',
-  '/products/designers/Designer_06.png',
+
+
+  
 ];
 
 const taglines = [
-  "The touch reveals the void, the nothingness.",
-  "Even as the searing heat radiates, the finger inches closer.",
-  "Phantom flames lick the burning flesh, a pretty lesson etched in pain.",
-  "A primal urge stirs within—to touch, to capture.",
   "What draws one to touch a burning flame?",
   "Dancing scarlet embers draw attention.",
+  "A primal urge stirs within—to touch, to capture.",
+  "Even as the searing heat radiates, the finger inches closer.",
+  "The touch reveals the void, the nothingness.",
+  "Phantom flames lick the burning flesh, a pretty lesson etched in pain.",
+
+
 ];
 
 const clamp = (v, min, max) => (v < min ? min : v > max ? max : v);
