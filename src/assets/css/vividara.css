@@ -3215,6 +3215,7 @@ body header #branding .branding-link h3 {
     cursor: pointer;
     margin-top: 5px;
     font-size: 1rem;
+    width:100%;
   }
 }
 .homepage-container .cta-section .section-content {
@@ -3316,7 +3317,7 @@ body header #branding .branding-link h3 {
   .homepage-container .homepage-section.cta-section .section-content {
     position: relative;
     left: 0;
-    top: 110px;
+    top: 250px;
     right: 0;
     transform: none;
   }
@@ -3366,7 +3367,7 @@ body header #branding .branding-link h3 {
      padding-bottom: 10px !important;
   }
     .homepage-container .homepage-section.aboutus-section {
-    height: 155vh !important;
+    height: 150vh !important;
   }
   .mobile-slider {
    padding: 100px 0px 0px 0px !important;

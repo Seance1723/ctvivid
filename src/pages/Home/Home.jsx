@@ -16,6 +16,33 @@ import 'swiper/css';
 
 const Home = () => {
     const location = useLocation();
+    const ResponsiveVideo = ({ desktopSrc, mobileSrc, className, poster }) => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth <= 767);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  return (
+    <video
+      className={className}
+      autoPlay
+      muted
+      loop
+      playsInline
+      poster={poster}
+      preload="auto"
+      webkit-playsinline="true"
+    >
+      <source src={isMobile ? mobileSrc : desktopSrc} type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  );
+};
+
 
   useEffect(() => {
     if (location.state?.scrollTo) {
@@ -118,10 +145,17 @@ const Home = () => {
           webkit-playsinline
         /> */}
 
-        <video className="hero-video" autoPlay muted loop playsInline>
+        {/* <video className="hero-video" autoPlay muted loop playsInline>
          <source src="/pages/Home/home-hero-sec.mp4" media="(min-width: 768px)" />
          <source src="/pages/Home/home-mobileview.mp4"  media="(max-width: 767px)" />
-        </video>
+        </video> */}
+        <ResponsiveVideo
+  className="hero-video"
+  desktopSrc="/pages/Home/home-hero-sec.mp4"
+  mobileSrc="/pages/Home/home-mobileview.mp4"
+  poster="/pages/Home/home-hero-sec-poster.jpg"
+/>
+
 
         <div className="section-content container" style={{ top: '80%' }}>
           <div className="row d-flex justify-content-between align-items-center">
@@ -301,10 +335,16 @@ const Home = () => {
           playsInline
           webkit-playsinline
         /> */}
-        <video className="cta-bg-video" autoPlay muted loop playsInline>
+        {/* <video className="cta-bg-video" autoPlay muted loop playsInline>
           <source src="/pages/Home/home-footer-sec.mp4" media="(min-width: 768px)" />
           <source src="/pages/Home/footer-mobileview.mp4" media="(max-width: 767px)" />
-        </video>
+        </video> */}
+        <ResponsiveVideo
+  className="cta-bg-video"
+  desktopSrc="/pages/Home/home-footer-sec.mp4"
+  mobileSrc="/pages/Home/footer-mobileview.mp4"
+/>
+
         <div className="container section-content">
           <div className='footer-content'>
             <h2>We're all ears!</h2>
@@ -319,7 +359,7 @@ const Home = () => {
                 className="form-control"
                 required
               />
-              <button type="submit" className="cta cta-primary" style={{ width: '100%' }}
+              <button type="submit" className="cta cta-primary" 
 >Continue</button>
             </form>
           </div>
