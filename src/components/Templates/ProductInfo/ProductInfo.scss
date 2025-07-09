@@ -51,119 +51,6 @@
       height: 1px;
       background: #717171;
       opacity: 0;
-      width: var(--line-length);       /* Full length (in px) is stored in CSS var */
-      transform: scaleX(0);            /* Collapsed initially */
-      z-index: 2;
-      transition:
-        transform 2s ease-out,
-        opacity   0.5s ease-in 0.1s;
-      transform-origin: left center;   /* Default: grow left→right */
-    }
-
-    &.active .line {
-      opacity: 1;
-      transform: scaleX(1);            /* Expand to full width */
-    }
-
-    /* When lineDirection = "left", override origin so that scaleX(1) grows right→left */
-    .line.left {
-      transform-origin: right center;
-    }
-
-    /* (Optional) if you still want a ".line.right" class, you can explicitly set origin too: */
-    .line.right {
-      transform-origin: left center;
-    }
-
-    /* ---- content box (animated from left or right) ---- */
-    .highlight-content {
-      position: absolute;
-      padding: 0.5rem;
-      background: none;
-      color: var(--primary-color);
-      opacity: 0;
-      transform: translateX(50px); /* Default: slide in from the right */
-      transition:
-        transform 0.4s ease-out 0.6s,
-        opacity   0.4s ease-out 0.6s;
-      z-index: 4;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-
-      /* If contentSide="right", keep transform: translateX(50px) */
-      &.right {
-        transform: translateX(50px);
-      }
-      /* If contentSide="left", start offscreen to the left */
-      &.left {
-        transform: translateX(-50px);
-      }
-
-      img {
-        width: 100%;
-        margin-bottom: 0.5rem;
-      }
-      h4 {
-        margin: 0 0 0.25rem;
-      }
-      p {
-        margin: 0;
-        font-size: 0.875rem;
-      }
-    }/* src/components/Templates/ProductInfo/ProductInfo.scss */
-
-.product-info-slider {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-
-  .slides {
-    width: 100%;
-    height: auto;          /* stack all panels vertically */
-    transition: transform 0.8s ease;
-  }
-
-  .slide {
-    position: relative;
-    width: 100vw;
-    height: 100dvh;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    .bg-image {
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      height: 100%;
-      object-fit: cover;
-      z-index: 1;
-    }
-
-    /* ---- always‐visible dot ---- */
-    .dot {
-      position: absolute;
-      width: 8px;
-      height: 8px;
-      background: #ffffff;
-      border: 3px solid #717171;
-      border-radius: 50%;
-      transform: translate(-50%, -50%) scale(1);
-      opacity: 1;
-      z-index: 3;
-      box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
-    }
-
-    /* ---- horizontal line (animated via scaleX) ---- */
-    .line {
-      position: absolute;
-      height: 1px;
-      background: #717171;
-      opacity: 0;
       width: var(--line-length);      /* full length in px */
       z-index: 2;
       transition:
@@ -171,7 +58,7 @@
         opacity   0.5s ease-in 0.1s;
     }
 
-    /* When this panel becomes “active,” un-collapse the line */
+    /* When this panel becomes "active," un-collapse the line */
     &.active .line {
       opacity: 1;
     }
@@ -238,53 +125,324 @@
   }
 }
 
+/* ------------------------- */
+/* 🔧 Mobile Responsive Design - Exact Match to Design Images */
+/* ------------------------- */
+@media (max-width: 768px) {
+  .product-info-slider {
+    .slide {
+      height: 100vh !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important; /* Changed back to center for perfect positioning */
+      padding: 20px 20px 80px 20px !important; /* Reduced top padding since no header */
+      background: #ffffff !important;
+      box-sizing: border-box;
 
-    &.active .highlight-content {
-      opacity: 1;
-      transform: translateX(0);
+      /* Hide desktop elements completely */
+      .line,
+      .dot {
+        display: none !important;
+      }
+
+      /* Hide desktop highlight content */
+      .highlight-content {
+        display: none !important;
+      }
+
+      /* Mobile content card - optimized for perfect screen fit */
+      .mobile-content-card {
+        position: relative;
+        width: 100%;
+        max-width: 100%; /* Use full width for better aspect ratio */
+        height: calc(100vh - 120px); /* Optimized height for perfect screen fit */
+        min-height: 665px; /* Increased minimum height for better proportions */
+        max-height: calc(100vh - 120px); /* Match the calculated height */
+        background: #ffffff;
+        border-radius: 16px; /* Slightly larger border radius for modern look */
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 12px 32px rgb(246, 243, 242); /* Softer, more modern shadow */
+        margin: 0 auto; /* Center the container perfectly */
+      }
+
+      /* Background image - optimized for perfect aspect ratio */
+      .bg-image {
+        position: relative !important;
+        width: 100% !important;
+        height: 75% !important; /* Increased to 75% for better image display */
+        min-height: 400px !important; /* Increased minimum height for better proportions */
+        max-height: 500px !important; /* Increased maximum height */
+        object-fit: cover !important;
+        object-position: center !important; /* Center the image for best composition */
+        top: 0 !important;
+        left: 0 !important;
+        transform: none !important;
+        z-index: 1;
+        flex-shrink: 0; /* Prevent image from shrinking */
+      }
+
+      /* Mobile thumbnail overlay - repositioned for optimal viewing */
+      .mobile-thumbnail-overlay {
+        position: absolute;
+        top: 35%; /* Adjusted for better positioning */
+        right: 20px; /* Slightly more spacing from edge */
+        transform: translateY(-50%) scale(0.8);
+        opacity: 0;
+        z-index: 15;
+        transition: transform 0.4s ease-out 0.4s, opacity 0.4s ease-out 0.4s;
+
+        img {
+          width: 110px; /* Slightly larger for better visibility */
+          height: auto;
+          border-radius: 12px; /* Increased border radius */
+          box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25); /* Enhanced shadow */
+          border: 3px solid rgba(255, 255, 255, 0.95); /* Slightly thicker border */
+        }
+      }
+
+      /* Mobile text content - positioned at bottom of card with flex grow */
+      .mobile-text-content {
+        position: relative;
+        padding: 12px 20px 15px 20px; /* Reduced top/bottom padding to save space */
+        text-align: center;
+        background: #ffffff;
+        flex: 1; /* Take remaining space */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between; /* Distribute space evenly */
+        z-index: 10;
+        min-height: 100px; /* Reduced minimum height to allow more space for image */
+        overflow-y: auto; /* Allow scrolling if content is too long */
+
+        h2 {
+          color: #333333;
+          font-size: 17px; /* Slightly reduced font size to save space */
+          font-weight: 600;
+          margin: 0 0 6px 0; /* Reduced margin */
+          letter-spacing: 0.5px;
+          flex-shrink: 0; /* Prevent title from shrinking */
+        }
+
+        p {
+          color: #666666;
+          font-size: 11px; /* Slightly reduced font size */
+          line-height: 1.3; /* Tightened line height */
+          margin: 0 0 10px 0; /* Reduced margin */
+          flex: 1; /* Allow paragraph to take available space */
+          overflow-y: auto; /* Allow scrolling if text is too long */
+        }
+
+        .mobile-action-buttons {
+          display: flex;
+          gap: 12px;
+          justify-content: center;
+          margin-top: auto;
+          padding-top: 10px; /* Add some spacing above buttons */
+          transform: translateY(20px);
+          opacity: 0;
+          transition: transform 0.5s ease-out 0.6s, opacity 0.5s ease-out 0.6s;
+          flex-shrink: 0; /* Prevent buttons from shrinking */
+
+          .mobile-btn-outline,
+          .mobile-btn-filled {
+            width: 120px;
+            height: 36px;
+            border-radius: 18px;
+            font-size: 12px;
+            font-weight: 400;
+            border: 1px solid #333333;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: none;
+          }
+
+          .mobile-btn-outline {
+            background: transparent;
+            color: #333333;
+            border-color: #333333;
+
+            &:hover {
+              background: #333333;
+              color: #ffffff;
+            }
+          }
+
+          .mobile-btn-filled {
+            background: #333333;
+            color: #ffffff;
+            border-color: #333333;
+
+            &:hover {
+              background: transparent;
+              color: #333333;
+            }
+          }
+        }
+      }
+
+      /* Mobile Text Animations */
+      .mobile-title-animate {
+        transform: translateX(-100%);
+        opacity: 0;
+        transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+      }
+
+      .mobile-description-animate {
+        transform: translateX(100%);
+        opacity: 0;
+        transition: transform 0.6s ease-out 0.2s, opacity 0.6s ease-out 0.2s;
+      }
+
+      /* When slide becomes active, animate the text in */
+      &.active {
+        .mobile-title-animate {
+          transform: translateX(0);
+          opacity: 1;
+        }
+
+        .mobile-description-animate {
+          transform: translateX(0);
+          opacity: 1;
+        }
+
+        .mobile-thumbnail-overlay {
+          transform: translateY(-50%) scale(1);
+          opacity: 1;
+        }
+
+        .mobile-action-buttons {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+    }
+
+    /* Hide desktop CTA buttons on mobile */
+    .cta {
+      display: none !important;
     }
   }
 }
 
+/* Desktop CTA button styles */
+.cta {
+  position: absolute;
+  z-index: 100;
+  padding: 12px 24px;
+  background: #000;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s ease;
 
+  &.right_bottom {
+    bottom: 20px;
+    right: 20px;
+  }
 
-@media (max-width: 768px) {
-.product-info-slider .slide .bg-image{
-  height:80% !important;
+  &.left_bottom {
+    bottom: 20px;
+    left: 20px;
+  }
 
-    left: 51%;
+  &:hover {
+    background: #333;
+  }
 }
 
-.product-info-slider .slide .line {
-  display:none !important;
-}
-.product-info-slider .slide .dot{
-  display:none !important;
-}
-.product-info-slider .slide .highlight-content img {
-  width:110px !important;
-}
-
-.product-info-slider .slide .highlight-content p {
-  font-size: 10px !important;
+/* Modal Styles */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1050;
 }
 
-
+.modal-dialog {
+  position: relative;
+  width: auto;
+  margin: 10px;
+  pointer-events: none;
 }
 
+@media (min-width: 576px) {
+  .modal-dialog {
+    max-width: 500px;
+    margin: 1.75rem auto;
+  }
+}
 
+.modal-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  pointer-events: auto;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+}
 
+.close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 1;
 
+  span {
+    color: #000;
+  }
+}
 
+.modal-body {
+  position: relative;
+  flex: 1 1 auto;
+  padding: 20px;
 
+  h5 {
+    margin: 0 0 10px 0;
+    font-size: 16px;
+    font-weight: 600;
+  }
 
+  p {
+    margin: 0 0 15px 0;
+    font-size: 14px;
+    line-height: 1.5;
 
+    &.mt-3 {
+      margin-top: 20px;
+    }
+  }
+}
 
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1040;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
 
+  &.show {
+    opacity: 0.5;
+  }
+}
 
-
-
-
-
-
-
+/* Prevent body scroll when modal is open */
+.modal-open {
+  overflow: hidden;
+}
