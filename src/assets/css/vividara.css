@@ -3215,6 +3215,7 @@ body header #branding .branding-link h3 {
     cursor: pointer;
     margin-top: 5px;
     font-size: 1rem;
+    width:100%;
   }
 }
 .homepage-container .cta-section .section-content {
@@ -3316,7 +3317,7 @@ body header #branding .branding-link h3 {
   .homepage-container .homepage-section.cta-section .section-content {
     position: relative;
     left: 0;
-    top: 110px;
+    top: 250px;
     right: 0;
     transform: none;
   }
@@ -3334,6 +3335,23 @@ body header #branding .branding-link h3 {
   .cta-withArrowDark, .cta-exploreMore {
     display:none !important;
   }
+  .homepage-container .cta-section .footer-content p {
+  font-size: 22px;
+  line-height: 36px;
+  font-weight: 500;
+}
+  .site-footer .footer-brand .logo {
+  font-family: "Brown Sugar";
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom:2px;
+  padding-left: 5px;
+}
+.site-footer .footer-links ul li {
+  margin-bottom: 2px;
+  cursor: pointer;
+}
+  
   .floating-footer{
     position: relative !important;
     background-color: #4D4D4D;
@@ -3349,7 +3367,7 @@ body header #branding .branding-link h3 {
      padding-bottom: 10px !important;
   }
     .homepage-container .homepage-section.aboutus-section {
-    height: 126vh !important;
+    height: 150vh !important;
   }
   .mobile-slider {
    padding: 100px 0px 0px 0px !important;

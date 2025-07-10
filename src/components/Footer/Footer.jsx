@@ -86,10 +86,10 @@ const handleCollaborateClick = (e) => {
         </div> */}
 
         {/* Having only About us and Collaborate with us in the footer */}
-           <div className="footer-links d-flex gap-5 flex-wrap">
+           {/* <div className="footer-links d-flex gap-5 flex-wrap">
           <ul>
             <li>
-                {/* <Link to="/#about-us" >About Us</Link> */}
+          
                  <a href="/#about-us" onClick={handleAboutClick}>About Us</a>
             </li>
             <li>
@@ -97,53 +97,130 @@ const handleCollaborateClick = (e) => {
 
             </li>
           </ul>
-        </div>
+        </div> */}
+        <div className="footer-links d-none d-sm-flex gap-5 flex-wrap">
+  <ul>
+    <li>
+      {/* <Link to="/#about-us">About Us</Link> */}
+      <a href="/#about-us" onClick={handleAboutClick}>About Us</a>
+    </li>
+    <li>
+      <a href="/#collaborate" onClick={handleCollaborateClick}>Collaborate with Us</a>
+    </li>
+  </ul>
+</div>
+
 
         {/* Social Icons */}
-        <div className="footer-social">
-          <p className="mb-2">Follow Us</p>
-          <div className="d-flex gap-2">
-            {/* Facebook */}
-            <a
-              href="https://www.facebook.com/share/1AfP2qburx/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-icon"
-            >
-              <IconBrandFacebook size={20} />
-            </a>
+<div className="footer-social">
+  {/* Desktop View (default) */}
+  <div className="d-none d-sm-block">
+    <p className="mb-2">Follow Us</p>
+    <div className="d-flex gap-2">
+      <a
+        href="https://www.facebook.com/share/1AfP2qburx/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="social-icon"
+      >
+        <IconBrandFacebook size={20} />
+      </a>
+      <a
+        href="https://www.instagram.com/vividara.in?igsh=aTQzZ3Rhd3JzNGJ0"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="social-icon"
+      >
+        <IconBrandInstagram size={20} />
+      </a>
+      <a
+        href="https://youtube.com/@vividara.narrative?si=vyxOh2Dw0DbbFpaW"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="social-icon"
+      >
+        <IconBrandYoutube size={20} />
+      </a>
+    </div>
+  </div>
 
-            {/* Twitter (placeholder, no specific URL provided)
-            <a
-              href="#"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-icon"
-            >
-              <IconBrandTwitter size={20} />
-            </a> */}
+  {/* Mobile View (icons beside text) */}
+  {/* <div className="d-flex d-sm-none align-items-center gap-2">
+    <p className="mb-0">Follow Us</p>
+    <div className="d-flex gap-2">
+      <a
+        href="https://www.facebook.com/share/1AfP2qburx/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="social-icon"
+      >
+        <IconBrandFacebook size={20} />
+      </a>
+      <a
+        href="https://www.instagram.com/vividara.in?igsh=aTQzZ3Rhd3JzNGJ0"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="social-icon"
+      >
+        <IconBrandInstagram size={20} />
+      </a>
+      <a
+        href="https://youtube.com/@vividara.narrative?si=vyxOh2Dw0DbbFpaW"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="social-icon"
+      >
+        <IconBrandYoutube size={20} />
+      </a>
+    </div>
+  </div> */}
+{/* Mobile View (only visible on small screens) */}
+<div className="d-sm-none">
+  <div className="row">
+    {/* Left Column */}
+    <div className="col-6">
+      <p className="mb-1">About Us</p>
+      <p className="mb-0">Collaborate with Us</p>
+    </div>
 
-            {/* Instagram */}
-            <a
-              href="https://www.instagram.com/vividara.in?igsh=aTQzZ3Rhd3JzNGJ0"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-icon"
-            >
-              <IconBrandInstagram size={20} />
-            </a>
-
-            {/* YouTube */}
-            <a
-              href="https://youtube.com/@vividara.narrative?si=vyxOh2Dw0DbbFpaW"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-icon"
-            >
-              <IconBrandYoutube size={20} />
-            </a>
-          </div>
+    {/* Right Column */}
+    <div className="col-6 d-flex flex-column align-items-end">
+      <div className="d-flex align-items-center mb-1">
+        <p className="mb-0 me-2">Follow Us</p>
+        <div className="d-flex gap-2">
+          <a
+            href="https://www.facebook.com/share/1AfP2qburx/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="social-icon"
+          >
+            <IconBrandFacebook size={20} />
+          </a>
+          <a
+            href="https://www.instagram.com/vividara.in?igsh=aTQzZ3Rhd3JzNGJ0"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="social-icon"
+          >
+            <IconBrandInstagram size={20} />
+          </a>
+          <a
+            href="https://youtube.com/@vividara.narrative?si=vyxOh2Dw0DbbFpaW"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="social-icon"
+          >
+            <IconBrandYoutube size={20} />
+          </a>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+
 
         <div className="footer-brand d-block d-md-none">
           <p className="copyright">© 2024 VIVIDARA. All rights reserved.</p>
