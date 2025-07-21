@@ -554,9 +554,15 @@ export default function Designer() {
           >
             <div className="modal-dialog" role="document">
               <div className="modal-content">
-                <button type="button" className="close" onClick={handleCloseModal}>
-                  <span>&times;</span>
-                </button>
+                {/* <button type="button" className="close" onClick={handleCloseModal}>
+                  <span style={{ pointerEvents: 'none' }}>&times;</span>
+                </button> */}
+                <button type="button" className="close" onClick={handleCloseModal} aria-label="Close modal">
+  &times;
+</button>
+
+
+
                 <div className="modal-body">
                   <h5>Title: Asuri (Demoness)</h5>
                   <h5>Creator: Vakra</h5>

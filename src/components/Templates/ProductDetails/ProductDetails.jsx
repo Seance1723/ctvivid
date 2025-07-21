@@ -529,13 +529,13 @@ const ProductDetails = React.forwardRef(({ onScrollUp }, ref) => {
                 that whisper bold sophistication.
               </p>
 
-              <div className="rating d-flex align-items-center gap-1">
+              {/* <div className="rating d-flex align-items-center gap-1">
                 <IconStarFilled />
                 <IconStarFilled />
                 <IconStarFilled />
                 <IconStarFilled />
                 <IconStar />
-              </div>
+              </div> */}
 
               <h6 className="mt-4">Size &amp; Fit</h6>
 
