@@ -361,8 +361,7 @@ const Home = () => {
                 className="form-control"
                 required
               />
-              <button type="submit" className="cta cta-primary" 
->Continue</button>
+              <button type="submit" className="cta cta-primary" >Continue</button>
             </form>
           </div>
         </div>

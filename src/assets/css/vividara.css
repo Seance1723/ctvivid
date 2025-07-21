@@ -3216,6 +3216,7 @@ body header #branding .branding-link h3 {
     margin-top: 5px;
     font-size: 1rem;
     width:100%;
+    justify-content: center;
   }
 }
 .homepage-container .cta-section .section-content {
@@ -3326,12 +3327,28 @@ body header #branding .branding-link h3 {
   justify-content: center;
 }
 
+.homepage-container .cta-section .footer-content .newsletter-form input::placeholder {
+ text-align: center;
+}
+.homepage-container .cta-section .footer-content .newsletter-form input:not(:placeholder-shown) {
+    text-align: left;
+}
+
 
 
 }/*# sourceMappingURL=vividara.css.map */
 
 
 @media (max-width: 768px) {
+
+
+.homepage-container .cta-section .footer-content .newsletter-form input::placeholder {
+ text-align: center;
+}
+.homepage-container .cta-section .footer-content .newsletter-form input:not(:placeholder-shown) {
+    text-align: left;
+}
+
   .cta-withArrowDark, .cta-exploreMore {
     display:none !important;
   }
