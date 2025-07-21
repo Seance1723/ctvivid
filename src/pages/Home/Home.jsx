@@ -218,7 +218,7 @@ const Home = () => {
               >
                 <div className="action-area">
                   <h4 className="product-name">Asuri</h4>
-                  <Link to="/designers" className="cta cta-text p-0" style={{ top: '135%' ,width:'40vw'}}>Shop Now</Link>
+                  <Link to="/designers" className="cta cta-text p-0" style={{ top: '135%' ,width:'40vw',textTransform: 'none', fontWeight: 500}}>Shop Now</Link>
                 </div>
               </div>
             </div>
@@ -236,14 +236,16 @@ const Home = () => {
               >
                 <div className="action-area">
                   <h4 className="product-name">MAKDI RANI</h4>
-                  <a
+                  {/* <a
                     href="#"
                     className="link-disabled"
                     aria-disabled="true"
                     tabIndex={-1}
                   >
-                    COMING SOON
-                  </a>
+                    Coming Soon
+                  </a> */}
+                  <a href="#" className="link-disabled" aria-disabled="true" tabIndex="-1" style={{ textTransform: 'none' ,fontWeight:500}}>Coming Soon</a>
+
                 </div>
               </div>
             </div>
@@ -283,7 +285,7 @@ const Home = () => {
               <div className='product-left w-100 h-100' style={{ backgroundImage: "url('/pages/Home/home-product-left.png')" }}>
                 <div className='action-area'>
                   <h4 className='product-name'>Asuri</h4>
-                  <Link to="/designers" className="cta cta-text p-0" style={{ top: '135%' }}>Shop Now</Link>
+                  <Link to="/designers" className="cta cta-text p-0" style={{ top: '135%',textTransform: 'none', fontWeight: 500 }}>Shop Now</Link>
                 </div>
               </div>
             </div>
@@ -291,7 +293,7 @@ const Home = () => {
               <div className='product-right w-100 h-100' style={{ backgroundImage: "url('/pages/Home/home-product-right.png')" }}>
                 <div className='action-area'>
                   <h4 className='product-name'>MAKDI RANI</h4>
-                  <a href='#' className='link-disabled' aria-disabled="true" tabindex="-1">COMING SOON</a>
+<a href="#" className="link-disabled" aria-disabled="true" tabIndex="-1" style={{ textTransform: 'none',fontWeight: 500 }}>Coming Soon</a>
                 </div>
               </div>    
             </div>
