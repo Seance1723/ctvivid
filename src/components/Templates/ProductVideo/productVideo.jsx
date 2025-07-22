@@ -328,8 +328,10 @@ export default function ProductVideo({ onAddToCartClick, onScrollUp, onScrollDow
     return () => trig.kill();
   }, []);
 
-  const handleClick = () => {
-    onAddToCartClick?.();
+  const handleWhatsAppClick = () => {
+    const phoneNumber = '9443310108';
+    const whatsappUrl = `https://wa.me/${phoneNumber}`;
+    window.open(whatsappUrl, '_blank');
   };
 
   return (
@@ -372,9 +374,9 @@ export default function ProductVideo({ onAddToCartClick, onScrollUp, onScrollDow
       <button
         type="button"
         className="cta cta-addToCart right_bottom"
-        onClick={handleClick}
+        onClick={handleWhatsAppClick}
       >
-        Add to Cart
+        Contact Us
       </button>
     </section>
   );
