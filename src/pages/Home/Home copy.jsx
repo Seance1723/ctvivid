@@ -107,9 +107,9 @@ const Home = () => {
           <div className='row h-100'>
             <div className='col-12 col-md-6 p-0 h-100'>
               <div className='product-left w-100 h-100' style={{ backgroundImage: "url('/pages/Home/home-product-left.png')" }}>
-                <div className='action-area'>
-                  <h4 className='product-name'>Asuri</h4>
-                  <a href='#'>Shop Now</a>
+                <div className='action-area' style={{ top: '600px' }}>
+                  <h4  className='product-name'>Asuri</h4>
+                  <a  style={{ top: '66%' }} href='#'>Shop Now</a>
                 </div>
               </div>
             </div>

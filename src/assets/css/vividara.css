@@ -2766,6 +2766,8 @@ body header #branding .branding-link h3 {
   body header .navbar-nav {
     display: none !important;
   }
+
+
 }
 
 .site-footer {
@@ -3333,7 +3335,13 @@ body header #branding .branding-link h3 {
 .homepage-container .cta-section .footer-content .newsletter-form input:not(:placeholder-shown) {
     text-align: left;
 }
-
+  .site-footer .footer-social .social-icon {
+  background-color: #e4f0f2;
+  padding: 1px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
 
 
 }/*# sourceMappingURL=vividara.css.map */
@@ -3359,7 +3367,7 @@ body header #branding .branding-link h3 {
 }
   .site-footer .footer-brand .logo {
   font-family: "Brown Sugar";
-  font-size: 18px;
+  font-size: 14px;
   font-weight: bold;
   margin-bottom:2px;
   padding-left: 14px;
@@ -3408,6 +3416,23 @@ body header #branding .branding-link h3 {
         background-color: red;
       }
     }
+}
+
+  .site-footer .footer-social .social-icon {
+  background-color: #e4f0f2;
+  padding: 0px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.site-footer .footer-social p {
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+.site-footer .footer-brand .copyright {
+  color: #888;
+  font-size: 11px;
 }
 
 }

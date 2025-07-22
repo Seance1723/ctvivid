@@ -283,9 +283,9 @@ const Home = () => {
           <div className='row h-100'>
             <div className='col-12 col-md-6 p-0 h-100'>
               <div className='product-left w-100 h-100' style={{ backgroundImage: "url('/pages/Home/home-product-left.png')" }}>
-                <div className='action-area'>
+                <div className='action-area' style={{ top: '600px' }}>
                   <h4 className='product-name'>Asuri</h4>
-                  <Link to="/designers" className="cta cta-text p-0" style={{ top: '135%',textTransform: 'none', fontWeight: 500 }}>Shop Now</Link>
+                  <Link to="/designers" className="cta cta-text p-0" style={{ top: '66%',textTransform: 'none', fontWeight: 500 }}>Shop Now</Link>
                 </div>
               </div>
             </div>

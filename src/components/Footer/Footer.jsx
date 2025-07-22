@@ -219,7 +219,7 @@ const handleCollaborateClick = (e) => {
   </div>
 </div> */}
 <div className="d-sm-none">
- <div className="d-flex flex-column px-3" style={{ paddingTop: '0px', paddingBottom: '0px' }}>
+ <div className="d-flex flex-column px-3" style={{ paddingTop: '0px', paddingBottom: '0px',fontSize:'11px' }}>
 
     <p className="mb-1">About Us</p>
     <p className="mb-2">Collaborate with Us</p>
@@ -260,7 +260,7 @@ const handleCollaborateClick = (e) => {
 </div>
 </div>
         <div className="footer-brand d-block d-md-none" style={{ paddingLeft: '1rem' }}>
-          <p className="copyright">© 2024 VIVIDARA. All rights reserved.</p>
+          <p className="copyright">© 2025 VIVIDARA. All rights reserved.</p>
         </div>
       </div>
     </footer>

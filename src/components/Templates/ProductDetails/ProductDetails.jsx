@@ -297,17 +297,17 @@ const ProductDetails = React.forwardRef(({ onScrollUp }, ref) => {
           }
 
           .mobile-content {
-            padding: 16px 20px 7px;
+            padding: 6px 10px 8px 10px;;
             max-width: 100%;
           }
 
           /* Mobile Breadcrumb - exact match */
           .mobile-breadcrumb {
-            font-size: 14px;
+            font-size: 10px;
             color: #999;
-            margin: 0 0 0 0;
+            margin: 0 0 2px 0;
             font-weight: 400;
-            line-height: 1.4;
+            
           }
 
           .breadcrumb-highlight {
@@ -538,9 +538,9 @@ const ProductDetails = React.forwardRef(({ onScrollUp }, ref) => {
                 <IconStar />
               </div> */}
 
-              <h6 className="mt-4">Size &amp; Fit</h6>
+              {/* <h6 className="mt-4">Size &amp; Fit</h6> */}
 
-              <div className="d-flex gap-3 align-items-center mt-2">
+              {/* <div className="d-flex gap-3 align-items-center mt-2">
                 <select className="form-select input-qty" aria-label="Quantity Selection">
                   <option value="" defaultValue>Qty</option>
                   <option value="1">1</option>
@@ -552,16 +552,21 @@ const ProductDetails = React.forwardRef(({ onScrollUp }, ref) => {
                   <option>Design A</option>
                   <option>Design B</option>
                 </select>
-              </div>
+              </div> */}
 
               {/* <div className="mt-4 d-flex gap-3" >
                 <button className="cta cta-primary">Buy Now</button>
                 <button className="cta cta-primary-outline">Add to Cart</button>
               </div> */}
-              <div className="mt-4 d-flex gap-3 flex-wrap">
+              {/* <div className="mt-4 d-flex gap-3 flex-wrap">
                 <button className="cta cta-primary">Buy Now</button>
                 <button className="cta cta-primary-outline" style={{ marginLeft: '11.5%' }}>Add to Cart</button>
+              </div> */}
+
+              <div className="mt-4 d-flex gap-3 flex-wrap">
+                <button className="cta cta-primary-outline" style={{ marginTop: '25px' }} >Contact Us</button>
               </div>
+            
 
 
 
@@ -638,10 +643,25 @@ const ProductDetails = React.forwardRef(({ onScrollUp }, ref) => {
               <span className="mobile-rating-text">** Review</span>
             </div>
 
+              <p className="mobile-breadcrumb">
+                Designer &gt;&gt; Vakra &gt;&gt; <span className="breadcrumb-highlight">Asuri</span>
+              </p>
+              <h2 className="productNameMobile">ASURI – The Fierce Elegance</h2>
+                  <p className="productIntroMobile">
+                Unveil your inner goddess with ASURI, a designer statement piece
+                that merges contemporary grace with traditional craftsmanship.
+                Tailored from a luxurious silk-blend fabric, ASURI flows
+                effortlessly with every step, featuring hand-embroidered details
+                that whisper bold sophistication.
+              </p>
+
+                <button className="mobile-btn1 mobile-btn-primary1">Contact Us</button>
+
+
 
               {/* Mobile Size & Fit */}
-              <h3 className="mobile-size-title">Size & Fit Guide</h3>
-              
+              {/* <h3 className="mobile-size-title">Size & Fit Guide</h3> */}
+{/*               
               <div className="mobile-dropdowns">
                 <select className="mobile-select">
                   <option>Qty</option>
@@ -655,13 +675,13 @@ const ProductDetails = React.forwardRef(({ onScrollUp }, ref) => {
                   <option>Design A</option>
                   <option>Design B</option>
                 </select>
-              </div>
+              </div> */}
 
               {/* Mobile Action Buttons */}
-              <div className="mobile-buttons">
+              {/* <div className="mobile-buttons">
                 <button className="mobile-btn mobile-btn-primary">Buy Now</button>
                 <button className="mobile-btn mobile-btn-secondary">Add to Cart</button>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
