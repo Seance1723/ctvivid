@@ -600,7 +600,15 @@ export default function Designer() {
           ))}
         </div>
 
-        <div className="mouse" onClick={handleMouseClick}></div>
+        {/* <div className="mouse" onClick={handleMouseClick}></div> */}
+<div className="scroll-down-arrows" onClick={handleMouseClick}>
+  <span></span>
+  <span></span>
+</div>
+
+
+
+
       </div>
 
       {isModalOpen && (
