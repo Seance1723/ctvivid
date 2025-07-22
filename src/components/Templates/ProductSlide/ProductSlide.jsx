@@ -58,58 +58,119 @@ export default function Designer() {
   const [isMobile, setIsMobile] = useState(false);
 
   // Check if mobile on mount and resize
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
+  // useEffect(() => {
+  //   const checkMobile = () => {
+  //     setIsMobile(window.innerWidth <= 768);
+  //   };
     
-    // Function to handle viewport height changes (mobile browser behavior)
-    const setViewportHeight = () => {
-      const vh = window.innerHeight * 0.01;
-      document.documentElement.style.setProperty('--vh', `${vh}px`);
-    };
+  //   // Function to handle viewport height changes (mobile browser behavior)
+  //   const setViewportHeight = () => {
+  //     const vh = window.innerHeight * 0.01;
+  //     document.documentElement.style.setProperty('--vh', `${vh}px`);
+  //   };
     
-    // Prevent page scrolling when component is active
-    const preventScroll = (e) => {
-      // Allow horizontal scrolling but prevent vertical
-      if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
-        e.preventDefault();
-      }
-    };
+  //   // Prevent page scrolling when component is active
+  //   const preventScroll = (e) => {
+  //     // Allow horizontal scrolling but prevent vertical
+  //     if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+  //       e.preventDefault();
+  //     }
+  //   };
     
-    // Prevent touch scrolling
-    const preventTouchScroll = (e) => {
-      // Only prevent if it's a vertical scroll
-      if (e.touches.length === 1) {
-        e.preventDefault();
-      }
-    };
+  //   // Prevent touch scrolling
+  //   const preventTouchScroll = (e) => {
+  //     // Only prevent if it's a vertical scroll
+  //     if (e.touches.length === 1) {
+  //       e.preventDefault();
+  //     }
+  //   };
     
-    checkMobile();
-    setViewportHeight();
+  //   checkMobile();
+  //   setViewportHeight();
     
-    // Add body class to prevent scrolling
-    document.body.classList.add('product-slide-active');
+  //   // Add body class to prevent scrolling
+  //   document.body.classList.add('product-slide-active');
     
-    // Add event listeners
-    window.addEventListener('resize', checkMobile);
-    window.addEventListener('resize', setViewportHeight);
-    window.addEventListener('orientationchange', setViewportHeight);
-    document.addEventListener('wheel', preventScroll, { passive: false });
-    document.addEventListener('touchmove', preventTouchScroll, { passive: false });
+  //   // Add event listeners
+  //   window.addEventListener('resize', checkMobile);
+  //   window.addEventListener('resize', setViewportHeight);
+  //   window.addEventListener('orientationchange', setViewportHeight);
+  //   document.addEventListener('wheel', preventScroll, { passive: false });
+  //   document.addEventListener('touchmove', preventTouchScroll, { passive: false });
     
-    return () => {
-      // Remove body class
-      document.body.classList.remove('product-slide-active');
+  //   return () => {
+  //     // Remove body class
+  //     document.body.classList.remove('product-slide-active');
       
-      // Remove event listeners
-      window.removeEventListener('resize', checkMobile);
-      window.removeEventListener('resize', setViewportHeight);
-      window.removeEventListener('orientationchange', setViewportHeight);
-      document.removeEventListener('wheel', preventScroll);
-      document.removeEventListener('touchmove', preventTouchScroll);
-    };
-  }, []);
+  //     // Remove event listeners
+  //     window.removeEventListener('resize', checkMobile);
+  //     window.removeEventListener('resize', setViewportHeight);
+  //     window.removeEventListener('orientationchange', setViewportHeight);
+  //     document.removeEventListener('wheel', preventScroll);
+  //     document.removeEventListener('touchmove', preventTouchScroll);
+  //   };
+  // }, []);
+  useEffect(() => {
+  const checkMobile = () => {
+    setIsMobile(window.innerWidth <= 768);
+  };
+
+  // Function to handle viewport height changes (mobile browser behavior)
+  const setViewportHeight = () => {
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  };
+
+  // Prevent vertical page scroll, but allow scroll inside modal
+  const preventScroll = (e) => {
+    const modal = document.querySelector('.modal.show');
+    if (modal && modal.contains(e.target)) {
+      return; // Allow scroll inside modal
+    }
+
+    if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+      e.preventDefault();
+    }
+  };
+
+  // Prevent touch scrolling on page, allow inside modal
+  const preventTouchScroll = (e) => {
+    const modal = document.querySelector('.modal.show');
+    if (modal && modal.contains(e.target)) {
+      return; // Allow touch scroll inside modal
+    }
+
+    if (e.touches.length === 1) {
+      e.preventDefault();
+    }
+  };
+
+  checkMobile();
+  setViewportHeight();
+
+  // Add body class to prevent scrolling
+  document.body.classList.add('product-slide-active');
+
+  // Add event listeners
+  window.addEventListener('resize', checkMobile);
+  window.addEventListener('resize', setViewportHeight);
+  window.addEventListener('orientationchange', setViewportHeight);
+  document.addEventListener('wheel', preventScroll, { passive: false });
+  document.addEventListener('touchmove', preventTouchScroll, { passive: false });
+
+  return () => {
+    // Remove body class
+    document.body.classList.remove('product-slide-active');
+
+    // Remove event listeners
+    window.removeEventListener('resize', checkMobile);
+    window.removeEventListener('resize', setViewportHeight);
+    window.removeEventListener('orientationchange', setViewportHeight);
+    document.removeEventListener('wheel', preventScroll);
+    document.removeEventListener('touchmove', preventTouchScroll);
+  };
+}, []);
+
 
   const handleExplore = () => {
     setModalOpen(true);
