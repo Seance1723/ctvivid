@@ -212,6 +212,12 @@ export default function ProductInfo({
     onLastPanelDown?.();
   };
 
+  const handleWhatsAppClick = () => {
+    const phoneNumber = '9443310108';
+    const whatsappUrl = `https://wa.me/${phoneNumber}`;
+    window.open(whatsappUrl, '_blank');
+  };
+
   const handleExplore = () => {
     setModalOpen(true);
   };
@@ -518,9 +524,9 @@ export default function ProductInfo({
               <button
                 type="button"
                 className="mobile-btn-filled"
-                onClick={handleClick}
+                onClick={handleWhatsAppClick}
               >
-                Add to cart
+                Contact Us
               </button>
             </div>
           )}
@@ -557,9 +563,9 @@ export default function ProductInfo({
           <button
             type="button"
             className="cta cta-withArrowDark right_bottom"
-            onClick={handleClick}
+            onClick={handleWhatsAppClick}
           >
-            Add to Cart
+            Contact Us
           </button>
 
           {index === highlightsData.length - 1 && (
