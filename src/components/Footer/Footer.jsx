@@ -145,6 +145,7 @@ const handleCollaborateClick = (e) => {
   </div>
 
   {/* Mobile View (icons beside text) */}
+  
   {/* <div className="d-flex d-sm-none align-items-center gap-2">
     <p className="mb-0">Follow Us</p>
     <div className="d-flex gap-2">
@@ -175,15 +176,15 @@ const handleCollaborateClick = (e) => {
     </div>
   </div> */}
 {/* Mobile View (only visible on small screens) */}
-<div className="d-sm-none">
+{/* <div className="d-sm-none">
   <div className="row">
-    {/* Left Column */}
+
     <div className="col-6">
       <p className="mb-1">About Us</p>
       <p className="mb-0">Collaborate with Us</p>
     </div>
 
-    {/* Right Column */}
+
     <div className="col-6 d-flex flex-column align-items-end">
       <div className="d-flex align-items-center mb-1">
         <p className="mb-0 me-2">Follow Us</p>
@@ -216,13 +217,49 @@ const handleCollaborateClick = (e) => {
       </div>
     </div>
   </div>
+</div> */}
+<div className="d-sm-none">
+ <div className="d-flex flex-column px-3" style={{ paddingTop: '0px', paddingBottom: '0px' }}>
+
+    <p className="mb-1">About Us</p>
+    <p className="mb-2">Collaborate with Us</p>
+
+    {/* Follow Us aligned right */}
+    <div className="d-flex justify-content-end align-items-center mb-2">
+      <p className="mb-0 me-2">Follow Us</p>
+      <div className="d-flex gap-2">
+        <a
+          href="https://www.facebook.com/share/1AfP2qburx/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="social-icon"
+        >
+          <IconBrandFacebook size={20} />
+        </a>
+        <a
+          href="https://www.instagram.com/vividara.in?igsh=aTQzZ3Rhd3JzNGJ0"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="social-icon"
+        >
+          <IconBrandInstagram size={20} />
+        </a>
+        <a
+          href="https://youtube.com/@vividara.narrative?si=vyxOh2Dw0DbbFpaW"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="social-icon"
+        >
+          <IconBrandYoutube size={20} />
+        </a>
+      </div>
+    </div>
+
+   
+  </div>
 </div>
-
-
 </div>
-
-
-        <div className="footer-brand d-block d-md-none">
+        <div className="footer-brand d-block d-md-none" style={{ paddingLeft: '1rem' }}>
           <p className="copyright">© 2024 VIVIDARA. All rights reserved.</p>
         </div>
       </div>

@@ -198,7 +198,7 @@ const ProductDetails = React.forwardRef(({ onScrollUp }, ref) => {
 
           .product-details-section {
             padding: 0 !important;
-            margin: 0 !important;
+            margin: -5px 0px 0px 0px !important;
           }
 
           .product-details-section .container {
@@ -220,6 +220,7 @@ const ProductDetails = React.forwardRef(({ onScrollUp }, ref) => {
             overflow-x: hidden;
             display: flex;
             flex-direction: column;
+            
           }
 
           /* Mobile Hero Section - Responsive height for all screens */
@@ -316,7 +317,7 @@ const ProductDetails = React.forwardRef(({ onScrollUp }, ref) => {
 
           /* Mobile Product Title - exact match */
           .mobile-product-title {
-            font-size: 20px;
+            font-size: 14px;
             font-weight: 500;
             color: #333;
             margin: 0 0 0 0;
@@ -358,7 +359,7 @@ const ProductDetails = React.forwardRef(({ onScrollUp }, ref) => {
 
           /* Mobile Size Title - compact spacing */
           .mobile-size-title {
-            font-size: 16px;
+            font-size: 12px;
             font-weight: 500;
             color: #333;
             margin-bottom: 4px;
@@ -373,7 +374,7 @@ const ProductDetails = React.forwardRef(({ onScrollUp }, ref) => {
 
           .mobile-select {
             flex: 1;
-            padding: 10px 10px;
+            padding: 5px 5px;
             border: 1px solid #ddd;
             border-radius: 12px;
             font-size: 15px;
@@ -404,14 +405,14 @@ const ProductDetails = React.forwardRef(({ onScrollUp }, ref) => {
 
           .mobile-btn {
             flex: 1;
-            padding: 10px 10px;
+            padding: 5px 5px;
             border-radius: 12px;
             font-size: 16px;
             font-weight: 500;
             cursor: pointer;
             transition: all 0.3s ease;
             border: none;
-            min-height: 48px;
+            min-height: 38px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -559,7 +560,7 @@ const ProductDetails = React.forwardRef(({ onScrollUp }, ref) => {
               </div> */}
               <div className="mt-4 d-flex gap-3 flex-wrap">
                 <button className="cta cta-primary">Buy Now</button>
-                <button className="cta cta-primary-outline" style={{ marginLeft: '14%' }}>Add to Cart</button>
+                <button className="cta cta-primary-outline" style={{ marginLeft: '11.5%' }}>Add to Cart</button>
               </div>
 
 
@@ -610,8 +611,8 @@ const ProductDetails = React.forwardRef(({ onScrollUp }, ref) => {
               {/* <h1 className="mobile-product-title">Asuri</h1>
               <p className="mobile-product-subtitle">Lorem Ipsum dolor et sum</p> */}
               <div className="d-flex d-sm-block align-items-center gap-2">
-  <h1 className="mobile-product-title mb-0">Asuri</h1>
-  <p className="mobile-product-subtitle mb-0">Lorem Ipsum dolor et sum</p>
+  {/* <h1 className="mobile-product-title mb-0">Asuri</h1> */}
+  {/* <p className="mobile-product-subtitle mb-0">Lorem Ipsum dolor et sum</p> */}
 </div>
 
 
