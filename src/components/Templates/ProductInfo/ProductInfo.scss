@@ -327,6 +327,16 @@
   }
 }
 
+@media (max-width: 768px) {
+ .modal-body h5 {
+  font-size: 10px !important;
+ }
+ .modal-body p{
+  font-size: 10px !important;
+ }
+}
+
+
 /* Desktop CTA button styles */
 .cta {
   position: absolute;
