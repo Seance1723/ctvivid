@@ -21,46 +21,8 @@ import Men from './pages/Category/Men/Men';
 import Women from './pages/Category/Women/Women';
 import Sale from './pages/Category/Sale/Sale';
 
-// Error Boundary Component
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false, error: null };
-  }
-
-  static getDerivedStateFromError(error) {
-    return { hasError: true, error };
-  }
-
-  componentDidCatch(error, errorInfo) {
-    console.error('Error caught by boundary:', error, errorInfo);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return (
-        <div style={{
-          padding: '40px',
-          textAlign: 'center',
-          fontFamily: 'system-ui, sans-serif'
-        }}>
-          <h1 style={{ color: 'red' }}>Something went wrong</h1>
-          <p>Error: {this.state.error?.message}</p>
-          <button onClick={() => window.location.reload()}>
-            Reload Page
-          </button>
-        </div>
-      );
-    }
-
-    return this.props.children;
-  }
-}
-
 function App() {
   const googleClientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
-  
-  console.log('App loading with Google Client ID:', googleClientId);
   
   // If no Google Client ID is configured, show setup instructions
   if (!googleClientId || googleClientId === "your-google-client-id-here") {
@@ -144,52 +106,45 @@ REACT_APP_GOOGLE_CLIENT_ID=your-actual-client-id.apps.googleusercontent.com
               Restart the development server: <code>npm start</code>
             </li>
           </ol>
+
+          <div style={{
+            background: '#d4edda',
+            border: '1px solid #c3e6cb',
+            borderRadius: '4px',
+            padding: '15px',
+            marginTop: '20px'
+          }}>
+            <p style={{ color: '#155724', margin: 0 }}>
+              📋 <strong>Detailed instructions:</strong> Check <code>COMPLETE_OAUTH_SETUP.md</code> for step-by-step guide.
+            </p>
+          </div>
         </div>
       </div>
     );
   }
 
-  try {
-    return (
-      <ErrorBoundary>
-        <GoogleOAuthProvider clientId={googleClientId}>
-          <AuthProvider>
-            <Router>
-              <ProtectedRoute>
-                {/* wrap all routes in NavLayout (renders PageHeader + dynamic header behavior) */}
-                <Routes>
-                  <Route element={<NavLayout />}>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/auth-test" element={<AuthTest />} />
-                    <Route path="/products" element={<Product />} />
-                    <Route path="/designers" element={<Designers />} />
-                    <Route path="/men" element={<Men />} />
-                    <Route path="/women" element={<Women />} />
-                    <Route path="/sale" element={<Sale />} />
-                  </Route>
-                </Routes>
-              </ProtectedRoute>
-            </Router>
-          </AuthProvider>
-        </GoogleOAuthProvider>
-      </ErrorBoundary>
-    );  
-  } catch (error) {
-    console.error('App error:', error);
-    return (
-      <div style={{
-        padding: '40px',
-        textAlign: 'center',
-        fontFamily: 'system-ui, sans-serif'
-      }}>
-        <h1 style={{ color: 'red' }}>Application Error</h1>
-        <p>Error: {error.message}</p>
-        <button onClick={() => window.location.reload()}>
-          Reload Page
-        </button>
-      </div>
-    );
-  }
+  return (
+    <GoogleOAuthProvider clientId={googleClientId}>
+      <AuthProvider>
+        <Router>
+          <ProtectedRoute>
+            {/* wrap all routes in NavLayout (renders PageHeader + dynamic header behavior) */}
+            <Routes>
+              <Route element={<NavLayout />}>
+                <Route path="/" element={<Home />} />
+                <Route path="/auth-test" element={<AuthTest />} />
+                <Route path="/products" element={<Product />} />
+                <Route path="/designers" element={<Designers />} />
+                <Route path="/men" element={<Men />} />
+                <Route path="/women" element={<Women />} />
+                <Route path="/sale" element={<Sale />} />
+              </Route>
+            </Routes>
+          </ProtectedRoute>
+        </Router>
+      </AuthProvider>
+    </GoogleOAuthProvider>
+  );  
 }
 
 export default App;

@@ -1,0 +1,400 @@
+.login-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.login-modal {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  width: 90%;
+  max-width: 900px;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: 0;
+  position: relative;
+  animation: slideUp 0.3s ease-out;
+  display: flex;
+  min-height: 600px;
+
+  &__video-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+  }
+
+  &__video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #000;
+    
+    // Ensure video appears above background
+    z-index: 1;
+    
+    // Smooth transition when video loads
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+    
+    &:not([src]) {
+      opacity: 0.7;
+    }
+  }
+
+  &__video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 2;
+    pointer-events: none; // Allow clicks to pass through to video
+  }
+
+  &__content {
+    flex: 1;
+    padding: 60px 40px 40px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    position: relative;
+    z-index: 10; // Ensure content is above video and overlay
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 450px;
+
+    @media (max-width: 768px) {
+      padding: 40px 20px 20px;
+      min-width: auto;
+      width: 100%;
+    }
+  }
+
+  &__brand {
+    text-align: center;
+    margin-bottom: 40px;
+
+    h1 {
+      font-family: 'BrownSugar', serif;
+      font-size: 42px;
+      font-weight: 300;
+      letter-spacing: 8px;
+      margin: 0 0 10px 0;
+      color: #000;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+      @media (max-width: 768px) {
+        font-size: 32px;
+        letter-spacing: 6px;
+      }
+    }
+
+    p {
+      color: #333;
+      font-size: 16px;
+      margin: 0;
+      font-weight: 300;
+    }
+  }
+
+  &__tabs {
+    display: flex;
+    border-bottom: 1px solid #e0e0e0;
+    margin-bottom: 40px;
+
+    .tab {
+      flex: 1;
+      background: none;
+      border: none;
+      padding: 15px 0;
+      font-size: 16px;
+      font-weight: 300;
+      color: #999;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: all 0.3s ease;
+
+      &.active {
+        color: #000;
+        border-bottom-color: #000;
+      }
+
+      &:hover:not(.active) {
+        color: #666;
+      }
+    }
+  }
+
+  &__form {
+    h2 {
+      font-size: 24px;
+      font-weight: 300;
+      margin: 0 0 8px 0;
+      color: #000;
+    }
+
+    p {
+      color: #666;
+      font-size: 14px;
+      margin: 0 0 30px 0;
+      font-weight: 300;
+    }
+  }
+}
+
+.error-message {
+  background: #f8d7da;
+  color: #721c24;
+  padding: 12px 16px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  border: 1px solid #f5c6cb;
+  text-align: center;
+}
+
+.form-row {
+  display: flex;
+  gap: 15px;
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+.form-group {
+  margin-bottom: 20px;
+  flex: 1;
+}
+
+.form-input {
+  width: 100%;
+  padding: 15px 0;
+  border: none;
+  border-bottom: 1px solid #e0e0e0;
+  background: none;
+  font-size: 16px;
+  color: #000;
+  transition: all 0.3s ease;
+
+  &::placeholder {
+    color: #999;
+    font-weight: 300;
+  }
+
+  &:focus {
+    outline: none;
+    border-bottom-color: #000;
+  }
+}
+
+.form-options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #666;
+  cursor: pointer;
+  position: relative;
+
+  input[type="checkbox"] {
+    opacity: 0;
+    position: absolute;
+  }
+
+  .checkmark {
+    width: 18px;
+    height: 18px;
+    border: 1px solid #ddd;
+    margin-right: 10px;
+    position: relative;
+    transition: all 0.2s ease;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 5px;
+      top: 2px;
+      width: 6px;
+      height: 10px;
+      border: solid #000;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+  }
+
+  input[type="checkbox"]:checked + .checkmark {
+    background: #000;
+    border-color: #000;
+
+    &::after {
+      opacity: 1;
+      border-color: white;
+    }
+  }
+}
+
+.forgot-link {
+  background: none;
+  border: none;
+  color: #666;
+  text-decoration: none;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 0;
+  font-family: inherit;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: #000;
+  }
+}
+
+.auth-button {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #000;
+  background: none;
+  color: #000;
+  font-size: 16px;
+  font-weight: 300;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+
+  &.primary {
+    background: #000;
+    color: white;
+
+    &:hover:not(:disabled) {
+      background: #333;
+    }
+
+    &:disabled {
+      background: #666;
+      cursor: not-allowed;
+      opacity: 0.7;
+    }
+  }
+
+  &:hover:not(:disabled) {
+    background: #000;
+    color: white;
+  }
+
+  &:disabled {
+    border-color: #ccc;
+    color: #999;
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+}
+
+.divider {
+  text-align: center;
+  margin: 30px 0;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: #e0e0e0;
+  }
+
+  span {
+    background: white;
+    padding: 0 20px;
+    color: #999;
+    font-size: 14px;
+    position: relative;
+  }
+}
+
+.social-auth {
+  display: flex;
+  justify-content: center;
+
+  // Override Google button styles to match design
+  :global(.google-login-button) {
+    width: 100% !important;
+    height: 50px !important;
+    border-radius: 0 !important;
+    border: 1px solid #ddd !important;
+    font-family: inherit !important;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Mobile responsive adjustments
+@media (max-width: 768px) {
+  .login-modal {
+    width: 95%;
+    max-width: none;
+    min-height: auto;
+    
+    &__content {
+      min-width: auto;
+      padding: 30px 20px;
+    }
+    
+    &__brand h1 {
+      font-size: 28px;
+      letter-spacing: 4px;
+    }
+  }
+}

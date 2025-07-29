@@ -64,7 +64,7 @@ const Home = () => {
       title: 'Lorem Ipsum A',
       description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat',
       boxColor: '#FFC107',
-      introImage: '/pages/Home/home-intro-sec-01.jpg',
+      introImage: `${process.env.PUBLIC_URL}/pages/Home/home-intro-sec-01.jpg`,
       heading: 'Exclusive Designs: Curated by fashion experts.',
       text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
     },
@@ -72,7 +72,7 @@ const Home = () => {
       title: 'Lorem Ipsum B',
       description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat',
       boxColor: '#03A9F4',
-      introImage: '/pages/Home/home-intro-sec-01.jpg',
+      introImage: `${process.env.PUBLIC_URL}/pages/Home/home-intro-sec-01.jpg`,
       heading: 'Exclusive Designs: Curated by fashion experts.',
       text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
     },
@@ -80,7 +80,7 @@ const Home = () => {
       title: 'Lorem Ipsum C',
       description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat',
       boxColor: '#8BC34A',
-      introImage: '/pages/Home/home-intro-sec-01.jpg',
+      introImage: `${process.env.PUBLIC_URL}/pages/Home/home-intro-sec-01.jpg`,
       heading: 'Exclusive Designs: Curated by fashion experts.',
       text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
     },
@@ -88,7 +88,7 @@ const Home = () => {
       title: 'Lorem Ipsum D',
       description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat',
       boxColor: '#E91E63',
-      introImage: '/pages/Home/home-intro-sec-01.jpg',
+      introImage: `${process.env.PUBLIC_URL}/pages/Home/home-intro-sec-01.jpg`,
       heading: 'Exclusive Designs: Curated by fashion experts.',
       text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
     },
@@ -118,15 +118,15 @@ const Home = () => {
 
   // <-- NEW: just swap in your real image URLs here -->
   const trendImages = [
-    '/pages/Home/trending/lt-01.png',
-    '/pages/Home/trending/lt-02.png',
-    '/pages/Home/trending/lt-03.png',
-    '/pages/Home/trending/lt-04.png',
-    '/pages/Home/trending/lt-05.png',
-    '/pages/Home/trending/lt-06.png',
-    '/pages/Home/trending/lt-07.png',
-    '/pages/Home/trending/lt-08.png',
-    '/pages/Home/trending/lt-09.png',
+    `${process.env.PUBLIC_URL}/pages/Home/trending/lt-01.png`,
+    `${process.env.PUBLIC_URL}/pages/Home/trending/lt-02.png`,
+    `${process.env.PUBLIC_URL}/pages/Home/trending/lt-03.png`,
+    `${process.env.PUBLIC_URL}/pages/Home/trending/lt-04.png`,
+    `${process.env.PUBLIC_URL}/pages/Home/trending/lt-05.png`,
+    `${process.env.PUBLIC_URL}/pages/Home/trending/lt-06.png`,
+    `${process.env.PUBLIC_URL}/pages/Home/trending/lt-07.png`,
+    `${process.env.PUBLIC_URL}/pages/Home/trending/lt-08.png`,
+    `${process.env.PUBLIC_URL}/pages/Home/trending/lt-09.png`,
   ];
 
   return (
@@ -151,9 +151,9 @@ const Home = () => {
         </video> */}
         <ResponsiveVideo
   className="hero-video"
-  desktopSrc="/pages/Home/home-hero-sec.mp4"
-  mobileSrc="/pages/Home/home-mobileview.mp4"
-  poster="/pages/Home/home-hero-sec-poster.jpg"
+  desktopSrc={`${process.env.PUBLIC_URL}/pages/Home/home-hero-sec.mp4`}
+  mobileSrc={`${process.env.PUBLIC_URL}/pages/Home/home-mobileview.mp4`}
+  poster={`${process.env.PUBLIC_URL}/pages/Home/home-hero-sec-poster.jpg`}
 />
 
 
@@ -210,7 +210,7 @@ const Home = () => {
               <div
                 className="product-left w-100 h-100"
                 style={{
-                  backgroundImage: "url('/pages/Home/home-product-left.png')",
+                  backgroundImage: `url('${process.env.PUBLIC_URL}/pages/Home/home-product-left.png')`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
                   minHeight: '200px'
@@ -228,7 +228,7 @@ const Home = () => {
               <div
                 className="product-right w-100 h-100"
                 style={{
-                  backgroundImage: "url('/pages/Home/home-product-right.png')",
+                  backgroundImage: `url('${process.env.PUBLIC_URL}/pages/Home/home-product-right.png')`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
                   minHeight: '200px'
@@ -282,7 +282,7 @@ const Home = () => {
         <div className="container-fluid w-100 h-100 d-none d-md-block">
           <div className='row h-100'>
             <div className='col-12 col-md-6 p-0 h-100'>
-              <div className='product-left w-100 h-100' style={{ backgroundImage: "url('/pages/Home/home-product-left.png')" }}>
+              <div className='product-left w-100 h-100' style={{ backgroundImage: `url('${process.env.PUBLIC_URL}/pages/Home/home-product-left.png')` }}>
                 <div className='action-area' style={{ top: '600px' }}>
                   <h4 className='product-name'>Asuri</h4>
                   <Link to="/designers" className="cta cta-text p-0" style={{ top: '66%',textTransform: 'none', fontWeight: 500 }}>Shop Now</Link>
@@ -290,7 +290,7 @@ const Home = () => {
               </div>
             </div>
             <div className='col-12 col-md-6 h-100 p-0'>
-              <div className='product-right w-100 h-100' style={{ backgroundImage: "url('/pages/Home/home-product-right.png')" }}>
+              <div className='product-right w-100 h-100' style={{ backgroundImage: `url('${process.env.PUBLIC_URL}/pages/Home/home-product-right.png')` }}>
                 <div className='action-area'>
                   <h4 className='product-name'>MAKDI RANI</h4>
 <a href="#" className="link-disabled" aria-disabled="true" tabIndex="-1" style={{ textTransform: 'none',fontWeight: 500 }}>Coming Soon</a>
@@ -317,7 +317,7 @@ const Home = () => {
             </div>
             <div className='col-12 col-md-4'>
               <div className='about-right'>
-                <img src="/pages/Home/home-about-sec.png" alt="About Us" className='img-fluid' />
+                <img src={`${process.env.PUBLIC_URL}/pages/Home/home-about-sec.png`} alt="About Us" className='img-fluid' />
               </div>    
             </div>
           </div>
@@ -343,8 +343,8 @@ const Home = () => {
         </video> */}
         <ResponsiveVideo
   className="cta-bg-video"
-  desktopSrc="/pages/Home/home-footer-sec.mp4"
-  mobileSrc="/pages/Home/footer-mobileview.mp4"
+  desktopSrc={`${process.env.PUBLIC_URL}/pages/Home/home-footer-sec.mp4`}
+  mobileSrc={`${process.env.PUBLIC_URL}/pages/Home/footer-mobileview.mp4`}
 />
 
         <div className="container section-content">

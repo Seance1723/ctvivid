@@ -1,0 +1,109 @@
+// AGGRESSIVELY hide ALL original navAction elements
+#navAction,
+nav #navAction,
+.nav-inner #navAction,
+header #navAction,
+body header #navAction,
+body header nav #navAction,
+body header nav .nav-inner #navAction,
+body header.logo-only-dark nav .nav-inner #navAction,
+body header.logo-only-light nav .nav-inner #navAction {
+  display: none !important; // Hide ALL original navAction instances
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
+
+// Also hide navActionMobile original
+#navActionMobile,
+nav #navActionMobile,
+.nav-inner #navActionMobile,
+header #navActionMobile,
+body header #navActionMobile {
+  display: none !important;
+  visibility: hidden !important;  
+  opacity: 0 !important;
+}
+
+// Hide pageNav in logo-only modes
+body header.logo-only-dark nav .nav-inner #pageNav,
+body header.logo-only-light nav .nav-inner #pageNav {
+  display: none !important;
+}
+
+// Center the logo properly
+body header nav .nav-inner,
+body header.logo-only-dark nav .nav-inner,
+body header.logo-only-light nav .nav-inner {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  position: relative !important;
+  
+  #branding {
+    position: relative !important;
+    z-index: 1 !important;
+  }
+}
+
+// Ensure our custom authentication components are always visible
+#authNavDesktop,
+#authNavMobile {
+  display: flex !important;
+  position: absolute !important;
+  z-index: 1000 !important;
+}
+
+// Desktop navigation - only show on desktop screens
+#authNavDesktop {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+// Mobile navigation - only show on mobile screens  
+#authNavMobile {
+  display: none !important;
+}
+
+// Media queries for proper responsive behavior
+@media (max-width: 767px) {
+  // Hide desktop navigation on mobile
+  #authNavDesktop {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+  }
+  
+  // Show mobile navigation on mobile
+  #authNavMobile {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+}
+
+@media (min-width: 768px) {
+  // Show desktop navigation on desktop
+  #authNavDesktop {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+  
+  // Hide mobile navigation on desktop
+  #authNavMobile {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+  }
+}
+
+// Ensure they work across all header modes
+body header #authNavDesktop,
+body header.logo-only-dark #authNavDesktop,
+body header.logo-only-light #authNavDesktop,
+body header #authNavMobile,
+body header.logo-only-dark #authNavMobile,
+body header.logo-only-light #authNavMobile {
+  // Inherit the media query rules above
+}
