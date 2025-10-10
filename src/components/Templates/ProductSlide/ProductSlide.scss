@@ -306,6 +306,17 @@ body.product-slide-active {
       object-fit: cover;
     }
     
+    .scroll-down-arrows {
+      bottom: 60px;
+      padding: 12px 10px;
+      
+      span {
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 8px solid white;
+      }
+    }
+    
     .tagline-container {
       width: 90%;
       max-height: 60vh;
@@ -375,6 +386,17 @@ body.product-slide-active {
       height: 100vh;
       height: calc(var(--vh, 1vh) * 100);
       object-fit: cover;
+    }
+    
+    .scroll-down-arrows {
+      bottom: 80px;
+      padding: 10px 8px;
+      
+      span {
+        border-left: 4px solid transparent;
+        border-right: 4px solid transparent;
+        border-top: 6px solid white;
+      }
     }
     
     .tagline-container {
@@ -449,6 +471,17 @@ body.product-slide-active {
 /* Landscape Mobile */
 @media (max-height: 600px) and (orientation: landscape) {
   .product-slide {
+    .scroll-down-arrows {
+      bottom: 20px;
+      padding: 8px 6px;
+      
+      span {
+        border-left: 3px solid transparent;
+        border-right: 3px solid transparent;
+        border-top: 5px solid white;
+      }
+    }
+    
     .tagline-container {
       max-height: 80vh;
       
@@ -529,21 +562,22 @@ body.product-slide-active {
 }
 .scroll-down-arrows {
   position: absolute;
-  top: 600px;
+  bottom: 40px;
   left: 50%;
   transform: translateX(-50%);
   padding: 18px 14px; // space around arrows
-  border: 2px solid rgba(255, 255, 255, 0.6);
+  border: 2px solid rgba(255, 255, 255, 0.8);
   border-radius: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
   cursor: pointer;
-  background-color: rgba(0, 0, 0, 0.3); // optional background
+  background-color: rgba(0, 0, 0, 0.5); // darker background for better visibility
   backdrop-filter: blur(5px); // for glass effect
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); // optional shadow
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); // stronger shadow
   transition: background 0.3s ease;
+  z-index: 1000; // high z-index to appear over video
 
   &:hover {
     background-color: rgba(255, 255, 255, 0.1);

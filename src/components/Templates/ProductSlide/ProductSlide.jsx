@@ -44,13 +44,17 @@ const taglines = [
   "Even as the searing heat radiates, the finger inches closer.",
   "The touch reveals the void, the nothingness.",
   "Phantom flames lick the burning flesh, a pretty lesson etched in pain.",
+];
 
-
+const daisyDramaTaglines = [
+  "Experience the enchanting world of DaisyDrama",
+  "Where elegance meets creativity",
+  "Each piece tells a story of extraordinary beauty",
 ];
 
 const clamp = (v, min, max) => (v < min ? min : v > max ? max : v);
 
-export default function Designer() {
+export default function Designer({ isDaisyDrama = false }) {
   const [isModalOpen, setModalOpen] = useState(false);
   const containerRef = useRef(null);
   const trackRef = useRef(null);
@@ -238,8 +242,13 @@ export default function Designer() {
   }, [isModalOpen]);
 
   useEffect(() => {
+    // Skip the slider logic for DaisyDrama since we're showing video
+    if (isDaisyDrama) return;
+    
     const container = containerRef.current;
     const track = trackRef.current;
+    if (!track) return;
+    
     const originals = Array.from(track.children);
     const visibleCount = 3;
     const slideCount = originals.length;
@@ -566,7 +575,7 @@ export default function Designer() {
       // Remove resize listener
       window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  }, [isDaisyDrama]);
 
   return (
     <>
@@ -574,8 +583,8 @@ export default function Designer() {
         <div className="tagline-container">
           <img className="brand_logo" src="/products/designers/vakra_logo.png" alt="Vakra Logo" />
           <ul className="taglines" ref={tagRef}>
-            {taglines.map((t, i) => (
-              <li key={i}>{t}</li>
+            {(isDaisyDrama ? daisyDramaTaglines : taglines).map((t, i) => (
+              <li key={i} className={i === 0 ? 'active' : ''}>{t}</li>
             ))}
           </ul>
           <button className="explore-more" onClick={handleExplore}>
@@ -592,13 +601,34 @@ export default function Designer() {
           Product details
         </button>
 
-        <div className="slide-track" ref={trackRef}>
-          {productHeroImages.map((src, i) => (
-            <div className="slide" key={i} data-slide-number={i + 1}>
-              <img src={src} alt={`Designer ${i + 1}`} />
-            </div>
-          ))}
-        </div>
+        {isDaisyDrama ? (
+          <div className="daisy-drama-video">
+            <video 
+              src="/changes_v5.mp4" 
+              autoPlay 
+              loop 
+              muted 
+              playsInline
+              style={{ 
+                width: '100%', 
+                height: '100%', 
+                objectFit: 'cover',
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                zIndex: 1
+              }}
+            />
+          </div>
+        ) : (
+          <div className="slide-track" ref={trackRef}>
+            {productHeroImages.map((src, i) => (
+              <div className="slide" key={i} data-slide-number={i + 1}>
+                <img src={src} alt={`Designer ${i + 1}`} />
+              </div>
+            ))}
+          </div>
+        )}
 
         {/* <div className="mouse" onClick={handleMouseClick}></div> */}
 <div className="scroll-down-arrows" onClick={handleMouseClick}>

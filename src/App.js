@@ -17,6 +17,7 @@ import Product from './pages/Product/Product';
 
 //Category Pages
 import Designers from './pages/Category/Designers/Designers';
+import DaisyDrama from './pages/Category/DaisyDrama/DaisyDrama';
 import Men from './pages/Category/Men/Men';
 import Women from './pages/Category/Women/Women';
 import Sale from './pages/Category/Sale/Sale';
@@ -163,6 +164,7 @@ REACT_APP_GOOGLE_CLIENT_ID=your-actual-client-id.apps.googleusercontent.com
                     <Route path="/auth-test" element={<AuthTest />} />
                     <Route path="/products" element={<Product />} />
                     <Route path="/designers" element={<Designers />} />
+                    <Route path="/daisydrama" element={<DaisyDrama />} />
                     <Route path="/men" element={<Men />} />
                     <Route path="/women" element={<Women />} />
                     <Route path="/sale" element={<Sale />} />

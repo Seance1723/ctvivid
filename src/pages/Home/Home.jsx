@@ -235,6 +235,7 @@ const Home = () => {
                 }}
               >
                 <div className="action-area">
+                  <Link to="/daisydrama" className="cta cta-text p-0" style={{ textTransform: 'none', fontWeight: 500, marginBottom: '10px', display: 'block' }}>daisydrama</Link>
                   <h4 className="product-name">MAKDI RANI</h4>
                   {/* <a
                     href="#"
@@ -292,6 +293,7 @@ const Home = () => {
             <div className='col-12 col-md-6 h-100 p-0'>
               <div className='product-right w-100 h-100' style={{ backgroundImage: `url('${process.env.PUBLIC_URL}/pages/Home/home-product-right.png')` }}>
                 <div className='action-area'>
+                  <Link to="/daisydrama" className="cta cta-text p-0" style={{ textTransform: 'none', fontWeight: 500, marginBottom: '10px', display: 'block' }}>daisydrama</Link>
                   <h4 className='product-name'>MAKDI RANI</h4>
 <a href="#" className="link-disabled" aria-disabled="true" tabIndex="-1" style={{ textTransform: 'none',fontWeight: 500 }}>Coming Soon</a>
                 </div>

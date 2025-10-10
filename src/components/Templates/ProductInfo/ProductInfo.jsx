@@ -185,10 +185,33 @@ const highlightsDataMobile = [
   }
 ];
 
+const daisyDramaDataDesktop = [
+  {
+    id: 'panel1',
+    imageSrc: '/changes_v5.mp4',
+    isVideo: true,
+    dots: []
+  }
+];
+
+const daisyDramaDataMobile = [
+  {
+    id: 'panel1',
+    imageSrc: '/changes_v5.mp4',
+    isVideo: true,
+    content: {
+      title: 'DaisyDrama',
+      description: 'Experience the beauty of DaisyDrama collection.',
+      thumbnail: null
+    }
+  }
+];
+
 export default function ProductInfo({
   onFirstPanelUp,
   onLastPanelDown,
-  scrolling
+  scrolling,
+  isDaisyDrama = false
 }) {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const [isModalOpen, setModalOpen] = useState(false);
@@ -206,7 +229,9 @@ export default function ProductInfo({
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const highlightsData = isMobile ? highlightsDataMobile : highlightsDataDesktop;
+  const highlightsData = isDaisyDrama 
+    ? (isMobile ? daisyDramaDataMobile : daisyDramaDataDesktop)
+    : (isMobile ? highlightsDataMobile : highlightsDataDesktop);
 
   const handleClick = () => {
     onLastPanelDown?.();
@@ -355,8 +380,20 @@ export default function ProductInfo({
   const renderDesktopSlide = (panel) => {
     return (
       <>
-        {/* Background image */}
-        <img src={panel.imageSrc} className="bg-image" alt="" />
+        {/* Background image or video */}
+        {panel.isVideo ? (
+          <video 
+            src={panel.imageSrc} 
+            className="bg-image" 
+            autoPlay 
+            loop 
+            muted 
+            playsInline
+            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+          />
+        ) : (
+          <img src={panel.imageSrc} className="bg-image" alt="" />
+        )}
 
         {/* Render each dot (and its line + content) */}
         {panel.dots.map(dot => {
@@ -492,8 +529,20 @@ export default function ProductInfo({
     
     return (
       <div className="mobile-content-card">
-        {/* Background Image - contained within card */}
-        <img src={panel.imageSrc} className="bg-image" alt="" />
+        {/* Background Image/Video - contained within card */}
+        {panel.isVideo ? (
+          <video 
+            src={panel.imageSrc} 
+            className="bg-image" 
+            autoPlay 
+            loop 
+            muted 
+            playsInline
+            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+          />
+        ) : (
+          <img src={panel.imageSrc} className="bg-image" alt="" />
+        )}
         
         {/* Mobile thumbnail overlay - positioned on right side over image */}
         {content?.thumbnail && (
