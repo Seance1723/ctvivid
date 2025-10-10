@@ -107,6 +107,7 @@ export default function DaisyDrama() {
             onLastPanelDown={() => scrollToSection(detailsRef)}
             currentRef = {containerRef.current}
             scrolling={scrolling}
+            isDaisyDrama={true}
           />
         </section>
 

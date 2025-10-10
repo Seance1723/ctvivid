@@ -188,21 +188,83 @@ const highlightsDataMobile = [
 const daisyDramaDataDesktop = [
   {
     id: 'panel1',
-    imageSrc: '/changes_v5.mp4',
-    isVideo: true,
-    dots: []
+    imageSrc: '/image1.jpg',
+    dots: [
+      {
+        id: 'p1d1',
+        xPercent: 48,
+        yPercent: 64,
+        lineXPercent: 48,
+        lineYPercent: 64,
+        lineLength: 410,
+        lineDirection: 'right',
+        title: 'DaisyDrama Style',
+        description: 'A unique collection that represents elegance and creativity in every piece.',
+        thumbnail: '',
+        contentSide: 'right',
+        contentWidth: 250,
+        contentXPercent: 66,
+        contentYPercent: 58
+      }
+    ]
+  },
+  {
+    id: 'panel2',
+    imageSrc: '/image2.jpg',
+    dots: [
+      {
+        id: 'p2d1',
+        xPercent: 52,
+        yPercent: 65,
+        lineXPercent: 52,
+        lineYPercent: 65,
+        lineLength: 300,
+        lineDirection: 'right',
+        title: '',
+        description: '',
+        thumbnail: '/sideImage1.jpg',
+        contentSide: 'left',
+        contentWidth: 160,
+        contentXPercent: 70,
+        contentYPercent: 50
+      },
+      {
+        id: 'p2d2',
+        xPercent: 45,
+        yPercent: 54,
+        lineXPercent: 45,
+        lineYPercent: 54,
+        lineLength: 370,
+        lineDirection: 'left',
+        title: 'Artistic Expression',
+        description: 'Each piece tells a story of extraordinary beauty and craftsmanship.',
+        thumbnail: '',
+        contentSide: 'left',
+        contentWidth: 280,
+        contentXPercent: 20,
+        contentYPercent: 48
+      }
+    ]
   }
 ];
 
 const daisyDramaDataMobile = [
   {
     id: 'panel1',
-    imageSrc: '/changes_v5.mp4',
-    isVideo: true,
+    imageSrc: '/image1.jpg',
     content: {
-      title: 'DaisyDrama',
-      description: 'Experience the beauty of DaisyDrama collection.',
+      title: 'DaisyDrama Style',
+      description: 'A unique collection that represents elegance and creativity in every piece.',
       thumbnail: null
+    }
+  },
+  {
+    id: 'panel2',
+    imageSrc: '/image2.jpg',
+    content: {
+      title: 'Artistic Expression',
+      description: 'Each piece tells a story of extraordinary beauty and craftsmanship.',
+      thumbnail: '/sideImage1.jpg'
     }
   }
 ];
