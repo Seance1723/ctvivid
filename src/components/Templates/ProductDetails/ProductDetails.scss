@@ -1,5 +1,36 @@
 // src/components/Templates/ProductDetails/ProductDetails.scss
 
+// Desktop thumbnail styles
+@media (min-width: 768px) {
+  .product-images {
+    .thumbs {
+      .thumbnail-clickable {
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+        
+        &:hover {
+          border-color: #333;
+          transform: scale(1.05);
+        }
+      }
+    }
+    
+    .main-image {
+      img {
+        width: 100%;
+        height: auto;
+        border-radius: 12px;
+        object-fit: cover;
+      }
+    }
+  }
+}
+
 // Mobile-only styles
 @media (max-width: 767px) {
   .product-details-section {

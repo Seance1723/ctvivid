@@ -101,15 +101,21 @@
       width: 26px;
       height: 26px;
       margin-right: 0.5em;
-      background: url('/public/products/icons/minus-dark.svg') no-repeat center/contain;
-      transition: background-image 0.3s ease, transform 0.3s ease;
+      background-color: var(--dark-color);
+      mask: url('/public/products/icons/minus-dark.svg') no-repeat center;
+      mask-size: contain;
+      transition: mask 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
     }
     &:hover {
-      //background: darken(#007bff, 10%);
+      color: var(--white-color);
+      border-color: var(--white-color);
+      background: rgba(255, 255, 255, 0.1);
   
       &::before {
         transform: translateX(2px);
-        background-image: url('/public/products/icons/arrow-narrow-right_dark.svg');
+        background-color: var(--white-color);
+        mask: url('/public/products/icons/arrow-narrow-right_dark.svg') no-repeat center;
+        mask-size: contain;
       }
     }
   }

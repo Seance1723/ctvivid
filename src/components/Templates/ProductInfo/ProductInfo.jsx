@@ -198,8 +198,8 @@ const daisyDramaDataDesktop = [
         lineYPercent: 64,
         lineLength: 410,
         lineDirection: 'right',
-        title: 'DaisyDrama Style',
-        description: 'A unique collection that represents elegance and creativity in every piece.',
+        title: 'Relaxed Silhouette',
+        description: 'The textured, distressed blue denim provides a rugged canvas for the delicate design',
         thumbnail: '',
         contentSide: 'right',
         contentWidth: 250,
@@ -236,8 +236,8 @@ const daisyDramaDataDesktop = [
         lineYPercent: 54,
         lineLength: 370,
         lineDirection: 'left',
-        title: 'Artistic Expression',
-        description: 'Each piece tells a story of extraordinary beauty and craftsmanship.',
+        title: 'Daisy Drama',
+        description: 'Charming white daisy motifs, each hand painted, introduce a touch of whimsical, customisation.',
         thumbnail: '',
         contentSide: 'left',
         contentWidth: 280,
@@ -253,8 +253,8 @@ const daisyDramaDataMobile = [
     id: 'panel1',
     imageSrc: '/image1.jpg',
     content: {
-      title: 'DaisyDrama Style',
-      description: 'A unique collection that represents elegance and creativity in every piece.',
+      title: 'Relaxed Silhouette',
+      description: 'The textured, distressed blue denim provides a rugged canvas for the delicate design',
       thumbnail: null
     }
   },
@@ -262,8 +262,8 @@ const daisyDramaDataMobile = [
     id: 'panel2',
     imageSrc: '/image2.jpg',
     content: {
-      title: 'Artistic Expression',
-      description: 'Each piece tells a story of extraordinary beauty and craftsmanship.',
+      title: 'Daisy Drama',
+      description: 'Charming white daisy motifs, each hand painted, introduce a touch of whimsical, customisation.',
       thumbnail: '/sideImage1.jpg'
     }
   }

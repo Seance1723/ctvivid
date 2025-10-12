@@ -2563,6 +2563,7 @@ body .sec-content {
   transform: translateY(-2px);
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
    background-color: #4D4D4D !important;
+   color: #fff !important;
 }
 .cta.cta-primary-outline {
   background: transparent;
@@ -2663,6 +2664,7 @@ body .sec-content {
   mask: url("/public/products/icons/arrow-narrow-right_dark.svg") no-repeat center;
   mask-size: contain;
   background-color: var(--dark-color); /* Optional override if needed */
+
 }
 
 .cta-outlineDefault {

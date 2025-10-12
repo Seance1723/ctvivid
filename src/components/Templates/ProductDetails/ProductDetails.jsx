@@ -8,16 +8,38 @@ import {
 import Footer from '../../Footer/Footer';
 import './ProductDetails.scss'; // Import the SCSS file
 
-const ProductDetails = React.forwardRef(({ onScrollUp }, ref) => {
-  const [activeImage, setActiveImage] = useState('/products/designers/productDetails/thumbActive.jpg');
+const ProductDetails = React.forwardRef(({ onScrollUp, isDaisyDrama = false }, ref) => {
+  // Define image sets for different pages
+  const shopNowImages = {
+    default: '/products/designers/productDetails/thumbActive.jpg',
+    mobile: [
+      '/products/designers/productDetails/thumbail_image_1_new.JPG',
+      '/products/designers/productDetails/thumbnail_image_2_new.JPG',
+      '/products/designers/productDetails/thumbnail_image_3_new.JPG',
+      '/products/designers/productDetails/thumbail_image_1_new.JPG',
+      '/products/designers/productDetails/thumbnail_image_5_new.jpg'
+    ]
+  };
 
-  const mobileImages = [
-    '/products/designers/productDetails/thumbail_image_1_new.JPG',
-    '/products/designers/productDetails/thumbnail_image_2_new.JPG',
-    '/products/designers/productDetails/thumbnail_image_3_new.JPG',
-    '/products/designers/productDetails/thumbail_image_1_new.JPG',
-    '/products/designers/productDetails/thumbnail_image_5_new.jpg'
-  ];
+  const daisyDramaImages = {
+    default: '/smallimage1.jpg',
+    mobile: [
+      '/smallimage1.jpg',
+      '/smallimage2.jpg',
+      '/smallimage3.jpg',
+      '/smallimage4.jpg',
+      '/smallimage5.jpg'
+    ]
+  };
+
+  const currentImages = isDaisyDrama ? daisyDramaImages : shopNowImages;
+  const [activeImage, setActiveImage] = useState(currentImages.default);
+  
+  // Update activeImage when isDaisyDrama changes
+  React.useEffect(() => {
+    setActiveImage(currentImages.default);
+  }, [isDaisyDrama, currentImages.default]);
+  const mobileImages = currentImages.mobile;
 
   const [mobileImageIndex, setMobileImageIndex] = useState(0);
   const [touchStartX, setTouchStartX] = useState(null);
@@ -469,36 +491,73 @@ const ProductDetails = React.forwardRef(({ onScrollUp }, ref) => {
             <div className="product-images col-md-7 d-none d-md-flex gap-3">
               <div className="thumbs d-none d-md-flex flex-column gap-2">
                 {/* Thumbnails */}
-                <img
-                  src="/products/designers/productDetails/productThumb_01.png"
-                  alt="thumb1"
-                  onClick={() => setActiveImage('/products/designers/productDetails/thumbail_image_1_new.JPG')}
-                  className="thumbnail-clickable"
-                />
-                <img
-                  src="/products/designers/productDetails/productThumb_02.png"
-                  alt="thumb2"
-                  onClick={() => setActiveImage('/products/designers/productDetails/thumbnail_image_2_new.JPG')}
-                  className="thumbnail-clickable"
-                />
-                <img
-                  src="/products/designers/productDetails/productThumb_03.png"
-                  alt="thumb3"
-                  onClick={() => setActiveImage('/products/designers/productDetails/thumbnail_image_3_new.JPG')}
-                  className="thumbnail-clickable"
-                />
-                <img
-                  src="/products/designers/productDetails/productThumb_04.png"
-                  alt="thumb4"
-                  onClick={() => setActiveImage('/products/designers/productDetails/thumbnail_image_4_new.JPG')}
-                  className="thumbnail-clickable"
-                />
-                <img
-                  src="/products/designers/productDetails/productThumb_05.png"
-                  alt="thumb5"
-                  onClick={() => setActiveImage('/products/designers/productDetails/thumbnail_image_5_new.jpg')}
-                  className="thumbnail-clickable"
-                />
+                {isDaisyDrama ? (
+                  <>
+                    <img
+                      src="/smallimage1.jpg"
+                      alt="thumb1"
+                      onClick={() => setActiveImage('/smallimage1.jpg')}
+                      className="thumbnail-clickable"
+                    />
+                    <img
+                      src="/smallimage2.jpg"
+                      alt="thumb2"
+                      onClick={() => setActiveImage('/smallimage2.jpg')}
+                      className="thumbnail-clickable"
+                    />
+                    <img
+                      src="/smallimage3.jpg"
+                      alt="thumb3"
+                      onClick={() => setActiveImage('/smallimage3.jpg')}
+                      className="thumbnail-clickable"
+                    />
+                    <img
+                      src="/smallimage4.jpg"
+                      alt="thumb4"
+                      onClick={() => setActiveImage('/smallimage4.jpg')}
+                      className="thumbnail-clickable"
+                    />
+                    <img
+                      src="/smallimage5.jpg"
+                      alt="thumb5"
+                      onClick={() => setActiveImage('/smallimage5.jpg')}
+                      className="thumbnail-clickable"
+                    />
+                  </>
+                ) : (
+                  <>
+                    <img
+                      src="/products/designers/productDetails/productThumb_01.png"
+                      alt="thumb1"
+                      onClick={() => setActiveImage('/products/designers/productDetails/thumbail_image_1_new.JPG')}
+                      className="thumbnail-clickable"
+                    />
+                    <img
+                      src="/products/designers/productDetails/productThumb_02.png"
+                      alt="thumb2"
+                      onClick={() => setActiveImage('/products/designers/productDetails/thumbnail_image_2_new.JPG')}
+                      className="thumbnail-clickable"
+                    />
+                    <img
+                      src="/products/designers/productDetails/productThumb_03.png"
+                      alt="thumb3"
+                      onClick={() => setActiveImage('/products/designers/productDetails/thumbnail_image_3_new.JPG')}
+                      className="thumbnail-clickable"
+                    />
+                    <img
+                      src="/products/designers/productDetails/productThumb_04.png"
+                      alt="thumb4"
+                      onClick={() => setActiveImage('/products/designers/productDetails/thumbnail_image_4_new.JPG')}
+                      className="thumbnail-clickable"
+                    />
+                    <img
+                      src="/products/designers/productDetails/productThumb_05.png"
+                      alt="thumb5"
+                      onClick={() => setActiveImage('/products/designers/productDetails/thumbnail_image_5_new.jpg')}
+                      className="thumbnail-clickable"
+                    />
+                  </>
+                )}
               </div>
               <div className="main-image flex-grow-1">
                 <img

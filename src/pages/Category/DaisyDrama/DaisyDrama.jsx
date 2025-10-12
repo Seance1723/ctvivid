@@ -121,6 +121,7 @@ export default function DaisyDrama() {
           <ProductDetails
             ref={detailsRef}
             onScrollUp={() => scrollToSection(infoRef)}
+            isDaisyDrama={true}
           />
         </section>
 
