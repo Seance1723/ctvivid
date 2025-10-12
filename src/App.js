@@ -17,7 +17,9 @@ import Product from './pages/Product/Product';
 
 //Category Pages
 import Designers from './pages/Category/Designers/Designers';
-import DaisyDrama from './pages/Category/DaisyDrama/DaisyDrama';
+// import DaisyDrama from './pages/Category/DaisyDrama/DaisyDrama';
+import DaisyDrama from './pages/Category/Daisydrama/DaisyDrama';
+
 import Men from './pages/Category/Men/Men';
 import Women from './pages/Category/Women/Women';
 import Sale from './pages/Category/Sale/Sale';

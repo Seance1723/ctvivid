@@ -188,7 +188,7 @@ const highlightsDataMobile = [
 const daisyDramaDataDesktop = [
   {
     id: 'panel1',
-    imageSrc: '/image1.jpg',
+    imageSrc: '/section3.1.JPG',
     dots: [
       {
         id: 'p1d1',
@@ -210,7 +210,7 @@ const daisyDramaDataDesktop = [
   },
   {
     id: 'panel2',
-    imageSrc: '/image2.jpg',
+    imageSrc: '/section3.2.JPG',
     dots: [
       {
         id: 'p2d1',

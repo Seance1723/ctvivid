@@ -47,9 +47,23 @@ const taglines = [
 ];
 
 const daisyDramaTaglines = [
-  "Experience the enchanting world of DaisyDrama",
-  "Where elegance meets creativity",
-  "Each piece tells a story of extraordinary beauty",
+  "Here, a field of daisies blooms",
+  "just for me.",
+  "",
+  "I am a god of my own making,",
+  "a painter of the sky, a weaver of stars.",
+  "",
+  "It is a world born from my own heart,",
+  "and it is whole.",
+  "",
+  "And even when I am pulled back,",
+  "I smile.",
+  "",
+  "Because I can still smell the daisies from the dream,",
+  "soft, and sweet.",
+  "",
+  "The distance between here and there",
+  "is only a dream.",
 ];
 
 const clamp = (v, min, max) => (v < min ? min : v > max ? max : v);
@@ -581,10 +595,15 @@ export default function Designer({ isDaisyDrama = false }) {
     <>
       <div className="product-slide onepage-section position-relative" ref={containerRef}>
         <div className="tagline-container">
-          <img className="brand_logo" src="/products/designers/vakra_logo.png" alt="Vakra Logo" />
+          {/* <img className="brand_logo" src="/products/designers/vakra_logo.png" alt="Vakra Logo" /> */}
+          <img
+  className="brand_logo"
+  src={isDaisyDrama ? "/products/designers/Kannu.PNG" : "/products/designers/vakra_logo.png"}
+  alt={isDaisyDrama ? "Kannu Logo" : "Vakra Logo"}
+/>
           <ul className="taglines" ref={tagRef}>
             {(isDaisyDrama ? daisyDramaTaglines : taglines).map((t, i) => (
-              <li key={i} className={i === 0 ? 'active' : ''}>{t}</li>
+              <li key={i} className={isDaisyDrama ? 'active' : (i === 0 ? 'active' : '')}>{t}</li>
             ))}
           </ul>
           <button className="explore-more" onClick={handleExplore}>
@@ -663,22 +682,41 @@ export default function Designer({ isDaisyDrama = false }) {
 
 
                 <div className="modal-body">
-                  <h5>Title: Asuri (Demoness)</h5>
-                  <h5>Creator: Vakra</h5>
-                  <h5>Year: 2024</h5>
-                  <p className="mt-3">
-                    Poochandi—a nameless dread spun to terrorize wayward children. The story warps with every tongue that tells it, its true form lost to generations of terrified whispers.
-                  </p>
-                  <p>This is Vakra's Poochandi. This is Asuri.</p>
-                  <p>
-                    No longer just a mother's cautionary tale, she stands before you now—confronting fear and desire. You do not merely fear her. You crave the danger she exudes with every step.
-                  </p>
-                  <p>
-                    Delicate lace coils around her neck, studded with skulls—small, precise, like carnage worn as an afterthought. Crystals glint like fresh blood frozen mid-fall, suspended in the quiet aftermath of the kill. The air around her hangs heavy, thick with something slow and deliberate: the calm of a storm that has passed, its violence folded into something almost like grace.
-                  </p>
-                  <p>
-                    Beyond the obvious, a chilling playfulness lingers—an apathetic intensity that dares you to look too long, too deep. If straying from the path is what delivers you to her, then so be it. She is a carnivorous bloom, offering exquisite beauty alongside the certainty of destruction.
-                  </p>
+                  {isDaisyDrama ? (
+                    <>
+                      <h5>Title: Daisy Drama</h5>
+                      <h5>Creator: Kannu</h5>
+                      <h5>Year: 2025</h5>
+                      <p className="mt-3">
+                        To exist is to inhabit a universe utterly indifferent to our fleeting presence—a magnificent, silent, and sprawling cosmos unburdened by any external purpose. The profound truth of our existence is its complete lack of inherited meaning. This is the most absolute liberation imaginable. For in a world stripped bare of a pre-written narrative, every moment, every sensation, every quiet joy we choose to cultivate is entirely our own.
+                      </p>
+                      <p>
+                        The wearer of Daisy Drama doesn't escape reality, they rewrite it. They withdraw into their mind, not to flee, but to deliberately reclaim their autonomy. Here, a field of daisies blooms exclusively for them. This enchanting landscape embodies the power of the self to craft its own utopia.
+                      </p>
+                      <p>
+                        When the mundane world pulls one back, there's no sense of loss. The dream's influence persists, as a palpable, phenomenological echo—the lingering, sweet scent of daisies. It's a reminder that the meaning we create in our minds is so real, so vital, that it can transcend the void and colour the world outside. The ultimate joy lies not in finding a purpose, but in the magnificent, absurd, and exhilarating freedom of creating one, forever and always just a dream away.
+                      </p>
+                    </>
+                  ) : (
+                    <>
+                      <h5>Title: Asuri (Demoness)</h5>
+                      <h5>Creator: Vakra</h5>
+                      <h5>Year: 2024</h5>
+                      <p className="mt-3">
+                        Poochandi—a nameless dread spun to terrorize wayward children. The story warps with every tongue that tells it, its true form lost to generations of terrified whispers.
+                      </p>
+                      <p>This is Vakra's Poochandi. This is Asuri.</p>
+                      <p>
+                        No longer just a mother's cautionary tale, she stands before you now—confronting fear and desire. You do not merely fear her. You crave the danger she exudes with every step.
+                      </p>
+                      <p>
+                        Delicate lace coils around her neck, studded with skulls—small, precise, like carnage worn as an afterthought. Crystals glint like fresh blood frozen mid-fall, suspended in the quiet aftermath of the kill. The air around her hangs heavy, thick with something slow and deliberate: the calm of a storm that has passed, its violence folded into something almost like grace.
+                      </p>
+                      <p>
+                        Beyond the obvious, a chilling playfulness lingers—an apathetic intensity that dares you to look too long, too deep. If straying from the path is what delivers you to her, then so be it. She is a carnivorous bloom, offering exquisite beauty alongside the certainty of destruction.
+                      </p>
+                    </>
+                  )}
                 </div>
               </div>
             </div>

@@ -22,13 +22,13 @@ const ProductDetails = React.forwardRef(({ onScrollUp, isDaisyDrama = false }, r
   };
 
   const daisyDramaImages = {
-    default: '/smallimage1.jpg',
+    default: '/re img 1.jpg',
     mobile: [
-      '/smallimage1.jpg',
-      '/smallimage2.jpg',
-      '/smallimage3.jpg',
-      '/smallimage4.jpg',
-      '/smallimage5.jpg'
+      '/image1.jpg',
+      '/image2.jpg',
+      '/image3.jpg',
+      '/image4.jpg',
+      '/image5.jpg'
     ]
   };
 
@@ -494,33 +494,33 @@ const ProductDetails = React.forwardRef(({ onScrollUp, isDaisyDrama = false }, r
                 {isDaisyDrama ? (
                   <>
                     <img
-                      src="/smallimage1.jpg"
+                      src="/re img tn 1.jpg"
                       alt="thumb1"
-                      onClick={() => setActiveImage('/smallimage1.jpg')}
+                      onClick={() => setActiveImage('/re img 1.jpg')}
                       className="thumbnail-clickable"
                     />
                     <img
-                      src="/smallimage2.jpg"
+                      src="/re img tn 2.jpg"
                       alt="thumb2"
-                      onClick={() => setActiveImage('/smallimage2.jpg')}
+                      onClick={() => setActiveImage('/re img 2.jpg')}
                       className="thumbnail-clickable"
                     />
                     <img
-                      src="/smallimage3.jpg"
+                      src="/re img tn 3.jpg"
                       alt="thumb3"
-                      onClick={() => setActiveImage('/smallimage3.jpg')}
+                      onClick={() => setActiveImage('/re img 3.jpg')}
                       className="thumbnail-clickable"
                     />
                     <img
-                      src="/smallimage4.jpg"
+                      src="/re img tn 4.jpg"
                       alt="thumb4"
-                      onClick={() => setActiveImage('/smallimage4.jpg')}
+                      onClick={() => setActiveImage('/re img 4.jpg')}
                       className="thumbnail-clickable"
                     />
                     <img
-                      src="/smallimage5.jpg"
+                      src="/re img tn 5.jpg"
                       alt="thumb5"
-                      onClick={() => setActiveImage('/smallimage5.jpg')}
+                      onClick={() => setActiveImage('/re img 5.jpg')}
                       className="thumbnail-clickable"
                     />
                   </>
@@ -569,6 +569,7 @@ const ProductDetails = React.forwardRef(({ onScrollUp, isDaisyDrama = false }, r
             </div>
 
             {/* RIGHT COL - Desktop Only */}
+     {!isDaisyDrama ? (
             <div className="product-intro-sec col-md-5 d-none d-md-block">
               {/* Breadcrumb */}
               <p className="breadcrumb">
@@ -622,6 +623,34 @@ const ProductDetails = React.forwardRef(({ onScrollUp, isDaisyDrama = false }, r
                 <button className="cta cta-primary-outline" style={{ marginLeft: '11.5%' }}>Add to Cart</button>
               </div> */}
 
+              <div className="limited-release-banner d-flex align-items-center mt-4 p-2 rounded">
+  <div className="limited-logo me-3">
+    <strong className="limited-text">LIMITED</strong>
+    <div className="underline"></div>
+  </div>
+  <div className="release-text no-wrap-text">
+    <strong>Exclusive Release – </strong>
+    <span>While Supplies Last.</span>
+  </div>
+</div>
+
+
+
+<div className="carefully-crafted-banner d-flex align-items-center mt-4 p-2 rounded">
+  <div className="crafted-logo me-3 d-flex align-items-center justify-content-center">
+    <img
+      src="/path-to-your-icon.png"
+      alt="Crafted Icon"
+      className="crafted-icon"
+    />
+  </div>
+  <div className="crafted-text no-wrap-text">
+    <strong>Carefully Crafted – </strong>
+    <span>Consciously Limited.</span>
+  </div>
+</div>
+
+
               <div className="mt-4 d-flex gap-3 flex-wrap">
                 <button className="cta cta-primary-outline" style={{ marginTop: '25px' }} >Contact Us</button>
               </div>
@@ -630,6 +659,61 @@ const ProductDetails = React.forwardRef(({ onScrollUp, isDaisyDrama = false }, r
 
 
             </div>
+     ):(
+
+      <div className="product-intro-sec col-md-5 d-none d-md-block">
+    <div className="breadcrumb">
+      <ul>
+        <li>Designer</li>
+        <li>Kannu</li>
+        <li>Daisy Drama</li>
+      </ul>
+    </div>
+
+    <h2 className="productName">Daisy Drama </h2>
+                  <p className="mobile-product-subtitle">Lorem Ipsum dolor et sum</p>
+
+
+
+                  {/* <div className="limited-release-banner d-flex align-items-center mt-4 p-2 rounded">
+  <div className="limited-logo me-3">
+    <strong className="limited-text">LIMITED</strong>
+    <div className="underline"></div>
+  </div>
+  <div className="release-text">
+    <strong>Exclusive Release</strong> – While Supplies Last.
+  </div>
+</div> */}
+
+<div className="limited-release-banner d-flex align-items-center mt-4 p-2 rounded">
+  <div className="limited-logo me-3">
+    <strong className="limited-text">LIMITED</strong>
+    <div className="underline"></div>
+  </div>
+  <div className="release-text no-wrap-text">
+    <strong>Exclusive Release – </strong>
+    <span>While Supplies Last.</span>
+  </div>
+</div>
+
+
+
+
+    {/* <p className="text-muted productIntro">
+      Step into the spotlight with Daisy Drama — where fearless florals meet striking silhouettes.
+      A vibrant tribute to bold femininity.
+    </p> */}
+
+    <div className="mt-4 d-flex gap-3 flex-wrap">
+      <button className="cta cta-primary-outline" style={{ marginTop: '25px' }}>
+        Contact Us
+      </button>
+    </div>
+  </div>
+     )
+
+     }
+       
           </div>
         </div>
 
