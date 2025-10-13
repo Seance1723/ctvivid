@@ -64,7 +64,7 @@ const Home = () => {
       title: 'Lorem Ipsum A',
       description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat',
       boxColor: '#FFC107',
-      introImage: '/pages/Home/home-intro-sec-01.jpg',
+      introImage: `${process.env.PUBLIC_URL}/pages/Home/home-intro-sec-01.jpg`,
       heading: 'Exclusive Designs: Curated by fashion experts.',
       text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
     },
@@ -72,7 +72,7 @@ const Home = () => {
       title: 'Lorem Ipsum B',
       description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat',
       boxColor: '#03A9F4',
-      introImage: '/pages/Home/home-intro-sec-01.jpg',
+      introImage: `${process.env.PUBLIC_URL}/pages/Home/home-intro-sec-01.jpg`,
       heading: 'Exclusive Designs: Curated by fashion experts.',
       text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
     },
@@ -80,7 +80,7 @@ const Home = () => {
       title: 'Lorem Ipsum C',
       description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat',
       boxColor: '#8BC34A',
-      introImage: '/pages/Home/home-intro-sec-01.jpg',
+      introImage: `${process.env.PUBLIC_URL}/pages/Home/home-intro-sec-01.jpg`,
       heading: 'Exclusive Designs: Curated by fashion experts.',
       text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
     },
@@ -88,7 +88,7 @@ const Home = () => {
       title: 'Lorem Ipsum D',
       description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat',
       boxColor: '#E91E63',
-      introImage: '/pages/Home/home-intro-sec-01.jpg',
+      introImage: `${process.env.PUBLIC_URL}/pages/Home/home-intro-sec-01.jpg`,
       heading: 'Exclusive Designs: Curated by fashion experts.',
       text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
     },
@@ -118,15 +118,15 @@ const Home = () => {
 
   // <-- NEW: just swap in your real image URLs here -->
   const trendImages = [
-    '/pages/Home/trending/lt-01.png',
-    '/pages/Home/trending/lt-02.png',
-    '/pages/Home/trending/lt-03.png',
-    '/pages/Home/trending/lt-04.png',
-    '/pages/Home/trending/lt-05.png',
-    '/pages/Home/trending/lt-06.png',
-    '/pages/Home/trending/lt-07.png',
-    '/pages/Home/trending/lt-08.png',
-    '/pages/Home/trending/lt-09.png',
+    `${process.env.PUBLIC_URL}/pages/Home/trending/lt-01.png`,
+    `${process.env.PUBLIC_URL}/pages/Home/trending/lt-02.png`,
+    `${process.env.PUBLIC_URL}/pages/Home/trending/lt-03.png`,
+    `${process.env.PUBLIC_URL}/pages/Home/trending/lt-04.png`,
+    `${process.env.PUBLIC_URL}/pages/Home/trending/lt-05.png`,
+    `${process.env.PUBLIC_URL}/pages/Home/trending/lt-06.png`,
+    `${process.env.PUBLIC_URL}/pages/Home/trending/lt-07.png`,
+    `${process.env.PUBLIC_URL}/pages/Home/trending/lt-08.png`,
+    `${process.env.PUBLIC_URL}/pages/Home/trending/lt-09.png`,
   ];
 
   return (
@@ -151,9 +151,9 @@ const Home = () => {
         </video> */}
         <ResponsiveVideo
   className="hero-video"
-  desktopSrc="/pages/Home/home-hero-sec.mp4"
-  mobileSrc="/pages/Home/home-mobileview.mp4"
-  poster="/pages/Home/home-hero-sec-poster.jpg"
+  desktopSrc={`${process.env.PUBLIC_URL}/pages/Home/home-hero-sec.mp4`}
+  mobileSrc={`${process.env.PUBLIC_URL}/pages/Home/home-mobileview.mp4`}
+  poster={`${process.env.PUBLIC_URL}/pages/Home/home-hero-sec-poster.jpg`}
 />
 
 
@@ -210,7 +210,7 @@ const Home = () => {
               <div
                 className="product-left w-100 h-100"
                 style={{
-                  backgroundImage: "url('/pages/Home/home-product-left.png')",
+                  backgroundImage: `url('${process.env.PUBLIC_URL}/pages/Home/home-product-left.png')`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
                   minHeight: '200px'
@@ -218,7 +218,7 @@ const Home = () => {
               >
                 <div className="action-area">
                   <h4 className="product-name">Asuri</h4>
-                  <Link to="/designers" className="cta cta-text p-0" style={{ top: '135%' ,width:'40vw'}}>Shop Now</Link>
+                  <Link to="/designers" className="cta cta-text p-0" style={{ top: '135%' ,width:'40vw',textTransform: 'none', fontWeight: 500}}>Shop Now</Link>
                 </div>
               </div>
             </div>
@@ -228,22 +228,25 @@ const Home = () => {
               <div
                 className="product-right w-100 h-100"
                 style={{
-                  backgroundImage: "url('/pages/Home/home-product-right.png')",
+                  backgroundImage: `url('${process.env.PUBLIC_URL}/pages/Home/home-product-right.png')`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
                   minHeight: '200px'
                 }}
               >
                 <div className="action-area">
+                  <Link to="/daisydrama" className="cta cta-text p-0" style={{ textTransform: 'none', fontWeight: 500, marginBottom: '10px', display: 'block' }}>daisydrama</Link>
                   <h4 className="product-name">MAKDI RANI</h4>
-                  <a
+                  {/* <a
                     href="#"
                     className="link-disabled"
                     aria-disabled="true"
                     tabIndex={-1}
                   >
-                    COMING SOON
-                  </a>
+                    Coming Soon
+                  </a> */}
+                  <a href="#" className="link-disabled" aria-disabled="true" tabIndex="-1" style={{ textTransform: 'none' ,fontWeight:500}}>Coming Soon</a>
+
                 </div>
               </div>
             </div>
@@ -276,25 +279,49 @@ const Home = () => {
           </button> */}
         </div>
 
-        {/* ──────────────── DESKTOP LAYOUT ──────────────── */}
-        <div className="container-fluid w-100 h-100 d-none d-md-block">
-          <div className='row h-100'>
-            <div className='col-12 col-md-6 p-0 h-100'>
-              <div className='product-left w-100 h-100' style={{ backgroundImage: "url('/pages/Home/home-product-left.png')" }}>
-                <div className='action-area'>
-                  <h4 className='product-name'>Asuri</h4>
-                  <Link to="/designers" className="cta cta-text p-0" style={{ top: '135%' }}>Shop Now</Link>
+        {/* ──────────────── DESKTOP HORIZONTAL SCROLL ──────────────── */}
+        <div className="container-fluid w-100 h-100 d-none d-md-block" style={{ overflowX: 'auto', overflowY: 'hidden', scrollSnapType: 'x mandatory' }}>
+          <div className='d-flex h-100' style={{ width: 'fit-content' }}>
+            {/* First screen - Original split view with Asuri and MAKDI RANI */}
+            <div className='product-item p-0 h-100' style={{ minWidth: '100vw', width: '100vw', scrollSnapAlign: 'start' }}>
+              <div className='row h-100 m-0'>
+                <div className='col-12 col-md-6 p-0 h-100'>
+                  <div className='product-left w-100 h-100' style={{ backgroundImage: `url('${process.env.PUBLIC_URL}/pages/Home/home-product-left.png')` }}>
+                    <div className='action-area' style={{ top: '650px' }}>
+                      <h4 className='product-name'>Asuri</h4>
+                      <Link to="/designers" className="cta cta-text p-0" style={{ top: '66%',textTransform: 'none', fontWeight: 500 }}>Shop Now</Link>
+                    </div>
+                  </div>
+                </div>
+                {/* <div className='col-12 col-md-6 h-100 p-0'>
+                  <div className='product-right w-100 h-100' style={{ backgroundImage: `url('${process.env.PUBLIC_URL}/pages/Home/home-product-right.png')` }}>
+                    <div className='action-area'>
+                      <h4 className='product-name'>MAKDI RANI</h4>
+                      <a href="#" className="link-disabled" aria-disabled="true" tabIndex="-1" style={{ textTransform: 'none',fontWeight: 500 }}>Coming Soon</a>
+                    </div>
+                  </div>
+                </div> */}
+                 <div className='col-12 col-md-6 h-100 p-0'>
+                  <div className='product-right w-100 h-100' style={{ backgroundImage: `url('${process.env.PUBLIC_URL}/pages/Home/daisydramaphoto.png')` }}>
+                    <div className='action-area' style={{ top: '650px' }}>
+                      <h4 className='product-name'>Daisy Drama</h4>
+                                            <Link to="/daisydrama" className="cta cta-text p-0" style={{ top: '66%',textTransform: 'none', fontWeight: 500 }}>Shop Now</Link>
+
+                  {/* <Link to="/daisydrama" className="cta cta-text p-0" style={{ textTransform: 'none', fontWeight: 500, color: 'var(--secondary-light-color)', fontSize: '22px', display: 'inline-block',marginTop:'10px' }}>Shop Now</Link> */}
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-            <div className='col-12 col-md-6 h-100 p-0'>
-              <div className='product-right w-100 h-100' style={{ backgroundImage: "url('/pages/Home/home-product-right.png')" }}>
-                <div className='action-area'>
-                  <h4 className='product-name'>MAKDI RANI</h4>
-                  <a href='#' className='link-disabled' aria-disabled="true" tabindex="-1">COMING SOON</a>
+            {/* Second screen - DaisyDrama photo full screen */}
+            {/* <div className='product-item h-100 p-0' style={{ minWidth: '100vw', width: '100vw', scrollSnapAlign: 'start' }}>
+              <div className='product-third w-100 h-100' style={{ backgroundImage: `url('${process.env.PUBLIC_URL}/pages/Home/daisydramaphoto.png')`, backgroundSize: '100% 100%', position: 'relative' }}>
+                <div style={{ position: 'absolute', left: '15%', bottom: '60px' }}>
+                  <h4 className='product-name' style={{ padding: '8px 32px', background: 'var(--secondary-light-color)', borderRadius: '6px', margin: '0 0 20px 0', width: 'fit-content', textTransform: 'uppercase' }}>Daisy Drama</h4>
+                  <Link to="/daisydrama" className="cta cta-text p-0" style={{ textTransform: 'none', fontWeight: 500, color: 'var(--secondary-light-color)', fontSize: '22px', display: 'inline-block' }}>Shop Now</Link>
                 </div>
-              </div>    
-            </div>
+              </div>
+            </div> */}
           </div>
         </div>
       </section>
@@ -315,7 +342,7 @@ const Home = () => {
             </div>
             <div className='col-12 col-md-4'>
               <div className='about-right'>
-                <img src="/pages/Home/home-about-sec.png" alt="About Us" className='img-fluid' />
+                <img src={`${process.env.PUBLIC_URL}/pages/Home/home-about-sec.png`} alt="About Us" className='img-fluid' />
               </div>    
             </div>
           </div>
@@ -341,8 +368,8 @@ const Home = () => {
         </video> */}
         <ResponsiveVideo
   className="cta-bg-video"
-  desktopSrc="/pages/Home/home-footer-sec.mp4"
-  mobileSrc="/pages/Home/footer-mobileview.mp4"
+  desktopSrc={`${process.env.PUBLIC_URL}/pages/Home/home-footer-sec.mp4`}
+  mobileSrc={`${process.env.PUBLIC_URL}/pages/Home/footer-mobileview.mp4`}
 />
 
         <div className="container section-content">
@@ -359,8 +386,7 @@ const Home = () => {
                 className="form-control"
                 required
               />
-              <button type="submit" className="cta cta-primary" 
->Continue</button>
+              <button type="submit" className="cta cta-primary" >Continue</button>
             </form>
           </div>
         </div>

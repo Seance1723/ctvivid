@@ -44,13 +44,31 @@ const taglines = [
   "Even as the searing heat radiates, the finger inches closer.",
   "The touch reveals the void, the nothingness.",
   "Phantom flames lick the burning flesh, a pretty lesson etched in pain.",
+];
 
-
+const daisyDramaTaglines = [
+  "Here, a field of daisies blooms",
+  "just for me.",
+  "",
+  "I am a god of my own making,",
+  "a painter of the sky, a weaver of stars.",
+  "",
+  "It is a world born from my own heart,",
+  "and it is whole.",
+  "",
+  "And even when I am pulled back,",
+  "I smile.",
+  "",
+  "Because I can still smell the daisies from the dream,",
+  "soft, and sweet.",
+  "",
+  "The distance between here and there",
+  "is only a dream.",
 ];
 
 const clamp = (v, min, max) => (v < min ? min : v > max ? max : v);
 
-export default function Designer() {
+export default function Designer({ isDaisyDrama = false }) {
   const [isModalOpen, setModalOpen] = useState(false);
   const containerRef = useRef(null);
   const trackRef = useRef(null);
@@ -58,58 +76,119 @@ export default function Designer() {
   const [isMobile, setIsMobile] = useState(false);
 
   // Check if mobile on mount and resize
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
+  // useEffect(() => {
+  //   const checkMobile = () => {
+  //     setIsMobile(window.innerWidth <= 768);
+  //   };
     
-    // Function to handle viewport height changes (mobile browser behavior)
-    const setViewportHeight = () => {
-      const vh = window.innerHeight * 0.01;
-      document.documentElement.style.setProperty('--vh', `${vh}px`);
-    };
+  //   // Function to handle viewport height changes (mobile browser behavior)
+  //   const setViewportHeight = () => {
+  //     const vh = window.innerHeight * 0.01;
+  //     document.documentElement.style.setProperty('--vh', `${vh}px`);
+  //   };
     
-    // Prevent page scrolling when component is active
-    const preventScroll = (e) => {
-      // Allow horizontal scrolling but prevent vertical
-      if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
-        e.preventDefault();
-      }
-    };
+  //   // Prevent page scrolling when component is active
+  //   const preventScroll = (e) => {
+  //     // Allow horizontal scrolling but prevent vertical
+  //     if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+  //       e.preventDefault();
+  //     }
+  //   };
     
-    // Prevent touch scrolling
-    const preventTouchScroll = (e) => {
-      // Only prevent if it's a vertical scroll
-      if (e.touches.length === 1) {
-        e.preventDefault();
-      }
-    };
+  //   // Prevent touch scrolling
+  //   const preventTouchScroll = (e) => {
+  //     // Only prevent if it's a vertical scroll
+  //     if (e.touches.length === 1) {
+  //       e.preventDefault();
+  //     }
+  //   };
     
-    checkMobile();
-    setViewportHeight();
+  //   checkMobile();
+  //   setViewportHeight();
     
-    // Add body class to prevent scrolling
-    document.body.classList.add('product-slide-active');
+  //   // Add body class to prevent scrolling
+  //   document.body.classList.add('product-slide-active');
     
-    // Add event listeners
-    window.addEventListener('resize', checkMobile);
-    window.addEventListener('resize', setViewportHeight);
-    window.addEventListener('orientationchange', setViewportHeight);
-    document.addEventListener('wheel', preventScroll, { passive: false });
-    document.addEventListener('touchmove', preventTouchScroll, { passive: false });
+  //   // Add event listeners
+  //   window.addEventListener('resize', checkMobile);
+  //   window.addEventListener('resize', setViewportHeight);
+  //   window.addEventListener('orientationchange', setViewportHeight);
+  //   document.addEventListener('wheel', preventScroll, { passive: false });
+  //   document.addEventListener('touchmove', preventTouchScroll, { passive: false });
     
-    return () => {
-      // Remove body class
-      document.body.classList.remove('product-slide-active');
+  //   return () => {
+  //     // Remove body class
+  //     document.body.classList.remove('product-slide-active');
       
-      // Remove event listeners
-      window.removeEventListener('resize', checkMobile);
-      window.removeEventListener('resize', setViewportHeight);
-      window.removeEventListener('orientationchange', setViewportHeight);
-      document.removeEventListener('wheel', preventScroll);
-      document.removeEventListener('touchmove', preventTouchScroll);
-    };
-  }, []);
+  //     // Remove event listeners
+  //     window.removeEventListener('resize', checkMobile);
+  //     window.removeEventListener('resize', setViewportHeight);
+  //     window.removeEventListener('orientationchange', setViewportHeight);
+  //     document.removeEventListener('wheel', preventScroll);
+  //     document.removeEventListener('touchmove', preventTouchScroll);
+  //   };
+  // }, []);
+  useEffect(() => {
+  const checkMobile = () => {
+    setIsMobile(window.innerWidth <= 768);
+  };
+
+  // Function to handle viewport height changes (mobile browser behavior)
+  const setViewportHeight = () => {
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  };
+
+  // Prevent vertical page scroll, but allow scroll inside modal
+  const preventScroll = (e) => {
+    const modal = document.querySelector('.modal.show');
+    if (modal && modal.contains(e.target)) {
+      return; // Allow scroll inside modal
+    }
+
+    if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+      e.preventDefault();
+    }
+  };
+
+  // Prevent touch scrolling on page, allow inside modal
+  const preventTouchScroll = (e) => {
+    const modal = document.querySelector('.modal.show');
+    if (modal && modal.contains(e.target)) {
+      return; // Allow touch scroll inside modal
+    }
+
+    if (e.touches.length === 1) {
+      e.preventDefault();
+    }
+  };
+
+  checkMobile();
+  setViewportHeight();
+
+  // Add body class to prevent scrolling
+  document.body.classList.add('product-slide-active');
+
+  // Add event listeners
+  window.addEventListener('resize', checkMobile);
+  window.addEventListener('resize', setViewportHeight);
+  window.addEventListener('orientationchange', setViewportHeight);
+  document.addEventListener('wheel', preventScroll, { passive: false });
+  document.addEventListener('touchmove', preventTouchScroll, { passive: false });
+
+  return () => {
+    // Remove body class
+    document.body.classList.remove('product-slide-active');
+
+    // Remove event listeners
+    window.removeEventListener('resize', checkMobile);
+    window.removeEventListener('resize', setViewportHeight);
+    window.removeEventListener('orientationchange', setViewportHeight);
+    document.removeEventListener('wheel', preventScroll);
+    document.removeEventListener('touchmove', preventTouchScroll);
+  };
+}, []);
+
 
   const handleExplore = () => {
     setModalOpen(true);
@@ -177,8 +256,13 @@ export default function Designer() {
   }, [isModalOpen]);
 
   useEffect(() => {
+    // Skip the slider logic for DaisyDrama since we're showing video
+    if (isDaisyDrama) return;
+    
     const container = containerRef.current;
     const track = trackRef.current;
+    if (!track) return;
+    
     const originals = Array.from(track.children);
     const visibleCount = 3;
     const slideCount = originals.length;
@@ -505,16 +589,21 @@ export default function Designer() {
       // Remove resize listener
       window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  }, [isDaisyDrama]);
 
   return (
     <>
       <div className="product-slide onepage-section position-relative" ref={containerRef}>
         <div className="tagline-container">
-          <img className="brand_logo" src="/products/designers/vakra_logo.png" alt="Vakra Logo" />
+          {/* <img className="brand_logo" src="/products/designers/vakra_logo.png" alt="Vakra Logo" /> */}
+          <img
+  className="brand_logo"
+  src={isDaisyDrama ? "/products/designers/Kannu.PNG" : "/products/designers/vakra_logo.png"}
+  alt={isDaisyDrama ? "Kannu Logo" : "Vakra Logo"}
+/>
           <ul className="taglines" ref={tagRef}>
-            {taglines.map((t, i) => (
-              <li key={i}>{t}</li>
+            {(isDaisyDrama ? daisyDramaTaglines : taglines).map((t, i) => (
+              <li key={i} className={isDaisyDrama ? 'active' : (i === 0 ? 'active' : '')}>{t}</li>
             ))}
           </ul>
           <button className="explore-more" onClick={handleExplore}>
@@ -531,15 +620,44 @@ export default function Designer() {
           Product details
         </button>
 
-        <div className="slide-track" ref={trackRef}>
-          {productHeroImages.map((src, i) => (
-            <div className="slide" key={i} data-slide-number={i + 1}>
-              <img src={src} alt={`Designer ${i + 1}`} />
-            </div>
-          ))}
-        </div>
+        {isDaisyDrama ? (
+          <div className="daisy-drama-video">
+            <video 
+              src="/changes_v5.mp4" 
+              autoPlay 
+              loop 
+              muted 
+              playsInline
+              style={{ 
+                width: '100%', 
+                height: '100%', 
+                objectFit: 'cover',
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                zIndex: 1
+              }}
+            />
+          </div>
+        ) : (
+          <div className="slide-track" ref={trackRef}>
+            {productHeroImages.map((src, i) => (
+              <div className="slide" key={i} data-slide-number={i + 1}>
+                <img src={src} alt={`Designer ${i + 1}`} />
+              </div>
+            ))}
+          </div>
+        )}
 
-        <div className="mouse" onClick={handleMouseClick}></div>
+        {/* <div className="mouse" onClick={handleMouseClick}></div> */}
+<div className="scroll-down-arrows" onClick={handleMouseClick}>
+  <span></span>
+  <span></span>
+</div>
+
+
+
+
       </div>
 
       {isModalOpen && (
@@ -554,26 +672,51 @@ export default function Designer() {
           >
             <div className="modal-dialog" role="document">
               <div className="modal-content">
-                <button type="button" className="close" onClick={handleCloseModal}>
-                  <span>&times;</span>
-                </button>
+                {/* <button type="button" className="close" onClick={handleCloseModal}>
+                  <span style={{ pointerEvents: 'none' }}>&times;</span>
+                </button> */}
+                <button type="button" className="close" onClick={handleCloseModal} aria-label="Close modal">
+  &times;
+</button>
+
+
+
                 <div className="modal-body">
-                  <h5>Title: Asuri (Demoness)</h5>
-                  <h5>Creator: Vakra</h5>
-                  <h5>Year: 2024</h5>
-                  <p className="mt-3">
-                    Poochandi—a nameless dread spun to terrorize wayward children. The story warps with every tongue that tells it, its true form lost to generations of terrified whispers.
-                  </p>
-                  <p>This is Vakra's Poochandi. This is Asuri.</p>
-                  <p>
-                    No longer just a mother's cautionary tale, she stands before you now—confronting fear and desire. You do not merely fear her. You crave the danger she exudes with every step.
-                  </p>
-                  <p>
-                    Delicate lace coils around her neck, studded with skulls—small, precise, like carnage worn as an afterthought. Crystals glint like fresh blood frozen mid-fall, suspended in the quiet aftermath of the kill. The air around her hangs heavy, thick with something slow and deliberate: the calm of a storm that has passed, its violence folded into something almost like grace.
-                  </p>
-                  <p>
-                    Beyond the obvious, a chilling playfulness lingers—an apathetic intensity that dares you to look too long, too deep. If straying from the path is what delivers you to her, then so be it. She is a carnivorous bloom, offering exquisite beauty alongside the certainty of destruction.
-                  </p>
+                  {isDaisyDrama ? (
+                    <>
+                      <h5>Title: Daisy Drama</h5>
+                      <h5>Creator: Kannu</h5>
+                      <h5>Year: 2025</h5>
+                      <p className="mt-3">
+                        To exist is to inhabit a universe utterly indifferent to our fleeting presence—a magnificent, silent, and sprawling cosmos unburdened by any external purpose. The profound truth of our existence is its complete lack of inherited meaning. This is the most absolute liberation imaginable. For in a world stripped bare of a pre-written narrative, every moment, every sensation, every quiet joy we choose to cultivate is entirely our own.
+                      </p>
+                      <p>
+                        The wearer of Daisy Drama doesn't escape reality, they rewrite it. They withdraw into their mind, not to flee, but to deliberately reclaim their autonomy. Here, a field of daisies blooms exclusively for them. This enchanting landscape embodies the power of the self to craft its own utopia.
+                      </p>
+                      <p>
+                        When the mundane world pulls one back, there's no sense of loss. The dream's influence persists, as a palpable, phenomenological echo—the lingering, sweet scent of daisies. It's a reminder that the meaning we create in our minds is so real, so vital, that it can transcend the void and colour the world outside. The ultimate joy lies not in finding a purpose, but in the magnificent, absurd, and exhilarating freedom of creating one, forever and always just a dream away.
+                      </p>
+                    </>
+                  ) : (
+                    <>
+                      <h5>Title: Asuri (Demoness)</h5>
+                      <h5>Creator: Vakra</h5>
+                      <h5>Year: 2024</h5>
+                      <p className="mt-3">
+                        Poochandi—a nameless dread spun to terrorize wayward children. The story warps with every tongue that tells it, its true form lost to generations of terrified whispers.
+                      </p>
+                      <p>This is Vakra's Poochandi. This is Asuri.</p>
+                      <p>
+                        No longer just a mother's cautionary tale, she stands before you now—confronting fear and desire. You do not merely fear her. You crave the danger she exudes with every step.
+                      </p>
+                      <p>
+                        Delicate lace coils around her neck, studded with skulls—small, precise, like carnage worn as an afterthought. Crystals glint like fresh blood frozen mid-fall, suspended in the quiet aftermath of the kill. The air around her hangs heavy, thick with something slow and deliberate: the calm of a storm that has passed, its violence folded into something almost like grace.
+                      </p>
+                      <p>
+                        Beyond the obvious, a chilling playfulness lingers—an apathetic intensity that dares you to look too long, too deep. If straying from the path is what delivers you to her, then so be it. She is a carnivorous bloom, offering exquisite beauty alongside the certainty of destruction.
+                      </p>
+                    </>
+                  )}
                 </div>
               </div>
             </div>

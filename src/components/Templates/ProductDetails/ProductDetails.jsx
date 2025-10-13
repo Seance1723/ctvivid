@@ -8,16 +8,38 @@ import {
 import Footer from '../../Footer/Footer';
 import './ProductDetails.scss'; // Import the SCSS file
 
-const ProductDetails = React.forwardRef(({ onScrollUp }, ref) => {
-  const [activeImage, setActiveImage] = useState('/products/designers/productDetails/thumbActive.jpg');
+const ProductDetails = React.forwardRef(({ onScrollUp, isDaisyDrama = false }, ref) => {
+  // Define image sets for different pages
+  const shopNowImages = {
+    default: '/products/designers/productDetails/thumbActive.jpg',
+    mobile: [
+      '/products/designers/productDetails/thumbail_image_1_new.JPG',
+      '/products/designers/productDetails/thumbnail_image_2_new.JPG',
+      '/products/designers/productDetails/thumbnail_image_3_new.JPG',
+      '/products/designers/productDetails/thumbail_image_1_new.JPG',
+      '/products/designers/productDetails/thumbnail_image_5_new.jpg'
+    ]
+  };
 
-  const mobileImages = [
-    '/products/designers/productDetails/thumbail_image_1_new.JPG',
-    '/products/designers/productDetails/thumbnail_image_2_new.JPG',
-    '/products/designers/productDetails/thumbnail_image_3_new.JPG',
-    '/products/designers/productDetails/thumbail_image_1_new.JPG',
-    '/products/designers/productDetails/thumbnail_image_5_new.jpg'
-  ];
+  const daisyDramaImages = {
+    default: '/re img 1.jpg',
+    mobile: [
+      '/image1.jpg',
+      '/image2.jpg',
+      '/image3.jpg',
+      '/image4.jpg',
+      '/image5.jpg'
+    ]
+  };
+
+  const currentImages = isDaisyDrama ? daisyDramaImages : shopNowImages;
+  const [activeImage, setActiveImage] = useState(currentImages.default);
+  
+  // Update activeImage when isDaisyDrama changes
+  React.useEffect(() => {
+    setActiveImage(currentImages.default);
+  }, [isDaisyDrama, currentImages.default]);
+  const mobileImages = currentImages.mobile;
 
   const [mobileImageIndex, setMobileImageIndex] = useState(0);
   const [touchStartX, setTouchStartX] = useState(null);
@@ -198,7 +220,7 @@ const ProductDetails = React.forwardRef(({ onScrollUp }, ref) => {
 
           .product-details-section {
             padding: 0 !important;
-            margin: 0 !important;
+            margin: -5px 0px 0px 0px !important;
           }
 
           .product-details-section .container {
@@ -220,6 +242,7 @@ const ProductDetails = React.forwardRef(({ onScrollUp }, ref) => {
             overflow-x: hidden;
             display: flex;
             flex-direction: column;
+            
           }
 
           /* Mobile Hero Section - Responsive height for all screens */
@@ -296,17 +319,17 @@ const ProductDetails = React.forwardRef(({ onScrollUp }, ref) => {
           }
 
           .mobile-content {
-            padding: 16px 20px 7px;
+            padding: 6px 10px 8px 10px;;
             max-width: 100%;
           }
 
           /* Mobile Breadcrumb - exact match */
           .mobile-breadcrumb {
-            font-size: 14px;
+            font-size: 10px;
             color: #999;
-            margin: 0 0 0 0;
+            margin: 0 0 2px 0;
             font-weight: 400;
-            line-height: 1.4;
+            
           }
 
           .breadcrumb-highlight {
@@ -316,7 +339,7 @@ const ProductDetails = React.forwardRef(({ onScrollUp }, ref) => {
 
           /* Mobile Product Title - exact match */
           .mobile-product-title {
-            font-size: 20px;
+            font-size: 14px;
             font-weight: 500;
             color: #333;
             margin: 0 0 0 0;
@@ -358,7 +381,7 @@ const ProductDetails = React.forwardRef(({ onScrollUp }, ref) => {
 
           /* Mobile Size Title - compact spacing */
           .mobile-size-title {
-            font-size: 16px;
+            font-size: 12px;
             font-weight: 500;
             color: #333;
             margin-bottom: 4px;
@@ -373,7 +396,7 @@ const ProductDetails = React.forwardRef(({ onScrollUp }, ref) => {
 
           .mobile-select {
             flex: 1;
-            padding: 10px 10px;
+            padding: 5px 5px;
             border: 1px solid #ddd;
             border-radius: 12px;
             font-size: 15px;
@@ -404,14 +427,14 @@ const ProductDetails = React.forwardRef(({ onScrollUp }, ref) => {
 
           .mobile-btn {
             flex: 1;
-            padding: 10px 10px;
+            padding: 5px 5px;
             border-radius: 12px;
             font-size: 16px;
             font-weight: 500;
             cursor: pointer;
             transition: all 0.3s ease;
             border: none;
-            min-height: 48px;
+            min-height: 38px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -468,36 +491,73 @@ const ProductDetails = React.forwardRef(({ onScrollUp }, ref) => {
             <div className="product-images col-md-7 d-none d-md-flex gap-3">
               <div className="thumbs d-none d-md-flex flex-column gap-2">
                 {/* Thumbnails */}
-                <img
-                  src="/products/designers/productDetails/productThumb_01.png"
-                  alt="thumb1"
-                  onClick={() => setActiveImage('/products/designers/productDetails/thumbail_image_1_new.JPG')}
-                  className="thumbnail-clickable"
-                />
-                <img
-                  src="/products/designers/productDetails/productThumb_02.png"
-                  alt="thumb2"
-                  onClick={() => setActiveImage('/products/designers/productDetails/thumbnail_image_2_new.JPG')}
-                  className="thumbnail-clickable"
-                />
-                <img
-                  src="/products/designers/productDetails/productThumb_03.png"
-                  alt="thumb3"
-                  onClick={() => setActiveImage('/products/designers/productDetails/thumbnail_image_3_new.JPG')}
-                  className="thumbnail-clickable"
-                />
-                <img
-                  src="/products/designers/productDetails/productThumb_04.png"
-                  alt="thumb4"
-                  onClick={() => setActiveImage('/products/designers/productDetails/thumbnail_image_4_new.JPG')}
-                  className="thumbnail-clickable"
-                />
-                <img
-                  src="/products/designers/productDetails/productThumb_05.png"
-                  alt="thumb5"
-                  onClick={() => setActiveImage('/products/designers/productDetails/thumbnail_image_5_new.jpg')}
-                  className="thumbnail-clickable"
-                />
+                {isDaisyDrama ? (
+                  <>
+                    <img
+                      src="/re img tn 1.jpg"
+                      alt="thumb1"
+                      onClick={() => setActiveImage('/re img 1.jpg')}
+                      className="thumbnail-clickable"
+                    />
+                    <img
+                      src="/re img tn 2.jpg"
+                      alt="thumb2"
+                      onClick={() => setActiveImage('/re img 2.jpg')}
+                      className="thumbnail-clickable"
+                    />
+                    <img
+                      src="/re img tn 3.jpg"
+                      alt="thumb3"
+                      onClick={() => setActiveImage('/re img 3.jpg')}
+                      className="thumbnail-clickable"
+                    />
+                    <img
+                      src="/re img tn 4.jpg"
+                      alt="thumb4"
+                      onClick={() => setActiveImage('/re img 4.jpg')}
+                      className="thumbnail-clickable"
+                    />
+                    <img
+                      src="/re img tn 5.jpg"
+                      alt="thumb5"
+                      onClick={() => setActiveImage('/re img 5.jpg')}
+                      className="thumbnail-clickable"
+                    />
+                  </>
+                ) : (
+                  <>
+                    <img
+                      src="/products/designers/productDetails/productThumb_01.png"
+                      alt="thumb1"
+                      onClick={() => setActiveImage('/products/designers/productDetails/thumbail_image_1_new.JPG')}
+                      className="thumbnail-clickable"
+                    />
+                    <img
+                      src="/products/designers/productDetails/productThumb_02.png"
+                      alt="thumb2"
+                      onClick={() => setActiveImage('/products/designers/productDetails/thumbnail_image_2_new.JPG')}
+                      className="thumbnail-clickable"
+                    />
+                    <img
+                      src="/products/designers/productDetails/productThumb_03.png"
+                      alt="thumb3"
+                      onClick={() => setActiveImage('/products/designers/productDetails/thumbnail_image_3_new.JPG')}
+                      className="thumbnail-clickable"
+                    />
+                    <img
+                      src="/products/designers/productDetails/productThumb_04.png"
+                      alt="thumb4"
+                      onClick={() => setActiveImage('/products/designers/productDetails/thumbnail_image_4_new.JPG')}
+                      className="thumbnail-clickable"
+                    />
+                    <img
+                      src="/products/designers/productDetails/productThumb_05.png"
+                      alt="thumb5"
+                      onClick={() => setActiveImage('/products/designers/productDetails/thumbnail_image_5_new.jpg')}
+                      className="thumbnail-clickable"
+                    />
+                  </>
+                )}
               </div>
               <div className="main-image flex-grow-1">
                 <img
@@ -509,6 +569,7 @@ const ProductDetails = React.forwardRef(({ onScrollUp }, ref) => {
             </div>
 
             {/* RIGHT COL - Desktop Only */}
+     {!isDaisyDrama ? (
             <div className="product-intro-sec col-md-5 d-none d-md-block">
               {/* Breadcrumb */}
               <p className="breadcrumb">
@@ -529,17 +590,17 @@ const ProductDetails = React.forwardRef(({ onScrollUp }, ref) => {
                 that whisper bold sophistication.
               </p>
 
-              <div className="rating d-flex align-items-center gap-1">
+              {/* <div className="rating d-flex align-items-center gap-1">
                 <IconStarFilled />
                 <IconStarFilled />
                 <IconStarFilled />
                 <IconStarFilled />
                 <IconStar />
-              </div>
+              </div> */}
 
-              <h6 className="mt-4">Size &amp; Fit</h6>
+              {/* <h6 className="mt-4">Size &amp; Fit</h6> */}
 
-              <div className="d-flex gap-3 align-items-center mt-2">
+              {/* <div className="d-flex gap-3 align-items-center mt-2">
                 <select className="form-select input-qty" aria-label="Quantity Selection">
                   <option value="" defaultValue>Qty</option>
                   <option value="1">1</option>
@@ -551,20 +612,108 @@ const ProductDetails = React.forwardRef(({ onScrollUp }, ref) => {
                   <option>Design A</option>
                   <option>Design B</option>
                 </select>
-              </div>
+              </div> */}
 
               {/* <div className="mt-4 d-flex gap-3" >
                 <button className="cta cta-primary">Buy Now</button>
                 <button className="cta cta-primary-outline">Add to Cart</button>
               </div> */}
-              <div className="mt-4 d-flex gap-3 flex-wrap">
+              {/* <div className="mt-4 d-flex gap-3 flex-wrap">
                 <button className="cta cta-primary">Buy Now</button>
-                <button className="cta cta-primary-outline" style={{ marginLeft: '14%' }}>Add to Cart</button>
+                <button className="cta cta-primary-outline" style={{ marginLeft: '11.5%' }}>Add to Cart</button>
+              </div> */}
+
+              <div className="limited-release-banner d-flex align-items-center mt-4 p-2 rounded">
+  <div className="limited-logo me-3">
+    <strong className="limited-text">LIMITED</strong>
+    <div className="underline"></div>
+  </div>
+  <div className="release-text no-wrap-text">
+    <strong>Exclusive Release – </strong>
+    <span>While Supplies Last.</span>
+  </div>
+</div>
+
+
+
+<div className="carefully-crafted-banner d-flex align-items-center mt-4 p-2 rounded">
+  <div className="crafted-logo me-3 d-flex align-items-center justify-content-center">
+    <img
+      src="/path-to-your-icon.png"
+      alt="Crafted Icon"
+      className="crafted-icon"
+    />
+  </div>
+  <div className="crafted-text no-wrap-text">
+    <strong>Carefully Crafted – </strong>
+    <span>Consciously Limited.</span>
+  </div>
+</div>
+
+
+              <div className="mt-4 d-flex gap-3 flex-wrap">
+                <button className="cta cta-primary-outline" style={{ marginTop: '25px' }} >Contact Us</button>
               </div>
+            
 
 
 
             </div>
+     ):(
+
+      <div className="product-intro-sec col-md-5 d-none d-md-block">
+    <div className="breadcrumb">
+      <ul>
+        <li>Designer</li>
+        <li>Kannu</li>
+        <li>Daisy Drama</li>
+      </ul>
+    </div>
+
+    <h2 className="productName">Daisy Drama </h2>
+                  <p className="mobile-product-subtitle">Lorem Ipsum dolor et sum</p>
+
+
+
+                  {/* <div className="limited-release-banner d-flex align-items-center mt-4 p-2 rounded">
+  <div className="limited-logo me-3">
+    <strong className="limited-text">LIMITED</strong>
+    <div className="underline"></div>
+  </div>
+  <div className="release-text">
+    <strong>Exclusive Release</strong> – While Supplies Last.
+  </div>
+</div> */}
+
+<div className="limited-release-banner d-flex align-items-center mt-4 p-2 rounded">
+  <div className="limited-logo me-3">
+    <strong className="limited-text">LIMITED</strong>
+    <div className="underline"></div>
+  </div>
+  <div className="release-text no-wrap-text">
+    <strong>Exclusive Release – </strong>
+    <span>While Supplies Last.</span>
+  </div>
+</div>
+
+
+
+
+    {/* <p className="text-muted productIntro">
+      Step into the spotlight with Daisy Drama — where fearless florals meet striking silhouettes.
+      A vibrant tribute to bold femininity.
+    </p> */}
+
+    <div className="mt-4 d-flex gap-3 flex-wrap">
+      <button className="cta cta-primary-outline" style={{ marginTop: '25px' }}>
+        Contact Us
+      </button>
+    </div>
+  </div>
+     )
+
+     }
+       
           </div>
         </div>
 
@@ -610,8 +759,8 @@ const ProductDetails = React.forwardRef(({ onScrollUp }, ref) => {
               {/* <h1 className="mobile-product-title">Asuri</h1>
               <p className="mobile-product-subtitle">Lorem Ipsum dolor et sum</p> */}
               <div className="d-flex d-sm-block align-items-center gap-2">
-  <h1 className="mobile-product-title mb-0">Asuri</h1>
-  <p className="mobile-product-subtitle mb-0">Lorem Ipsum dolor et sum</p>
+  {/* <h1 className="mobile-product-title mb-0">Asuri</h1> */}
+  {/* <p className="mobile-product-subtitle mb-0">Lorem Ipsum dolor et sum</p> */}
 </div>
 
 
@@ -637,10 +786,25 @@ const ProductDetails = React.forwardRef(({ onScrollUp }, ref) => {
               <span className="mobile-rating-text">** Review</span>
             </div>
 
+              <p className="mobile-breadcrumb">
+                Designer &gt;&gt; Vakra &gt;&gt; <span className="breadcrumb-highlight">Asuri</span>
+              </p>
+              <h2 className="productNameMobile">ASURI – The Fierce Elegance</h2>
+                  <p className="productIntroMobile">
+                Unveil your inner goddess with ASURI, a designer statement piece
+                that merges contemporary grace with traditional craftsmanship.
+                Tailored from a luxurious silk-blend fabric, ASURI flows
+                effortlessly with every step, featuring hand-embroidered details
+                that whisper bold sophistication.
+              </p>
+
+                <button className="mobile-btn1 mobile-btn-primary1">Contact Us</button>
+
+
 
               {/* Mobile Size & Fit */}
-              <h3 className="mobile-size-title">Size & Fit Guide</h3>
-              
+              {/* <h3 className="mobile-size-title">Size & Fit Guide</h3> */}
+{/*               
               <div className="mobile-dropdowns">
                 <select className="mobile-select">
                   <option>Qty</option>
@@ -654,13 +818,13 @@ const ProductDetails = React.forwardRef(({ onScrollUp }, ref) => {
                   <option>Design A</option>
                   <option>Design B</option>
                 </select>
-              </div>
+              </div> */}
 
               {/* Mobile Action Buttons */}
-              <div className="mobile-buttons">
+              {/* <div className="mobile-buttons">
                 <button className="mobile-btn mobile-btn-primary">Buy Now</button>
                 <button className="mobile-btn mobile-btn-secondary">Add to Cart</button>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

@@ -4,7 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function ProductVideo({ onAddToCartClick, onScrollUp, onScrollDown }) {
+export default function ProductVideo({ onAddToCartClick, onScrollUp, onScrollDown, isDaisyDrama = false }) {
   const videoRef = useRef(null);
   const sectionRef = useRef(null);
   const touchStartY = useRef(0);
@@ -328,8 +328,10 @@ export default function ProductVideo({ onAddToCartClick, onScrollUp, onScrollDow
     return () => trig.kill();
   }, []);
 
-  const handleClick = () => {
-    onAddToCartClick?.();
+  const handleWhatsAppClick = () => {
+    const phoneNumber = '9443310108';
+    const whatsappUrl = `https://wa.me/${phoneNumber}`;
+    window.open(whatsappUrl, '_blank');
   };
 
   return (
@@ -339,7 +341,7 @@ export default function ProductVideo({ onAddToCartClick, onScrollUp, onScrollDow
     >
       <video
         ref={videoRef}
-        src="/products/designers/video/DesignersVideo.mp4"
+        src={isDaisyDrama ? "/section2.mov" : "/products/designers/video/DesignersVideo.mp4"}
         className="video-player"
         muted
         playsInline
@@ -372,9 +374,9 @@ export default function ProductVideo({ onAddToCartClick, onScrollUp, onScrollDow
       <button
         type="button"
         className="cta cta-addToCart right_bottom"
-        onClick={handleClick}
+        onClick={handleWhatsAppClick}
       >
-        Add to Cart
+        Contact Us
       </button>
     </section>
   );

@@ -5,10 +5,11 @@
 
 /* Prevent page scrolling when this component is active */
 body.product-slide-active {
-  overflow: hidden;
-  position: fixed;
-  width: 100%;
-  height: 100%;
+
+    overflow-y: hidden;
+  position: relative;
+  // width: 100%;
+  // height: 100%;
 }
 
 .product-slide {
@@ -89,28 +90,32 @@ body.product-slide-active {
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 8px;
-      max-height: 30vh;
-      overflow: hidden;
+      gap: 4px;
+      max-height: 50vh;
+      overflow-y: auto;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      
+
       li {
-        font-size: 16px;
+        font-size: 12px;
         font-weight: 500;
-        color: rgba(var(--white), 0.7);
-        opacity: 0.6;
+        color: var(--white-color);
+        opacity: 1;
         cursor: pointer;
         display: inline-block;
         transition: all 0.3s ease;
-        line-height: 1.3;
+        line-height: 1.4;
         text-align: center;
-        
+
         &.active {
           color: var(--white-color);
           opacity: 1;
           font-weight: bold;
+        }
+
+        &:empty {
+          min-height: 8px;
         }
       }
     }
@@ -181,10 +186,9 @@ body.product-slide-active {
       padding: 0 16px;
       cursor: pointer;
       color: #333;
-      
-      &:hover {
-        opacity: 0.7;
-      }
+       z-index: 9999; 
+           top: 20px;
+    right: 15px;
     }
     
     .modal-body {
@@ -306,6 +310,17 @@ body.product-slide-active {
       object-fit: cover;
     }
     
+    .scroll-down-arrows {
+      bottom: 60px;
+      padding: 12px 10px;
+      
+      span {
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 8px solid white;
+      }
+    }
+    
     .tagline-container {
       width: 90%;
       max-height: 60vh;
@@ -377,6 +392,17 @@ body.product-slide-active {
       object-fit: cover;
     }
     
+    .scroll-down-arrows {
+      bottom: 80px;
+      padding: 10px 8px;
+      
+      span {
+        border-left: 4px solid transparent;
+        border-right: 4px solid transparent;
+        border-top: 6px solid white;
+      }
+    }
+    
     .tagline-container {
       width: 95%;
       max-height: 55vh;
@@ -419,7 +445,8 @@ body.product-slide-active {
   }
   
   #asuriModal {
-    margin-top: 10px;
+    // margin-top: 10px;
+    margin-top: 100px;
     
     .modal-dialog {
       max-width: 98%;
@@ -448,6 +475,17 @@ body.product-slide-active {
 /* Landscape Mobile */
 @media (max-height: 600px) and (orientation: landscape) {
   .product-slide {
+    .scroll-down-arrows {
+      bottom: 20px;
+      padding: 8px 6px;
+      
+      span {
+        border-left: 3px solid transparent;
+        border-right: 3px solid transparent;
+        border-top: 5px solid white;
+      }
+    }
+    
     .tagline-container {
       max-height: 80vh;
       
@@ -518,5 +556,61 @@ body.product-slide-active {
     .mouse::before {
       animation: none;
     }
+  }
+}
+
+
+.modal-body {
+  max-height: 70vh;
+  overflow-y: auto;
+}
+.scroll-down-arrows {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 18px 14px; // space around arrows
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.5); // darker background for better visibility
+  backdrop-filter: blur(5px); // for glass effect
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); // stronger shadow
+  transition: background 0.3s ease;
+  z-index: 1000; // high z-index to appear over video
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  span {
+    width: 0;
+    height: 0;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-top: 10px solid white;
+    opacity: 0.8;
+    animation: arrowBounce 1.5s infinite;
+  }
+
+  span:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+
+  span:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+}
+
+@keyframes arrowBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(6px);
   }
 }

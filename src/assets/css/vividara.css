@@ -2563,6 +2563,7 @@ body .sec-content {
   transform: translateY(-2px);
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
    background-color: #4D4D4D !important;
+   color: #fff !important;
 }
 .cta.cta-primary-outline {
   background: transparent;
@@ -2663,6 +2664,7 @@ body .sec-content {
   mask: url("/public/products/icons/arrow-narrow-right_dark.svg") no-repeat center;
   mask-size: contain;
   background-color: var(--dark-color); /* Optional override if needed */
+
 }
 
 .cta-outlineDefault {
@@ -2766,6 +2768,8 @@ body header #branding .branding-link h3 {
   body header .navbar-nav {
     display: none !important;
   }
+
+
 }
 
 .site-footer {
@@ -3216,6 +3220,7 @@ body header #branding .branding-link h3 {
     margin-top: 5px;
     font-size: 1rem;
     width:100%;
+    justify-content: center;
   }
 }
 .homepage-container .cta-section .section-content {
@@ -3326,12 +3331,34 @@ body header #branding .branding-link h3 {
   justify-content: center;
 }
 
+.homepage-container .cta-section .footer-content .newsletter-form input::placeholder {
+ text-align: center;
+}
+.homepage-container .cta-section .footer-content .newsletter-form input:not(:placeholder-shown) {
+    text-align: left;
+}
+  .site-footer .footer-social .social-icon {
+  background-color: #e4f0f2;
+  padding: 1px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
 
 
 }/*# sourceMappingURL=vividara.css.map */
 
 
 @media (max-width: 768px) {
+
+
+.homepage-container .cta-section .footer-content .newsletter-form input::placeholder {
+ text-align: center;
+}
+.homepage-container .cta-section .footer-content .newsletter-form input:not(:placeholder-shown) {
+    text-align: left;
+}
+
   .cta-withArrowDark, .cta-exploreMore {
     display:none !important;
   }
@@ -3342,10 +3369,10 @@ body header #branding .branding-link h3 {
 }
   .site-footer .footer-brand .logo {
   font-family: "Brown Sugar";
-  font-size: 18px;
+  font-size: 14px;
   font-weight: bold;
   margin-bottom:2px;
-  padding-left: 5px;
+  padding-left: 14px;
 }
 .site-footer .footer-links ul li {
   margin-bottom: 2px;
@@ -3391,6 +3418,23 @@ body header #branding .branding-link h3 {
         background-color: red;
       }
     }
+}
+
+  .site-footer .footer-social .social-icon {
+  background-color: #e4f0f2;
+  padding: 0px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.site-footer .footer-social p {
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+.site-footer .footer-brand .copyright {
+  color: #888;
+  font-size: 11px;
 }
 
 }

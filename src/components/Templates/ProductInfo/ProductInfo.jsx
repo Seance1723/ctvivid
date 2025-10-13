@@ -185,10 +185,95 @@ const highlightsDataMobile = [
   }
 ];
 
+const daisyDramaDataDesktop = [
+  {
+    id: 'panel1',
+    imageSrc: '/section3.1.JPG',
+    dots: [
+      {
+        id: 'p1d1',
+        xPercent: 48,
+        yPercent: 64,
+        lineXPercent: 48,
+        lineYPercent: 64,
+        lineLength: 410,
+        lineDirection: 'right',
+        title: 'Relaxed Silhouette',
+        description: 'The textured, distressed blue denim provides a rugged canvas for the delicate design',
+        thumbnail: '',
+        contentSide: 'right',
+        contentWidth: 250,
+        contentXPercent: 66,
+        contentYPercent: 58
+      }
+    ]
+  },
+  {
+    id: 'panel2',
+    imageSrc: '/section3.2.JPG',
+    dots: [
+      {
+        id: 'p2d1',
+        xPercent: 52,
+        yPercent: 65,
+        lineXPercent: 52,
+        lineYPercent: 65,
+        lineLength: 300,
+        lineDirection: 'right',
+        title: '',
+        description: '',
+        thumbnail: '/sideImage1.jpg',
+        contentSide: 'left',
+        contentWidth: 160,
+        contentXPercent: 70,
+        contentYPercent: 50
+      },
+      {
+        id: 'p2d2',
+        xPercent: 45,
+        yPercent: 54,
+        lineXPercent: 45,
+        lineYPercent: 54,
+        lineLength: 370,
+        lineDirection: 'left',
+        title: 'Daisy Drama',
+        description: 'Charming white daisy motifs, each hand painted, introduce a touch of whimsical, customisation.',
+        thumbnail: '',
+        contentSide: 'left',
+        contentWidth: 280,
+        contentXPercent: 20,
+        contentYPercent: 48
+      }
+    ]
+  }
+];
+
+const daisyDramaDataMobile = [
+  {
+    id: 'panel1',
+    imageSrc: '/image1.jpg',
+    content: {
+      title: 'Relaxed Silhouette',
+      description: 'The textured, distressed blue denim provides a rugged canvas for the delicate design',
+      thumbnail: null
+    }
+  },
+  {
+    id: 'panel2',
+    imageSrc: '/image2.jpg',
+    content: {
+      title: 'Daisy Drama',
+      description: 'Charming white daisy motifs, each hand painted, introduce a touch of whimsical, customisation.',
+      thumbnail: '/sideImage1.jpg'
+    }
+  }
+];
+
 export default function ProductInfo({
   onFirstPanelUp,
   onLastPanelDown,
-  scrolling
+  scrolling,
+  isDaisyDrama = false
 }) {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const [isModalOpen, setModalOpen] = useState(false);
@@ -206,10 +291,18 @@ export default function ProductInfo({
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const highlightsData = isMobile ? highlightsDataMobile : highlightsDataDesktop;
+  const highlightsData = isDaisyDrama 
+    ? (isMobile ? daisyDramaDataMobile : daisyDramaDataDesktop)
+    : (isMobile ? highlightsDataMobile : highlightsDataDesktop);
 
   const handleClick = () => {
     onLastPanelDown?.();
+  };
+
+  const handleWhatsAppClick = () => {
+    const phoneNumber = '9443310108';
+    const whatsappUrl = `https://wa.me/${phoneNumber}`;
+    window.open(whatsappUrl, '_blank');
   };
 
   const handleExplore = () => {
@@ -349,8 +442,20 @@ export default function ProductInfo({
   const renderDesktopSlide = (panel) => {
     return (
       <>
-        {/* Background image */}
-        <img src={panel.imageSrc} className="bg-image" alt="" />
+        {/* Background image or video */}
+        {panel.isVideo ? (
+          <video 
+            src={panel.imageSrc} 
+            className="bg-image" 
+            autoPlay 
+            loop 
+            muted 
+            playsInline
+            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+          />
+        ) : (
+          <img src={panel.imageSrc} className="bg-image" alt="" />
+        )}
 
         {/* Render each dot (and its line + content) */}
         {panel.dots.map(dot => {
@@ -486,8 +591,20 @@ export default function ProductInfo({
     
     return (
       <div className="mobile-content-card">
-        {/* Background Image - contained within card */}
-        <img src={panel.imageSrc} className="bg-image" alt="" />
+        {/* Background Image/Video - contained within card */}
+        {panel.isVideo ? (
+          <video 
+            src={panel.imageSrc} 
+            className="bg-image" 
+            autoPlay 
+            loop 
+            muted 
+            playsInline
+            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+          />
+        ) : (
+          <img src={panel.imageSrc} className="bg-image" alt="" />
+        )}
         
         {/* Mobile thumbnail overlay - positioned on right side over image */}
         {content?.thumbnail && (
@@ -518,9 +635,9 @@ export default function ProductInfo({
               <button
                 type="button"
                 className="mobile-btn-filled"
-                onClick={handleClick}
+                onClick={handleWhatsAppClick}
               >
-                Add to cart
+                Contact Us
               </button>
             </div>
           )}
@@ -557,9 +674,9 @@ export default function ProductInfo({
           <button
             type="button"
             className="cta cta-withArrowDark right_bottom"
-            onClick={handleClick}
+            onClick={handleWhatsAppClick}
           >
-            Add to Cart
+            Contact Us
           </button>
 
           {index === highlightsData.length - 1 && (
@@ -574,7 +691,7 @@ export default function ProductInfo({
         </>
       )}
 
-      {isModalOpen && (
+      {/* {isModalOpen && (
         <>
           <div id="asuriModal" className="modal fade show" style={{ display: 'block', position: 'absolute' }} tabIndex="-1" role="dialog" aria-hidden="true">
             <div className="modal-dialog" role="document">
@@ -597,7 +714,150 @@ export default function ProductInfo({
           </div>
           <div className="modal-backdrop fade show"></div>
         </>
-      )}
+      )} */}
+
+      {/* {isModalOpen && (
+  <>
+    <div
+      id="asuriModal"
+      className="custom-modal"
+      style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        zIndex: 9999,
+        backgroundColor: 'rgba(0, 0, 0, 0.7)',
+        overflowY: 'auto',
+        padding: '40px 20px',
+      }}
+    >
+      <div
+        className="modal-dialog"
+        style={{
+          maxWidth: '600px',
+          margin: '0 auto',
+          backgroundColor: '#fff',
+          borderRadius: '8px',
+          padding: '20px',
+          position: 'relative',
+          maxHeight: '90vh',
+          overflowY: 'auto'
+        }}
+      >
+<button
+  onClick={handleCloseModal}
+  style={{
+    position: 'absolute',
+    top: '10px',
+    right: '15px',
+    fontSize: '1.5rem',
+    background: 'none',
+    border: 'none',
+    color: '#000',
+    cursor: 'pointer',
+    zIndex: 99999, // VERY HIGH to be safe
+    padding: '0.5rem',
+  }}
+>
+  &times;
+</button>
+
+
+
+        <div className="modal-body">
+          <h5>Title: Asuri (Demoness)</h5>
+          <h5>Creator: Vakra</h5>
+          <h5>Year: 2024</h5>
+          <p className="mt-3">
+            Poochandi—a nameless dread spun to terrorize wayward children. The story warps with every tongue that tells it, its true form lost to generations of terrified whispers.
+          </p>
+          <p>This is Vakra's Poochandi. This is Asuri.</p>
+          <p>No longer just a mother's cautionary tale, she stands before you now—confronting fear and desire. You do not merely fear her. You crave the danger she exudes with every step.</p>
+          <p>Delicate lace coils around her neck, studded with skulls—small, precise, like carnage worn as an afterthought. Crystals glint like fresh blood frozen mid-fall, suspended in the quiet aftermath of the kill. The air around her hangs heavy, thick with something slow and deliberate: the calm of a storm that has passed, its violence folded into something almost like grace.</p>
+          <p>Beyond the obvious, a chilling playfulness lingers—an apathetic intensity that dares you to look too long, too deep. If straying from the path is what delivers you to her, then so be it. She is a carnivorous bloom, offering exquisite beauty alongside the certainty of destruction.</p>
+        </div>
+      </div>
+    </div>
+
+
+    <div
+      className="modal-backdrop"
+      style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        backgroundColor: 'rgba(0,0,0,0.5)',
+        zIndex: 9998,
+      }}
+    ></div>
+  </>
+)} */}
+   
+
+
+   {isModalOpen && (
+  <>
+    <div
+      style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100vw',
+        height: '100vh',
+        backgroundColor: 'rgba(0,0,0,0.7)',
+        zIndex: 9998,
+      }}
+    />
+
+    <div
+      style={{
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: '80%',
+        maxWidth: '600px',
+        background: 'white',
+        padding: '2rem',
+        zIndex: 9999,
+      }}
+    >
+      <button
+        onClick={handleCloseModal}
+        style={{
+          position: 'absolute',
+          top: '10px',
+          right: '15px',
+          fontSize: '28px',
+          background: 'none',
+          border: 'none',
+          color: '#000',
+          cursor: 'pointer',
+          zIndex: 10000,
+        }}
+      >
+        &times;
+      </button>
+            <div className="modal-body">
+          <h5>Title: Asuri (Demoness)</h5>
+          <h5>Creator: Vakra</h5>
+          <h5>Year: 2024</h5>
+          <p className="mt-3">
+            Poochandi—a nameless dread spun to terrorize wayward children. The story warps with every tongue that tells it, its true form lost to generations of terrified whispers.
+          </p>
+          <p>This is Vakra's Poochandi. This is Asuri.</p>
+          <p>No longer just a mother's cautionary tale, she stands before you now—confronting fear and desire. You do not merely fear her. You crave the danger she exudes with every step.</p>
+          <p>Delicate lace coils around her neck, studded with skulls—small, precise, like carnage worn as an afterthought. Crystals glint like fresh blood frozen mid-fall, suspended in the quiet aftermath of the kill. The air around her hangs heavy, thick with something slow and deliberate: the calm of a storm that has passed, its violence folded into something almost like grace.</p>
+          <p>Beyond the obvious, a chilling playfulness lingers—an apathetic intensity that dares you to look too long, too deep. If straying from the path is what delivers you to her, then so be it. She is a carnivorous bloom, offering exquisite beauty alongside the certainty of destruction.</p>
+        </div>
+    </div>
+  </>
+)}
+
     </div>
   );
 }
