@@ -72,23 +72,25 @@ const HeaderIcons = ({ headerMode }) => {
               </div>
             </div>
           ) : (
-            <div 
-              className="d-flex align-items-center gap-1 cursor-pointer"
-              onClick={() => setShowLoginModal(true)}
-              style={{ 
-                cursor: 'pointer',
-                padding: '8px 12px',
-                borderRadius: '4px',
-                transition: 'background-color 0.2s',
-                fontSize: '14px',
-                color: textColor
-              }}
-              onMouseEnter={(e) => e.target.style.backgroundColor = isDarkBackground ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)'}
-              onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
-            >
-              <IconUser size={18} />
-              <span>Sign In</span>
-            </div>
+            // SIGN IN BUTTON COMMENTED OUT - Login disabled
+            null
+            // <div
+            //   className="d-flex align-items-center gap-1 cursor-pointer"
+            //   onClick={() => setShowLoginModal(true)}
+            //   style={{
+            //     cursor: 'pointer',
+            //     padding: '8px 12px',
+            //     borderRadius: '4px',
+            //     transition: 'background-color 0.2s',
+            //     fontSize: '14px',
+            //     color: textColor
+            //   }}
+            //   onMouseEnter={(e) => e.target.style.backgroundColor = isDarkBackground ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)'}
+            //   onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
+            // >
+            //   <IconUser size={18} />
+            //   <span>Sign In</span>
+            // </div>
           )}
         </div>
       </div>
@@ -141,20 +143,22 @@ const HeaderIcons = ({ headerMode }) => {
               </div>
             </div>
           ) : (
-            <div 
-              onClick={() => setShowLoginModal(true)}
-              style={{ 
-                cursor: 'pointer', 
-                padding: '8px',
-                borderRadius: '4px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: textColor
-              }}
-            >
-              <IconUser size={20} />
-            </div>
+            // SIGN IN BUTTON COMMENTED OUT - Login disabled
+            null
+            // <div
+            //   onClick={() => setShowLoginModal(true)}
+            //   style={{
+            //     cursor: 'pointer',
+            //     padding: '8px',
+            //     borderRadius: '4px',
+            //     display: 'flex',
+            //     alignItems: 'center',
+            //     justifyContent: 'center',
+            //     color: textColor
+            //   }}
+            // >
+            //   <IconUser size={20} />
+            // </div>
           )}
         </div>
       </div>
