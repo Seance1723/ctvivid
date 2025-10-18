@@ -502,7 +502,7 @@ export default function ProductInfo({
                     )}
 
                     {/* --- Common Text Content Block --- */}
-                    <div 
+                    <div
                       className={`highlight-content ${contentSide}`}
                       style={{
                         width:  `${contentWidth}px`,
@@ -621,7 +621,7 @@ export default function ProductInfo({
           {content?.description && (
             <p className="mobile-description-animate">{content.description}</p>
           )}
-          
+
           {/* Buttons only on last panel */}
           {isLastPanel && (
             <div className="mobile-action-buttons">

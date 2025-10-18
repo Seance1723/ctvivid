@@ -218,7 +218,7 @@ const Home = () => {
               >
                 <div className="action-area">
                   <h4 className="product-name">Asuri</h4>
-                  <Link to="/designers" className="cta cta-text p-0" style={{ top: '135%' ,width:'40vw',textTransform: 'none', fontWeight: 500}}>Shop Now</Link>
+                  <Link to="/designers" className="cta cta-text" style={{ width:'40vw', textTransform: 'none', fontWeight: 500, padding: 0, position: 'static', margin: 0 }}>Shop Now</Link>
                 </div>
               </div>
             </div>
@@ -287,9 +287,9 @@ const Home = () => {
               <div className='row h-100 m-0'>
                 <div className='col-12 col-md-6 p-0 h-100'>
                   <div className='product-left w-100 h-100' style={{ backgroundImage: `url('${process.env.PUBLIC_URL}/pages/Home/home-product-left.png')` }}>
-                    <div className='action-area' style={{ top: '650px' }}>
+                    <div className='action-area'>
                       <h4 className='product-name'>Asuri</h4>
-                      <Link to="/designers" className="cta cta-text p-0" style={{ top: '66%',textTransform: 'none', fontWeight: 500 }}>Shop Now</Link>
+                      <Link to="/designers" className="cta cta-text" style={{ textTransform: 'none', fontWeight: 500, padding: 0, position: 'static', margin: 0 }}>Shop Now</Link>
                     </div>
                   </div>
                 </div>
@@ -303,11 +303,9 @@ const Home = () => {
                 </div> */}
                  <div className='col-12 col-md-6 h-100 p-0'>
                   <div className='product-right w-100 h-100' style={{ backgroundImage: `url('${process.env.PUBLIC_URL}/pages/Home/daisydramaphoto.png')` }}>
-                    <div className='action-area' style={{ top: '650px' }}>
+                    <div className='action-area'>
                       <h4 className='product-name'>Daisy Drama</h4>
-                                            <Link to="/daisydrama" className="cta cta-text p-0" style={{ top: '66%',textTransform: 'none', fontWeight: 500 }}>Shop Now</Link>
-
-                  {/* <Link to="/daisydrama" className="cta cta-text p-0" style={{ textTransform: 'none', fontWeight: 500, color: 'var(--secondary-light-color)', fontSize: '22px', display: 'inline-block',marginTop:'10px' }}>Shop Now</Link> */}
+                      <Link to="/daisydrama" className="cta cta-text" style={{ textTransform: 'none', fontWeight: 500, padding: 0, position: 'static', margin: 0 }}>Shop Now</Link>
                     </div>
                   </div>
                 </div>

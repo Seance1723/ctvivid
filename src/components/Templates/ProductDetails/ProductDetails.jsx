@@ -672,6 +672,7 @@ const ProductDetails = React.forwardRef(({ onScrollUp, isDaisyDrama = false }, r
 
     <h2 className="productName">Daisy Drama </h2>
                   <p className="mobile-product-subtitle">Lorem Ipsum dolor et sum</p>
+                  <p className="product-price" style={{ fontWeight: 'bold', marginTop: '8px', fontSize: '18px' }}>MRP ₹ 8,999</p>
 
 
 
