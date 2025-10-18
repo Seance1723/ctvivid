@@ -228,25 +228,15 @@ const Home = () => {
               <div
                 className="product-right w-100 h-100"
                 style={{
-                  backgroundImage: `url('${process.env.PUBLIC_URL}/pages/Home/home-product-right.png')`,
+                  backgroundImage: `url('${process.env.PUBLIC_URL}/pages/Home/daisydramaphoto.png')`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
                   minHeight: '200px'
                 }}
               >
                 <div className="action-area">
-                  <Link to="/daisydrama" className="cta cta-text p-0" style={{ textTransform: 'none', fontWeight: 500, marginBottom: '10px', display: 'block' }}>daisydrama</Link>
-                  <h4 className="product-name">MAKDI RANI</h4>
-                  {/* <a
-                    href="#"
-                    className="link-disabled"
-                    aria-disabled="true"
-                    tabIndex={-1}
-                  >
-                    Coming Soon
-                  </a> */}
-                  <a href="#" className="link-disabled" aria-disabled="true" tabIndex="-1" style={{ textTransform: 'none' ,fontWeight:500}}>Coming Soon</a>
-
+                  <h4 className="product-name">Daisy Drama</h4>
+                  <Link to="/daisydrama" className="cta cta-text" style={{ width:'40vw', textTransform: 'none', fontWeight: 500, padding: 0, position: 'static', margin: 0 }}>Shop Now</Link>
                 </div>
               </div>
             </div>
