@@ -590,6 +590,8 @@ const ProductDetails = React.forwardRef(({ onScrollUp, isDaisyDrama = false }, r
                 that whisper bold sophistication.
               </p>
 
+              <p className="product-price" style={{ fontWeight: 'bold', marginTop: '8px', fontSize: '18px' }}>MRP ₹ 50,000</p>
+
               {/* <div className="rating d-flex align-items-center gap-1">
                 <IconStarFilled />
                 <IconStarFilled />
