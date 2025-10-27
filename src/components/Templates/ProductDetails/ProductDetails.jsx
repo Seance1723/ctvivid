@@ -673,7 +673,9 @@ const ProductDetails = React.forwardRef(({ onScrollUp, isDaisyDrama = false }, r
     </div>
 
     <h2 className="productName">Daisy Drama </h2>
-                  <p className="mobile-product-subtitle">Lorem Ipsum dolor et sum</p>
+                  <p className="mobile-product-subtitle">The ordinary is optional. Stop waiting for the magic. Wear it.</p>
+                  <p className="mobile-product-subtitle" style={{ marginTop: '12px' }}>Introducing Kannu's Daisy Drama. Each charming, hand-painted white daisy is a whimsical customisation, a constant reminder to the wearer: your escape is just an intention away.</p>
+                  <p className="mobile-product-subtitle" style={{ marginTop: '12px' }}>Step into the daydream, smell the fresh field of daisies, and let that lingering scent add a touch of magic to your reality.</p>
                   <p className="product-price" style={{ fontWeight: 'bold', marginTop: '8px', fontSize: '18px' }}>MRP ₹ 8,999</p>
 
 
@@ -789,19 +791,53 @@ const ProductDetails = React.forwardRef(({ onScrollUp, isDaisyDrama = false }, r
               <span className="mobile-rating-text">** Review</span>
             </div>
 
-              <p className="mobile-breadcrumb">
-                Designer &gt;&gt; Vakra &gt;&gt; <span className="breadcrumb-highlight">Asuri</span>
-              </p>
-              <h2 className="productNameMobile">ASURI – The Fierce Elegance</h2>
+              {!isDaisyDrama ? (
+                <>
+                  <p className="mobile-breadcrumb">
+                    Designer &gt;&gt; Vakra &gt;&gt; <span className="breadcrumb-highlight">Asuri</span>
+                  </p>
+                  <h2 className="productNameMobile">ASURI – The Fierce Elegance</h2>
                   <p className="productIntroMobile">
-                Unveil your inner goddess with ASURI, a designer statement piece
-                that merges contemporary grace with traditional craftsmanship.
-                Tailored from a luxurious silk-blend fabric, ASURI flows
-                effortlessly with every step, featuring hand-embroidered details
-                that whisper bold sophistication.
-              </p>
+                    Unveil your inner goddess with ASURI, a designer statement piece
+                    that merges contemporary grace with traditional craftsmanship.
+                    Tailored from a luxurious silk-blend fabric, ASURI flows
+                    effortlessly with every step, featuring hand-embroidered details
+                    that whisper bold sophistication.
+                  </p>
 
-                <button className="mobile-btn1 mobile-btn-primary1">Contact Us</button>
+                  <button className="mobile-btn1 mobile-btn-primary1">Contact Us</button>
+                </>
+              ) : (
+                <>
+                  <p className="mobile-breadcrumb">
+                    Designer &gt;&gt; Kannu &gt;&gt; <span className="breadcrumb-highlight">Daisy Drama</span>
+                  </p>
+                  <h2 className="productNameMobile">Daisy Drama</h2>
+                  <p className="productIntroMobile">
+                    The ordinary is optional. Stop waiting for the magic. Wear it.
+                  </p>
+                  <p className="productIntroMobile" style={{ marginTop: '12px' }}>
+                    Introducing Kannu's Daisy Drama. Each charming, hand-painted white daisy is a whimsical customisation, a constant reminder to the wearer: your escape is just an intention away.
+                  </p>
+                  <p className="productIntroMobile" style={{ marginTop: '12px' }}>
+                    Step into the daydream, smell the fresh field of daisies, and let that lingering scent add a touch of magic to your reality.
+                  </p>
+                  <p className="product-price" style={{ fontWeight: 'bold', marginTop: '12px', fontSize: '18px' }}>MRP ₹ 8,999</p>
+
+                  <div className="limited-release-banner d-flex align-items-center mt-4 p-2 rounded">
+                    <div className="limited-logo me-3">
+                      <strong className="limited-text">LIMITED</strong>
+                      <div className="underline"></div>
+                    </div>
+                    <div className="release-text no-wrap-text">
+                      <strong>Exclusive Release – </strong>
+                      <span>While Supplies Last.</span>
+                    </div>
+                  </div>
+
+                  <button className="mobile-btn1 mobile-btn-primary1" style={{ marginTop: '20px' }}>Contact Us</button>
+                </>
+              )}
 
 
 
