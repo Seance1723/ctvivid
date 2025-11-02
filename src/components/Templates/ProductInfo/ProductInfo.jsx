@@ -251,7 +251,7 @@ const daisyDramaDataDesktop = [
 const daisyDramaDataMobile = [
   {
     id: 'panel1',
-    imageSrc: '/image1.jpg',
+    imageSrc: '/section3.1.JPG',
     content: {
       title: 'Relaxed Silhouette',
       description: 'The textured, distressed blue denim provides a rugged canvas for the delicate design',
@@ -260,7 +260,7 @@ const daisyDramaDataMobile = [
   },
   {
     id: 'panel2',
-    imageSrc: '/image2.jpg',
+    imageSrc: '/section3.2.JPG',
     content: {
       title: 'Daisy Drama',
       description: 'Charming white daisy motifs, each hand painted, introduce a touch of whimsical, customisation.',
