@@ -9,6 +9,13 @@ import Footer from '../../Footer/Footer';
 import './ProductDetails.scss'; // Import the SCSS file
 
 const ProductDetails = React.forwardRef(({ onScrollUp, isDaisyDrama = false }, ref) => {
+  // WhatsApp click handler
+  const handleWhatsAppClick = () => {
+    const phoneNumber = '9443310108';
+    const whatsappUrl = `https://wa.me/${phoneNumber}`;
+    window.open(whatsappUrl, '_blank');
+  };
+
   // Define image sets for different pages
   const shopNowImages = {
     default: '/products/designers/productDetails/thumbActive.jpg',
@@ -654,7 +661,14 @@ const ProductDetails = React.forwardRef(({ onScrollUp, isDaisyDrama = false }, r
 
 
               <div className="mt-4 d-flex gap-3 flex-wrap">
-                <button className="cta cta-primary-outline" style={{ marginTop: '25px' }} >Contact Us</button>
+                <button
+                  type="button"
+                  className="cta cta-primary-outline"
+                  style={{ marginTop: '25px' }}
+                  onClick={handleWhatsAppClick}
+                >
+                  Contact Us
+                </button>
               </div>
             
 
@@ -710,7 +724,12 @@ const ProductDetails = React.forwardRef(({ onScrollUp, isDaisyDrama = false }, r
     </p> */}
 
     <div className="mt-4 d-flex gap-3 flex-wrap">
-      <button className="cta cta-primary-outline" style={{ marginTop: '25px' }}>
+      <button
+        type="button"
+        className="cta cta-primary-outline"
+        style={{ marginTop: '25px' }}
+        onClick={handleWhatsAppClick}
+      >
         Contact Us
       </button>
     </div>
@@ -804,8 +823,41 @@ const ProductDetails = React.forwardRef(({ onScrollUp, isDaisyDrama = false }, r
                     effortlessly with every step, featuring hand-embroidered details
                     that whisper bold sophistication.
                   </p>
+                  <p className="product-price" style={{ fontWeight: 'bold', marginTop: '12px', fontSize: '18px' }}>MRP ₹ 50,000</p>
 
-                  <button className="mobile-btn1 mobile-btn-primary1">Contact Us</button>
+                  <div className="limited-release-banner d-flex align-items-center mt-4 p-2 rounded">
+                    <div className="limited-logo me-3">
+                      <strong className="limited-text">LIMITED</strong>
+                      <div className="underline"></div>
+                    </div>
+                    <div className="release-text no-wrap-text">
+                      <strong>Exclusive Release – </strong>
+                      <span>While Supplies Last.</span>
+                    </div>
+                  </div>
+
+                  <div className="carefully-crafted-banner d-flex align-items-center mt-4 p-2 rounded">
+                    <div className="crafted-logo me-3 d-flex align-items-center justify-content-center">
+                      <img
+                        src="/path-to-your-icon.png"
+                        alt="Crafted Icon"
+                        className="crafted-icon"
+                      />
+                    </div>
+                    <div className="crafted-text no-wrap-text">
+                      <strong>Carefully Crafted – </strong>
+                      <span>Consciously Limited.</span>
+                    </div>
+                  </div>
+
+                  <button
+                    type="button"
+                    className="mobile-btn1 mobile-btn-primary1"
+                    style={{ marginTop: '20px' }}
+                    onClick={handleWhatsAppClick}
+                  >
+                    Contact Us
+                  </button>
                 </>
               ) : (
                 <>
@@ -835,7 +887,14 @@ const ProductDetails = React.forwardRef(({ onScrollUp, isDaisyDrama = false }, r
                     </div>
                   </div>
 
-                  <button className="mobile-btn1 mobile-btn-primary1" style={{ marginTop: '20px' }}>Contact Us</button>
+                  <button
+                    type="button"
+                    className="mobile-btn1 mobile-btn-primary1"
+                    style={{ marginTop: '20px' }}
+                    onClick={handleWhatsAppClick}
+                  >
+                    Contact Us
+                  </button>
                 </>
               )}
 
