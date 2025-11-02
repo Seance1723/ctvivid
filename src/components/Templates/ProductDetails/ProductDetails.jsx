@@ -663,7 +663,7 @@ const ProductDetails = React.forwardRef(({ onScrollUp, isDaisyDrama = false }, r
               <div className="mt-4 d-flex gap-3 flex-wrap">
                 <button
                   type="button"
-                  className="cta cta-primary-outline"
+                  className="cta cta-withArrowDark"
                   style={{ marginTop: '25px' }}
                   onClick={handleWhatsAppClick}
                 >
@@ -726,7 +726,7 @@ const ProductDetails = React.forwardRef(({ onScrollUp, isDaisyDrama = false }, r
     <div className="mt-4 d-flex gap-3 flex-wrap">
       <button
         type="button"
-        className="cta cta-primary-outline"
+        className="cta cta-withArrowDark"
         style={{ marginTop: '25px' }}
         onClick={handleWhatsAppClick}
       >
