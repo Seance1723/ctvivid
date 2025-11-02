@@ -228,7 +228,7 @@ const Home = () => {
               <div
                 className="product-right w-100 h-100"
                 style={{
-                  backgroundImage: `url('${process.env.PUBLIC_URL}/pages/Home/daisydramaphoto.png')`,
+                  backgroundImage: `url('${process.env.PUBLIC_URL}/pages/Home/homechanged.png')`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
                   minHeight: '200px'
@@ -292,7 +292,7 @@ const Home = () => {
                   </div>
                 </div> */}
                  <div className='col-12 col-md-6 h-100 p-0'>
-                  <div className='product-right w-100 h-100' style={{ backgroundImage: `url('${process.env.PUBLIC_URL}/pages/Home/daisydramaphoto.png')` }}>
+                  <div className='product-right w-100 h-100' style={{ backgroundImage: `url('${process.env.PUBLIC_URL}/pages/Home/homechanged.png')` }}>
                     <div className='action-area'>
                       <h4 className='product-name'>Daisy Drama</h4>
                       <Link to="/daisydrama" className="cta cta-text" style={{ textTransform: 'none', fontWeight: 500, padding: 0, position: 'static', margin: 0, width: 'fit-content' }}>Shop Now</Link>
@@ -303,7 +303,7 @@ const Home = () => {
             </div>
             {/* Second screen - DaisyDrama photo full screen */}
             {/* <div className='product-item h-100 p-0' style={{ minWidth: '100vw', width: '100vw', scrollSnapAlign: 'start' }}>
-              <div className='product-third w-100 h-100' style={{ backgroundImage: `url('${process.env.PUBLIC_URL}/pages/Home/daisydramaphoto.png')`, backgroundSize: '100% 100%', position: 'relative' }}>
+              <div className='product-third w-100 h-100' style={{ backgroundImage: `url('${process.env.PUBLIC_URL}/pages/Home/homechanged.png')`, backgroundSize: '100% 100%', position: 'relative' }}>
                 <div style={{ position: 'absolute', left: '15%', bottom: '60px' }}>
                   <h4 className='product-name' style={{ padding: '8px 32px', background: 'var(--secondary-light-color)', borderRadius: '6px', margin: '0 0 20px 0', width: 'fit-content', textTransform: 'uppercase' }}>Daisy Drama</h4>
                   <Link to="/daisydrama" className="cta cta-text p-0" style={{ textTransform: 'none', fontWeight: 500, color: 'var(--secondary-light-color)', fontSize: '22px', display: 'inline-block' }}>Shop Now</Link>
