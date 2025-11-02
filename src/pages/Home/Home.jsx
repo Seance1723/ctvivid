@@ -218,7 +218,7 @@ const Home = () => {
               >
                 <div className="action-area">
                   <h4 className="product-name">Asuri</h4>
-                  <Link to="/designers" className="cta cta-text" style={{ width:'40vw', textTransform: 'none', fontWeight: 500, padding: 0, position: 'static', margin: 0 }}>Shop Now</Link>
+                  <Link to="/designers" className="cta cta-text" style={{ textTransform: 'none', fontWeight: 500, padding: 0, position: 'static', margin: 0, width: 'fit-content' }}>Shop Now</Link>
                 </div>
               </div>
             </div>
@@ -236,7 +236,7 @@ const Home = () => {
               >
                 <div className="action-area">
                   <h4 className="product-name">Daisy Drama</h4>
-                  <Link to="/daisydrama" className="cta cta-text" style={{ width:'40vw', textTransform: 'none', fontWeight: 500, padding: 0, position: 'static', margin: 0 }}>Shop Now</Link>
+                  <Link to="/daisydrama" className="cta cta-text" style={{ textTransform: 'none', fontWeight: 500, padding: 0, position: 'static', margin: 0, width: 'fit-content' }}>Shop Now</Link>
                 </div>
               </div>
             </div>
@@ -279,7 +279,7 @@ const Home = () => {
                   <div className='product-left w-100 h-100' style={{ backgroundImage: `url('${process.env.PUBLIC_URL}/pages/Home/home-product-left.png')` }}>
                     <div className='action-area'>
                       <h4 className='product-name'>Asuri</h4>
-                      <Link to="/designers" className="cta cta-text" style={{ textTransform: 'none', fontWeight: 500, padding: 0, position: 'static', margin: 0 }}>Shop Now</Link>
+                      <Link to="/designers" className="cta cta-text" style={{ textTransform: 'none', fontWeight: 500, padding: 0, position: 'static', margin: 0, width: 'fit-content' }}>Shop Now</Link>
                     </div>
                   </div>
                 </div>
@@ -295,7 +295,7 @@ const Home = () => {
                   <div className='product-right w-100 h-100' style={{ backgroundImage: `url('${process.env.PUBLIC_URL}/pages/Home/daisydramaphoto.png')` }}>
                     <div className='action-area'>
                       <h4 className='product-name'>Daisy Drama</h4>
-                      <Link to="/daisydrama" className="cta cta-text" style={{ textTransform: 'none', fontWeight: 500, padding: 0, position: 'static', margin: 0 }}>Shop Now</Link>
+                      <Link to="/daisydrama" className="cta cta-text" style={{ textTransform: 'none', fontWeight: 500, padding: 0, position: 'static', margin: 0, width: 'fit-content' }}>Shop Now</Link>
                     </div>
                   </div>
                 </div>
