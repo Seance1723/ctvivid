@@ -228,7 +228,7 @@ const Home = () => {
               <div
                 className="product-right w-100 h-100"
                 style={{
-                  backgroundImage: `url('${process.env.PUBLIC_URL}/pages/Home/homechanged.png')`,
+                  backgroundImage: `url('${process.env.PUBLIC_URL}/pages/Home/homechanged.PNG')`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
                   minHeight: '200px'
@@ -292,7 +292,7 @@ const Home = () => {
                   </div>
                 </div> */}
                  <div className='col-12 col-md-6 h-100 p-0'>
-                  <div className='product-right w-100 h-100' style={{ backgroundImage: `url('${process.env.PUBLIC_URL}/pages/Home/homechanged.png')` }}>
+                  <div className='product-right w-100 h-100' style={{ backgroundImage: `url('${process.env.PUBLIC_URL}/pages/Home/homechanged.PNG')` }}>
                     <div className='action-area'>
                       <h4 className='product-name'>Daisy Drama</h4>
                       <Link to="/daisydrama" className="cta cta-text" style={{ textTransform: 'none', fontWeight: 500, padding: 0, position: 'static', margin: 0, width: 'fit-content' }}>Shop Now</Link>
