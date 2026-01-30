@@ -211,12 +211,12 @@ const Home = () => {
 
           {/* Inner slides */}
           <div className="carousel-inner h-100">
-            {/* Slide 1 */}
+            {/* Slide 1 - Asuri */}
             <div className="carousel-item active h-100">
               <div
                 className="product-left w-100 h-100"
                 style={{
-                  backgroundImage: `url('${process.env.PUBLIC_URL}/pages/Home/home-product-left.png')`,
+                  backgroundImage: `url('${process.env.PUBLIC_URL}/pages/Home/products/IMG_2713_3.jpg')`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
                   minHeight: '200px'
@@ -229,12 +229,12 @@ const Home = () => {
               </div>
             </div>
 
-            {/* Slide 2 */}
+            {/* Slide 2 - Daisy Drama */}
             <div className="carousel-item h-100">
               <div
                 className="product-right w-100 h-100"
                 style={{
-                  backgroundImage: `url('${process.env.PUBLIC_URL}/pages/Home/homechanged.PNG')`,
+                  backgroundImage: `url('${process.env.PUBLIC_URL}/pages/Home/products/IMG_2713_2.jpg')`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
                   minHeight: '200px'
@@ -252,16 +252,15 @@ const Home = () => {
               <div
                 className="product-right w-100 h-100"
                 style={{
-                  backgroundColor: '#4A90E2',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
+                  backgroundImage: `url('${process.env.PUBLIC_URL}/pages/Home/products/IMG_2713_9.jpg')`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
                   minHeight: '200px'
                 }}
               >
                 <div className="action-area">
-                  <h4 className="product-name" style={{ color: 'white' }}>Trishna</h4>
-                  <Link to="/trishna" className="cta cta-text" style={{ textTransform: 'none', fontWeight: 500, padding: 0, position: 'static', margin: 0, width: 'fit-content', color: 'white' }}>Shop Now</Link>
+                  <h4 className="product-name">Trishna</h4>
+                  <Link to="/trishna" className="cta cta-text" style={{ textTransform: 'none', fontWeight: 500, padding: 0, position: 'static', margin: 0, width: 'fit-content' }}>Shop Now</Link>
                 </div>
               </div>
             </div>
@@ -294,38 +293,37 @@ const Home = () => {
           </button> */}
         </div>
 
-        {/* ──────────────── DESKTOP HORIZONTAL SCROLL ──────────────── */}
-        <div className="container-fluid w-100 h-100 d-none d-md-block" style={{ overflowX: 'auto', overflowY: 'hidden', scrollSnapType: 'x mandatory' }}>
-          <div className='d-flex h-100' style={{ width: 'fit-content' }}>
-            {/* First screen - Three columns: Asuri, Daisy Drama, and Trishna */}
-            <div className='product-item p-0 h-100' style={{ minWidth: '100vw', width: '100vw', scrollSnapAlign: 'start' }}>
-              <div className='row h-100 m-0'>
-                <div className='col-12 col-md-4 p-0 h-100'>
-                  <div className='product-left w-100 h-100' style={{ backgroundImage: `url('${process.env.PUBLIC_URL}/pages/Home/home-product-left.png')` }}>
-                    <div className='action-area'>
-                      <h4 className='product-name'>Asuri</h4>
-                      <Link to="/designers" className="cta cta-text" style={{ textTransform: 'none', fontWeight: 500, padding: 0, position: 'static', margin: 0, width: 'fit-content' }}>Shop Now</Link>
-                    </div>
-                  </div>
-                </div>
-                <div className='col-12 col-md-4 h-100 p-0'>
-                  <div className='product-right w-100 h-100' style={{ backgroundImage: `url('${process.env.PUBLIC_URL}/pages/Home/homechanged.PNG')` }}>
-                    <div className='action-area'>
-                      <h4 className='product-name'>Daisy Drama</h4>
-                      <Link to="/daisydrama" className="cta cta-text" style={{ textTransform: 'none', fontWeight: 500, padding: 0, position: 'static', margin: 0, width: 'fit-content' }}>Shop Now</Link>
-                    </div>
-                  </div>
-                </div>
-                <div className='col-12 col-md-4 h-100 p-0'>
-                  <div className='product-third w-100 h-100' style={{ backgroundColor: '#4A90E2', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <div className='action-area'>
-                      <h4 className='product-name' style={{ color: 'white' }}>Trishna</h4>
-                      <Link to="/trishna" className="cta cta-text" style={{ textTransform: 'none', fontWeight: 500, padding: 0, position: 'static', margin: 0, width: 'fit-content', color: 'white' }}>Shop Now</Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+        {/* ──────────────── DESKTOP IMAGE GRID ──────────────── */}
+        <div className="d-none d-md-flex w-100 h-100" style={{ flexDirection: 'column', background: '#1a1a1a', padding: '16px', gap: '10px', overflow: 'hidden' }}>
+          {/* Top Row - 4 images */}
+          <div style={{ display: 'flex', flex: 1, gap: '10px', minHeight: 0 }}>
+            <Link to="/designers" className="product-grid-item" style={{ flex: 1, borderRadius: '10px', overflow: 'hidden', position: 'relative' }}>
+              <img src={`${process.env.PUBLIC_URL}/pages/Home/products/IMG_2713_3.jpg`} alt="Asuri" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+            </Link>
+            <Link to="/daisydrama" className="product-grid-item" style={{ flex: 1, borderRadius: '10px', overflow: 'hidden', position: 'relative' }}>
+              <img src={`${process.env.PUBLIC_URL}/pages/Home/products/IMG_2713_2.jpg`} alt="Daisy Drama" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+            </Link>
+            <Link to="/trishna" className="product-grid-item" style={{ flex: 1, borderRadius: '10px', overflow: 'hidden', position: 'relative' }}>
+              <img src={`${process.env.PUBLIC_URL}/pages/Home/products/IMG_2713_9.jpg`} alt="Trishna" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+            </Link>
+            <Link to="/daisydrama" className="product-grid-item" style={{ flex: 1, borderRadius: '10px', overflow: 'hidden', position: 'relative' }}>
+              <img src={`${process.env.PUBLIC_URL}/pages/Home/products/IMG_2713_4.jpg`} alt="Daisy Drama" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+            </Link>
+          </div>
+          {/* Bottom Row - 4 images */}
+          <div style={{ display: 'flex', flex: 1, gap: '10px', minHeight: 0 }}>
+            <Link to="/designers" className="product-grid-item" style={{ flex: 1, borderRadius: '10px', overflow: 'hidden', position: 'relative' }}>
+              <img src={`${process.env.PUBLIC_URL}/pages/Home/products/IMG_2713_1.jpg`} alt="Asuri" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+            </Link>
+            <Link to="/trishna" className="product-grid-item" style={{ flex: 1, borderRadius: '10px', overflow: 'hidden', position: 'relative' }}>
+              <img src={`${process.env.PUBLIC_URL}/pages/Home/products/IMG_2713_13.jpg`} alt="Trishna" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'left center', display: 'block' }} />
+            </Link>
+            <Link to="/trishna" className="product-grid-item" style={{ flex: 1, borderRadius: '10px', overflow: 'hidden', position: 'relative' }}>
+              <img src={`${process.env.PUBLIC_URL}/pages/Home/products/IMG_2713_13.jpg`} alt="Trishna" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center center', display: 'block' }} />
+            </Link>
+            <Link to="/trishna" className="product-grid-item" style={{ flex: 1, borderRadius: '10px', overflow: 'hidden', position: 'relative' }}>
+              <img src={`${process.env.PUBLIC_URL}/pages/Home/products/IMG_2713_13.jpg`} alt="Trishna" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'right center', display: 'block' }} />
+            </Link>
           </div>
         </div>
       </section>

@@ -1,3 +1,44 @@
+// Product grid for homepage second screen
+.product-grid-item {
+  display: block;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+
+  img {
+    transition: transform 0.4s ease;
+  }
+
+  &:hover img {
+    transform: scale(1.05);
+  }
+
+  .product-grid-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.6));
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    .product-name {
+      color: white;
+      margin: 0 0 4px 0;
+      font-size: 18px;
+      font-weight: 500;
+    }
+
+    .cta-text {
+      color: white;
+      font-size: 14px;
+      text-decoration: none;
+    }
+  }
+}
+
 .trends-swiper {
   width: 100%;
 
