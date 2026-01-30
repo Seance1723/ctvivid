@@ -4,7 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function ProductVideo({ onAddToCartClick, onScrollUp, onScrollDown, isDaisyDrama = false }) {
+export default function ProductVideo({ onAddToCartClick, onScrollUp, onScrollDown, isDaisyDrama = false, isTrishna = false }) {
   const videoRef = useRef(null);
   const sectionRef = useRef(null);
   const touchStartY = useRef(0);
@@ -341,7 +341,7 @@ export default function ProductVideo({ onAddToCartClick, onScrollUp, onScrollDow
     >
       <video
         ref={videoRef}
-        src={isDaisyDrama ? "/section2.mov" : "/products/designers/video/DesignersVideo.mp4"}
+        src={isTrishna ? "/section2_lan_trishna.mov" : (isDaisyDrama ? "/section2.mov" : "/products/designers/video/DesignersVideo.mp4")}
         className="video-player"
         muted
         playsInline

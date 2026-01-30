@@ -66,9 +66,29 @@ const daisyDramaTaglines = [
   "is only a dream.",
 ];
 
+const trishnaTaglines = [
+  "Here, a field of daisies blooms",
+  "just for me.",
+  "",
+  "I am a god of my own making,",
+  "a painter of the sky, a weaver of stars.",
+  "",
+  "It is a world born from my own heart,",
+  "and it is whole.",
+  "",
+  "And even when I am pulled back,",
+  "I smile.",
+  "",
+  "Because I can still smell the daisies from the dream,",
+  "soft, and sweet.",
+  "",
+  "The distance between here and there",
+  "is only a dream.",
+];
+
 const clamp = (v, min, max) => (v < min ? min : v > max ? max : v);
 
-export default function Designer({ isDaisyDrama = false }) {
+export default function Designer({ isDaisyDrama = false, isTrishna = false }) {
   const [isModalOpen, setModalOpen] = useState(false);
   const containerRef = useRef(null);
   const trackRef = useRef(null);
@@ -256,8 +276,8 @@ export default function Designer({ isDaisyDrama = false }) {
   }, [isModalOpen]);
 
   useEffect(() => {
-    // Skip the slider logic for DaisyDrama since we're showing video
-    if (isDaisyDrama) return;
+    // Skip the slider logic for DaisyDrama and Trishna since we're showing video
+    if (isDaisyDrama || isTrishna) return;
     
     const container = containerRef.current;
     const track = trackRef.current;
@@ -589,7 +609,7 @@ export default function Designer({ isDaisyDrama = false }) {
       // Remove resize listener
       window.removeEventListener('resize', handleResize);
     };
-  }, [isDaisyDrama]);
+  }, [isDaisyDrama, isTrishna]);
 
   return (
     <>
@@ -598,12 +618,12 @@ export default function Designer({ isDaisyDrama = false }) {
           {/* <img className="brand_logo" src="/products/designers/vakra_logo.png" alt="Vakra Logo" /> */}
           <img
   className="brand_logo"
-  src={isDaisyDrama ? "/products/designers/Kannu.PNG" : "/products/designers/vakra_logo.png"}
-  alt={isDaisyDrama ? "Kannu Logo" : "Vakra Logo"}
+  src={isTrishna ? "/products/designers/Kannu.PNG" : (isDaisyDrama ? "/products/designers/Kannu.PNG" : "/products/designers/vakra_logo.png")}
+  alt={isTrishna ? "Kannu Logo" : (isDaisyDrama ? "Kannu Logo" : "Vakra Logo")}
 />
           <ul className="taglines" ref={tagRef}>
-            {(isDaisyDrama ? daisyDramaTaglines : taglines).map((t, i) => (
-              <li key={i} className={isDaisyDrama ? 'active' : (i === 0 ? 'active' : '')}>{t}</li>
+            {(isTrishna ? trishnaTaglines : (isDaisyDrama ? daisyDramaTaglines : taglines)).map((t, i) => (
+              <li key={i} className={(isDaisyDrama || isTrishna) ? 'active' : (i === 0 ? 'active' : '')}>{t}</li>
             ))}
           </ul>
           <button className="explore-more" onClick={handleExplore}>
@@ -620,17 +640,17 @@ export default function Designer({ isDaisyDrama = false }) {
           Product details
         </button>
 
-        {isDaisyDrama ? (
+        {(isDaisyDrama || isTrishna) ? (
           <div className="daisy-drama-video">
-            <video 
-              src="/changes_v5.mp4" 
-              autoPlay 
-              loop 
-              muted 
+            <video
+              src={isTrishna ? "/section2_trishna.mp4" : "/changes_v5.mp4"}
+              autoPlay
+              loop
+              muted
               playsInline
-              style={{ 
-                width: '100%', 
-                height: '100%', 
+              style={{
+                width: '100%',
+                height: '100%',
                 objectFit: 'cover',
                 position: 'absolute',
                 top: 0,
@@ -682,7 +702,22 @@ export default function Designer({ isDaisyDrama = false }) {
 
 
                 <div className="modal-body">
-                  {isDaisyDrama ? (
+                  {isTrishna ? (
+                    <>
+                      <h5>Title: Trishna</h5>
+                      <h5>Creator: Kannu</h5>
+                      <h5>Year: 2025</h5>
+                      <p className="mt-3">
+                        To exist is to inhabit a universe utterly indifferent to our fleeting presence—a magnificent, silent, and sprawling cosmos unburdened by any external purpose. The profound truth of our existence is its complete lack of inherited meaning. This is the most absolute liberation imaginable. For in a world stripped bare of a pre-written narrative, every moment, every sensation, every quiet joy we choose to cultivate is entirely our own.
+                      </p>
+                      <p>
+                        The wearer of Trishna doesn't escape reality, they rewrite it. They withdraw into their mind, not to flee, but to deliberately reclaim their autonomy. Here, a field of daisies blooms exclusively for them. This enchanting landscape embodies the power of the self to craft its own utopia.
+                      </p>
+                      <p>
+                        When the mundane world pulls one back, there's no sense of loss. The dream's influence persists, as a palpable, phenomenological echo—the lingering, sweet scent of daisies. It's a reminder that the meaning we create in our minds is so real, so vital, that it can transcend the void and colour the world outside. The ultimate joy lies not in finding a purpose, but in the magnificent, absurd, and exhilarating freedom of creating one, forever and always just a dream away.
+                      </p>
+                    </>
+                  ) : isDaisyDrama ? (
                     <>
                       <h5>Title: Daisy Drama</h5>
                       <h5>Creator: Kannu</h5>

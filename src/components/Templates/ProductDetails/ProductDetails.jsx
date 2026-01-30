@@ -8,7 +8,7 @@ import {
 import Footer from '../../Footer/Footer';
 import './ProductDetails.scss'; // Import the SCSS file
 
-const ProductDetails = React.forwardRef(({ onScrollUp, isDaisyDrama = false }, ref) => {
+const ProductDetails = React.forwardRef(({ onScrollUp, isDaisyDrama = false, isTrishna = false }, ref) => {
   // WhatsApp click handler
   const handleWhatsAppClick = () => {
     const phoneNumber = '9443310108';
@@ -39,13 +39,31 @@ const ProductDetails = React.forwardRef(({ onScrollUp, isDaisyDrama = false }, r
     ]
   };
 
-  const currentImages = isDaisyDrama ? daisyDramaImages : shopNowImages;
+  const trishnaImages = {
+    default: '/products/trishna/DSC_2574.JPG',
+    mobile: [
+      '/products/trishna/DSC_2574.JPG',
+      '/products/trishna/DSC_2546.JPG',
+      '/products/trishna/DSC_2533.JPG',
+      '/products/trishna/DSC_2600.JPG',
+      '/products/trishna/DSC_2579.JPG'
+    ],
+    thumbnails: [
+      '/products/trishna/Rectangle7.jpg',
+      '/products/trishna/Rectangle8.jpg',
+      '/products/trishna/Rectangle9.jpg',
+      '/products/trishna/Rectangle10.jpg',
+      '/products/trishna/Rectangle11.jpg'
+    ]
+  };
+
+  const currentImages = isTrishna ? trishnaImages : (isDaisyDrama ? daisyDramaImages : shopNowImages);
   const [activeImage, setActiveImage] = useState(currentImages.default);
-  
-  // Update activeImage when isDaisyDrama changes
+
+  // Update activeImage when isDaisyDrama or isTrishna changes
   React.useEffect(() => {
     setActiveImage(currentImages.default);
-  }, [isDaisyDrama, currentImages.default]);
+  }, [isDaisyDrama, isTrishna, currentImages.default]);
   const mobileImages = currentImages.mobile;
 
   const [mobileImageIndex, setMobileImageIndex] = useState(0);
@@ -491,14 +509,53 @@ const ProductDetails = React.forwardRef(({ onScrollUp, isDaisyDrama = false }, r
         id="productDetails"
         ref={ref}
         className="product-details-section py-5"
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'flex-start',
+          minHeight: '100vh'
+        }}
       >
-        <div className="container">
+        <div className="container" style={{ maxWidth: '1200px' }}>
           <div className="row align-items-top">
             {/* LEFT COL - Desktop Only */}
-            <div className="product-images col-md-7 d-none d-md-flex gap-3">
+            <div className="product-images col-md-7 d-none d-md-flex gap-3" style={{ alignItems: 'flex-start' }}>
               <div className="thumbs d-none d-md-flex flex-column gap-2">
                 {/* Thumbnails */}
-                {isDaisyDrama ? (
+                {isTrishna ? (
+                  <>
+                    <img
+                      src="/products/trishna/Rectangle7.jpg"
+                      alt="thumb1"
+                      onClick={() => setActiveImage('/products/trishna/DSC_2574.JPG')}
+                      className="thumbnail-clickable"
+                    />
+                    <img
+                      src="/products/trishna/Rectangle8.jpg"
+                      alt="thumb2"
+                      onClick={() => setActiveImage('/products/trishna/DSC_2546.JPG')}
+                      className="thumbnail-clickable"
+                    />
+                    <img
+                      src="/products/trishna/Rectangle9.jpg"
+                      alt="thumb3"
+                      onClick={() => setActiveImage('/products/trishna/DSC_2533.JPG')}
+                      className="thumbnail-clickable"
+                    />
+                    <img
+                      src="/products/trishna/Rectangle10.jpg"
+                      alt="thumb4"
+                      onClick={() => setActiveImage('/products/trishna/DSC_2600.JPG')}
+                      className="thumbnail-clickable"
+                    />
+                    <img
+                      src="/products/trishna/Rectangle11.jpg"
+                      alt="thumb5"
+                      onClick={() => setActiveImage('/products/trishna/DSC_2579.JPG')}
+                      className="thumbnail-clickable"
+                    />
+                  </>
+                ) : isDaisyDrama ? (
                   <>
                     <img
                       src="/re img tn 1.jpg"
@@ -576,167 +633,164 @@ const ProductDetails = React.forwardRef(({ onScrollUp, isDaisyDrama = false }, r
             </div>
 
             {/* RIGHT COL - Desktop Only */}
-     {!isDaisyDrama ? (
-            <div className="product-intro-sec col-md-5 d-none d-md-block">
-              {/* Breadcrumb */}
-              <p className="breadcrumb">
-                <ul>
-                  <li>Designer</li>
-                  <li>Vakra</li>
-                  <li>Asuri</li>
-                </ul>
-              </p>
+            {isTrishna ? (
+              // Trishna content - same layout as Asuri
+              <div className="product-intro-sec col-md-5 d-none d-md-block">
+                <p className="breadcrumb">
+                  <ul>
+                    <li>Designer</li>
+                    <li>Vakra</li>
+                    <li>Trishna</li>
+                  </ul>
+                </p>
 
-              <h2 className="productName">ASURI – The Fierce Elegance</h2>
+                <h2 className="productName">TRISHNA – The Eternal Desire</h2>
 
-              <p className="text-muted productIntro">
-                Unveil your inner goddess with ASURI, a designer statement piece
-                that merges contemporary grace with traditional craftsmanship.
-                Tailored from a luxurious silk-blend fabric, ASURI flows
-                effortlessly with every step, featuring hand-embroidered details
-                that whisper bold sophistication.
-              </p>
+                <p className="text-muted productIntro">
+                  Unveil your inner goddess with TRISHNA, a designer statement piece
+                  that merges contemporary grace with traditional craftsmanship.
+                  Tailored from a luxurious silk-blend fabric, TRISHNA flows
+                  effortlessly with every step, featuring hand-embroidered details
+                  that whisper bold sophistication.
+                </p>
 
-              <p className="product-price" style={{ fontWeight: 'bold', marginTop: '8px', fontSize: '18px' }}>MRP ₹ 50,000</p>
+                <p className="product-price" style={{ fontWeight: 'bold', marginTop: '8px', fontSize: '18px' }}>MRP ₹ 50,000</p>
 
-              {/* <div className="rating d-flex align-items-center gap-1">
-                <IconStarFilled />
-                <IconStarFilled />
-                <IconStarFilled />
-                <IconStarFilled />
-                <IconStar />
-              </div> */}
+                <div className="limited-release-banner d-flex align-items-center mt-4 p-2 rounded">
+                  <div className="limited-logo me-3">
+                    <strong className="limited-text">LIMITED</strong>
+                    <div className="underline"></div>
+                  </div>
+                  <div className="release-text no-wrap-text">
+                    <strong>Exclusive Release – </strong>
+                    <span>While Supplies Last.</span>
+                  </div>
+                </div>
 
-              {/* <h6 className="mt-4">Size &amp; Fit</h6> */}
+                <div className="carefully-crafted-banner d-flex align-items-center mt-4 p-2 rounded">
+                  <div className="crafted-logo me-3 d-flex align-items-center justify-content-center">
+                    <img
+                      src="/path-to-your-icon.png"
+                      alt="Crafted Icon"
+                      className="crafted-icon"
+                    />
+                  </div>
+                  <div className="crafted-text no-wrap-text">
+                    <strong>Carefully Crafted – </strong>
+                    <span>Consciously Limited.</span>
+                  </div>
+                </div>
 
-              {/* <div className="d-flex gap-3 align-items-center mt-2">
-                <select className="form-select input-qty" aria-label="Quantity Selection">
-                  <option value="" defaultValue>Qty</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                </select>
-                <select className="input-designs form-select" aria-label="Design Selection">
-                  <option>Design A</option>
-                  <option>Design B</option>
-                </select>
-              </div> */}
-
-              {/* <div className="mt-4 d-flex gap-3" >
-                <button className="cta cta-primary">Buy Now</button>
-                <button className="cta cta-primary-outline">Add to Cart</button>
-              </div> */}
-              {/* <div className="mt-4 d-flex gap-3 flex-wrap">
-                <button className="cta cta-primary">Buy Now</button>
-                <button className="cta cta-primary-outline" style={{ marginLeft: '11.5%' }}>Add to Cart</button>
-              </div> */}
-
-              <div className="limited-release-banner d-flex align-items-center mt-4 p-2 rounded">
-  <div className="limited-logo me-3">
-    <strong className="limited-text">LIMITED</strong>
-    <div className="underline"></div>
-  </div>
-  <div className="release-text no-wrap-text">
-    <strong>Exclusive Release – </strong>
-    <span>While Supplies Last.</span>
-  </div>
-</div>
-
-
-
-<div className="carefully-crafted-banner d-flex align-items-center mt-4 p-2 rounded">
-  <div className="crafted-logo me-3 d-flex align-items-center justify-content-center">
-    <img
-      src="/path-to-your-icon.png"
-      alt="Crafted Icon"
-      className="crafted-icon"
-    />
-  </div>
-  <div className="crafted-text no-wrap-text">
-    <strong>Carefully Crafted – </strong>
-    <span>Consciously Limited.</span>
-  </div>
-</div>
-
-
-              <div className="mt-4 d-flex gap-3 flex-wrap">
-                <button
-                  type="button"
-                  className="cta cta-withArrowDark"
-                  style={{ marginTop: '25px' }}
-                  onClick={handleWhatsAppClick}
-                >
-                  Contact Us
-                </button>
+                <div className="mt-4 d-flex gap-3 flex-wrap">
+                  <button
+                    type="button"
+                    className="cta cta-withArrowDark"
+                    style={{ marginTop: '25px' }}
+                    onClick={handleWhatsAppClick}
+                  >
+                    Contact Us
+                  </button>
+                </div>
               </div>
-            
+            ) : isDaisyDrama ? (
+              // Daisy Drama content
+              <div className="product-intro-sec col-md-5 d-none d-md-block">
+                <div className="breadcrumb">
+                  <ul>
+                    <li>Designer</li>
+                    <li>Kannu</li>
+                    <li>Daisy Drama</li>
+                  </ul>
+                </div>
 
+                <h2 className="productName">Daisy Drama</h2>
+                <p className="mobile-product-subtitle">The ordinary is optional. Stop waiting for the magic. Wear it.</p>
+                <p className="mobile-product-subtitle" style={{ marginTop: '12px' }}>Introducing Kannu's Daisy Drama. Each charming, hand-painted white daisy is a whimsical customisation, a constant reminder to the wearer: your escape is just an intention away.</p>
+                <p className="mobile-product-subtitle" style={{ marginTop: '12px' }}>Step into the daydream, smell the fresh field of daisies, and let that lingering scent add a touch of magic to your reality.</p>
+                <p className="product-price" style={{ fontWeight: 'bold', marginTop: '8px', fontSize: '18px' }}>MRP ₹ 8,999</p>
 
+                <div className="limited-release-banner d-flex align-items-center mt-4 p-2 rounded">
+                  <div className="limited-logo me-3">
+                    <strong className="limited-text">LIMITED</strong>
+                    <div className="underline"></div>
+                  </div>
+                  <div className="release-text no-wrap-text">
+                    <strong>Exclusive Release – </strong>
+                    <span>While Supplies Last.</span>
+                  </div>
+                </div>
 
-            </div>
-     ):(
+                <div className="mt-4 d-flex gap-3 flex-wrap">
+                  <button
+                    type="button"
+                    className="cta cta-withArrowDark"
+                    style={{ marginTop: '25px' }}
+                    onClick={handleWhatsAppClick}
+                  >
+                    Contact Us
+                  </button>
+                </div>
+              </div>
+            ) : (
+              // Asuri content
+              <div className="product-intro-sec col-md-5 d-none d-md-block">
+                <p className="breadcrumb">
+                  <ul>
+                    <li>Designer</li>
+                    <li>Vakra</li>
+                    <li>Asuri</li>
+                  </ul>
+                </p>
 
-      <div className="product-intro-sec col-md-5 d-none d-md-block">
-    <div className="breadcrumb">
-      <ul>
-        <li>Designer</li>
-        <li>Kannu</li>
-        <li>Daisy Drama</li>
-      </ul>
-    </div>
+                <h2 className="productName">ASURI – The Fierce Elegance</h2>
 
-    <h2 className="productName">Daisy Drama </h2>
-                  <p className="mobile-product-subtitle">The ordinary is optional. Stop waiting for the magic. Wear it.</p>
-                  <p className="mobile-product-subtitle" style={{ marginTop: '12px' }}>Introducing Kannu's Daisy Drama. Each charming, hand-painted white daisy is a whimsical customisation, a constant reminder to the wearer: your escape is just an intention away.</p>
-                  <p className="mobile-product-subtitle" style={{ marginTop: '12px' }}>Step into the daydream, smell the fresh field of daisies, and let that lingering scent add a touch of magic to your reality.</p>
-                  <p className="product-price" style={{ fontWeight: 'bold', marginTop: '8px', fontSize: '18px' }}>MRP ₹ 8,999</p>
+                <p className="text-muted productIntro">
+                  Unveil your inner goddess with ASURI, a designer statement piece
+                  that merges contemporary grace with traditional craftsmanship.
+                  Tailored from a luxurious silk-blend fabric, ASURI flows
+                  effortlessly with every step, featuring hand-embroidered details
+                  that whisper bold sophistication.
+                </p>
 
+                <p className="product-price" style={{ fontWeight: 'bold', marginTop: '8px', fontSize: '18px' }}>MRP ₹ 50,000</p>
 
+                <div className="limited-release-banner d-flex align-items-center mt-4 p-2 rounded">
+                  <div className="limited-logo me-3">
+                    <strong className="limited-text">LIMITED</strong>
+                    <div className="underline"></div>
+                  </div>
+                  <div className="release-text no-wrap-text">
+                    <strong>Exclusive Release – </strong>
+                    <span>While Supplies Last.</span>
+                  </div>
+                </div>
 
-                  {/* <div className="limited-release-banner d-flex align-items-center mt-4 p-2 rounded">
-  <div className="limited-logo me-3">
-    <strong className="limited-text">LIMITED</strong>
-    <div className="underline"></div>
-  </div>
-  <div className="release-text">
-    <strong>Exclusive Release</strong> – While Supplies Last.
-  </div>
-</div> */}
+                <div className="carefully-crafted-banner d-flex align-items-center mt-4 p-2 rounded">
+                  <div className="crafted-logo me-3 d-flex align-items-center justify-content-center">
+                    <img
+                      src="/path-to-your-icon.png"
+                      alt="Crafted Icon"
+                      className="crafted-icon"
+                    />
+                  </div>
+                  <div className="crafted-text no-wrap-text">
+                    <strong>Carefully Crafted – </strong>
+                    <span>Consciously Limited.</span>
+                  </div>
+                </div>
 
-<div className="limited-release-banner d-flex align-items-center mt-4 p-2 rounded">
-  <div className="limited-logo me-3">
-    <strong className="limited-text">LIMITED</strong>
-    <div className="underline"></div>
-  </div>
-  <div className="release-text no-wrap-text">
-    <strong>Exclusive Release – </strong>
-    <span>While Supplies Last.</span>
-  </div>
-</div>
-
-
-
-
-    {/* <p className="text-muted productIntro">
-      Step into the spotlight with Daisy Drama — where fearless florals meet striking silhouettes.
-      A vibrant tribute to bold femininity.
-    </p> */}
-
-    <div className="mt-4 d-flex gap-3 flex-wrap">
-      <button
-        type="button"
-        className="cta cta-withArrowDark"
-        style={{ marginTop: '25px' }}
-        onClick={handleWhatsAppClick}
-      >
-        Contact Us
-      </button>
-    </div>
-  </div>
-     )
-
-     }
+                <div className="mt-4 d-flex gap-3 flex-wrap">
+                  <button
+                    type="button"
+                    className="cta cta-withArrowDark"
+                    style={{ marginTop: '25px' }}
+                    onClick={handleWhatsAppClick}
+                  >
+                    Contact Us
+                  </button>
+                </div>
+              </div>
+            )}
        
           </div>
         </div>
@@ -810,16 +864,16 @@ const ProductDetails = React.forwardRef(({ onScrollUp, isDaisyDrama = false }, r
               <span className="mobile-rating-text">** Review</span>
             </div>
 
-              {!isDaisyDrama ? (
+              {isTrishna ? (
                 <>
                   <p className="mobile-breadcrumb">
-                    Designer &gt;&gt; Vakra &gt;&gt; <span className="breadcrumb-highlight">Asuri</span>
+                    Designer &gt;&gt; Vakra &gt;&gt; <span className="breadcrumb-highlight">Trishna</span>
                   </p>
-                  <h2 className="productNameMobile">ASURI – The Fierce Elegance</h2>
+                  <h2 className="productNameMobile">TRISHNA – The Eternal Desire</h2>
                   <p className="productIntroMobile">
-                    Unveil your inner goddess with ASURI, a designer statement piece
+                    Unveil your inner goddess with TRISHNA, a designer statement piece
                     that merges contemporary grace with traditional craftsmanship.
-                    Tailored from a luxurious silk-blend fabric, ASURI flows
+                    Tailored from a luxurious silk-blend fabric, TRISHNA flows
                     effortlessly with every step, featuring hand-embroidered details
                     that whisper bold sophistication.
                   </p>
@@ -859,7 +913,7 @@ const ProductDetails = React.forwardRef(({ onScrollUp, isDaisyDrama = false }, r
                     Contact Us
                   </button>
                 </>
-              ) : (
+              ) : isDaisyDrama ? (
                 <>
                   <p className="mobile-breadcrumb">
                     Designer &gt;&gt; Kannu &gt;&gt; <span className="breadcrumb-highlight">Daisy Drama</span>
@@ -884,6 +938,55 @@ const ProductDetails = React.forwardRef(({ onScrollUp, isDaisyDrama = false }, r
                     <div className="release-text no-wrap-text">
                       <strong>Exclusive Release – </strong>
                       <span>While Supplies Last.</span>
+                    </div>
+                  </div>
+
+                  <button
+                    type="button"
+                    className="mobile-btn1 mobile-btn-primary1"
+                    style={{ marginTop: '20px' }}
+                    onClick={handleWhatsAppClick}
+                  >
+                    Contact Us
+                  </button>
+                </>
+              ) : (
+                <>
+                  <p className="mobile-breadcrumb">
+                    Designer &gt;&gt; Vakra &gt;&gt; <span className="breadcrumb-highlight">Asuri</span>
+                  </p>
+                  <h2 className="productNameMobile">ASURI – The Fierce Elegance</h2>
+                  <p className="productIntroMobile">
+                    Unveil your inner goddess with ASURI, a designer statement piece
+                    that merges contemporary grace with traditional craftsmanship.
+                    Tailored from a luxurious silk-blend fabric, ASURI flows
+                    effortlessly with every step, featuring hand-embroidered details
+                    that whisper bold sophistication.
+                  </p>
+                  <p className="product-price" style={{ fontWeight: 'bold', marginTop: '12px', fontSize: '18px' }}>MRP ₹ 50,000</p>
+
+                  <div className="limited-release-banner d-flex align-items-center mt-4 p-2 rounded">
+                    <div className="limited-logo me-3">
+                      <strong className="limited-text">LIMITED</strong>
+                      <div className="underline"></div>
+                    </div>
+                    <div className="release-text no-wrap-text">
+                      <strong>Exclusive Release – </strong>
+                      <span>While Supplies Last.</span>
+                    </div>
+                  </div>
+
+                  <div className="carefully-crafted-banner d-flex align-items-center mt-4 p-2 rounded">
+                    <div className="crafted-logo me-3 d-flex align-items-center justify-content-center">
+                      <img
+                        src="/path-to-your-icon.png"
+                        alt="Crafted Icon"
+                        className="crafted-icon"
+                      />
+                    </div>
+                    <div className="crafted-text no-wrap-text">
+                      <strong>Carefully Crafted – </strong>
+                      <span>Consciously Limited.</span>
                     </div>
                   </div>
 

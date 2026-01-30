@@ -201,6 +201,12 @@ const Home = () => {
               data-bs-slide-to="1"
               aria-label="Slide 2"
             ></button>
+            <button
+              type="button"
+              data-bs-target="#newProductCarousel"
+              data-bs-slide-to="2"
+              aria-label="Slide 3"
+            ></button>
           </div>
 
           {/* Inner slides */}
@@ -240,6 +246,25 @@ const Home = () => {
                 </div>
               </div>
             </div>
+
+            {/* Slide 3 - Trishna */}
+            <div className="carousel-item h-100">
+              <div
+                className="product-right w-100 h-100"
+                style={{
+                  backgroundColor: '#4A90E2',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  minHeight: '200px'
+                }}
+              >
+                <div className="action-area">
+                  <h4 className="product-name" style={{ color: 'white' }}>Trishna</h4>
+                  <Link to="/trishna" className="cta cta-text" style={{ textTransform: 'none', fontWeight: 500, padding: 0, position: 'static', margin: 0, width: 'fit-content', color: 'white' }}>Shop Now</Link>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Controls */}
@@ -272,10 +297,10 @@ const Home = () => {
         {/* ──────────────── DESKTOP HORIZONTAL SCROLL ──────────────── */}
         <div className="container-fluid w-100 h-100 d-none d-md-block" style={{ overflowX: 'auto', overflowY: 'hidden', scrollSnapType: 'x mandatory' }}>
           <div className='d-flex h-100' style={{ width: 'fit-content' }}>
-            {/* First screen - Original split view with Asuri and MAKDI RANI */}
+            {/* First screen - Three columns: Asuri, Daisy Drama, and Trishna */}
             <div className='product-item p-0 h-100' style={{ minWidth: '100vw', width: '100vw', scrollSnapAlign: 'start' }}>
               <div className='row h-100 m-0'>
-                <div className='col-12 col-md-6 p-0 h-100'>
+                <div className='col-12 col-md-4 p-0 h-100'>
                   <div className='product-left w-100 h-100' style={{ backgroundImage: `url('${process.env.PUBLIC_URL}/pages/Home/home-product-left.png')` }}>
                     <div className='action-area'>
                       <h4 className='product-name'>Asuri</h4>
@@ -283,15 +308,7 @@ const Home = () => {
                     </div>
                   </div>
                 </div>
-                {/* <div className='col-12 col-md-6 h-100 p-0'>
-                  <div className='product-right w-100 h-100' style={{ backgroundImage: `url('${process.env.PUBLIC_URL}/pages/Home/home-product-right.png')` }}>
-                    <div className='action-area'>
-                      <h4 className='product-name'>MAKDI RANI</h4>
-                      <a href="#" className="link-disabled" aria-disabled="true" tabIndex="-1" style={{ textTransform: 'none',fontWeight: 500 }}>Coming Soon</a>
-                    </div>
-                  </div>
-                </div> */}
-                 <div className='col-12 col-md-6 h-100 p-0'>
+                <div className='col-12 col-md-4 h-100 p-0'>
                   <div className='product-right w-100 h-100' style={{ backgroundImage: `url('${process.env.PUBLIC_URL}/pages/Home/homechanged.PNG')` }}>
                     <div className='action-area'>
                       <h4 className='product-name'>Daisy Drama</h4>
@@ -299,17 +316,16 @@ const Home = () => {
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
-            {/* Second screen - DaisyDrama photo full screen */}
-            {/* <div className='product-item h-100 p-0' style={{ minWidth: '100vw', width: '100vw', scrollSnapAlign: 'start' }}>
-              <div className='product-third w-100 h-100' style={{ backgroundImage: `url('${process.env.PUBLIC_URL}/pages/Home/homechanged.png')`, backgroundSize: '100% 100%', position: 'relative' }}>
-                <div style={{ position: 'absolute', left: '15%', bottom: '60px' }}>
-                  <h4 className='product-name' style={{ padding: '8px 32px', background: 'var(--secondary-light-color)', borderRadius: '6px', margin: '0 0 20px 0', width: 'fit-content', textTransform: 'uppercase' }}>Daisy Drama</h4>
-                  <Link to="/daisydrama" className="cta cta-text p-0" style={{ textTransform: 'none', fontWeight: 500, color: 'var(--secondary-light-color)', fontSize: '22px', display: 'inline-block' }}>Shop Now</Link>
+                <div className='col-12 col-md-4 h-100 p-0'>
+                  <div className='product-third w-100 h-100' style={{ backgroundColor: '#4A90E2', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <div className='action-area'>
+                      <h4 className='product-name' style={{ color: 'white' }}>Trishna</h4>
+                      <Link to="/trishna" className="cta cta-text" style={{ textTransform: 'none', fontWeight: 500, padding: 0, position: 'static', margin: 0, width: 'fit-content', color: 'white' }}>Shop Now</Link>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div> */}
+            </div>
           </div>
         </div>
       </section>

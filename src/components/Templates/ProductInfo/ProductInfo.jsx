@@ -269,11 +269,210 @@ const daisyDramaDataMobile = [
   }
 ];
 
+const trishnaDataDesktop = [
+  {
+    id: 'panel1',
+    imageSrc: '/products/trishna/trishna_01.JPG',
+    dots: [
+      {
+        id: 'p1d1',
+        xPercent: 30,
+        yPercent: 45,
+        lineXPercent: 30,
+        lineYPercent: 45,
+        lineLength: 200,
+        lineDirection: 'left',
+        title: '',
+        description: '',
+        thumbnail: '/products/trishna/trishna_04.JPG',
+        contentSide: 'right',
+        contentWidth: 160,
+        contentXPercent: 10,
+        contentYPercent: 35
+      },
+      {
+        id: 'p1d2',
+        xPercent: 55,
+        yPercent: 50,
+        lineXPercent: 55,
+        lineYPercent: 50,
+        lineLength: 350,
+        lineDirection: 'right',
+        title: 'Reversible V-Neck',
+        description:
+          'A fluid, dual-faced silhouette designed to be worn with the plunging neckline at either the front or the back.',
+        thumbnail: '',
+        contentSide: 'right',
+        contentWidth: 250,
+        contentXPercent: 70,
+        contentYPercent: 45
+      }
+    ]
+  },
+  {
+    id: 'panel2',
+    imageSrc: '/products/trishna/trishna_02.JPG',
+    dots: [
+      {
+        id: 'p2d1',
+        xPercent: 52,
+        yPercent: 48,
+        lineXPercent: 52,
+        lineYPercent: 48,
+        lineLength: 300,
+        lineDirection: 'right',
+        title: '',
+        description: '',
+        thumbnail: '/products/trishna/trishna_03.JPG',
+        contentSide: 'left',
+        contentWidth: 160,
+        contentXPercent: 70,
+        contentYPercent: 35
+      },
+      {
+        id: 'p2d2',
+        xPercent: 45,
+        yPercent: 54,
+        lineXPercent: 45,
+        lineYPercent: 54,
+        lineLength: 370,
+        lineDirection: 'left',
+        title: 'Bishop Sleeves',
+        description:
+          'Voluminous, voluptuous sleeves that gather at the cuff to create a soft, feminine silhouette.',
+        thumbnail: '',
+        contentSide: 'left',
+        contentWidth: 280,
+        contentXPercent: 20,
+        contentYPercent: 48
+      }
+    ]
+  },
+  {
+    id: 'panel3',
+    imageSrc: '/products/trishna/trishna_small_03.JPG',
+    dots: [
+      {
+        id: 'p3d1',
+        xPercent: 50,
+        yPercent: 50,
+        lineXPercent: 50,
+        lineYPercent: 50,
+        lineLength: 380,
+        lineDirection: 'right',
+        title: '',
+        description: '',
+        thumbnail: '/products/trishna/trishna_small_04.JPG',
+        contentSide: 'left',
+        contentWidth: 160,
+        contentXPercent: 75,
+        contentYPercent: 35
+      },
+      {
+        id: 'p3d2',
+        xPercent: 45,
+        yPercent: 55,
+        lineXPercent: 45,
+        lineYPercent: 55,
+        lineLength: 400,
+        lineDirection: 'left',
+        title: 'Multi-way Flower Choker',
+        description:
+          'A detachable crochet flower choker that transforms from a statement necklace into a delicate arm wrap.',
+        thumbnail: '',
+        contentSide: 'right',
+        contentWidth: 280,
+        contentXPercent: 15,
+        contentYPercent: 50
+      }
+    ]
+  },
+  {
+    id: 'panel4',
+    imageSrc: '/products/trishna/trishna_small_01.JPG',
+    dots: [
+      {
+        id: 'p4d1',
+        xPercent: 50,
+        yPercent: 50,
+        lineXPercent: 50,
+        lineYPercent: 50,
+        lineLength: 350,
+        lineDirection: 'right',
+        title: '',
+        description: '',
+        thumbnail: '/products/trishna/trishna_small_04.JPG',
+        contentSide: 'left',
+        contentWidth: 160,
+        contentXPercent: 75,
+        contentYPercent: 55
+      },
+      {
+        id: 'p4d2',
+        xPercent: 45,
+        yPercent: 45,
+        lineXPercent: 45,
+        lineYPercent: 45,
+        lineLength: 380,
+        lineDirection: 'left',
+        title: 'Relaxed Silhouette',
+        description:
+          'A fluid, relaxed silhouette that drapes effortlessly, providing both comfort and elegance for any occasion.',
+        thumbnail: '',
+        contentSide: 'right',
+        contentWidth: 280,
+        contentXPercent: 15,
+        contentYPercent: 40
+      }
+    ]
+  }
+];
+
+const trishnaDataMobile = [
+  {
+    id: 'panel1',
+    imageSrc: '/products/trishna/trishna_01.JPG',
+    content: {
+      title: 'Reversible V-Neck',
+      description: 'A fluid, dual-faced silhouette designed to be worn with the plunging neckline at either the front or the back.',
+      thumbnail: '/products/trishna/trishna_04.JPG'
+    }
+  },
+  {
+    id: 'panel2',
+    imageSrc: '/products/trishna/trishna_02.JPG',
+    content: {
+      title: 'Bishop Sleeves',
+      description: 'Voluminous, voluptuous sleeves that gather at the cuff to create a soft, feminine silhouette.',
+      thumbnail: '/products/trishna/trishna_03.JPG'
+    }
+  },
+  {
+    id: 'panel3',
+    imageSrc: '/products/trishna/trishna_small_03.JPG',
+    content: {
+      title: 'Multi-way Flower Choker',
+      description: 'A detachable crochet flower choker that transforms from a statement necklace into a delicate arm wrap.',
+      thumbnail: '/products/trishna/trishna_small_04.JPG'
+    }
+  },
+  {
+    id: 'panel4',
+    imageSrc: '/products/trishna/trishna_small_01.JPG',
+    content: {
+      title: 'Relaxed Silhouette',
+      description: 'A fluid, relaxed silhouette that drapes effortlessly, providing both comfort and elegance for any occasion.',
+      thumbnail: '/products/trishna/trishna_small_04.JPG'
+    }
+  }
+];
+
 export default function ProductInfo({
   onFirstPanelUp,
   onLastPanelDown,
   scrolling,
-  isDaisyDrama = false
+  isDaisyDrama = false,
+  isTrishna = false
 }) {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const [isModalOpen, setModalOpen] = useState(false);
@@ -291,9 +490,11 @@ export default function ProductInfo({
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const highlightsData = isDaisyDrama 
-    ? (isMobile ? daisyDramaDataMobile : daisyDramaDataDesktop)
-    : (isMobile ? highlightsDataMobile : highlightsDataDesktop);
+  const highlightsData = isTrishna
+    ? (isMobile ? trishnaDataMobile : trishnaDataDesktop)
+    : isDaisyDrama
+      ? (isMobile ? daisyDramaDataMobile : daisyDramaDataDesktop)
+      : (isMobile ? highlightsDataMobile : highlightsDataDesktop);
 
   const handleClick = () => {
     onLastPanelDown?.();
@@ -843,7 +1044,22 @@ export default function ProductInfo({
         &times;
       </button>
             <div className="modal-body">
-          {isDaisyDrama ? (
+          {isTrishna ? (
+            <>
+              <h5>Title: Trishna</h5>
+              <h5>Creator: Kannu</h5>
+              <h5>Year: 2025</h5>
+              <p className="mt-3">
+                To exist is to inhabit a universe utterly indifferent to our fleeting presence—a magnificent, silent, and sprawling cosmos unburdened by any external purpose. The profound truth of our existence is its complete lack of inherited meaning. This is the most absolute liberation imaginable. For in a world stripped bare of a pre-written narrative, every moment, every sensation, every quiet joy we choose to cultivate is entirely our own.
+              </p>
+              <p>
+                The wearer of Trishna doesn't escape reality, they rewrite it. They withdraw into their mind, not to flee, but to deliberately reclaim their autonomy. Here, a field of daisies blooms exclusively for them. This enchanting landscape embodies the power of the self to craft its own utopia.
+              </p>
+              <p>
+                When the mundane world pulls one back, there's no sense of loss. The dream's influence persists, as a palpable, phenomenological echo—the lingering, sweet scent of daisies. It's a reminder that the meaning we create in our minds is so real, so vital, that it can transcend the void and colour the world outside. The ultimate joy lies not in finding a purpose, but in the magnificent, absurd, and exhilarating freedom of creating one, forever and always just a dream away.
+              </p>
+            </>
+          ) : isDaisyDrama ? (
             <>
               <h5>Title: Daisy Drama</h5>
               <h5>Creator: Kannu</h5>
