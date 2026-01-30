@@ -131,6 +131,7 @@ const ProductDetails = React.forwardRef(({ onScrollUp, isDaisyDrama = false, isT
             scroll-behavior: smooth;
             overflow-x: hidden;
           }
+        }
 
         /* Desktop button fixes */
         @media (min-width: 768px) {
@@ -239,6 +240,7 @@ const ProductDetails = React.forwardRef(({ onScrollUp, isDaisyDrama = false, isT
           }
         }
 
+        @media (max-width: 767px) {
           body {
             overflow-x: hidden;
           }
@@ -486,34 +488,25 @@ const ProductDetails = React.forwardRef(({ onScrollUp, isDaisyDrama = false, isT
             color: white;
             transform: translateY(-1px);
           }
-            @media (max-width: 767px) {
-  .floating-footer {
-    position: absolute;
-    bottom: 0;
-    z-index: 1000;
-    border-top: 1px solid #ccc;
-    margin-top:0px;
-  }
 
-  // .mobile-content-section {
-  //   padding-bottom: 70px; /* adjust for footer height */
-  // }
-}
-
-
-          /* Mobile Footer Section - REMOVED */
+          .floating-footer {
+            position: absolute;
+            bottom: 0;
+            z-index: 1000;
+            border-top: 1px solid #ccc;
+            margin-top: 0px;
+          }
         }
       `}</style>
 
       <section
         id="productDetails"
         ref={ref}
-        className="product-details-section py-5"
+        className="product-details-section"
         style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'flex-start',
-          minHeight: '100vh'
+          minHeight: '100vh',
+          paddingTop: '100px',
+          paddingBottom: '48px'
         }}
       >
         <div className="container" style={{ maxWidth: '1200px' }}>
