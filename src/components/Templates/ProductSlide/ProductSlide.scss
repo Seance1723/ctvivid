@@ -137,6 +137,9 @@ body.product-slide-active {
     }
 
     &.trishna-theme {
+      .brand_logo {
+        filter: invert(1);
+      }
       .taglines li,
       .taglines li.active {
         color: black;

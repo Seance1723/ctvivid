@@ -614,8 +614,8 @@ export default function Designer({ isDaisyDrama = false, isTrishna = false }) {
           {/* <img className="brand_logo" src="/products/designers/vakra_logo.png" alt="Vakra Logo" /> */}
           <img
   className="brand_logo"
-  src={isTrishna ? "/products/designers/Kannu.PNG" : (isDaisyDrama ? "/products/designers/Kannu.PNG" : "/products/designers/vakra_logo.png")}
-  alt={isTrishna ? "Kannu Logo" : (isDaisyDrama ? "Kannu Logo" : "Vakra Logo")}
+  src={isDaisyDrama ? "/products/designers/Kannu.PNG" : "/products/designers/vakra_logo.png"}
+  alt={isDaisyDrama ? "Kannu Logo" : "Vakra Logo"}
 />
           <ul className="taglines" ref={tagRef}>
             {(isTrishna ? trishnaTaglines : (isDaisyDrama ? daisyDramaTaglines : taglines)).map((t, i) => (
