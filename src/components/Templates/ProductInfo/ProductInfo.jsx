@@ -298,12 +298,12 @@ const trishnaDataDesktop = [
         lineYPercent: 50,
         lineLength: 350,
         lineDirection: 'right',
-        title: 'Reversible V-Neck',
+        title: 'Lotus Appliqué Work',
         description:
-          'A fluid, dual-faced silhouette designed to be worn with the plunging neckline at either the front or the back.',
+          'Intricate floral motifs of the blue lotus. A fluid, dual-faced silhouette designed to be worn with the plunging neckline at either the front or the back.',
         thumbnail: '',
         contentSide: 'right',
-        contentWidth: 250,
+        contentWidth: 320,
         contentXPercent: 70,
         contentYPercent: 45
       }
@@ -339,7 +339,7 @@ const trishnaDataDesktop = [
         lineDirection: 'left',
         title: 'Bishop Sleeves',
         description:
-          'Voluminous, voluptuous sleeves that gather at the cuff to create a soft, feminine silhouette.',
+          'Sweeping, voluminous sleeves that gather at the cuff to evoke a soft heaviness.',
         thumbnail: '',
         contentSide: 'left',
         contentWidth: 280,
@@ -417,7 +417,7 @@ const trishnaDataDesktop = [
         lineDirection: 'left',
         title: 'Relaxed Silhouette',
         description:
-          'A fluid, relaxed silhouette that drapes effortlessly, providing both comfort and elegance for any occasion.',
+          'The textured, distressed blue denim provides a rugged canvas for the delicate design.',
         thumbnail: '',
         contentSide: 'right',
         contentWidth: 280,
@@ -433,8 +433,8 @@ const trishnaDataMobile = [
     id: 'panel1',
     imageSrc: '/products/trishna/trishna_01.JPG',
     content: {
-      title: 'Reversible V-Neck',
-      description: 'A fluid, dual-faced silhouette designed to be worn with the plunging neckline at either the front or the back.',
+      title: 'Lotus Appliqué Work',
+      description: 'Intricate floral motifs of the blue lotus. A fluid, dual-faced silhouette designed to be worn with the plunging neckline at either the front or the back.',
       thumbnail: '/products/trishna/trishna_04.JPG'
     }
   },
@@ -443,7 +443,7 @@ const trishnaDataMobile = [
     imageSrc: '/products/trishna/trishna_02.JPG',
     content: {
       title: 'Bishop Sleeves',
-      description: 'Voluminous, voluptuous sleeves that gather at the cuff to create a soft, feminine silhouette.',
+      description: 'Sweeping, voluminous sleeves that gather at the cuff to evoke a soft heaviness.',
       thumbnail: '/products/trishna/trishna_03.JPG'
     }
   },
@@ -461,7 +461,7 @@ const trishnaDataMobile = [
     imageSrc: '/products/trishna/trishna_small_01.JPG',
     content: {
       title: 'Relaxed Silhouette',
-      description: 'A fluid, relaxed silhouette that drapes effortlessly, providing both comfort and elegance for any occasion.',
+      description: 'The textured, distressed blue denim provides a rugged canvas for the delicate design.',
       thumbnail: '/products/trishna/trishna_small_04.JPG'
     }
   }
