@@ -341,7 +341,7 @@ export default function ProductVideo({ onAddToCartClick, onScrollUp, onScrollDow
     >
       <video
         ref={videoRef}
-        src={isTrishna ? "/section2_lan_trishna.mov" : (isDaisyDrama ? "/section2.mov" : "/products/designers/video/DesignersVideo.mp4")}
+        src={isTrishna ? (isMobile ? "/mobile-trishna-secondscreen.mov" : "/section2_lan_trishna.mov") : (isDaisyDrama ? "/section2.mov" : "/products/designers/video/DesignersVideo.mp4")}
         className="video-player"
         muted
         playsInline

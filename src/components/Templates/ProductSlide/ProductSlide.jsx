@@ -639,7 +639,7 @@ export default function Designer({ isDaisyDrama = false, isTrishna = false }) {
         {(isDaisyDrama || isTrishna) ? (
           <div className="daisy-drama-video">
             <video
-              src={isTrishna ? "/section2_trishna.mp4" : "/changes_v5.mp4"}
+              src={isTrishna ? (isMobile ? "/mobile-trishna-firstscreen.mp4" : "/section2_trishna.mp4") : "/changes_v5.mp4"}
               autoPlay
               loop
               muted
