@@ -371,6 +371,40 @@ export default function ProductVideo({ onAddToCartClick, onScrollUp, onScrollDow
           WebkitTapHighlightColor: 'transparent'
         }}
       />
+      {isTrishna && (
+        <div style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          color: 'black',
+          textAlign: 'center',
+          maxWidth: '600px',
+          padding: '0 20px',
+          zIndex: 10,
+          pointerEvents: 'none'
+        }}>
+          <p style={{
+            fontFamily: "'Georgia', serif",
+            fontSize: '16px',
+            lineHeight: '1.8',
+            fontWeight: 300,
+            letterSpacing: '0.02em',
+            margin: 0
+          }}>
+            A sudden pain slices through you; a stray arrow has pierced your heart.<br />
+            Yet, where the pulse should falter, it quickens;<br />
+            a pale blue lotus blooms.<br />
+            A delicate aroma steals your breath; you drift into a daze, the world blurred at its edges.<br />
+            You want to reach out, to touch its softness—a sudden fever takes hold.<br />
+            The mirage of an inexplicable ecstasy seems just within your reach,<br />
+            you move forward, aching to touch it.<br />
+            <span style={{ fontStyle: 'italic', marginTop: '8px', display: 'inline-block' }}>
+              Just one touch. Just one touch?
+            </span>
+          </p>
+        </div>
+      )}
       <button
         type="button"
         className="cta cta-addToCart right_bottom"

@@ -67,23 +67,19 @@ const daisyDramaTaglines = [
 ];
 
 const trishnaTaglines = [
-  "Here, a field of daisies blooms",
-  "just for me.",
+  "A sudden pain slices through you; a stray arrow has pierced your heart.",
   "",
-  "I am a god of my own making,",
-  "a painter of the sky, a weaver of stars.",
+  "Yet, where the pulse should falter, it quickens;",
+  "a pale blue lotus blooms.",
   "",
-  "It is a world born from my own heart,",
-  "and it is whole.",
+  "A delicate aroma steals your breath; you drift into a daze, the world blurred at its edges.",
   "",
-  "And even when I am pulled back,",
-  "I smile.",
+  "You want to reach out, to touch its softness\u2014a sudden fever takes hold.",
   "",
-  "Because I can still smell the daisies from the dream,",
-  "soft, and sweet.",
+  "The mirage of an inexplicable ecstasy seems just within your reach,",
+  "you move forward, aching to touch it.",
   "",
-  "The distance between here and there",
-  "is only a dream.",
+  "Just one touch. Just one touch?",
 ];
 
 const clamp = (v, min, max) => (v < min ? min : v > max ? max : v);
@@ -614,7 +610,7 @@ export default function Designer({ isDaisyDrama = false, isTrishna = false }) {
   return (
     <>
       <div className="product-slide onepage-section position-relative" ref={containerRef}>
-        <div className="tagline-container">
+        <div className={`tagline-container${isTrishna ? ' trishna-theme' : ''}`}>
           {/* <img className="brand_logo" src="/products/designers/vakra_logo.png" alt="Vakra Logo" /> */}
           <img
   className="brand_logo"
