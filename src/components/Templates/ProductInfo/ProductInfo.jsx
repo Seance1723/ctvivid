@@ -293,10 +293,10 @@ const trishnaDataDesktop = [
       {
         id: 'p1d2',
         xPercent: 55,
-        yPercent: 50,
+        yPercent: 62,
         lineXPercent: 55,
-        lineYPercent: 50,
-        lineLength: 350,
+        lineYPercent: 62,
+        lineLength: 380,
         lineDirection: 'right',
         title: 'Lotus Appliqué Work',
         description:
@@ -304,8 +304,8 @@ const trishnaDataDesktop = [
         thumbnail: '',
         contentSide: 'right',
         contentWidth: 320,
-        contentXPercent: 70,
-        contentYPercent: 45
+        contentXPercent: 68,
+        contentYPercent: 55
       }
     ]
   },
