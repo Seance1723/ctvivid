@@ -421,7 +421,7 @@ const trishnaDataDesktop = [
         thumbnail: '',
         contentSide: 'right',
         contentWidth: 280,
-        contentXPercent: 15,
+        contentXPercent: 8,
         contentYPercent: 40
       }
     ]
