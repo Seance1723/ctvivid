@@ -405,7 +405,7 @@ const trishnaDataDesktop = [
         contentSide: 'left',
         contentWidth: 160,
         contentXPercent: 75,
-        contentYPercent: 55
+        contentYPercent: 40
       },
       {
         id: 'p4d2',
