@@ -2693,6 +2693,9 @@ body .sec-content {
   right: 170px;
   z-index: 10;
 }
+.product-slide .cta.right_bottom {
+  display: none !important;
+}
 .cta.left_bottom {
   position: absolute;
   z-index: 10;
