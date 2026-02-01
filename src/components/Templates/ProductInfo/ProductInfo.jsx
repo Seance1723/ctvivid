@@ -1048,15 +1048,12 @@ export default function ProductInfo({
             <>
               <h5>Title: Trishna</h5>
               <h5>Creator: Kannu</h5>
-              <h5>Year: 2025</h5>
+              <h5>Year: 2026</h5>
               <p className="mt-3">
-                To exist is to inhabit a universe utterly indifferent to our fleeting presence—a magnificent, silent, and sprawling cosmos unburdened by any external purpose. The profound truth of our existence is its complete lack of inherited meaning. This is the most absolute liberation imaginable. For in a world stripped bare of a pre-written narrative, every moment, every sensation, every quiet joy we choose to cultivate is entirely our own.
+                In the heights of spring, Kamadeva—the Hindu god of desire—was said to bear a bow of sugar cane and five flower-headed arrows. The deadliest of them all? The Nilotpala, the blue lotus. It landed the final blow, designed to stupefy the heart and paralyse the target with a yearning that consumed their very sense of self.
               </p>
               <p>
-                The wearer of Trishna doesn't escape reality, they rewrite it. They withdraw into their mind, not to flee, but to deliberately reclaim their autonomy. Here, a field of daisies blooms exclusively for them. This enchanting landscape embodies the power of the self to craft its own utopia.
-              </p>
-              <p>
-                When the mundane world pulls one back, there's no sense of loss. The dream's influence persists, as a palpable, phenomenological echo—the lingering, sweet scent of daisies. It's a reminder that the meaning we create in our minds is so real, so vital, that it can transcend the void and colour the world outside. The ultimate joy lies not in finding a purpose, but in the magnificent, absurd, and exhilarating freedom of creating one, forever and always just a dream away.
+                Trishna by Vakra draws from the legend of this deadly arrow. Its name translates to an intense, unquenchable thirst. This piece revolves around the motif of the blue lotus bloom—a delicate beauty that invites one to love a person to death, literally.
               </p>
             </>
           ) : isDaisyDrama ? (

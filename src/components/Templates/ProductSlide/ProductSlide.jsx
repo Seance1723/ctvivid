@@ -702,7 +702,7 @@ export default function Designer({ isDaisyDrama = false, isTrishna = false }) {
                     <>
                       <h5>Title: Trishna</h5>
                       <h5>Creator: Vakra</h5>
-                      <h5>Year: 2025</h5>
+                      <h5>Year: 2026</h5>
                       <p className="mt-3">
                         In the heights of spring, Kamadeva—the Hindu god of desire—was said to bear a bow of sugar cane and five flower-headed arrows. The deadliest of them all? The Nilotpala, the blue lotus. It landed the final blow, designed to stupefy the heart and paralyse the target with a yearning that consumed their very sense of self.
                       </p>
