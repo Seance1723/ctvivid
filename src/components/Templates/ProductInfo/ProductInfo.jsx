@@ -276,11 +276,11 @@ const trishnaDataDesktop = [
     dots: [
       {
         id: 'p1d1',
-        xPercent: 30,
+        xPercent: 50,
         yPercent: 45,
-        lineXPercent: 30,
+        lineXPercent: 50,
         lineYPercent: 45,
-        lineLength: 200,
+        lineLength: 300,
         lineDirection: 'left',
         title: '',
         description: '',
