@@ -179,118 +179,40 @@ const Home = () => {
         className="homepage-section newproduct-section"
         data-nav-style="logo-only-dark"
       >
-        {/* ──────────────── MOBILE CAROUSEL ──────────────── */}
-        <div
-          id="newProductCarousel"
-          className="carousel slide d-block d-md-none h-100"
-          data-bs-interval="false"
-        >
-          {/* Indicators */}
-          <div className="carousel-indicators">
-            <button
-              type="button"
-              data-bs-target="#newProductCarousel"
-              data-bs-slide-to="0"
-              className="active"
-              aria-current="true"
-              aria-label="Slide 1"
-            ></button>
-            <button
-              type="button"
-              data-bs-target="#newProductCarousel"
-              data-bs-slide-to="1"
-              aria-label="Slide 2"
-            ></button>
-            <button
-              type="button"
-              data-bs-target="#newProductCarousel"
-              data-bs-slide-to="2"
-              aria-label="Slide 3"
-            ></button>
-          </div>
-
-          {/* Inner slides */}
-          <div className="carousel-inner h-100">
-            {/* Slide 1 - Asuri */}
-            <div className="carousel-item active h-100">
-              <div
-                className="product-left w-100 h-100"
-                style={{
-                  backgroundImage: `url('${process.env.PUBLIC_URL}/pages/Home/products/IMG_2713_3.jpg')`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                  minHeight: '200px'
-                }}
-              >
-                <div className="action-area">
-                  <h4 className="product-name">Asuri</h4>
-                  <Link to="/designers" className="cta cta-text" style={{ textTransform: 'none', fontWeight: 500, padding: 0, position: 'static', margin: 0, width: 'fit-content' }}>Shop Now</Link>
-                </div>
-              </div>
-            </div>
-
-            {/* Slide 2 - Daisy Drama */}
-            <div className="carousel-item h-100">
-              <div
-                className="product-right w-100 h-100"
-                style={{
-                  backgroundImage: `url('${process.env.PUBLIC_URL}/pages/Home/products/IMG_2713_2.jpg')`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                  minHeight: '200px'
-                }}
-              >
-                <div className="action-area">
-                  <h4 className="product-name">Daisy Drama</h4>
-                  <Link to="/daisydrama" className="cta cta-text" style={{ textTransform: 'none', fontWeight: 500, padding: 0, position: 'static', margin: 0, width: 'fit-content' }}>Shop Now</Link>
-                </div>
-              </div>
-            </div>
-
-            {/* Slide 3 - Trishna */}
-            <div className="carousel-item h-100">
-              <div
-                className="product-right w-100 h-100"
-                style={{
-                  backgroundImage: `url('${process.env.PUBLIC_URL}/pages/Home/products/IMG_2713_9.jpg')`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                  minHeight: '200px'
-                }}
-              >
-                <div className="action-area">
-                  <h4 className="product-name">Trishna</h4>
-                  <Link to="/trishna" className="cta cta-text" style={{ textTransform: 'none', fontWeight: 500, padding: 0, position: 'static', margin: 0, width: 'fit-content' }}>Shop Now</Link>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Controls */}
-          {/* <button
-            className="carousel-control-prev"
-            type="button"
-            data-bs-target="#newProductCarousel"
-            data-bs-slide="prev"
-          >
-            <span
-              className="carousel-control-prev-icon"
-              aria-hidden="true"
-            ></span>
-            <span className="visually-hidden">Previous</span>
-          </button>
-          <button
-            className="carousel-control-next"
-            type="button"
-            data-bs-target="#newProductCarousel"
-            data-bs-slide="next"
-          >
-            <span
-              className="carousel-control-next-icon"
-              aria-hidden="true"
-            ></span>
-            <span className="visually-hidden">Next</span>
-          </button> */}
+        {/* ──────────────── MOBILE IMAGE GRID ──────────────── */}
+        <div className="d-flex d-md-none w-100 h-100 mobile-product-grid">
+          <Link to="/designers" className="product-grid-item">
+            <img src={`${process.env.PUBLIC_URL}/pages/Home/products/IMG_2713_3.jpg`} alt="Asuri" />
+            <span className="grid-tooltip">Asuri</span>
+          </Link>
+          <Link to="/daisydrama" className="product-grid-item">
+            <img src={`${process.env.PUBLIC_URL}/pages/Home/products/IMG_2713_2.jpg`} alt="Daisy Drama" />
+            <span className="grid-tooltip">Daisy Drama</span>
+          </Link>
+          <Link to="/trishna" className="product-grid-item">
+            <img src={`${process.env.PUBLIC_URL}/pages/Home/products/IMG_2713_9.jpg`} alt="Trishna" />
+            <span className="grid-tooltip">Trishna</span>
+          </Link>
+          <Link to="/daisydrama" className="product-grid-item">
+            <img src={`${process.env.PUBLIC_URL}/pages/Home/products/IMG_2713_4.jpg`} alt="Daisy Drama" />
+            <span className="grid-tooltip">Coming Soon</span>
+          </Link>
+          <Link to="/designers" className="product-grid-item">
+            <img src={`${process.env.PUBLIC_URL}/pages/Home/products/IMG_2713_1.jpg`} alt="Asuri" />
+            <span className="grid-tooltip">Coming Soon</span>
+          </Link>
+          <Link to="/trishna" className="product-grid-item">
+            <img src={`${process.env.PUBLIC_URL}/pages/Home/products/IMG_2713_13.jpg`} alt="Trishna" style={{ objectPosition: 'left center' }} />
+            <span className="grid-tooltip">Coming Soon</span>
+          </Link>
+          <Link to="/trishna" className="product-grid-item">
+            <img src={`${process.env.PUBLIC_URL}/pages/Home/products/IMG_2713_13.jpg`} alt="Trishna" style={{ objectPosition: 'center center' }} />
+            <span className="grid-tooltip">Coming Soon</span>
+          </Link>
+          <Link to="/trishna" className="product-grid-item">
+            <img src={`${process.env.PUBLIC_URL}/pages/Home/products/IMG_2713_13.jpg`} alt="Trishna" style={{ objectPosition: 'right center' }} />
+            <span className="grid-tooltip">Coming Soon</span>
+          </Link>
         </div>
 
         {/* ──────────────── DESKTOP IMAGE GRID ──────────────── */}
@@ -299,7 +221,7 @@ const Home = () => {
           <div style={{ display: 'flex', flex: 1, gap: '10px', minHeight: 0 }}>
             <Link to="/designers" className="product-grid-item" style={{ flex: 1, borderRadius: '10px', overflow: 'hidden', position: 'relative' }}>
               <img src={`${process.env.PUBLIC_URL}/pages/Home/products/IMG_2713_3.jpg`} alt="Asuri" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
-              <span className="grid-tooltip">ASURI</span>
+              <span className="grid-tooltip">Asuri</span>
             </Link>
             <Link to="/daisydrama" className="product-grid-item" style={{ flex: 1, borderRadius: '10px', overflow: 'hidden', position: 'relative' }}>
               <img src={`${process.env.PUBLIC_URL}/pages/Home/products/IMG_2713_2.jpg`} alt="Daisy Drama" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
