@@ -378,11 +378,11 @@ const trishnaDataDesktop = [
         lineDirection: 'left',
         title: 'Multi-way Flower Choker',
         description:
-          'A detachable crochet flower choker that transforms from a statement necklace into a delicate arm wrap.',
+          'A sculptural piece of fabric that transforms from a statement necklace into a delicate wrist wrap.',
         thumbnail: '',
         contentSide: 'right',
-        contentWidth: 280,
-        contentXPercent: 15,
+        contentWidth: 350,
+        contentXPercent: 8,
         contentYPercent: 50
       }
     ]
@@ -452,7 +452,7 @@ const trishnaDataMobile = [
     imageSrc: '/products/trishna/trishna_small_03.JPG',
     content: {
       title: 'Multi-way Flower Choker',
-      description: 'A detachable crochet flower choker that transforms from a statement necklace into a delicate arm wrap.',
+      description: 'A sculptural piece of fabric that transforms from a statement necklace into a delicate wrist wrap.',
       thumbnail: '/products/trishna/trishna_small_04.JPG'
     }
   },
