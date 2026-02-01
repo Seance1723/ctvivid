@@ -287,7 +287,7 @@ const trishnaDataDesktop = [
         thumbnail: '/products/trishna/trishna_04.JPG',
         contentSide: 'right',
         contentWidth: 160,
-        contentXPercent: 10,
+        contentXPercent: 25,
         contentYPercent: 35
       },
       {
