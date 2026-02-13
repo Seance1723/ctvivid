@@ -67,11 +67,11 @@ export default function Trishna() {
     <div className="onepage-container" ref={containerRef}>
       <div className="inner" ref={innerRef}>
 
-        {/* ───────── Hero (full-light header) ───────── */}
+        {/* ───────── Hero (full-dark header for Trishna) ───────── */}
         <section
           ref={heroRef}
           className="onepage-section"
-          data-nav-style="full-light"
+          data-nav-style="full-dark"
         >
           <ProductHeroSection
             onAddToCartClick={() => scrollToSection(videoRef)}
