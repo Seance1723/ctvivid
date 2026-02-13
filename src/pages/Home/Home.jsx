@@ -216,41 +216,41 @@ const Home = () => {
         </div>
 
         {/* ──────────────── DESKTOP IMAGE GRID ──────────────── */}
-        <div className="d-none d-md-flex w-100 h-100" style={{ flexDirection: 'column', background: '#1a1a1a', padding: '16px', gap: '10px', overflow: 'hidden' }}>
+        <div className="d-none d-md-flex w-100 h-100" style={{ flexDirection: 'column', background: '#1a1a1a', padding: '24px', gap: '12px', overflow: 'hidden' }}>
           {/* Top Row - 4 images */}
-          <div style={{ display: 'flex', flex: 1, gap: '10px', minHeight: 0 }}>
-            <Link to="/designers" className="product-grid-item" style={{ flex: 1, borderRadius: '10px', overflow: 'hidden', position: 'relative' }}>
+          <div style={{ display: 'flex', flex: 1, gap: '12px', minHeight: 0 }}>
+            <Link to="/designers" className="product-grid-item" style={{ flex: 1, overflow: 'hidden', position: 'relative', border: '1px solid rgba(255, 255, 255, 0.2)' }}>
               <img src={`${process.env.PUBLIC_URL}/pages/Home/products/homefirst.jpg`} alt="Asuri" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
               <span className="grid-tooltip">Asuri</span>
             </Link>
-            <Link to="/daisydrama" className="product-grid-item" style={{ flex: 1, borderRadius: '10px', overflow: 'hidden', position: 'relative' }}>
+            <Link to="/daisydrama" className="product-grid-item" style={{ flex: 1, overflow: 'hidden', position: 'relative', border: '1px solid rgba(255, 255, 255, 0.2)' }}>
               <img src={`${process.env.PUBLIC_URL}/pages/Home/products/IMG_2713_2.jpg`} alt="Daisy Drama" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
               <span className="grid-tooltip">Daisy Drama</span>
             </Link>
-            <Link to="/trishna" className="product-grid-item" style={{ flex: 1, borderRadius: '10px', overflow: 'hidden', position: 'relative' }}>
+            <Link to="/trishna" className="product-grid-item" style={{ flex: 1, overflow: 'hidden', position: 'relative', border: '1px solid rgba(255, 255, 255, 0.2)' }}>
               <img src={`${process.env.PUBLIC_URL}/pages/Home/products/homethird.jpg`} alt="Trishna" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
               <span className="grid-tooltip">Trishna</span>
             </Link>
-            <div className="product-grid-item" style={{ flex: 1, borderRadius: '10px', overflow: 'hidden', position: 'relative', cursor: 'default' }}>
+            <div className="product-grid-item" style={{ flex: 1, overflow: 'hidden', position: 'relative', cursor: 'default', border: '1px solid rgba(255, 255, 255, 0.2)' }}>
               <img src={`${process.env.PUBLIC_URL}/pages/Home/products/homefourth.jpg`} alt="Coming Soon" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
               <span className="grid-tooltip">Coming Soon</span>
             </div>
           </div>
           {/* Bottom Row - 4 images */}
-          <div style={{ display: 'flex', flex: 1, gap: '10px', minHeight: 0 }}>
-            <div className="product-grid-item" style={{ flex: 1, borderRadius: '10px', overflow: 'hidden', position: 'relative', cursor: 'default' }}>
+          <div style={{ display: 'flex', flex: 1, gap: '12px', minHeight: 0 }}>
+            <div className="product-grid-item" style={{ flex: 1, overflow: 'hidden', position: 'relative', cursor: 'default', border: '1px solid rgba(255, 255, 255, 0.2)' }}>
               <img src={`${process.env.PUBLIC_URL}/pages/Home/products/IMG_2713_1.jpg`} alt="Coming Soon" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
               <span className="grid-tooltip">Coming Soon</span>
             </div>
-            <div className="product-grid-item" style={{ flex: 1, borderRadius: '10px', overflow: 'hidden', position: 'relative', cursor: 'default' }}>
+            <div className="product-grid-item" style={{ flex: 1, overflow: 'hidden', position: 'relative', cursor: 'default', border: '1px solid rgba(255, 255, 255, 0.2)' }}>
               <img src={`${process.env.PUBLIC_URL}/pages/Home/products/IMG_2713_13.jpg`} alt="Coming Soon" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'left center', display: 'block' }} />
               <span className="grid-tooltip">Coming Soon</span>
             </div>
-            <div className="product-grid-item" style={{ flex: 1, borderRadius: '10px', overflow: 'hidden', position: 'relative', cursor: 'default' }}>
+            <div className="product-grid-item" style={{ flex: 1, overflow: 'hidden', position: 'relative', cursor: 'default', border: '1px solid rgba(255, 255, 255, 0.2)' }}>
               <img src={`${process.env.PUBLIC_URL}/pages/Home/products/IMG_2713_13.jpg`} alt="Coming Soon" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center center', display: 'block' }} />
               <span className="grid-tooltip">Coming Soon</span>
             </div>
-            <div className="product-grid-item" style={{ flex: 1, borderRadius: '10px', overflow: 'hidden', position: 'relative', cursor: 'default' }}>
+            <div className="product-grid-item" style={{ flex: 1, overflow: 'hidden', position: 'relative', cursor: 'default', border: '1px solid rgba(255, 255, 255, 0.2)' }}>
               <img src={`${process.env.PUBLIC_URL}/pages/Home/products/IMG_2713_13.jpg`} alt="Coming Soon" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'right center', display: 'block' }} />
               <span className="grid-tooltip">Coming Soon</span>
             </div>
