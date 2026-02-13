@@ -182,7 +182,7 @@ const Home = () => {
         {/* ──────────────── MOBILE IMAGE GRID ──────────────── */}
         <div className="d-flex d-md-none w-100 h-100 mobile-product-grid">
           <Link to="/designers" className="product-grid-item">
-            <img src={`${process.env.PUBLIC_URL}/pages/Home/products/IMG_2713_3.jpg`} alt="Asuri" />
+            <img src={`${process.env.PUBLIC_URL}/pages/Home/products/homefirst.jpg`} alt="Asuri" />
             <span className="grid-tooltip">Asuri</span>
           </Link>
           <Link to="/daisydrama" className="product-grid-item">
@@ -190,29 +190,29 @@ const Home = () => {
             <span className="grid-tooltip">Daisy Drama</span>
           </Link>
           <Link to="/trishna" className="product-grid-item">
-            <img src={`${process.env.PUBLIC_URL}/pages/Home/products/IMG_2713_9.jpg`} alt="Trishna" />
+            <img src={`${process.env.PUBLIC_URL}/pages/Home/products/homethird.jpg`} alt="Trishna" />
             <span className="grid-tooltip">Trishna</span>
           </Link>
-          <Link to="/daisydrama" className="product-grid-item">
-            <img src={`${process.env.PUBLIC_URL}/pages/Home/products/IMG_2713_4.jpg`} alt="Daisy Drama" />
+          <div className="product-grid-item" style={{ cursor: 'default' }}>
+            <img src={`${process.env.PUBLIC_URL}/pages/Home/products/homefourth.jpg`} alt="Coming Soon" />
             <span className="grid-tooltip">Coming Soon</span>
-          </Link>
-          <Link to="/designers" className="product-grid-item">
-            <img src={`${process.env.PUBLIC_URL}/pages/Home/products/IMG_2713_1.jpg`} alt="Asuri" />
+          </div>
+          <div className="product-grid-item" style={{ cursor: 'default' }}>
+            <img src={`${process.env.PUBLIC_URL}/pages/Home/products/IMG_2713_1.jpg`} alt="Coming Soon" />
             <span className="grid-tooltip">Coming Soon</span>
-          </Link>
-          <Link to="/trishna" className="product-grid-item">
-            <img src={`${process.env.PUBLIC_URL}/pages/Home/products/IMG_2713_13.jpg`} alt="Trishna" style={{ objectPosition: 'left center' }} />
+          </div>
+          <div className="product-grid-item" style={{ cursor: 'default' }}>
+            <img src={`${process.env.PUBLIC_URL}/pages/Home/products/IMG_2713_13.jpg`} alt="Coming Soon" style={{ objectPosition: 'left center' }} />
             <span className="grid-tooltip">Coming Soon</span>
-          </Link>
-          <Link to="/trishna" className="product-grid-item">
-            <img src={`${process.env.PUBLIC_URL}/pages/Home/products/IMG_2713_13.jpg`} alt="Trishna" style={{ objectPosition: 'center center' }} />
+          </div>
+          <div className="product-grid-item" style={{ cursor: 'default' }}>
+            <img src={`${process.env.PUBLIC_URL}/pages/Home/products/IMG_2713_13.jpg`} alt="Coming Soon" style={{ objectPosition: 'center center' }} />
             <span className="grid-tooltip">Coming Soon</span>
-          </Link>
-          <Link to="/trishna" className="product-grid-item">
-            <img src={`${process.env.PUBLIC_URL}/pages/Home/products/IMG_2713_13.jpg`} alt="Trishna" style={{ objectPosition: 'right center' }} />
+          </div>
+          <div className="product-grid-item" style={{ cursor: 'default' }}>
+            <img src={`${process.env.PUBLIC_URL}/pages/Home/products/IMG_2713_13.jpg`} alt="Coming Soon" style={{ objectPosition: 'right center' }} />
             <span className="grid-tooltip">Coming Soon</span>
-          </Link>
+          </div>
         </div>
 
         {/* ──────────────── DESKTOP IMAGE GRID ──────────────── */}
@@ -220,7 +220,7 @@ const Home = () => {
           {/* Top Row - 4 images */}
           <div style={{ display: 'flex', flex: 1, gap: '10px', minHeight: 0 }}>
             <Link to="/designers" className="product-grid-item" style={{ flex: 1, borderRadius: '10px', overflow: 'hidden', position: 'relative' }}>
-              <img src={`${process.env.PUBLIC_URL}/pages/Home/products/IMG_2713_3.jpg`} alt="Asuri" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+              <img src={`${process.env.PUBLIC_URL}/pages/Home/products/homefirst.jpg`} alt="Asuri" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
               <span className="grid-tooltip">Asuri</span>
             </Link>
             <Link to="/daisydrama" className="product-grid-item" style={{ flex: 1, borderRadius: '10px', overflow: 'hidden', position: 'relative' }}>
@@ -228,32 +228,32 @@ const Home = () => {
               <span className="grid-tooltip">Daisy Drama</span>
             </Link>
             <Link to="/trishna" className="product-grid-item" style={{ flex: 1, borderRadius: '10px', overflow: 'hidden', position: 'relative' }}>
-              <img src={`${process.env.PUBLIC_URL}/pages/Home/products/IMG_2713_9.jpg`} alt="Trishna" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+              <img src={`${process.env.PUBLIC_URL}/pages/Home/products/homethird.jpg`} alt="Trishna" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
               <span className="grid-tooltip">Trishna</span>
             </Link>
-            <Link to="/daisydrama" className="product-grid-item" style={{ flex: 1, borderRadius: '10px', overflow: 'hidden', position: 'relative' }}>
-              <img src={`${process.env.PUBLIC_URL}/pages/Home/products/IMG_2713_4.jpg`} alt="Daisy Drama" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+            <div className="product-grid-item" style={{ flex: 1, borderRadius: '10px', overflow: 'hidden', position: 'relative', cursor: 'default' }}>
+              <img src={`${process.env.PUBLIC_URL}/pages/Home/products/homefourth.jpg`} alt="Coming Soon" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
               <span className="grid-tooltip">Coming Soon</span>
-            </Link>
+            </div>
           </div>
           {/* Bottom Row - 4 images */}
           <div style={{ display: 'flex', flex: 1, gap: '10px', minHeight: 0 }}>
-            <Link to="/designers" className="product-grid-item" style={{ flex: 1, borderRadius: '10px', overflow: 'hidden', position: 'relative' }}>
-              <img src={`${process.env.PUBLIC_URL}/pages/Home/products/IMG_2713_1.jpg`} alt="Asuri" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+            <div className="product-grid-item" style={{ flex: 1, borderRadius: '10px', overflow: 'hidden', position: 'relative', cursor: 'default' }}>
+              <img src={`${process.env.PUBLIC_URL}/pages/Home/products/IMG_2713_1.jpg`} alt="Coming Soon" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
               <span className="grid-tooltip">Coming Soon</span>
-            </Link>
-            <Link to="/trishna" className="product-grid-item" style={{ flex: 1, borderRadius: '10px', overflow: 'hidden', position: 'relative' }}>
-              <img src={`${process.env.PUBLIC_URL}/pages/Home/products/IMG_2713_13.jpg`} alt="Trishna" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'left center', display: 'block' }} />
+            </div>
+            <div className="product-grid-item" style={{ flex: 1, borderRadius: '10px', overflow: 'hidden', position: 'relative', cursor: 'default' }}>
+              <img src={`${process.env.PUBLIC_URL}/pages/Home/products/IMG_2713_13.jpg`} alt="Coming Soon" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'left center', display: 'block' }} />
               <span className="grid-tooltip">Coming Soon</span>
-            </Link>
-            <Link to="/trishna" className="product-grid-item" style={{ flex: 1, borderRadius: '10px', overflow: 'hidden', position: 'relative' }}>
-              <img src={`${process.env.PUBLIC_URL}/pages/Home/products/IMG_2713_13.jpg`} alt="Trishna" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center center', display: 'block' }} />
+            </div>
+            <div className="product-grid-item" style={{ flex: 1, borderRadius: '10px', overflow: 'hidden', position: 'relative', cursor: 'default' }}>
+              <img src={`${process.env.PUBLIC_URL}/pages/Home/products/IMG_2713_13.jpg`} alt="Coming Soon" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center center', display: 'block' }} />
               <span className="grid-tooltip">Coming Soon</span>
-            </Link>
-            <Link to="/trishna" className="product-grid-item" style={{ flex: 1, borderRadius: '10px', overflow: 'hidden', position: 'relative' }}>
-              <img src={`${process.env.PUBLIC_URL}/pages/Home/products/IMG_2713_13.jpg`} alt="Trishna" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'right center', display: 'block' }} />
+            </div>
+            <div className="product-grid-item" style={{ flex: 1, borderRadius: '10px', overflow: 'hidden', position: 'relative', cursor: 'default' }}>
+              <img src={`${process.env.PUBLIC_URL}/pages/Home/products/IMG_2713_13.jpg`} alt="Coming Soon" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'right center', display: 'block' }} />
               <span className="grid-tooltip">Coming Soon</span>
-            </Link>
+            </div>
           </div>
         </div>
       </section>
