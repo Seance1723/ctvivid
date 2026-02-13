@@ -647,6 +647,7 @@ const ProductDetails = React.forwardRef(({ onScrollUp, isDaisyDrama = false, isT
                   that whisper bold sophistication.
                 </p>
 
+                <p className="product-price" style={{ fontWeight: 'bold', marginTop: '8px', fontSize: '18px' }}>MRP ₹ 2,500</p>
 
                 <div className="limited-release-banner d-flex align-items-center mt-4 p-2 rounded">
                   <div className="limited-logo me-3">
@@ -869,6 +870,7 @@ const ProductDetails = React.forwardRef(({ onScrollUp, isDaisyDrama = false, isT
                     effortlessly with every step, featuring hand-embroidered details
                     that whisper bold sophistication.
                   </p>
+                  <p className="product-price" style={{ fontWeight: 'bold', marginTop: '12px', fontSize: '18px' }}>MRP ₹ 2,500</p>
 
                   <div className="limited-release-banner d-flex align-items-center mt-4 p-2 rounded">
                     <div className="limited-logo me-3">
