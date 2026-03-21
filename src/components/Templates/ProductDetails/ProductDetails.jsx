@@ -40,13 +40,13 @@ const ProductDetails = React.forwardRef(({ onScrollUp, isDaisyDrama = false, isT
   };
 
   const trishnaImages = {
-    default: '/products/trishna/DSC_2574.JPG',
+    default: '/products/trishna/trishna-4.jpeg',
     mobile: [
-      '/products/trishna/DSC_2574.JPG',
-      '/products/trishna/DSC_2546.JPG',
-      '/products/trishna/DSC_2533.JPG',
-      '/products/trishna/DSC_2600.JPG',
-      '/products/trishna/DSC_2579.JPG'
+      '/products/trishna/trishna-4.jpeg',
+      '/products/trishna/trishna-2.jpeg',
+      '/products/trishna/trishna-1.jpeg',
+      '/products/trishna/trishna-5.jpeg',
+      '/products/trishna/trishna-3.jpeg'
     ],
     thumbnails: [
       '/products/trishna/Rectangle7.jpg',
@@ -520,31 +520,31 @@ const ProductDetails = React.forwardRef(({ onScrollUp, isDaisyDrama = false, isT
                     <img
                       src="/products/trishna/Rectangle7.jpg"
                       alt="thumb1"
-                      onClick={() => setActiveImage('/products/trishna/DSC_2574.JPG')}
+                      onClick={() => setActiveImage('/products/trishna/trishna-4.jpeg')}
                       className="thumbnail-clickable"
                     />
                     <img
                       src="/products/trishna/Rectangle8.jpg"
                       alt="thumb2"
-                      onClick={() => setActiveImage('/products/trishna/DSC_2546.JPG')}
+                      onClick={() => setActiveImage('/products/trishna/trishna-2.jpeg')}
                       className="thumbnail-clickable"
                     />
                     <img
                       src="/products/trishna/Rectangle9.jpg"
                       alt="thumb3"
-                      onClick={() => setActiveImage('/products/trishna/DSC_2533.JPG')}
+                      onClick={() => setActiveImage('/products/trishna/trishna-1.jpeg')}
                       className="thumbnail-clickable"
                     />
                     <img
                       src="/products/trishna/Rectangle10.jpg"
                       alt="thumb4"
-                      onClick={() => setActiveImage('/products/trishna/DSC_2600.JPG')}
+                      onClick={() => setActiveImage('/products/trishna/trishna-5.jpeg')}
                       className="thumbnail-clickable"
                     />
                     <img
                       src="/products/trishna/Rectangle11.jpg"
                       alt="thumb5"
-                      onClick={() => setActiveImage('/products/trishna/DSC_2579.JPG')}
+                      onClick={() => setActiveImage('/products/trishna/trishna-3.jpeg')}
                       className="thumbnail-clickable"
                     />
                   </>
