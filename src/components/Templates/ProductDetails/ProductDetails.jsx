@@ -663,7 +663,7 @@ const ProductDetails = React.forwardRef(({ onScrollUp, isDaisyDrama = false, isT
                 <div className="carefully-crafted-banner d-flex align-items-center mt-4 p-2 rounded">
                   <div className="crafted-logo me-3 d-flex align-items-center justify-content-center">
                     <img
-                      src="/path-to-your-icon.png"
+                      src="/crafted-carefully.jpeg"
                       alt="Crafted Icon"
                       className="crafted-icon"
                     />
@@ -761,7 +761,7 @@ const ProductDetails = React.forwardRef(({ onScrollUp, isDaisyDrama = false, isT
                 <div className="carefully-crafted-banner d-flex align-items-center mt-4 p-2 rounded">
                   <div className="crafted-logo me-3 d-flex align-items-center justify-content-center">
                     <img
-                      src="/path-to-your-icon.png"
+                      src="/crafted-carefully.jpeg"
                       alt="Crafted Icon"
                       className="crafted-icon"
                     />
@@ -886,7 +886,7 @@ const ProductDetails = React.forwardRef(({ onScrollUp, isDaisyDrama = false, isT
                   <div className="carefully-crafted-banner d-flex align-items-center mt-4 p-2 rounded">
                     <div className="crafted-logo me-3 d-flex align-items-center justify-content-center">
                       <img
-                        src="/path-to-your-icon.png"
+                        src="/crafted-carefully.jpeg"
                         alt="Crafted Icon"
                         className="crafted-icon"
                       />
@@ -972,7 +972,7 @@ const ProductDetails = React.forwardRef(({ onScrollUp, isDaisyDrama = false, isT
                   <div className="carefully-crafted-banner d-flex align-items-center mt-4 p-2 rounded">
                     <div className="crafted-logo me-3 d-flex align-items-center justify-content-center">
                       <img
-                        src="/path-to-your-icon.png"
+                        src="/crafted-carefully.jpeg"
                         alt="Crafted Icon"
                         className="crafted-icon"
                       />
