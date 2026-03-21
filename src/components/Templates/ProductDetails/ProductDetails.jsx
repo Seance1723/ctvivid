@@ -660,7 +660,7 @@ const ProductDetails = React.forwardRef(({ onScrollUp, isDaisyDrama = false, isT
                   </div>
                 </div>
 
-                <div className="carefully-crafted-banner d-flex align-items-center mt-4 p-2 rounded">
+                <div className="carefully-crafted-banner d-flex align-items-center mt-2 p-2 rounded">
                   <div className="crafted-logo me-3 d-flex align-items-center justify-content-center">
                     <img
                       src="/crafted-carefully.jpeg"
@@ -674,11 +674,11 @@ const ProductDetails = React.forwardRef(({ onScrollUp, isDaisyDrama = false, isT
                   </div>
                 </div>
 
-                <div className="mt-4 d-flex gap-3 flex-wrap">
+                <div className="mt-2 d-flex gap-3 flex-wrap">
                   <button
                     type="button"
                     className="cta cta-withArrowDark"
-                    style={{ marginTop: '25px' }}
+                    style={{ marginTop: '10px' }}
                     onClick={handleWhatsAppClick}
                   >
                     Contact Us
@@ -713,11 +713,11 @@ const ProductDetails = React.forwardRef(({ onScrollUp, isDaisyDrama = false, isT
                   </div>
                 </div>
 
-                <div className="mt-4 d-flex gap-3 flex-wrap">
+                <div className="mt-2 d-flex gap-3 flex-wrap">
                   <button
                     type="button"
                     className="cta cta-withArrowDark"
-                    style={{ marginTop: '25px' }}
+                    style={{ marginTop: '10px' }}
                     onClick={handleWhatsAppClick}
                   >
                     Contact Us
@@ -758,7 +758,7 @@ const ProductDetails = React.forwardRef(({ onScrollUp, isDaisyDrama = false, isT
                   </div>
                 </div>
 
-                <div className="carefully-crafted-banner d-flex align-items-center mt-4 p-2 rounded">
+                <div className="carefully-crafted-banner d-flex align-items-center mt-2 p-2 rounded">
                   <div className="crafted-logo me-3 d-flex align-items-center justify-content-center">
                     <img
                       src="/crafted-carefully.jpeg"
@@ -772,11 +772,11 @@ const ProductDetails = React.forwardRef(({ onScrollUp, isDaisyDrama = false, isT
                   </div>
                 </div>
 
-                <div className="mt-4 d-flex gap-3 flex-wrap">
+                <div className="mt-2 d-flex gap-3 flex-wrap">
                   <button
                     type="button"
                     className="cta cta-withArrowDark"
-                    style={{ marginTop: '25px' }}
+                    style={{ marginTop: '10px' }}
                     onClick={handleWhatsAppClick}
                   >
                     Contact Us
@@ -883,7 +883,7 @@ const ProductDetails = React.forwardRef(({ onScrollUp, isDaisyDrama = false, isT
                     </div>
                   </div>
 
-                  <div className="carefully-crafted-banner d-flex align-items-center mt-4 p-2 rounded">
+                  <div className="carefully-crafted-banner d-flex align-items-center mt-2 p-2 rounded">
                     <div className="crafted-logo me-3 d-flex align-items-center justify-content-center">
                       <img
                         src="/crafted-carefully.jpeg"
@@ -900,7 +900,7 @@ const ProductDetails = React.forwardRef(({ onScrollUp, isDaisyDrama = false, isT
                   <button
                     type="button"
                     className="mobile-btn1 mobile-btn-primary1"
-                    style={{ marginTop: '20px' }}
+                    style={{ marginTop: '10px' }}
                     onClick={handleWhatsAppClick}
                   >
                     Contact Us
@@ -937,7 +937,7 @@ const ProductDetails = React.forwardRef(({ onScrollUp, isDaisyDrama = false, isT
                   <button
                     type="button"
                     className="mobile-btn1 mobile-btn-primary1"
-                    style={{ marginTop: '20px' }}
+                    style={{ marginTop: '10px' }}
                     onClick={handleWhatsAppClick}
                   >
                     Contact Us
@@ -969,7 +969,7 @@ const ProductDetails = React.forwardRef(({ onScrollUp, isDaisyDrama = false, isT
                     </div>
                   </div>
 
-                  <div className="carefully-crafted-banner d-flex align-items-center mt-4 p-2 rounded">
+                  <div className="carefully-crafted-banner d-flex align-items-center mt-2 p-2 rounded">
                     <div className="crafted-logo me-3 d-flex align-items-center justify-content-center">
                       <img
                         src="/crafted-carefully.jpeg"
@@ -986,7 +986,7 @@ const ProductDetails = React.forwardRef(({ onScrollUp, isDaisyDrama = false, isT
                   <button
                     type="button"
                     className="mobile-btn1 mobile-btn-primary1"
-                    style={{ marginTop: '20px' }}
+                    style={{ marginTop: '10px' }}
                     onClick={handleWhatsAppClick}
                   >
                     Contact Us
