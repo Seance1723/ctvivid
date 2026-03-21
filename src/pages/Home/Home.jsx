@@ -179,149 +179,81 @@ const Home = () => {
         className="homepage-section newproduct-section"
         data-nav-style="logo-only-dark"
       >
-        {/* ──────────────── MOBILE CAROUSEL ──────────────── */}
-        <div
-          id="newProductCarousel"
-          className="carousel slide d-block d-md-none h-100"
-          data-bs-interval="false"
-        >
-          {/* Indicators */}
-          <div className="carousel-indicators">
-            <button
-              type="button"
-              data-bs-target="#newProductCarousel"
-              data-bs-slide-to="0"
-              className="active"
-              aria-current="true"
-              aria-label="Slide 1"
-            ></button>
-            <button
-              type="button"
-              data-bs-target="#newProductCarousel"
-              data-bs-slide-to="1"
-              aria-label="Slide 2"
-            ></button>
+        {/* ──────────────── MOBILE IMAGE GRID ──────────────── */}
+        <div className="d-flex d-md-none w-100 h-100 mobile-product-grid">
+          <Link to="/designers" className="product-grid-item">
+            <img src={`${process.env.PUBLIC_URL}/pages/Home/products/homefirst.jpg`} alt="Asuri" />
+            <span className="grid-tooltip">Asuri</span>
+          </Link>
+          <Link to="/daisydrama" className="product-grid-item">
+            <img src={`${process.env.PUBLIC_URL}/pages/Home/products/IMG_2713_2.jpg`} alt="Daisy Drama" />
+            <span className="grid-tooltip">Daisy Drama</span>
+          </Link>
+          <Link to="/trishna" className="product-grid-item">
+            <img src={`${process.env.PUBLIC_URL}/pages/Home/products/homethird.jpg`} alt="Trishna" />
+            <span className="grid-tooltip">Trishna</span>
+          </Link>
+          <div className="product-grid-item" style={{ cursor: 'default' }}>
+            <img src={`${process.env.PUBLIC_URL}/pages/Home/products/homefourth.jpg`} alt="Coming Soon" />
+            <span className="grid-tooltip">Coming Soon</span>
           </div>
-
-          {/* Inner slides */}
-          <div className="carousel-inner h-100">
-            {/* Slide 1 */}
-            <div className="carousel-item active h-100">
-              <div
-                className="product-left w-100 h-100"
-                style={{
-                  backgroundImage: `url('${process.env.PUBLIC_URL}/pages/Home/home-product-left.png')`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                  minHeight: '200px'
-                }}
-              >
-                <div className="action-area">
-                  <h4 className="product-name">Asuri</h4>
-                  <Link to="/designers" className="cta cta-text p-0" style={{ top: '135%' ,width:'40vw',textTransform: 'none', fontWeight: 500}}>Shop Now</Link>
-                </div>
-              </div>
-            </div>
-
-            {/* Slide 2 */}
-            <div className="carousel-item h-100">
-              <div
-                className="product-right w-100 h-100"
-                style={{
-                  backgroundImage: `url('${process.env.PUBLIC_URL}/pages/Home/home-product-right.png')`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                  minHeight: '200px'
-                }}
-              >
-                <div className="action-area">
-                  <Link to="/daisydrama" className="cta cta-text p-0" style={{ textTransform: 'none', fontWeight: 500, marginBottom: '10px', display: 'block' }}>daisydrama</Link>
-                  <h4 className="product-name">MAKDI RANI</h4>
-                  {/* <a
-                    href="#"
-                    className="link-disabled"
-                    aria-disabled="true"
-                    tabIndex={-1}
-                  >
-                    Coming Soon
-                  </a> */}
-                  <a href="#" className="link-disabled" aria-disabled="true" tabIndex="-1" style={{ textTransform: 'none' ,fontWeight:500}}>Coming Soon</a>
-
-                </div>
-              </div>
-            </div>
+          <div className="product-grid-item" style={{ cursor: 'default' }}>
+            <img src={`${process.env.PUBLIC_URL}/pages/Home/products/IMG_2713_1.jpg`} alt="Coming Soon" />
+            <span className="grid-tooltip">Coming Soon</span>
           </div>
-
-          {/* Controls */}
-          {/* <button
-            className="carousel-control-prev"
-            type="button"
-            data-bs-target="#newProductCarousel"
-            data-bs-slide="prev"
-          >
-            <span
-              className="carousel-control-prev-icon"
-              aria-hidden="true"
-            ></span>
-            <span className="visually-hidden">Previous</span>
-          </button>
-          <button
-            className="carousel-control-next"
-            type="button"
-            data-bs-target="#newProductCarousel"
-            data-bs-slide="next"
-          >
-            <span
-              className="carousel-control-next-icon"
-              aria-hidden="true"
-            ></span>
-            <span className="visually-hidden">Next</span>
-          </button> */}
+          <div className="product-grid-item" style={{ cursor: 'default' }}>
+            <img src={`${process.env.PUBLIC_URL}/pages/Home/products/comingsoonnew.png`} alt="Coming Soon" style={{ objectPosition: 'left center' }} />
+            <span className="grid-tooltip">Coming Soon</span>
+          </div>
+          <div className="product-grid-item" style={{ cursor: 'default' }}>
+            <img src={`${process.env.PUBLIC_URL}/pages/Home/products/comingsoonnew.png`} alt="Coming Soon" style={{ objectPosition: 'center center' }} />
+            <span className="grid-tooltip">Coming Soon</span>
+          </div>
+          <div className="product-grid-item" style={{ cursor: 'default' }}>
+            <img src={`${process.env.PUBLIC_URL}/pages/Home/products/comingsoonnew.png`} alt="Coming Soon" style={{ objectPosition: 'right center' }} />
+            <span className="grid-tooltip">Coming Soon</span>
+          </div>
         </div>
 
-        {/* ──────────────── DESKTOP HORIZONTAL SCROLL ──────────────── */}
-        <div className="container-fluid w-100 h-100 d-none d-md-block" style={{ overflowX: 'auto', overflowY: 'hidden', scrollSnapType: 'x mandatory' }}>
-          <div className='d-flex h-100' style={{ width: 'fit-content' }}>
-            {/* First screen - Original split view with Asuri and MAKDI RANI */}
-            <div className='product-item p-0 h-100' style={{ minWidth: '100vw', width: '100vw', scrollSnapAlign: 'start' }}>
-              <div className='row h-100 m-0'>
-                <div className='col-12 col-md-6 p-0 h-100'>
-                  <div className='product-left w-100 h-100' style={{ backgroundImage: `url('${process.env.PUBLIC_URL}/pages/Home/home-product-left.png')` }}>
-                    <div className='action-area' style={{ top: '650px' }}>
-                      <h4 className='product-name'>Asuri</h4>
-                      <Link to="/designers" className="cta cta-text p-0" style={{ top: '66%',textTransform: 'none', fontWeight: 500 }}>Shop Now</Link>
-                    </div>
-                  </div>
-                </div>
-                {/* <div className='col-12 col-md-6 h-100 p-0'>
-                  <div className='product-right w-100 h-100' style={{ backgroundImage: `url('${process.env.PUBLIC_URL}/pages/Home/home-product-right.png')` }}>
-                    <div className='action-area'>
-                      <h4 className='product-name'>MAKDI RANI</h4>
-                      <a href="#" className="link-disabled" aria-disabled="true" tabIndex="-1" style={{ textTransform: 'none',fontWeight: 500 }}>Coming Soon</a>
-                    </div>
-                  </div>
-                </div> */}
-                 <div className='col-12 col-md-6 h-100 p-0'>
-                  <div className='product-right w-100 h-100' style={{ backgroundImage: `url('${process.env.PUBLIC_URL}/pages/Home/daisydramaphoto.png')` }}>
-                    <div className='action-area' style={{ top: '650px' }}>
-                      <h4 className='product-name'>Daisy Drama</h4>
-                                            <Link to="/daisydrama" className="cta cta-text p-0" style={{ top: '66%',textTransform: 'none', fontWeight: 500 }}>Shop Now</Link>
-
-                  {/* <Link to="/daisydrama" className="cta cta-text p-0" style={{ textTransform: 'none', fontWeight: 500, color: 'var(--secondary-light-color)', fontSize: '22px', display: 'inline-block',marginTop:'10px' }}>Shop Now</Link> */}
-                    </div>
-                  </div>
-                </div>
-              </div>
+        {/* ──────────────── DESKTOP IMAGE GRID ──────────────── */}
+        <div className="d-none d-md-flex w-100 h-100" style={{ flexDirection: 'column', background: '#1a1a1a', padding: '24px', gap: '12px', overflow: 'hidden' }}>
+          {/* Top Row - 4 images */}
+          <div style={{ display: 'flex', flex: 1, gap: '12px', minHeight: 0 }}>
+            <Link to="/designers" className="product-grid-item" style={{ flex: 1, overflow: 'hidden', position: 'relative', border: '1px solid rgba(255, 255, 255, 0.2)' }}>
+              <img src={`${process.env.PUBLIC_URL}/pages/Home/products/homefirst.jpg`} alt="Asuri" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+              <span className="grid-tooltip">Asuri</span>
+            </Link>
+            <Link to="/daisydrama" className="product-grid-item" style={{ flex: 1, overflow: 'hidden', position: 'relative', border: '1px solid rgba(255, 255, 255, 0.2)' }}>
+              <img src={`${process.env.PUBLIC_URL}/pages/Home/products/IMG_2713_2.jpg`} alt="Daisy Drama" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+              <span className="grid-tooltip">Daisy Drama</span>
+            </Link>
+            <Link to="/trishna" className="product-grid-item" style={{ flex: 1, overflow: 'hidden', position: 'relative', border: '1px solid rgba(255, 255, 255, 0.2)' }}>
+              <img src={`${process.env.PUBLIC_URL}/pages/Home/products/homethird.jpg`} alt="Trishna" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+              <span className="grid-tooltip">Trishna</span>
+            </Link>
+            <div className="product-grid-item" style={{ flex: 1, overflow: 'hidden', position: 'relative', cursor: 'default', border: '1px solid rgba(255, 255, 255, 0.2)' }}>
+              <img src={`${process.env.PUBLIC_URL}/pages/Home/products/homefourth.jpg`} alt="Coming Soon" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+              <span className="grid-tooltip">Coming Soon</span>
             </div>
-            {/* Second screen - DaisyDrama photo full screen */}
-            {/* <div className='product-item h-100 p-0' style={{ minWidth: '100vw', width: '100vw', scrollSnapAlign: 'start' }}>
-              <div className='product-third w-100 h-100' style={{ backgroundImage: `url('${process.env.PUBLIC_URL}/pages/Home/daisydramaphoto.png')`, backgroundSize: '100% 100%', position: 'relative' }}>
-                <div style={{ position: 'absolute', left: '15%', bottom: '60px' }}>
-                  <h4 className='product-name' style={{ padding: '8px 32px', background: 'var(--secondary-light-color)', borderRadius: '6px', margin: '0 0 20px 0', width: 'fit-content', textTransform: 'uppercase' }}>Daisy Drama</h4>
-                  <Link to="/daisydrama" className="cta cta-text p-0" style={{ textTransform: 'none', fontWeight: 500, color: 'var(--secondary-light-color)', fontSize: '22px', display: 'inline-block' }}>Shop Now</Link>
-                </div>
-              </div>
-            </div> */}
+          </div>
+          {/* Bottom Row - 4 images */}
+          <div style={{ display: 'flex', flex: 1, gap: '12px', minHeight: 0 }}>
+            <div className="product-grid-item" style={{ flex: 1, overflow: 'hidden', position: 'relative', cursor: 'default', border: '1px solid rgba(255, 255, 255, 0.2)' }}>
+              <img src={`${process.env.PUBLIC_URL}/pages/Home/products/IMG_2713_1.jpg`} alt="Coming Soon" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+              <span className="grid-tooltip">Coming Soon</span>
+            </div>
+            <div className="product-grid-item" style={{ flex: 1, overflow: 'hidden', position: 'relative', cursor: 'default', border: '1px solid rgba(255, 255, 255, 0.2)' }}>
+              <img src={`${process.env.PUBLIC_URL}/pages/Home/products/comingsoonnew.png`} alt="Coming Soon" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'left center', display: 'block' }} />
+              <span className="grid-tooltip">Coming Soon</span>
+            </div>
+            <div className="product-grid-item" style={{ flex: 1, overflow: 'hidden', position: 'relative', cursor: 'default', border: '1px solid rgba(255, 255, 255, 0.2)' }}>
+              <img src={`${process.env.PUBLIC_URL}/pages/Home/products/comingsoonnew.png`} alt="Coming Soon" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center center', display: 'block' }} />
+              <span className="grid-tooltip">Coming Soon</span>
+            </div>
+            <div className="product-grid-item" style={{ flex: 1, overflow: 'hidden', position: 'relative', cursor: 'default', border: '1px solid rgba(255, 255, 255, 0.2)' }}>
+              <img src={`${process.env.PUBLIC_URL}/pages/Home/products/comingsoonnew.png`} alt="Coming Soon" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'right center', display: 'block' }} />
+              <span className="grid-tooltip">Coming Soon</span>
+            </div>
           </div>
         </div>
       </section>

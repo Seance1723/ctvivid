@@ -1,9 +1,32 @@
 // src/components/Templates/ProductDetails/ProductDetails.scss
 
-// Desktop thumbnail styles
+// Desktop layout - ensure consistent appearance at all widths
 @media (min-width: 768px) {
+  .product-details-section {
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .row {
+      display: flex;
+      align-items: flex-start;
+    }
+  }
+
   .product-images {
+    display: flex;
+    gap: 16px;
+    max-width: 100%;
+    align-items: flex-start;
+
     .thumbs {
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
       .thumbnail-clickable {
         width: 80px;
         height: 80px;
@@ -12,22 +35,32 @@
         cursor: pointer;
         transition: all 0.3s ease;
         border: 2px solid transparent;
-        
+
         &:hover {
           border-color: #333;
           transform: scale(1.05);
         }
       }
     }
-    
+
     .main-image {
+      flex: 1;
+      max-width: calc(100% - 96px);
+      // Height matches 5 thumbnails (5*80px + 4*8px gaps = 432px)
+      height: 432px;
+
       img {
         width: 100%;
-        height: auto;
+        height: 100%;
         border-radius: 12px;
         object-fit: cover;
+        object-position: top center;
       }
     }
+  }
+
+  .product-intro-sec {
+    padding-left: 40px;
   }
 }
 

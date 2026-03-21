@@ -2663,8 +2663,13 @@ body .sec-content {
   transform: translateX(2px);
   mask: url("/public/products/icons/arrow-narrow-right_dark.svg") no-repeat center;
   mask-size: contain;
-  background-color: var(--dark-color); /* Optional override if needed */
+  background-color: #fff !important; /* White arrow on hover */
 
+}
+
+.cta-withArrowDark:hover, .cta-exploreMore:hover {
+  background: var(--dark-color) !important;
+  color: #fff !important;
 }
 
 .cta-outlineDefault {
@@ -2687,6 +2692,9 @@ body .sec-content {
   bottom: 64px;
   right: 170px;
   z-index: 10;
+}
+.product-slide .cta.right_bottom {
+  display: none !important;
 }
 .cta.left_bottom {
   position: absolute;

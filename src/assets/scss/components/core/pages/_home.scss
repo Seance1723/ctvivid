@@ -70,15 +70,20 @@
         left: 15%;
         bottom: 60px;
         text-transform: uppercase;
+        align-items: flex-start;
         .product-name{
           padding: 8px 32px;
           background: var(--secondary-light-color);
           border-radius: 6px;
           margin: 0;
+          width: fit-content;
         }
         a{
           color: var(--secondary-light-color);
           font-size: 22px;
+          display: inline-block;
+          width: fit-content;
+          position: relative;
           &.link-disabled {
             pointer-events: none;
             opacity: 0.8;

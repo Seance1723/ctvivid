@@ -66,9 +66,25 @@ const daisyDramaTaglines = [
   "is only a dream.",
 ];
 
+const trishnaTaglines = [
+  "A sudden pain slices through you; a stray arrow has pierced your heart.",
+  "",
+  "Yet, where the pulse should falter, it quickens;",
+  "a pale blue lotus blooms.",
+  "",
+  "A delicate aroma steals your breath; you drift into a daze, the world blurred at its edges.",
+  "",
+  "You want to reach out, to touch its softness\u2014a sudden fever takes hold.",
+  "",
+  "The mirage of an inexplicable ecstasy seems just within your reach,",
+  "you move forward, aching to touch it.",
+  "",
+  "Just one touch. Just one touch?",
+];
+
 const clamp = (v, min, max) => (v < min ? min : v > max ? max : v);
 
-export default function Designer({ isDaisyDrama = false }) {
+export default function Designer({ isDaisyDrama = false, isTrishna = false }) {
   const [isModalOpen, setModalOpen] = useState(false);
   const containerRef = useRef(null);
   const trackRef = useRef(null);
@@ -256,8 +272,8 @@ export default function Designer({ isDaisyDrama = false }) {
   }, [isModalOpen]);
 
   useEffect(() => {
-    // Skip the slider logic for DaisyDrama since we're showing video
-    if (isDaisyDrama) return;
+    // Skip the slider logic for DaisyDrama and Trishna since we're showing video
+    if (isDaisyDrama || isTrishna) return;
     
     const container = containerRef.current;
     const track = trackRef.current;
@@ -589,12 +605,12 @@ export default function Designer({ isDaisyDrama = false }) {
       // Remove resize listener
       window.removeEventListener('resize', handleResize);
     };
-  }, [isDaisyDrama]);
+  }, [isDaisyDrama, isTrishna]);
 
   return (
     <>
       <div className="product-slide onepage-section position-relative" ref={containerRef}>
-        <div className="tagline-container">
+        <div className={`tagline-container${isTrishna ? ' trishna-theme' : ''}`}>
           {/* <img className="brand_logo" src="/products/designers/vakra_logo.png" alt="Vakra Logo" /> */}
           <img
   className="brand_logo"
@@ -602,8 +618,8 @@ export default function Designer({ isDaisyDrama = false }) {
   alt={isDaisyDrama ? "Kannu Logo" : "Vakra Logo"}
 />
           <ul className="taglines" ref={tagRef}>
-            {(isDaisyDrama ? daisyDramaTaglines : taglines).map((t, i) => (
-              <li key={i} className={isDaisyDrama ? 'active' : (i === 0 ? 'active' : '')}>{t}</li>
+            {(isTrishna ? trishnaTaglines : (isDaisyDrama ? daisyDramaTaglines : taglines)).map((t, i) => (
+              <li key={i} className={(isDaisyDrama || isTrishna) ? 'active' : (i === 0 ? 'active' : '')}>{t}</li>
             ))}
           </ul>
           <button className="explore-more" onClick={handleExplore}>
@@ -620,17 +636,17 @@ export default function Designer({ isDaisyDrama = false }) {
           Product details
         </button>
 
-        {isDaisyDrama ? (
+        {(isDaisyDrama || isTrishna) ? (
           <div className="daisy-drama-video">
-            <video 
-              src="/changes_v5.mp4" 
-              autoPlay 
-              loop 
-              muted 
+            <video
+              src={isTrishna ? (isMobile ? "/mobile-trishna-firstscreen.mp4" : "/section2_trishna.mp4") : "/changes_v5.mp4"}
+              autoPlay
+              loop
+              muted
               playsInline
-              style={{ 
-                width: '100%', 
-                height: '100%', 
+              style={{
+                width: '100%',
+                height: '100%',
                 objectFit: 'cover',
                 position: 'absolute',
                 top: 0,
@@ -682,7 +698,19 @@ export default function Designer({ isDaisyDrama = false }) {
 
 
                 <div className="modal-body">
-                  {isDaisyDrama ? (
+                  {isTrishna ? (
+                    <>
+                      <h5>Title: Trishna</h5>
+                      <h5>Creator: Vakra</h5>
+                      <h5>Year: 2026</h5>
+                      <p className="mt-3">
+                        In the heights of spring, Kamadeva—the Hindu god of desire—was said to bear a bow of sugar cane and five flower-headed arrows. The deadliest of them all? The Nilotpala, the blue lotus. It landed the final blow, designed to stupefy the heart and paralyse the target with a yearning that consumed their very sense of self.
+                      </p>
+                      <p>
+                        Trishna by Vakra draws from the legend of this deadly arrow. Its name translates to an intense, unquenchable thirst. This piece revolves around the motif of the blue lotus bloom—a delicate beauty that invites one to love a person to death, literally.
+                      </p>
+                    </>
+                  ) : isDaisyDrama ? (
                     <>
                       <h5>Title: Daisy Drama</h5>
                       <h5>Creator: Kannu</h5>
