@@ -387,45 +387,6 @@ const trishnaDataDesktop = [
       }
     ]
   },
-  {
-    id: 'panel4',
-    imageSrc: '/products/trishna/trishna_small_01.JPG',
-    dots: [
-      {
-        id: 'p4d1',
-        xPercent: 50,
-        yPercent: 50,
-        lineXPercent: 50,
-        lineYPercent: 50,
-        lineLength: 350,
-        lineDirection: 'right',
-        title: '',
-        description: '',
-        thumbnail: '/products/trishna/trishna_small_04.JPG',
-        contentSide: 'left',
-        contentWidth: 160,
-        contentXPercent: 75,
-        contentYPercent: 40
-      },
-      {
-        id: 'p4d2',
-        xPercent: 45,
-        yPercent: 45,
-        lineXPercent: 45,
-        lineYPercent: 45,
-        lineLength: 380,
-        lineDirection: 'left',
-        title: 'Relaxed Silhouette',
-        description:
-          'The textured, distressed blue denim provides a rugged canvas for the delicate design.',
-        thumbnail: '',
-        contentSide: 'right',
-        contentWidth: 280,
-        contentXPercent: 8,
-        contentYPercent: 40
-      }
-    ]
-  }
 ];
 
 const trishnaDataMobile = [
@@ -456,15 +417,6 @@ const trishnaDataMobile = [
       thumbnail: '/products/trishna/trishna_small_04.JPG'
     }
   },
-  {
-    id: 'panel4',
-    imageSrc: '/products/trishna/trishna_small_01.JPG',
-    content: {
-      title: 'Relaxed Silhouette',
-      description: 'The textured, distressed blue denim provides a rugged canvas for the delicate design.',
-      thumbnail: '/products/trishna/trishna_small_04.JPG'
-    }
-  }
 ];
 
 export default function ProductInfo({
