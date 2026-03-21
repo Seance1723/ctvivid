@@ -202,15 +202,15 @@ const Home = () => {
             <span className="grid-tooltip">Coming Soon</span>
           </div>
           <div className="product-grid-item" style={{ cursor: 'default' }}>
-            <img src={`${process.env.PUBLIC_URL}/pages/Home/products/IMG_2713_13.jpg`} alt="Coming Soon" style={{ objectPosition: 'left center' }} />
+            <img src={`${process.env.PUBLIC_URL}/pages/Home/products/comingsoonnew.png`} alt="Coming Soon" style={{ objectPosition: 'left center' }} />
             <span className="grid-tooltip">Coming Soon</span>
           </div>
           <div className="product-grid-item" style={{ cursor: 'default' }}>
-            <img src={`${process.env.PUBLIC_URL}/pages/Home/products/IMG_2713_13.jpg`} alt="Coming Soon" style={{ objectPosition: 'center center' }} />
+            <img src={`${process.env.PUBLIC_URL}/pages/Home/products/comingsoonnew.png`} alt="Coming Soon" style={{ objectPosition: 'center center' }} />
             <span className="grid-tooltip">Coming Soon</span>
           </div>
           <div className="product-grid-item" style={{ cursor: 'default' }}>
-            <img src={`${process.env.PUBLIC_URL}/pages/Home/products/IMG_2713_13.jpg`} alt="Coming Soon" style={{ objectPosition: 'right center' }} />
+            <img src={`${process.env.PUBLIC_URL}/pages/Home/products/comingsoonnew.png`} alt="Coming Soon" style={{ objectPosition: 'right center' }} />
             <span className="grid-tooltip">Coming Soon</span>
           </div>
         </div>
@@ -243,15 +243,15 @@ const Home = () => {
               <span className="grid-tooltip">Coming Soon</span>
             </div>
             <div className="product-grid-item" style={{ flex: 1, overflow: 'hidden', position: 'relative', cursor: 'default', border: '1px solid rgba(255, 255, 255, 0.2)' }}>
-              <img src={`${process.env.PUBLIC_URL}/pages/Home/products/IMG_2713_13.jpg`} alt="Coming Soon" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'left center', display: 'block' }} />
+              <img src={`${process.env.PUBLIC_URL}/pages/Home/products/comingsoonnew.png`} alt="Coming Soon" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'left center', display: 'block' }} />
               <span className="grid-tooltip">Coming Soon</span>
             </div>
             <div className="product-grid-item" style={{ flex: 1, overflow: 'hidden', position: 'relative', cursor: 'default', border: '1px solid rgba(255, 255, 255, 0.2)' }}>
-              <img src={`${process.env.PUBLIC_URL}/pages/Home/products/IMG_2713_13.jpg`} alt="Coming Soon" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center center', display: 'block' }} />
+              <img src={`${process.env.PUBLIC_URL}/pages/Home/products/comingsoonnew.png`} alt="Coming Soon" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center center', display: 'block' }} />
               <span className="grid-tooltip">Coming Soon</span>
             </div>
             <div className="product-grid-item" style={{ flex: 1, overflow: 'hidden', position: 'relative', cursor: 'default', border: '1px solid rgba(255, 255, 255, 0.2)' }}>
-              <img src={`${process.env.PUBLIC_URL}/pages/Home/products/IMG_2713_13.jpg`} alt="Coming Soon" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'right center', display: 'block' }} />
+              <img src={`${process.env.PUBLIC_URL}/pages/Home/products/comingsoonnew.png`} alt="Coming Soon" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'right center', display: 'block' }} />
               <span className="grid-tooltip">Coming Soon</span>
             </div>
           </div>
