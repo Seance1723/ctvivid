@@ -193,10 +193,10 @@ const Home = () => {
             <img src={`${process.env.PUBLIC_URL}/pages/Home/products/homethird.jpg`} alt="Trishna" />
             <span className="grid-tooltip">Trishna</span>
           </Link>
-          <div className="product-grid-item" style={{ cursor: 'default' }}>
-            <img src={`${process.env.PUBLIC_URL}/pages/Home/products/homefourth.jpg`} alt="Coming Soon" />
-            <span className="grid-tooltip">Coming Soon</span>
-          </div>
+          <Link to="/maya" className="product-grid-item">
+            <img src={`${process.env.PUBLIC_URL}/products/maya/section5-main-1.jpg`} alt="Maya" />
+            <span className="grid-tooltip">Maya</span>
+          </Link>
           <div className="product-grid-item" style={{ cursor: 'default' }}>
             <img src={`${process.env.PUBLIC_URL}/pages/Home/products/IMG_2713_1.jpg`} alt="Coming Soon" />
             <span className="grid-tooltip">Coming Soon</span>
@@ -231,10 +231,10 @@ const Home = () => {
               <img src={`${process.env.PUBLIC_URL}/pages/Home/products/homethird.jpg`} alt="Trishna" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
               <span className="grid-tooltip">Trishna</span>
             </Link>
-            <div className="product-grid-item" style={{ flex: 1, overflow: 'hidden', position: 'relative', cursor: 'default', border: '1px solid rgba(255, 255, 255, 0.2)' }}>
-              <img src={`${process.env.PUBLIC_URL}/pages/Home/products/homefourth.jpg`} alt="Coming Soon" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
-              <span className="grid-tooltip">Coming Soon</span>
-            </div>
+            <Link to="/maya" className="product-grid-item" style={{ flex: 1, overflow: 'hidden', position: 'relative', border: '1px solid rgba(255, 255, 255, 0.2)' }}>
+              <img src={`${process.env.PUBLIC_URL}/products/maya/section5-main-1.jpg`} alt="Maya" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+              <span className="grid-tooltip">Maya</span>
+            </Link>
           </div>
           {/* Bottom Row - 4 images */}
           <div style={{ display: 'flex', flex: 1, gap: '12px', minHeight: 0 }}>

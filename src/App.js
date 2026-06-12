@@ -20,6 +20,7 @@ import Designers from './pages/Category/Designers/Designers';
 // import DaisyDrama from './pages/Category/DaisyDrama/DaisyDrama';
 import DaisyDrama from './pages/Category/Daisydrama/DaisyDrama';
 import Trishna from './pages/Category/Trishna/Trishna';
+import Maya from './pages/Category/Maya/Maya';
 
 import Men from './pages/Category/Men/Men';
 import Women from './pages/Category/Women/Women';
@@ -169,6 +170,7 @@ REACT_APP_GOOGLE_CLIENT_ID=your-actual-client-id.apps.googleusercontent.com
                     <Route path="/designers" element={<Designers />} />
                     <Route path="/daisydrama" element={<DaisyDrama />} />
                     <Route path="/trishna" element={<Trishna />} />
+                    <Route path="/maya" element={<Maya />} />
                     <Route path="/men" element={<Men />} />
                     <Route path="/women" element={<Women />} />
                     <Route path="/sale" element={<Sale />} />

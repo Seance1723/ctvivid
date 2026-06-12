@@ -269,6 +269,106 @@ const daisyDramaDataMobile = [
   }
 ];
 
+const mayaDataDesktop = [
+  {
+    id: 'panel1',
+    imageSrc: '/products/maya/section3-long.jpg',
+    dots: [
+      {
+        id: 'p1d1',
+        xPercent: 50,
+        yPercent: 45,
+        lineXPercent: 50,
+        lineYPercent: 45,
+        lineLength: 320,
+        lineDirection: 'left',
+        title: '',
+        description: '',
+        thumbnail: '/products/maya/section3-mini.jpg',
+        contentSide: 'right',
+        contentWidth: 160,
+        contentXPercent: 18,
+        contentYPercent: 35
+      },
+      {
+        id: 'p1d2',
+        xPercent: 55,
+        yPercent: 48,
+        lineXPercent: 55,
+        lineYPercent: 48,
+        lineLength: 380,
+        lineDirection: 'right',
+        title: 'Sleek Silhouette',
+        description: 'A high-neck bodycon silhouette with double high slits and an intricately corded detachable spider web harness.',
+        thumbnail: '',
+        contentSide: 'right',
+        contentWidth: 250,
+        contentXPercent: 68,
+        contentYPercent: 42
+      }
+    ]
+  },
+  {
+    id: 'panel2',
+    imageSrc: '/products/maya/section4-long.jpg',
+    dots: [
+      {
+        id: 'p2d1',
+        xPercent: 52,
+        yPercent: 65,
+        lineXPercent: 52,
+        lineYPercent: 65,
+        lineLength: 300,
+        lineDirection: 'right',
+        title: '',
+        description: '',
+        thumbnail: '/products/maya/section4-mini.jpg',
+        contentSide: 'left',
+        contentWidth: 160,
+        contentXPercent: 70,
+        contentYPercent: 50
+      },
+      {
+        id: 'p2d2',
+        xPercent: 45,
+        yPercent: 54,
+        lineXPercent: 45,
+        lineYPercent: 54,
+        lineLength: 370,
+        lineDirection: 'left',
+        title: 'Backless Turtleneck',
+        description: 'The daring contrast of a high turtleneck with an open back—concealing and revealing in perfect tension.',
+        thumbnail: '',
+        contentSide: 'left',
+        contentWidth: 280,
+        contentXPercent: 20,
+        contentYPercent: 48
+      }
+    ]
+  }
+];
+
+const mayaDataMobile = [
+  {
+    id: 'panel1',
+    imageSrc: '/products/maya/section3-long.jpg',
+    content: {
+      title: 'Sleek Silhouette',
+      description: 'A high-neck bodycon silhouette with double high slits and an intricately corded detachable spider web harness.',
+      thumbnail: '/products/maya/section3-mini.jpg'
+    }
+  },
+  {
+    id: 'panel2',
+    imageSrc: '/products/maya/section4-long.jpg',
+    content: {
+      title: 'Backless Turtleneck',
+      description: 'The daring contrast of a high turtleneck with an open back—concealing and revealing in perfect tension.',
+      thumbnail: '/products/maya/section4-mini.jpg'
+    }
+  }
+];
+
 const trishnaDataDesktop = [
   {
     id: 'panel1',
@@ -424,7 +524,8 @@ export default function ProductInfo({
   onLastPanelDown,
   scrolling,
   isDaisyDrama = false,
-  isTrishna = false
+  isTrishna = false,
+  isMaya = false
 }) {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const [isModalOpen, setModalOpen] = useState(false);
@@ -442,11 +543,13 @@ export default function ProductInfo({
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const highlightsData = isTrishna
-    ? (isMobile ? trishnaDataMobile : trishnaDataDesktop)
-    : isDaisyDrama
-      ? (isMobile ? daisyDramaDataMobile : daisyDramaDataDesktop)
-      : (isMobile ? highlightsDataMobile : highlightsDataDesktop);
+  const highlightsData = isMaya
+    ? (isMobile ? mayaDataMobile : mayaDataDesktop)
+    : isTrishna
+      ? (isMobile ? trishnaDataMobile : trishnaDataDesktop)
+      : isDaisyDrama
+        ? (isMobile ? daisyDramaDataMobile : daisyDramaDataDesktop)
+        : (isMobile ? highlightsDataMobile : highlightsDataDesktop);
 
   const handleClick = () => {
     onLastPanelDown?.();
@@ -996,7 +1099,19 @@ export default function ProductInfo({
         &times;
       </button>
             <div className="modal-body">
-          {isTrishna ? (
+          {isMaya ? (
+            <>
+              <h5>Title: Maya</h5>
+              <h5>Creator: Kannu</h5>
+              <h5>Year: 2025</h5>
+              <p className="mt-3">
+                Maya—the ancient Sanskrit word for illusion, for the veil that drapes over reality and makes the dream feel more vivid than waking life. It is not deception born of malice, but the magnificent, shimmering fabric of perception itself.
+              </p>
+              <p>
+                Kannu's Maya is a piece born from the desire to inhabit that in-between space—where the self dissolves into sensation, where beauty becomes the only truth worth believing. To wear Maya is to walk in the light of your own making.
+              </p>
+            </>
+          ) : isTrishna ? (
             <>
               <h5>Title: Trishna</h5>
               <h5>Creator: Kannu</h5>

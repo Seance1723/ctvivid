@@ -66,6 +66,18 @@ const daisyDramaTaglines = [
   "is only a dream.",
 ];
 
+const mayaTaglines = [
+  "Look closer.",
+  "She sits at the heart of the weave,",
+  "lounging in a lazy silence,",
+  "amused by your unwillingness to escape.",
+  "“Nobody wants to be trapped,” she sighs;",
+  "it is her favourite, most delicious lie.",
+  "You claim that you yearn to be free,",
+  "yet you lean into the web.",
+  "Are you the predator or the prey?",
+];
+
 const trishnaTaglines = [
   "A sudden pain slices through you; a stray arrow has pierced your heart.",
   "",
@@ -84,7 +96,7 @@ const trishnaTaglines = [
 
 const clamp = (v, min, max) => (v < min ? min : v > max ? max : v);
 
-export default function Designer({ isDaisyDrama = false, isTrishna = false }) {
+export default function Designer({ isDaisyDrama = false, isTrishna = false, isMaya = false }) {
   const [isModalOpen, setModalOpen] = useState(false);
   const containerRef = useRef(null);
   const trackRef = useRef(null);
@@ -272,8 +284,8 @@ export default function Designer({ isDaisyDrama = false, isTrishna = false }) {
   }, [isModalOpen]);
 
   useEffect(() => {
-    // Skip the slider logic for DaisyDrama and Trishna since we're showing video
-    if (isDaisyDrama || isTrishna) return;
+    // Skip the slider logic for DaisyDrama, Trishna, and Maya since we're showing video
+    if (isDaisyDrama || isTrishna || isMaya) return;
     
     const container = containerRef.current;
     const track = trackRef.current;
@@ -610,7 +622,7 @@ export default function Designer({ isDaisyDrama = false, isTrishna = false }) {
   return (
     <>
       <div className="product-slide onepage-section position-relative" ref={containerRef}>
-        <div className={`tagline-container${isTrishna ? ' trishna-theme' : ''}`}>
+        <div className={`tagline-container${isTrishna ? ' trishna-theme' : ''}${isMaya ? ' maya-theme' : ''}`}>
           {/* <img className="brand_logo" src="/products/designers/vakra_logo.png" alt="Vakra Logo" /> */}
           <img
   className="brand_logo"
@@ -618,8 +630,8 @@ export default function Designer({ isDaisyDrama = false, isTrishna = false }) {
   alt={isDaisyDrama ? "Kannu Logo" : "Vakra Logo"}
 />
           <ul className="taglines" ref={tagRef}>
-            {(isTrishna ? trishnaTaglines : (isDaisyDrama ? daisyDramaTaglines : taglines)).map((t, i) => (
-              <li key={i} className={(isDaisyDrama || isTrishna) ? 'active' : (i === 0 ? 'active' : '')}>{t}</li>
+            {(isMaya ? mayaTaglines : isTrishna ? trishnaTaglines : isDaisyDrama ? daisyDramaTaglines : taglines).map((t, i) => (
+              <li key={i} className={(isDaisyDrama || isTrishna || isMaya) ? 'active' : (i === 0 ? 'active' : '')}>{t}</li>
             ))}
           </ul>
           <button className="explore-more" onClick={handleExplore}>
@@ -636,10 +648,10 @@ export default function Designer({ isDaisyDrama = false, isTrishna = false }) {
           Product details
         </button>
 
-        {(isDaisyDrama || isTrishna) ? (
+        {(isDaisyDrama || isTrishna || isMaya) ? (
           <div className="daisy-drama-video">
             <video
-              src={isTrishna ? (isMobile ? "/mobile-trishna-firstscreen.mp4" : "/section2_trishna.mp4") : "/changes_v5.mp4"}
+              src={isMaya ? (isMobile ? "/products/maya/maya-mobile-section1.mp4" : "/products/maya/maya-desktop-section1.mp4") : isTrishna ? (isMobile ? "/mobile-trishna-firstscreen.mp4" : "/section2_trishna.mp4") : "/changes_v5.mp4"}
               autoPlay
               loop
               muted
@@ -698,7 +710,19 @@ export default function Designer({ isDaisyDrama = false, isTrishna = false }) {
 
 
                 <div className="modal-body">
-                  {isTrishna ? (
+                  {isMaya ? (
+                    <>
+                      <h5>Title: Maya</h5>
+                      <h5>Creator: Vakra</h5>
+                      <h5>Year: 2025</h5>
+                      <p className="mt-3">
+                        Maya is the deceptive weaver, an embodiment of the spider at the heart of her web. She is desire; she is attachment, the illusion you refuse to let go. She waits in silence, entertained and amused by your attempts to escape. You have tried escaping desire, but do you truly want to?
+                      </p>
+                      <p>
+                        Inspired by the vicious playfulness of a predator, Maya by Vakra captures a sense of lazy, self-assured power. It is the predator lounging in silence, knowing that the prey has no true desire to escape.
+                      </p>
+                    </>
+                  ) : isTrishna ? (
                     <>
                       <h5>Title: Trishna</h5>
                       <h5>Creator: Vakra</h5>

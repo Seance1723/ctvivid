@@ -148,6 +148,16 @@ body.product-slide-active {
         color: black;
       }
     }
+
+    &.maya-theme {
+      .taglines li,
+      .taglines li.active {
+        font-style: italic;
+        font-weight: 400;
+        font-family: "Montserrat", sans-serif;
+        line-height: 1.8;
+      }
+    }
   }
 
   .mouse {
@@ -244,11 +254,12 @@ body.product-slide-active {
       .taglines li {
         font-size: 18px;
       }
-      
+
       .brand_logo {
         width: 120px;
       }
     }
+
   }
 }
 

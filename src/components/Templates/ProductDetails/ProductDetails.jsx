@@ -8,7 +8,7 @@ import {
 import Footer from '../../Footer/Footer';
 import './ProductDetails.scss'; // Import the SCSS file
 
-const ProductDetails = React.forwardRef(({ onScrollUp, isDaisyDrama = false, isTrishna = false }, ref) => {
+const ProductDetails = React.forwardRef(({ onScrollUp, isDaisyDrama = false, isTrishna = false, isMaya = false }, ref) => {
   // WhatsApp click handler
   const handleWhatsAppClick = () => {
     const phoneNumber = '9443310108';
@@ -57,7 +57,25 @@ const ProductDetails = React.forwardRef(({ onScrollUp, isDaisyDrama = false, isT
     ]
   };
 
-  const currentImages = isTrishna ? trishnaImages : (isDaisyDrama ? daisyDramaImages : shopNowImages);
+  const mayaImages = {
+    default: '/products/maya/section5-main-1.jpg',
+    mobile: [
+      '/products/maya/section5-main-1.jpg',
+      '/products/maya/section5-main-2.jpg',
+      '/products/maya/section5-main-3.jpg',
+      '/products/maya/section5-main-4.jpg',
+      '/products/maya/section5-main-5.jpg'
+    ],
+    thumbnails: [
+      '/products/maya/section5-main-1.jpg',
+      '/products/maya/section5-thumb-2.jpg',
+      '/products/maya/section5-thumb-3.jpg',
+      '/products/maya/section5-thumb-4.jpg',
+      '/products/maya/section5-thumb-5.jpg'
+    ]
+  };
+
+  const currentImages = isMaya ? mayaImages : isTrishna ? trishnaImages : (isDaisyDrama ? daisyDramaImages : shopNowImages);
   const [activeImage, setActiveImage] = useState(currentImages.default);
 
   // Update activeImage when isDaisyDrama or isTrishna changes
@@ -515,7 +533,40 @@ const ProductDetails = React.forwardRef(({ onScrollUp, isDaisyDrama = false, isT
             <div className="product-images col-md-7 d-none d-md-flex gap-3" style={{ alignItems: 'flex-start' }}>
               <div className="thumbs d-none d-md-flex flex-column gap-2">
                 {/* Thumbnails */}
-                {isTrishna ? (
+                {isMaya ? (
+                  <>
+                    <img
+                      src="/products/maya/section5-main-1.jpg"
+                      alt="thumb1"
+                      onClick={() => setActiveImage('/products/maya/section5-main-1.jpg')}
+                      className="thumbnail-clickable"
+                    />
+                    <img
+                      src="/products/maya/section5-thumb-2.jpg"
+                      alt="thumb2"
+                      onClick={() => setActiveImage('/products/maya/section5-main-2.jpg')}
+                      className="thumbnail-clickable"
+                    />
+                    <img
+                      src="/products/maya/section5-thumb-3.jpg"
+                      alt="thumb3"
+                      onClick={() => setActiveImage('/products/maya/section5-main-3.jpg')}
+                      className="thumbnail-clickable"
+                    />
+                    <img
+                      src="/products/maya/section5-thumb-4.jpg"
+                      alt="thumb4"
+                      onClick={() => setActiveImage('/products/maya/section5-main-4.jpg')}
+                      className="thumbnail-clickable"
+                    />
+                    <img
+                      src="/products/maya/section5-thumb-5.jpg"
+                      alt="thumb5"
+                      onClick={() => setActiveImage('/products/maya/section5-main-5.jpg')}
+                      className="thumbnail-clickable"
+                    />
+                  </>
+                ) : isTrishna ? (
                   <>
                     <img
                       src="/products/trishna/Rectangle7.jpg"
@@ -626,7 +677,44 @@ const ProductDetails = React.forwardRef(({ onScrollUp, isDaisyDrama = false, isT
             </div>
 
             {/* RIGHT COL - Desktop Only */}
-            {isTrishna ? (
+            {isMaya ? (
+              <div className="product-intro-sec col-md-5 d-none d-md-block">
+                <div className="breadcrumb">
+                  <ul>
+                    <li>Designer</li>
+                    <li>Vakra</li>
+                    <li>Maya</li>
+                  </ul>
+                </div>
+
+                <h2 className="productName">Maya</h2>
+                <p className="mobile-product-subtitle">She is desire; she is attachment, the illusion you refuse to let go.</p>
+                <p className="mobile-product-subtitle" style={{ marginTop: '12px' }}>Maya by Vakra—lazy, self-assured power. The predator who knows the prey has no true desire to escape.</p>
+                <p className="product-price" style={{ fontWeight: 'bold', marginTop: '8px', fontSize: '18px' }}>MRP ₹ 9,999</p>
+
+                <div className="limited-release-banner d-flex align-items-center mt-4 p-2 rounded">
+                  <div className="limited-logo me-3">
+                    <strong className="limited-text">LIMITED</strong>
+                    <div className="underline"></div>
+                  </div>
+                  <div className="release-text no-wrap-text">
+                    <strong>Exclusive Release – </strong>
+                    <span>While Supplies Last.</span>
+                  </div>
+                </div>
+
+                <div className="mt-2 d-flex gap-3 flex-wrap">
+                  <button
+                    type="button"
+                    className="cta cta-withArrowDark"
+                    style={{ marginTop: '10px' }}
+                    onClick={handleWhatsAppClick}
+                  >
+                    Contact Us
+                  </button>
+                </div>
+              </div>
+            ) : isTrishna ? (
               // Trishna content - same layout as Asuri
               <div className="product-intro-sec col-md-5 d-none d-md-block">
                 <p className="breadcrumb">
@@ -857,7 +945,41 @@ const ProductDetails = React.forwardRef(({ onScrollUp, isDaisyDrama = false, isT
               <span className="mobile-rating-text">** Review</span>
             </div>
 
-              {isTrishna ? (
+              {isMaya ? (
+                <>
+                  <p className="mobile-breadcrumb">
+                    Designer &gt;&gt; Vakra &gt;&gt; <span className="breadcrumb-highlight">Maya</span>
+                  </p>
+                  <h2 className="productNameMobile">Maya</h2>
+                  <p className="productIntroMobile">
+                    Maya is the deceptive weaver—the illusion you refuse to let go. She waits in silence, amused by your attempts to escape.
+                  </p>
+                  <p className="productIntroMobile" style={{ marginTop: '12px' }}>
+                    Inspired by the vicious playfulness of a predator, Maya by Vakra captures a sense of lazy, self-assured power.
+                  </p>
+                  <p className="product-price" style={{ fontWeight: 'bold', marginTop: '12px', fontSize: '18px' }}>MRP ₹ 9,999</p>
+
+                  <div className="limited-release-banner d-flex align-items-center mt-4 p-2 rounded">
+                    <div className="limited-logo me-3">
+                      <strong className="limited-text">LIMITED</strong>
+                      <div className="underline"></div>
+                    </div>
+                    <div className="release-text no-wrap-text">
+                      <strong>Exclusive Release – </strong>
+                      <span>While Supplies Last.</span>
+                    </div>
+                  </div>
+
+                  <button
+                    type="button"
+                    className="mobile-btn1 mobile-btn-primary1"
+                    style={{ marginTop: '10px' }}
+                    onClick={handleWhatsAppClick}
+                  >
+                    Contact Us
+                  </button>
+                </>
+              ) : isTrishna ? (
                 <>
                   <p className="mobile-breadcrumb">
                     Designer &gt;&gt; Vakra &gt;&gt; <span className="breadcrumb-highlight">Trishna</span>
