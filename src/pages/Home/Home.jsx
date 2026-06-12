@@ -167,6 +167,7 @@ const Home = () => {
               <Link
                 to="/designers#productInfo"
                 className="cta cta-text text-white p-0"
+                style={{ background: 'none', outline: 'none' }}
               >Shop Now</Link>
             </div>
           </div>
