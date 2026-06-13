@@ -58,20 +58,20 @@ const ProductDetails = React.forwardRef(({ onScrollUp, isDaisyDrama = false, isT
   };
 
   const mayaImages = {
-    default: '/products/maya/section5-main-1.jpg',
+    default: '/products/maya/maya-image1.jpg',
     mobile: [
-      '/products/maya/section5-main-1.jpg',
-      '/products/maya/section5-main-2.jpg',
-      '/products/maya/section5-main-3.jpg',
-      '/products/maya/section5-main-4.jpg',
-      '/products/maya/section5-main-5.jpg'
+      '/products/maya/maya-image1.jpg',
+      '/products/maya/maya-image2.jpg',
+      '/products/maya/maya-image3.jpg',
+      '/products/maya/maya-image4.jpg',
+      '/products/maya/maya-image5.jpg'
     ],
     thumbnails: [
-      '/products/maya/section5-main-1.jpg',
-      '/products/maya/section5-thumb-2.jpg',
-      '/products/maya/section5-thumb-3.jpg',
-      '/products/maya/section5-thumb-4.jpg',
-      '/products/maya/section5-thumb-5.jpg'
+      '/products/maya/maya-image1.jpg',
+      '/products/maya/maya-image2.jpg',
+      '/products/maya/maya-image3.jpg',
+      '/products/maya/maya-image4.jpg',
+      '/products/maya/maya-image5.jpg'
     ]
   };
 
@@ -536,34 +536,34 @@ const ProductDetails = React.forwardRef(({ onScrollUp, isDaisyDrama = false, isT
                 {isMaya ? (
                   <>
                     <img
-                      src="/products/maya/section5-main-1.jpg"
+                      src="/products/maya/maya-image1.jpg"
                       alt="thumb1"
-                      onClick={() => setActiveImage('/products/maya/section5-main-1.jpg')}
-                      className="thumbnail-clickable"
+                      onClick={() => setActiveImage('/products/maya/maya-image1.jpg')}
+                      className={`thumbnail-clickable${activeImage === '/products/maya/maya-image1.jpg' ? ' thumbnail-active' : ''}`}
                     />
                     <img
-                      src="/products/maya/section5-thumb-2.jpg"
+                      src="/products/maya/maya-image2.jpg"
                       alt="thumb2"
-                      onClick={() => setActiveImage('/products/maya/section5-main-2.jpg')}
-                      className="thumbnail-clickable"
+                      onClick={() => setActiveImage('/products/maya/maya-image2.jpg')}
+                      className={`thumbnail-clickable${activeImage === '/products/maya/maya-image2.jpg' ? ' thumbnail-active' : ''}`}
                     />
                     <img
-                      src="/products/maya/section5-thumb-3.jpg"
+                      src="/products/maya/maya-image3.jpg"
                       alt="thumb3"
-                      onClick={() => setActiveImage('/products/maya/section5-main-3.jpg')}
-                      className="thumbnail-clickable"
+                      onClick={() => setActiveImage('/products/maya/maya-image3.jpg')}
+                      className={`thumbnail-clickable${activeImage === '/products/maya/maya-image3.jpg' ? ' thumbnail-active' : ''}`}
                     />
                     <img
-                      src="/products/maya/section5-thumb-4.jpg"
+                      src="/products/maya/maya-image4.jpg"
                       alt="thumb4"
-                      onClick={() => setActiveImage('/products/maya/section5-main-4.jpg')}
-                      className="thumbnail-clickable"
+                      onClick={() => setActiveImage('/products/maya/maya-image4.jpg')}
+                      className={`thumbnail-clickable${activeImage === '/products/maya/maya-image4.jpg' ? ' thumbnail-active' : ''}`}
                     />
                     <img
-                      src="/products/maya/section5-thumb-5.jpg"
+                      src="/products/maya/maya-image5.jpg"
                       alt="thumb5"
-                      onClick={() => setActiveImage('/products/maya/section5-main-5.jpg')}
-                      className="thumbnail-clickable"
+                      onClick={() => setActiveImage('/products/maya/maya-image5.jpg')}
+                      className={`thumbnail-clickable${activeImage === '/products/maya/maya-image5.jpg' ? ' thumbnail-active' : ''}`}
                     />
                   </>
                 ) : isTrishna ? (
