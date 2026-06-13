@@ -540,30 +540,35 @@ const ProductDetails = React.forwardRef(({ onScrollUp, isDaisyDrama = false, isT
                       alt="thumb1"
                       onClick={() => setActiveImage('/products/maya/maya-image1.jpg')}
                       className={`thumbnail-clickable${activeImage === '/products/maya/maya-image1.jpg' ? ' thumbnail-active' : ''}`}
+                      style={{ width: '73px', height: '73px' }}
                     />
                     <img
                       src="/products/maya/maya-image2.jpg"
                       alt="thumb2"
                       onClick={() => setActiveImage('/products/maya/maya-image2.jpg')}
                       className={`thumbnail-clickable${activeImage === '/products/maya/maya-image2.jpg' ? ' thumbnail-active' : ''}`}
+                      style={{ width: '73px', height: '73px' }}
                     />
                     <img
                       src="/products/maya/maya-image3.jpg"
                       alt="thumb3"
                       onClick={() => setActiveImage('/products/maya/maya-image3.jpg')}
                       className={`thumbnail-clickable${activeImage === '/products/maya/maya-image3.jpg' ? ' thumbnail-active' : ''}`}
+                      style={{ width: '73px', height: '73px' }}
                     />
                     <img
                       src="/products/maya/maya-image4.jpg"
                       alt="thumb4"
                       onClick={() => setActiveImage('/products/maya/maya-image4.jpg')}
                       className={`thumbnail-clickable${activeImage === '/products/maya/maya-image4.jpg' ? ' thumbnail-active' : ''}`}
+                      style={{ width: '73px', height: '73px' }}
                     />
                     <img
                       src="/products/maya/maya-image5.jpg"
                       alt="thumb5"
                       onClick={() => setActiveImage('/products/maya/maya-image5.jpg')}
                       className={`thumbnail-clickable${activeImage === '/products/maya/maya-image5.jpg' ? ' thumbnail-active' : ''}`}
+                      style={{ width: '73px', height: '73px' }}
                     />
                   </>
                 ) : isTrishna ? (
